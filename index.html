@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STRONG Pilates Presale Audit &amp; Strategy | Kaizen Collective</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1A1A18;
+  --cream: #F5F0E8;
+  --gold: #C9A84C;
+  --gold-dark: #A8893D;
+  --gold-light: #E8DDB8;
+  --gold-pale: #F5F0DC;
+  --charcoal: #2E2E2A;
+  --stone: #8C8778;
+  --parchment: #EDE8DC;
+  --white: #FEFDFB;
+  --red: #C45B4A;
+  --red-light: #FAF0EE;
+  --green: #5A9E6F;
+  --green-light: #EDF5F0;
+  --amber: #C4964A;
+  --neutral-50: #FAF9F7;
+  --neutral-100: #F0EDE8;
+  --neutral-200: #E0DBD3;
+  --neutral-300: #C7C1B7;
+  --neutral-400: #A39D93;
+  --neutral-500: #7A756C;
+  --neutral-600: #5C5850;
+  --neutral-700: #3D3A35;
+  --neutral-800: #2A2825;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════════
+   TOP BAR & TABS
+   ═══════════════════════════════════════════ */
+.top-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: var(--ink);
+  border-bottom: 1px solid var(--charcoal);
+}
+
+.top-bar-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 40px;
+  display: flex; align-items: center; justify-content: space-between; height: 64px;
+}
+
+.brand { display: flex; align-items: center; gap: 14px; }
+
+.brand-logo {
+  font-family: var(--font-heading); font-size: 13px;
+  letter-spacing: 0.1em; color: var(--cream); font-weight: 500;
+}
+
+.brand-divider { width: 1px; height: 18px; background: var(--neutral-700); }
+
+.brand-context {
+  font-family: var(--font-body); font-size: 10px; color: var(--stone);
+  letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500;
+}
+
+.tab-nav { display: flex; gap: 0; }
+
+.tab-btn {
+  background: none; border: none; color: var(--neutral-500);
+  font-family: var(--font-body); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 22px 24px; cursor: pointer; transition: all 0.3s ease; position: relative;
+}
+
+.tab-btn:hover { color: var(--neutral-300); }
+.tab-btn.active { color: var(--cream); }
+
+.tab-btn.active::after {
+  content: ''; position: absolute; bottom: 0; left: 24px; right: 24px;
+  height: 2px; background: var(--gold);
+}
+
+.tab-btn .tab-num {
+  font-size: 9px; color: var(--neutral-600); margin-right: 6px; font-weight: 600;
+}
+
+.tab-btn.active .tab-num { color: var(--gold); }
+
+/* ═══════════════════════════════════════════
+   PAGE STRUCTURE
+   ═══════════════════════════════════════════ */
+.page {
+  display: none; padding-top: 64px; min-height: 100vh;
+  opacity: 0; animation: fadeIn 0.5s ease forwards;
+}
+
+.page.active { display: block; }
+@keyframes fadeIn { to { opacity: 1; } }
+
+.section { padding: 64px 40px; max-width: 1100px; margin: 0 auto; }
+.section-narrow { max-width: 820px; }
+
+/* ═══════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════ */
+.hero {
+  background: var(--ink); padding: 100px 40px 80px; text-align: center;
+  position: relative; overflow: hidden;
+}
+
+.hero::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 70%);
+}
+
+.hero-eyebrow {
+  font-family: var(--font-body); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 24px; position: relative;
+}
+
+.hero h1 {
+  font-family: var(--font-heading); font-weight: 400; font-size: 52px;
+  color: var(--cream); line-height: 1.15; margin-bottom: 16px; position: relative;
+}
+
+.hero h1 em { font-style: italic; color: var(--gold); }
+
+.hero-sub {
+  font-family: var(--font-body); font-size: 15px; color: var(--stone);
+  font-weight: 300; position: relative;
+}
+
+.hero-line {
+  width: 48px; height: 1px; background: var(--gold-light); margin: 32px auto 0;
+  position: relative;
+}
+
+/* ═══════════════════════════════════════════
+   TYPOGRAPHY
+   ═══════════════════════════════════════════ */
+.eyebrow {
+  font-family: var(--font-body); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-dark);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: var(--font-heading); font-weight: 400; font-size: 34px;
+  color: var(--ink); line-height: 1.2; margin-bottom: 10px;
+}
+
+.section-title em { font-style: italic; color: var(--gold-dark); }
+
+.section-sub {
+  font-family: var(--font-body); font-size: 14px; color: var(--stone);
+  font-weight: 300; line-height: 1.7; max-width: 600px; margin-bottom: 40px;
+}
+
+p { font-weight: 300; line-height: 1.85; color: var(--neutral-700); margin-bottom: 20px; font-size: 15px; }
+
+p strong { font-weight: 500; color: var(--ink); }
+
+.lead-p { font-size: 16px; line-height: 1.9; }
+
+/* ═══════════════════════════════════════════
+   DIVIDERS
+   ═══════════════════════════════════════════ */
+.divider {
+  height: 1px; border: none; margin: 56px 0;
+  background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+}
+
+.divider-solid {
+  height: 1px; border: none; margin: 48px 0; background: var(--neutral-200);
+}
+
+/* ═══════════════════════════════════════════
+   TABLES
+   ═══════════════════════════════════════════ */
+.table-wrap { overflow-x: auto; margin: 32px 0; }
+
+table {
+  width: 100%; border-collapse: collapse; font-size: 14px;
+}
+
+thead th {
+  font-family: var(--font-body); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone);
+  padding: 10px 14px; text-align: left;
+  border-bottom: 2px solid var(--neutral-200); background: var(--cream);
+}
+
+thead th:not(:first-child) { text-align: right; }
+
+tbody td {
+  padding: 12px 14px; font-weight: 300; color: var(--neutral-600);
+  border-bottom: 1px solid var(--neutral-100);
+}
+
+tbody td:first-child { font-weight: 500; color: var(--ink); }
+tbody td:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
+
+tbody tr:hover { background: var(--neutral-50); }
+
+.val-yes { color: var(--green); font-weight: 500; }
+.val-no { color: var(--red); font-weight: 500; }
+.val-amber { color: var(--amber); font-weight: 500; }
+.val-gold { color: var(--gold-dark); font-weight: 500; }
+
+/* ═══════════════════════════════════════════
+   CALLOUT BLOCKS
+   ═══════════════════════════════════════════ */
+.callout-dark {
+  background: var(--ink); padding: 40px 48px; margin: 40px 0;
+  position: relative; text-align: center;
+}
+
+.callout-dark::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+  opacity: 0.4;
+}
+
+.callout-dark p {
+  font-family: var(--font-heading); font-size: 20px; font-weight: 400;
+  color: var(--cream); line-height: 1.6; margin: 0; max-width: 700px;
+  margin: 0 auto;
+}
+
+.callout-dark em { color: var(--gold); font-style: italic; }
+
+.callout-warm {
+  background: var(--gold-pale); border-left: 3px solid var(--gold);
+  padding: 24px 28px; margin: 32px 0;
+}
+
+.callout-warm p { margin: 0; font-size: 14px; color: var(--charcoal); }
+
+/* ═══════════════════════════════════════════
+   COMPARISON TABLE (Targets vs Reality)
+   ═══════════════════════════════════════════ */
+.compare-table { margin: 32px 0; }
+
+.compare-table table { background: var(--white); }
+
+.compare-table thead th {
+  background: var(--parchment); color: var(--ink); font-size: 11px;
+}
+
+.compare-table tbody td:nth-child(2) { color: var(--gold-dark); font-weight: 500; }
+
+/* ═══════════════════════════════════════════
+   STAT GRID
+   ═══════════════════════════════════════════ */
+.stat-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1px; background: var(--neutral-200); margin: 40px 0;
+  border: 1px solid var(--neutral-200);
+}
+
+.stat-card {
+  background: var(--white); padding: 24px;
+}
+
+.stat-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--stone); margin-bottom: 6px;
+}
+
+.stat-value {
+  font-family: var(--font-heading); font-size: 32px; font-weight: 400;
+  color: var(--ink); line-height: 1.1;
+}
+
+.stat-value.gold { color: var(--gold-dark); }
+
+.stat-note { font-size: 12px; color: var(--stone); margin-top: 4px; font-weight: 300; }
+
+/* ═══════════════════════════════════════════
+   STUDIO LIST (Opening)
+   ═══════════════════════════════════════════ */
+.studio-list {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 12px; margin: 28px 0 40px;
+}
+
+.studio-tag {
+  background: var(--white); border: 1px solid var(--neutral-200);
+  padding: 14px 18px; font-size: 14px; font-weight: 400; color: var(--ink);
+}
+
+.studio-tag span { font-size: 11px; color: var(--stone); margin-left: 6px; font-weight: 300; }
+
+/* ═══════════════════════════════════════════
+   STRATEGY — PHASE BLOCKS
+   ═══════════════════════════════════════════ */
+.phase-block { margin: 48px 0; }
+
+.phase-header {
+  display: flex; align-items: baseline; gap: 16px; margin-bottom: 8px;
+}
+
+.phase-num {
+  font-family: var(--font-heading); font-size: 48px; color: var(--gold-light);
+  font-weight: 400; line-height: 1;
+}
+
+.phase-title {
+  font-family: var(--font-heading); font-size: 26px; color: var(--ink);
+  font-weight: 400;
+}
+
+.phase-meta {
+  font-size: 13px; color: var(--stone); font-weight: 300;
+  margin-bottom: 32px; padding-left: 64px;
+}
+
+.track-columns {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 24px 0;
+}
+
+.track {
+  background: var(--white); border: 1px solid var(--neutral-200); padding: 28px;
+}
+
+.track-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; margin-bottom: 16px; padding-bottom: 10px;
+  border-bottom: 2px solid var(--neutral-200);
+}
+
+.track-label.marketing { color: var(--gold-dark); border-color: var(--gold-light); }
+.track-label.studio { color: var(--ink); border-color: var(--neutral-300); }
+
+.track ul {
+  list-style: none; padding: 0;
+}
+
+.track li {
+  font-size: 14px; font-weight: 300; color: var(--neutral-600);
+  line-height: 1.7; padding: 6px 0 6px 18px; position: relative;
+}
+
+.track li::before {
+  content: ''; position: absolute; left: 0; top: 14px;
+  width: 6px; height: 6px; border-radius: 50%;
+}
+
+.track.marketing-track li::before { background: var(--gold); }
+.track.studio-track li::before { background: var(--neutral-400); }
+
+.track li strong { font-weight: 500; color: var(--ink); }
+
+/* ═══════════════════════════════════════════
+   CHECKPOINT TABLE
+   ═══════════════════════════════════════════ */
+.checkpoint {
+  background: var(--parchment); padding: 24px 28px; margin: 24px 0;
+}
+
+.checkpoint-title {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--stone); margin-bottom: 12px;
+}
+
+.checkpoint table { background: transparent; }
+.checkpoint thead th { background: var(--parchment); }
+.checkpoint tbody td { border-color: var(--gold-light); }
+
+/* ═══════════════════════════════════════════
+   WEEK-BY-WEEK TIMELINE
+   ═══════════════════════════════════════════ */
+.timeline-wrap {
+  margin: 40px 0; overflow-x: auto;
+}
+
+.timeline-table {
+  width: 100%; border-collapse: collapse; font-size: 12px;
+}
+
+.timeline-table thead th {
+  padding: 8px 6px; font-size: 9px; letter-spacing: 0.08em;
+  background: var(--ink); color: var(--cream); border: 1px solid var(--charcoal);
+  text-align: center; white-space: nowrap;
+}
+
+.timeline-table thead th:first-child { text-align: left; min-width: 120px; }
+.timeline-table thead th.phase-1-col { background: var(--charcoal); }
+.timeline-table thead th.phase-2-col { background: #3D3A2A; }
+.timeline-table thead th.phase-3-col { background: #4A3D2A; }
+.timeline-table thead th.phase-4-col { background: #2A3A35; }
+
+.timeline-table tbody td {
+  padding: 7px 6px; text-align: center; border: 1px solid var(--neutral-100);
+  font-variant-numeric: tabular-nums; font-weight: 300; font-size: 12px;
+}
+
+.timeline-table tbody td:first-child {
+  text-align: left; font-weight: 500; color: var(--ink); background: var(--neutral-50);
+  font-size: 11px;
+}
+
+.timeline-table tbody tr.row-spend td:not(:first-child) { color: var(--red); }
+.timeline-table tbody tr.row-leads td:not(:first-child) { color: var(--neutral-600); }
+.timeline-table tbody tr.row-intros td:not(:first-child) { color: var(--gold-dark); font-weight: 500; }
+.timeline-table tbody tr.row-members td:not(:first-child) { color: var(--green); font-weight: 500; }
+
+.timeline-table tbody tr.row-divider td {
+  padding: 4px; background: var(--parchment); font-size: 9px;
+  font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--stone); text-align: left;
+}
+
+.phase-label-row td {
+  background: var(--ink) !important; color: var(--cream) !important;
+  font-size: 10px !important; font-weight: 600 !important;
+  letter-spacing: 0.1em; text-transform: uppercase; text-align: center !important;
+  padding: 6px !important;
+}
+
+.phase-label-row td.phase-highlight { background: var(--charcoal) !important; }
+
+/* ═══════════════════════════════════════════
+   ACCOUNTABILITY CARDS
+   ═══════════════════════════════════════════ */
+.accountability-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 32px 0;
+}
+
+.acc-card {
+  padding: 32px; border: 1px solid var(--neutral-200);
+}
+
+.acc-card.marketing-card {
+  background: var(--gold-pale); border-color: var(--gold-light);
+}
+
+.acc-card.studio-card { background: var(--white); }
+
+.acc-card h4 {
+  font-family: var(--font-body); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 20px;
+  padding-bottom: 12px; border-bottom: 2px solid;
+}
+
+.acc-card.marketing-card h4 { color: var(--gold-dark); border-color: var(--gold); }
+.acc-card.studio-card h4 { color: var(--ink); border-color: var(--neutral-300); }
+
+.acc-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 8px 0; border-bottom: 1px solid var(--neutral-100);
+}
+
+.acc-row:last-child { border: none; }
+
+.acc-metric { font-size: 13px; font-weight: 300; color: var(--neutral-600); }
+.acc-target { font-size: 13px; font-weight: 500; color: var(--ink); text-align: right; }
+
+/* ═══════════════════════════════════════════
+   SUCCESS GRID
+   ═══════════════════════════════════════════ */
+.success-section { background: var(--ink); padding: 64px 40px; }
+
+.success-inner { max-width: 1100px; margin: 0 auto; }
+
+.success-section .eyebrow { color: var(--gold); }
+.success-section .section-title { color: var(--cream); }
+
+.success-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px; background: var(--charcoal); margin: 40px 0;
+  border: 1px solid var(--charcoal);
+}
+
+.success-card { background: var(--ink); padding: 28px; }
+
+.success-card .stat-label { color: var(--neutral-500); }
+.success-card .stat-value { color: var(--cream); }
+.success-card .stat-value.gold { color: var(--gold); }
+
+/* ═══════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════ */
+.footer {
+  background: var(--ink); padding: 40px; text-align: center;
+  border-top: 1px solid var(--charcoal);
+}
+
+.footer p {
+  font-size: 12px; color: var(--neutral-600); margin: 0; font-weight: 300;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 36px; }
+  .section { padding: 48px 24px; }
+  .studio-list { grid-template-columns: 1fr 1fr; }
+  .track-columns { grid-template-columns: 1fr; }
+  .accountability-grid { grid-template-columns: 1fr; }
+  .top-bar-inner { padding: 0 20px; }
+  .tab-btn { padding: 22px 14px; font-size: 10px; }
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     TOP BAR
+     ═══════════════════════════════════════════ -->
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <div class="brand">
+      <div class="brand-logo">KAIZEN COLLECTIVE</div>
+      <div class="brand-divider"></div>
+      <div class="brand-context">STRONG Pilates Presale</div>
+    </div>
+    <nav class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('audit')">
+        <span class="tab-num">01</span>Audit
+      </button>
+      <button class="tab-btn" onclick="switchTab('strategy')">
+        <span class="tab-num">02</span>Strategy
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TAB 1: AUDIT
+     ═══════════════════════════════════════════════════════════════ -->
+<div id="audit" class="page active">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Presale Performance Audit</div>
+    <h1>Six Studios. <em>4,087 Journeys.</em><br>One Clear Story.</h1>
+    <div class="hero-sub">Prepared 21 March 2026 · Mario Paguio</div>
+    <div class="hero-line"></div>
+  </div>
+
+  <!-- OPENING -->
+  <div class="section section-narrow">
+    <p class="lead-p">Hey Nicole and Katlyn,</p>
+    <p class="lead-p">After our chat, I went and audited six locations that have been through the presale process:</p>
+
+    <div class="studio-list">
+      <div class="studio-tag">Oakville <span>CAD</span></div>
+      <div class="studio-tag">Yorkville <span>CAD</span></div>
+      <div class="studio-tag">West Hollywood <span>USD</span></div>
+      <div class="studio-tag">Central Austin <span>USD</span></div>
+      <div class="studio-tag">Garwood <span>USD</span></div>
+      <div class="studio-tag">Williston Park <span>USD</span></div>
+    </div>
+
+    <p>I pulled every week of ad spend, every intro offer sold, every membership purchased, and tracked each individual intro buyer through to conversion — did they become a member, are they still active, and how long did it take. Across these six studios, that's over 4,000 individual journeys.</p>
+    <p>My intention here is straightforward: before I put a strategy on the table for presales, I wanted to know what actually works and what doesn't — from the data, not from a deck. The numbers tell a clear story, and there's a real path to making presales consistently successful for both the franchise and the studio owners.</p>
+    <p>Here's what I found.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 01 — PRESALE SPEND -->
+  <div class="section">
+    <div class="eyebrow">01 — Presale Investment</div>
+    <div class="section-title">What Each Studio Spent <em>Before Opening</em></div>
+    <div class="section-sub">Ad spend during the presale period only — before the doors opened.</div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Studio</th><th>Currency</th><th>Duration</th><th>Spend</th><th>Leads</th><th>Intros</th><th>Members</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Oakville</td><td>CAD</td><td>16 wks</td><td>$12,785</td><td>2,954</td><td>415</td><td class="val-no">3</td></tr>
+          <tr><td>Yorkville</td><td>CAD</td><td>65 wks</td><td>$13,933</td><td>1,401</td><td>135</td><td class="val-no">8</td></tr>
+          <tr><td>West Hollywood</td><td>USD</td><td>28 wks</td><td>$19,646</td><td>2,041</td><td>16</td><td class="val-yes">140</td></tr>
+          <tr><td>Central Austin</td><td>USD</td><td>18 wks</td><td>$34,656</td><td>2,145</td><td>261</td><td class="val-no">10</td></tr>
+          <tr><td>Garwood</td><td>USD</td><td>12 wks</td><td>$16,102</td><td>2,947</td><td>5</td><td class="val-yes">148</td></tr>
+          <tr><td>Williston Park</td><td>USD</td><td>19 wks</td><td>$22,723</td><td>3,936</td><td>172</td><td class="val-yes">134</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Presale durations ranged from 12 weeks (Garwood) to 65 weeks (Yorkville). Budgets ranged from $12,785 CAD to $34,656 USD. Every studio generated leads. The question is what those leads turned into.</p>
+
+    <div class="callout-warm">
+      <p><strong>Two patterns are immediately visible:</strong> Canadian studios (Oakville, Yorkville) sold intro offers during presale but almost no memberships — 3 and 8 respectively. US studios like Garwood (148) and Williston Park (134) sold memberships directly. These are fundamentally different sales models producing different outcomes.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 02 — UNIT ECONOMICS -->
+  <div class="section">
+    <div class="eyebrow">02 — Presale Unit Economics</div>
+    <div class="section-title">Cost Per Lead, Intro, and <em>Member</em></div>
+    <div class="section-sub">From presale spend alone — before the studio opened.</div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Studio</th><th>Currency</th><th>CPL</th><th>Cost/Intro</th><th>Cost/Member</th><th>Members</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Oakville</td><td>CAD</td><td class="val-yes">$4.33</td><td>$30.81</td><td class="val-no">$4,262</td><td class="val-no">3</td></tr>
+          <tr><td>Yorkville</td><td>CAD</td><td class="val-amber">$9.94</td><td>$103.21</td><td class="val-no">$1,742</td><td class="val-no">8</td></tr>
+          <tr><td>West Hollywood</td><td>USD</td><td class="val-amber">$9.63</td><td>$1,228</td><td class="val-yes">$140</td><td class="val-yes">140</td></tr>
+          <tr><td>Central Austin</td><td>USD</td><td class="val-no">$16.16</td><td>$132.78</td><td class="val-no">$3,466</td><td class="val-no">10</td></tr>
+          <tr><td>Garwood</td><td>USD</td><td class="val-yes">$5.46</td><td>$3,220</td><td class="val-yes">$109</td><td class="val-yes">148</td></tr>
+          <tr><td>Williston Park</td><td>USD</td><td class="val-yes">$5.77</td><td>$132.11</td><td class="val-amber">$170</td><td class="val-yes">134</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>CPL during presale ranged from $4.33 to $16.16.</strong> Four of six studios achieved CPL under $10. Lead generation is working.</p>
+    <p>Membership conversion during presale is where the gap appears. The two Canadian studios produced 3 and 8 memberships from a combined $26,718 in presale spend. That's not a lead problem — it's a conversion model question.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 03 — FIRST 6 WEEKS -->
+  <div class="section">
+    <div class="eyebrow">03 — First Six Weeks Post-Opening</div>
+    <div class="section-title">The Presale Pipeline <em>Converting</em></div>
+    <div class="section-sub">After this point, the studio's own operation takes over. This is the scope the presale agency should own.</div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Studio</th><th>Currency</th><th>Spend</th><th>Leads</th><th>Intros</th><th>Members</th><th>Cost/Member</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Oakville</td><td>CAD</td><td>$5,231</td><td>1,681</td><td>280</td><td class="val-yes">116</td><td class="val-yes">$45.09</td></tr>
+          <tr><td>Yorkville</td><td>CAD</td><td>$6,865</td><td>1,064</td><td>223</td><td class="val-amber">76</td><td class="val-amber">$90.33</td></tr>
+          <tr><td>West Hollywood</td><td>USD</td><td>$7,584</td><td>1,280</td><td>103</td><td class="val-no">35</td><td class="val-no">$216.69</td></tr>
+          <tr><td>Central Austin</td><td>USD</td><td>$1,565</td><td>120</td><td>82</td><td class="val-no">36</td><td class="val-yes">$43.48</td></tr>
+          <tr><td>Garwood</td><td>USD</td><td>$11,376</td><td>872</td><td>170</td><td class="val-yes">148</td><td class="val-yes">$76.87</td></tr>
+          <tr><td>Williston Park</td><td>USD</td><td>$2,161</td><td>0</td><td>198</td><td class="val-yes">143</td><td class="val-yes">$15.11</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>The first six weeks post-opening is where the presale pipeline converts.</strong> Oakville added 116 members. Garwood added 148. Williston Park added 143.</p>
+    <p><strong>Williston Park's numbers are striking:</strong> zero ad spend in the first week, $2,161 total across six weeks, and 143 memberships. That's the presale pipeline doing its job — the leads were ready to convert the moment the doors opened.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 04 — FULL WINDOW -->
+  <div class="section">
+    <div class="eyebrow">04 — The Full Presale Window</div>
+    <div class="section-title">Total Investment vs the <em>200-Member Target</em></div>
+    <div class="section-sub">Presale spend plus first six weeks — the honest picture.</div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Studio</th><th>Currency</th><th>Total Spend</th><th>CPL</th><th>Cost/Intro</th><th>Cost/Member</th><th>Members</th><th>Hit 200?</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Oakville</td><td>CAD</td><td>$18,016</td><td class="val-yes">$3.89</td><td class="val-yes">$26</td><td class="val-no">$151</td><td class="val-amber">119</td><td class="val-no">No</td></tr>
+          <tr><td>Yorkville</td><td>CAD</td><td>$20,797</td><td class="val-amber">$8.44</td><td class="val-yes">$58</td><td class="val-no">$248</td><td class="val-no">84</td><td class="val-no">No</td></tr>
+          <tr><td>West Hollywood</td><td>USD</td><td>$27,230</td><td class="val-amber">$8.20</td><td class="val-no">$229</td><td class="val-no">$156</td><td class="val-amber">175</td><td class="val-no">No</td></tr>
+          <tr><td>Central Austin</td><td>USD</td><td>$36,221</td><td class="val-no">$15.99</td><td class="val-no">$106</td><td class="val-no">$787</td><td class="val-no">46</td><td class="val-no">No</td></tr>
+          <tr><td>Garwood</td><td>USD</td><td>$27,479</td><td class="val-yes">$7.20</td><td class="val-no">$157</td><td class="val-yes">$93</td><td class="val-yes">296</td><td class="val-yes">Yes</td></tr>
+          <tr><td>Williston Park</td><td>USD</td><td>$24,885</td><td class="val-yes">$6.32</td><td class="val-yes">$67</td><td class="val-amber">$90</td><td class="val-yes">277</td><td class="val-yes">Yes</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout-dark">
+      <p>Two of six studios reached 200 members within the presale window. The target is not unrealistic — but the path to get there looks different than what <em>the deck describes.</em></p>
+    </div>
+
+    <div class="eyebrow" style="margin-top: 40px;">Against the Targets From Our Call</div>
+
+    <div class="compare-table">
+      <table>
+        <thead>
+          <tr><th>Metric</th><th>Target</th><th>Reality Across 6 Studios</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cost Per Lead</td><td>Under $10</td><td class="val-yes">$3.89 – $15.99 (4 of 6 under $10)</td></tr>
+          <tr><td>Cost Per Intro</td><td>Under $100</td><td class="val-amber">$26 – $229 (3 of 6 under $100)</td></tr>
+          <tr><td>Cost Per Membership</td><td>$60</td><td class="val-no">$90 – $787 (0 of 6 at $60)</td></tr>
+          <tr><td>Members at 6 Weeks</td><td>200 minimum</td><td class="val-no">46 – 296 (2 of 6 hit 200)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 05 — CONVERSION -->
+  <div class="section">
+    <div class="eyebrow">05 — Intro Offer to Membership</div>
+    <div class="section-title">The <em>Conversion Layer</em></div>
+    <div class="section-sub">Every intro buyer tracked individually — did they convert, are they still active, how long did it take.</div>
+
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-label">Total Intros Sold</div><div class="stat-value gold">4,087</div></div>
+      <div class="stat-card"><div class="stat-label">Converted to Member</div><div class="stat-value">814</div></div>
+      <div class="stat-card"><div class="stat-label">Overall Conversion</div><div class="stat-value">19.9%</div></div>
+      <div class="stat-card"><div class="stat-label">Avg Days to Convert</div><div class="stat-value">40</div><div class="stat-note">Range: 19–55 days</div></div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Studio</th><th>Intros</th><th>Converted</th><th>Conv %</th><th>Active</th><th>Cancelled</th><th>Retention</th><th>Avg Days</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Oakville</td><td>695</td><td>104</td><td class="val-amber">15.0%</td><td>98</td><td class="val-yes">4</td><td class="val-yes">94.2%</td><td>50</td></tr>
+          <tr><td>Yorkville</td><td>812</td><td>206</td><td class="val-yes">25.4%</td><td>70</td><td class="val-no">118</td><td class="val-no">34.0%</td><td>41</td></tr>
+          <tr><td>West Hollywood</td><td>144</td><td>14</td><td class="val-no">9.7%</td><td>11</td><td>2</td><td class="val-amber">78.6%</td><td>19</td></tr>
+          <tr><td>Central Austin</td><td>481</td><td>87</td><td class="val-amber">18.1%</td><td>54</td><td class="val-amber">26</td><td class="val-amber">62.1%</td><td>55</td></tr>
+          <tr><td>Garwood</td><td>829</td><td>168</td><td class="val-yes">20.3%</td><td>103</td><td class="val-amber">31</td><td class="val-amber">61.3%</td><td>29</td></tr>
+          <tr><td>Williston Park</td><td>1,126</td><td>235</td><td class="val-yes">20.9%</td><td>174</td><td class="val-amber">45</td><td class="val-yes">74.0%</td><td>45</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>Yorkville converted 206 intro buyers to members, but only 34% are still active</strong> — 118 have cancelled. Oakville converted 104 and retained 94.2%. Same brand, same presale model, dramatically different retention. That's not a presale problem. That's what happens after the member walks in.</p>
+    <p>Average days to convert ranged from 19 to 55 days. The presale builds the pipeline. The conversion event happens in the first weeks post-opening — not during presale itself.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SECTION 06 — WHAT THIS MEANS -->
+  <div class="section section-narrow">
+    <div class="eyebrow">06 — What This Means</div>
+    <div class="section-title">The Patterns Across <em>Six Studios</em></div>
+
+    <div style="margin-top: 32px;">
+      <p><strong>Lead generation works.</strong> CPL targets are achievable — four of six studios came in under $10. The ads are doing their job. The constraint isn't at the top of the funnel.</p>
+
+      <p><strong>The presale deck targets don't match the data.</strong> The deck promises 3,000 leads and 300 members. No studio hit 300 members within the presale window. The two that hit 200 did so by selling memberships directly during presale — a different model.</p>
+
+      <p><strong>A $60 cost per member isn't happening at any studio.</strong> The closest is Williston Park at $90. The honest range is $90 to $787 per member. The $60 figure only appears if you isolate post-opening spend and ignore what came before it.</p>
+
+      <p><strong>There are two different sales models operating under one framework.</strong> US studios sold memberships directly during presale. Canadian studios sold intro offers and converted post-opening. Both can work, but they require different strategies, budgets, and targets.</p>
+
+      <p><strong>The conversion and retention layer is the real variable.</strong> Oakville retains 94% of its converted members. Yorkville retains 34%. The presale can fill the pipeline, but what happens inside the studio determines whether those people stay.</p>
+
+      <p><strong>The presale doesn't close memberships — it builds the pipeline that closes memberships in the first six weeks.</strong> Canadian presale spend produced 11 memberships combined. Post-opening, those same pipelines produced 192 memberships in six weeks. The investment isn't wasted — it just converts later than the deck implies.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Mario Paguio · Kaizen Collective · March 2026</p>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TAB 2: STRATEGY
+     ═══════════════════════════════════════════════════════════════ -->
+<div id="strategy" class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Presale Strategy</div>
+    <h1>One Roadmap. <em>Two Tracks.</em><br>Two Outcomes.</h1>
+    <div class="hero-sub">Built from six studio audits · Mario Paguio</div>
+    <div class="hero-line"></div>
+  </div>
+
+  <!-- FRAMEWORK -->
+  <div class="section section-narrow">
+    <p class="lead-p">The studios hitting their targets weren't spending more on marketing — they were running two parallel tracks simultaneously: a marketing engine selling intro offers, and a studio sales engine upselling those intro buyers into VIP memberships before the doors opened.</p>
+    <p>The funnel is: <strong>Lead → Intro Offer → VIP Member Upsell.</strong> Marketing fills the top. The studio converts from the middle. This strategy lays out both tracks across a single 16-week presale with a 6-week post-opening window. One budget. Two teams. Two measurable outcomes running side by side from day one.</p>
+  </div>
+
+  <!-- TWO TARGETS -->
+  <div class="section">
+    <div class="stat-grid">
+      <div class="stat-card" style="border-left: 3px solid var(--gold);">
+        <div class="stat-label">Marketing Track · Kaizen</div>
+        <div class="stat-value gold">400+</div>
+        <div class="stat-note">Intro offers sold by opening day</div>
+      </div>
+      <div class="stat-card" style="border-left: 3px solid var(--ink);">
+        <div class="stat-label">Studio Sales Track · Studio Owner</div>
+        <div class="stat-value">200+</div>
+        <div class="stat-note">Memberships by 6 weeks post-opening</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Marketing Budget</div>
+        <div class="stat-value" style="font-size: 26px;">$12–24K</div>
+        <div class="stat-note">One budget. Market dependent.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Studio Sales Budget</div>
+        <div class="stat-value" style="font-size: 26px;">$0</div>
+        <div class="stat-note">No additional ad spend. Pipeline only.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- WEEK BY WEEK TIMELINE — VERTICAL -->
+  <div class="section">
+    <div class="eyebrow">The 22-Week View</div>
+    <div class="section-title">Week-by-Week <em>Targets</em></div>
+    <div class="section-sub">16 weeks presale + 6 weeks post-opening. Both tracks shown. All figures cumulative except weekly spend.</div>
+
+    <div style="display: flex; gap: 16px; font-size: 11px; color: var(--stone); margin-bottom: 16px; flex-wrap: wrap;">
+      <span style="display: flex; align-items: center; gap: 4px;"><span style="display: inline-block; width: 8px; height: 8px; border-radius: 2px; background: var(--red);"></span>Ad spend</span>
+      <span style="display: flex; align-items: center; gap: 4px;"><span style="display: inline-block; width: 8px; height: 8px; border-radius: 2px; background: var(--gold-dark);"></span>Intros (marketing)</span>
+      <span style="display: flex; align-items: center; gap: 4px;"><span style="display: inline-block; width: 8px; height: 8px; border-radius: 2px; background: var(--green);"></span>VIP members (studio upsell)</span>
+      <span style="display: flex; align-items: center; gap: 4px;"><span style="display: inline-block; width: 8px; height: 8px; border-radius: 2px; background: #3B8BD4;"></span>Intro conversions (post-opening)</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align: left;">Week</th>
+            <th style="color: var(--red);">Spend</th>
+            <th style="color: var(--red);">Total $</th>
+            <th>Leads</th>
+            <th style="color: var(--gold-dark);">Intros</th>
+            <th style="color: var(--green);">VIP</th>
+            <th style="color: #3B8BD4;">Conv.</th>
+            <th style="font-weight: 600;">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- PHASE 1 -->
+          <tr><td colspan="8" style="padding: 12px 14px 6px; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); background: var(--parchment); border-bottom: none;">Phase 1 — Build audience <span style="font-weight: 400; color: var(--stone);">· Leads only</span></td></tr>
+
+          <tr><td>W-16</td><td style="color: var(--red);">$300</td><td style="color: var(--red); font-weight: 500;">$300</td><td>120</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td></tr>
+          <tr><td>W-15</td><td style="color: var(--red);">$350</td><td style="color: var(--red); font-weight: 500;">$650</td><td>260</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td></tr>
+          <tr><td>W-14</td><td style="color: var(--red);">$400</td><td style="color: var(--red); font-weight: 500;">$1,050</td><td>420</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td></tr>
+          <tr><td>W-13</td><td style="color: var(--red);">$400</td><td style="color: var(--red); font-weight: 500;">$1,450</td><td>580</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td></tr>
+          <tr><td>W-12</td><td style="color: var(--red);">$450</td><td style="color: var(--red); font-weight: 500;">$1,900</td><td>760</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td></tr>
+          <tr><td>W-11</td><td style="color: var(--red);">$450</td><td style="color: var(--red); font-weight: 500;">$2,350</td><td>920</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td></tr>
+          <tr><td>W-10</td><td style="color: var(--red);">$500</td><td style="color: var(--red); font-weight: 500;">$2,850</td><td>1,100</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td><td style="color: var(--stone);">—</td></tr>
+
+          <!-- PHASE 2 -->
+          <tr><td colspan="8" style="padding: 12px 14px 6px; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); background: var(--parchment); border-bottom: none;">Phase 2 — Sell intros + upsell to VIP members</td></tr>
+
+          <tr><td>W-9</td><td style="color: var(--red);">$500</td><td style="color: var(--red); font-weight: 500;">$3,350</td><td>1,300</td><td class="val-gold">15</td><td class="val-yes">3</td><td style="color: var(--stone);">—</td><td style="font-weight: 500;">3</td></tr>
+          <tr><td>W-8</td><td style="color: var(--red);">$600</td><td style="color: var(--red); font-weight: 500;">$3,950</td><td>1,500</td><td class="val-gold">35</td><td class="val-yes">8</td><td style="color: var(--stone);">—</td><td style="font-weight: 500;">8</td></tr>
+          <tr><td>W-7</td><td style="color: var(--red);">$700</td><td style="color: var(--red); font-weight: 500;">$4,650</td><td>1,700</td><td class="val-gold">60</td><td class="val-yes">15</td><td style="color: var(--stone);">—</td><td style="font-weight: 500;">15</td></tr>
+          <tr><td>W-6</td><td style="color: var(--red);">$800</td><td style="color: var(--red); font-weight: 500;">$5,450</td><td>2,000</td><td class="val-gold">90</td><td class="val-yes">25</td><td style="color: var(--stone);">—</td><td style="font-weight: 500;">25</td></tr>
+          <tr><td>W-5</td><td style="color: var(--red);">$900</td><td style="color: var(--red); font-weight: 500;">$6,350</td><td>2,200</td><td class="val-gold">120</td><td class="val-yes">38</td><td style="color: var(--stone);">—</td><td style="font-weight: 500;">38</td></tr>
+          <tr><td>W-4</td><td style="color: var(--red);">$1,000</td><td style="color: var(--red); font-weight: 500;">$7,350</td><td>2,500</td><td class="val-gold">155</td><td class="val-yes">55</td><td style="color: var(--stone);">—</td><td style="font-weight: 500;">55</td></tr>
+
+          <!-- PHASE 3 -->
+          <tr><td colspan="8" style="padding: 12px 14px 6px; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); background: var(--parchment); border-bottom: none;">Phase 3 — Push to opening <span style="font-weight: 400; color: var(--stone);">· Peak spend</span></td></tr>
+
+          <tr><td>W-3</td><td style="color: var(--red);">$1,200</td><td style="color: var(--red); font-weight: 500;">$8,550</td><td>2,700</td><td class="val-gold">215</td><td class="val-yes">80</td><td style="color: var(--stone);">—</td><td style="font-weight: 500;">80</td></tr>
+          <tr><td>W-2</td><td style="color: var(--red);">$1,500</td><td style="color: var(--red); font-weight: 500;">$10,050</td><td>3,000</td><td class="val-gold">300</td><td class="val-yes">110</td><td style="color: var(--stone);">—</td><td style="font-weight: 500;">110</td></tr>
+          <tr style="background: var(--gold-pale);"><td style="font-weight: 600;">W-1</td><td style="color: var(--red);">$2,000</td><td style="color: var(--red); font-weight: 600;">$12,050</td><td style="font-weight: 500;">3,400</td><td style="color: var(--gold); font-weight: 600;">420</td><td style="color: var(--green); font-weight: 600;">140</td><td style="color: var(--stone);">—</td><td style="color: var(--gold-dark); font-weight: 600;">140</td></tr>
+
+          <!-- OPENING DAY -->
+          <tr><td colspan="8" style="padding: 10px 14px; text-align: center; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); background: var(--ink); border-bottom: none;">Opening day — $12,050 spent · 420 intros · 140 VIP members</td></tr>
+
+          <!-- PHASE 4 -->
+          <tr><td colspan="8" style="padding: 12px 14px 6px; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); background: var(--parchment); border-bottom: none;">Phase 4 — Convert the pipeline <span style="font-weight: 400; color: var(--stone);">· ~280 remaining intros walk in</span></td></tr>
+
+          <tr><td>W+1</td><td style="color: var(--red);">$700</td><td style="color: var(--red); font-weight: 500;">$12,750</td><td>3,600</td><td style="color: var(--gold-dark);">440</td><td style="color: var(--green);">140</td><td style="color: #3B8BD4; font-weight: 500;">8</td><td style="font-weight: 500;">148</td></tr>
+          <tr><td>W+2</td><td style="color: var(--red);">$600</td><td style="color: var(--red); font-weight: 500;">$13,350</td><td>3,700</td><td style="color: var(--gold-dark);">455</td><td style="color: var(--green);">140</td><td style="color: #3B8BD4; font-weight: 500;">20</td><td style="font-weight: 500;">160</td></tr>
+          <tr><td>W+3</td><td style="color: var(--red);">$500</td><td style="color: var(--red); font-weight: 500;">$13,850</td><td>3,800</td><td style="color: var(--gold-dark);">465</td><td style="color: var(--green);">140</td><td style="color: #3B8BD4; font-weight: 500;">35</td><td style="font-weight: 500;">175</td></tr>
+          <tr><td>W+4</td><td style="color: var(--red);">$400</td><td style="color: var(--red); font-weight: 500;">$14,250</td><td>3,900</td><td style="color: var(--gold-dark);">475</td><td style="color: var(--green);">140</td><td style="color: #3B8BD4; font-weight: 500;">48</td><td style="font-weight: 500;">188</td></tr>
+          <tr><td>W+5</td><td style="color: var(--red);">$400</td><td style="color: var(--red); font-weight: 500;">$14,650</td><td>4,000</td><td style="color: var(--gold-dark);">480</td><td style="color: var(--green);">140</td><td style="color: #3B8BD4; font-weight: 500;">58</td><td style="font-weight: 500;">198</td></tr>
+          <tr style="background: var(--green-light);"><td style="font-weight: 600;">W+6</td><td style="color: var(--red);">$300</td><td style="color: var(--red); font-weight: 600;">$14,950</td><td style="font-weight: 500;">4,000</td><td style="color: var(--gold-dark);">485</td><td style="color: var(--green);">140</td><td style="color: #3B8BD4; font-weight: 600;">70</td><td style="color: var(--green); font-weight: 600; font-size: 15px;">210</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CONVERSION RATE WARNING -->
+    <div style="background: var(--red-light); border-left: 3px solid var(--red); padding: 20px 24px; margin: 24px 0;">
+      <p style="margin: 0 0 8px; font-size: 13px;"><strong style="color: var(--red);">A note on conversion rates — and an honest assumption.</strong></p>
+      <p style="margin: 0 0 12px; font-size: 13px; line-height: 1.75;">This roadmap targets a 33% intro-to-VIP upsell and 25% post-opening conversion — a combined 50% of intro buyers becoming members. The six-studio audit showed a 19.9% average intro-to-member conversion, with the best studio at 25.4%.</p>
+      <p style="margin: 0 0 12px; font-size: 13px; line-height: 1.75;">The 33% VIP upsell rate is an assumption we can't validate yet — no audited studio was running this model. We're treating it as a hypothesis to test with the first studio, not a guaranteed outcome. The entire roadmap is Version 1, built from the best data we have. The first presale we run together will tell us whether 33% is realistic, conservative, or aggressive — and we'll adjust from there.</p>
+      <p style="margin: 0; font-size: 13px; line-height: 1.75;">The gap between 20% and 50% is the studio sales track. Without it, the data is clear about what happens:</p>
+    </div>
+
+    <!-- WITH vs WITHOUT COMPARISON -->
+    <div class="table-wrap" style="margin: 0 0 24px;">
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align: left;">Outcome</th>
+            <th style="color: var(--green);">With Studio Sales Track</th>
+            <th style="color: var(--red);">Without Studio Sales Track</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>VIP members (presale upsell)</td><td class="val-yes">140</td><td class="val-no">0</td></tr>
+          <tr><td>Post-opening intro conversions</td><td style="color: #3B8BD4; font-weight: 500;">70</td><td style="font-weight: 500;">85</td></tr>
+          <tr><td>Intro-to-member conversion rate</td><td class="val-yes">50% combined</td><td class="val-amber">~20% (audit average)</td></tr>
+          <tr><td>Total members at W+6</td><td class="val-yes" style="font-size: 15px;">210</td><td class="val-no" style="font-size: 15px;">85</td></tr>
+          <tr><td>Total marketing spend</td><td>$14,950</td><td>$14,950</td></tr>
+          <tr><td>Blended cost per member</td><td class="val-yes">$71</td><td class="val-no">$176</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout-warm">
+      <p><strong>Same marketing investment. Same pipeline. The only variable is whether the studio runs the sales track.</strong> This is why shared accountability matters — the marketing delivers the pipeline, the studio determines the outcome. Both sides need to see these numbers.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PHASE 1 -->
+  <div class="section">
+    <div class="eyebrow">Phase 1 · Weeks -16 to -10</div>
+    <div class="section-title">Build the <em>Audience</em></div>
+    <div class="section-sub">7 weeks. Low spend. Maximum reach. No offers yet — just build the pool.</div>
+
+    <div class="track-columns">
+      <div class="track marketing-track">
+        <div class="track-label marketing">Marketing Track — Kaizen</div>
+        <ul>
+          <li>Launch lead generation campaigns — "coming soon" positioning, interest capture</li>
+          <li><strong>Ad spend: $300–$500/week</strong></li>
+          <li><strong>Target: 800–1,200 leads</strong> by end of phase</li>
+          <li>CPL target: under $6</li>
+          <li>Build email list, SMS list, and retargeting audiences</li>
+          <li><strong>Set up CRM tracking in Hapana Grow.</strong> Every lead tagged by source (ad campaign, organic, referral). Every intro buyer tagged. Every VIP upsell tagged separately. Kaizen manages this — the studio doesn't need to touch it</li>
+          <li>No offers live yet — this phase is about building the pool</li>
+          <li>Creative: construction progress, instructor teasers, location lifestyle</li>
+        </ul>
+      </div>
+      <div class="track studio-track">
+        <div class="track-label studio">Studio Sales Track — Studio Owner</div>
+        <ul>
+          <li><strong>Design the VIP member offer by Week -12.</strong> This is the offer intro buyers will be upsold to. It needs to be compelling enough that someone who already bought a $49 intro would upgrade to a membership before they've set foot in the studio</li>
+          <li><strong>Recommended VIP structure:</strong> 10–20% below standard membership rate, locked for 12 months. Perks that disappear at opening: priority class booking for life, name on the VIP member wall, free merchandise pack, one guest pass per month for the first 3 months. The perks need to feel exclusive, not discounted</li>
+          <li><strong>Set the VIP cap and make it public.</strong> "50 VIP spots" or "75 VIP spots" — a real number that creates real scarcity. This becomes a countdown that drives urgency in Phase 2 and 3</li>
+          <li><strong>Week -16: Owner introduction post.</strong> First Instagram post: "I'm [name], and I'm bringing STRONG Pilates to [suburb]. Here's why." This is the owner's face, the owner's story, not a brand template. People commit to people before they commit to studios</li>
+          <li><strong>Weeks -15 to -12: Build-out content series.</strong> Weekly posts showing construction progress, floor plan reveals, instructor announcements. Every post ends with a link to the lead capture landing page. This is organic reach — no spend, just consistency</li>
+          <li><strong>Local partnership outreach.</strong> Identify 20–30 complementary businesses within 3km: cafes, athleisure stores, wellness practitioners, physios, beauty salons. Approach 20, confirm 5+ by end of Phase 1. These partnerships activate in Phase 2</li>
+          <li><strong>Identify 10–15 local micro-influencers</strong> — fitness-adjacent accounts with 1K–10K followers in your suburb. Invite them to the VIP preview class in Phase 3 in exchange for posting about the experience</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="checkpoint">
+      <div class="checkpoint-title">Phase 1 Checkpoint</div>
+      <table>
+        <thead><tr><th>Metric</th><th>Marketing</th><th>Studio</th></tr></thead>
+        <tbody>
+          <tr><td>Leads</td><td>800–1,200</td><td>—</td></tr>
+          <tr><td>CRM tagging</td><td>Live in Hapana Grow</td><td>—</td></tr>
+          <tr><td>VIP member offer</td><td>—</td><td>Finalised, priced, cap set</td></tr>
+          <tr><td>Local partnerships</td><td>—</td><td>20 approached, 5+ confirmed</td></tr>
+          <tr><td>Organic content</td><td>—</td><td>Owner intro + 4 build-out posts live</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PHASE 2 -->
+  <div class="section">
+    <div class="eyebrow">Phase 2 · Weeks -9 to -4</div>
+    <div class="section-title">Sell Intros + <em>Upsell to VIP Members</em></div>
+    <div class="section-sub">6 weeks. Ramp spend. Marketing sells intros. Studio upsells those intro buyers into VIP memberships.</div>
+
+    <div class="track-columns">
+      <div class="track marketing-track">
+        <div class="track-label marketing">Marketing Track — Kaizen</div>
+        <ul>
+          <li>Launch intro offer campaigns — 21-Day Experience or equivalent</li>
+          <li><strong>Ad spend: $500–$1,000/week</strong></li>
+          <li><strong>Target: 100–150 intros sold</strong> by end of phase</li>
+          <li>CPL target: under $8</li>
+          <li>Retarget Phase 1 leads who haven't purchased</li>
+          <li>Email/SMS nurture pushing <strong>both</strong> the intro offer and VIP member offer</li>
+          <li>Creative shifts from "coming soon" to "secure your spot"</li>
+          <li>Separate landing pages for both offers, tracked independently</li>
+          <li>Tag every intro sale and VIP upsell in Hapana Grow — Kaizen manages all CRM tagging</li>
+        </ul>
+      </div>
+      <div class="track studio-track">
+        <div class="track-label studio">Studio Sales Track — Studio Owner</div>
+        <ul>
+          <li><strong>VIP member upsells go live.</strong> Every intro buyer is a warm lead for the VIP membership</li>
+          <li><strong>Target: 50–80 VIP memberships</strong> upsold from intro buyers during this phase</li>
+          <li><strong>Direct outreach:</strong> personal message to every intro buyer — "You've already secured your intro. Want to lock in the VIP member rate instead? Same price applies as a credit toward your membership."</li>
+          <li><strong>Presale events:</strong> 2–3 community events — pop-up workout, meet the owner evening, VIP preview. Every event ends with a VIP member sign-up opportunity</li>
+          <li><strong>Referral incentive:</strong> every VIP member who refers a friend gets an additional perk. Presale audiences are tightly networked</li>
+          <li><strong>Local partnerships live:</strong> flyers at partner venues, shared social posts, co-branded offers</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="checkpoint">
+      <div class="checkpoint-title">Phase 2 Checkpoint</div>
+      <table>
+        <thead><tr><th>Metric</th><th>Marketing</th><th>Studio</th></tr></thead>
+        <tbody>
+          <tr><td>Leads (cumulative)</td><td>1,800–2,400</td><td>—</td></tr>
+          <tr><td>Intros sold</td><td>100–150</td><td>—</td></tr>
+          <tr><td>VIP memberships</td><td>—</td><td>50–80</td></tr>
+          <tr><td>Presale events hosted</td><td>—</td><td>2–3</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PHASE 3 -->
+  <div class="section">
+    <div class="eyebrow">Phase 3 · Weeks -3 to Opening</div>
+    <div class="section-title">Push to <em>Opening</em></div>
+    <div class="section-sub">3 weeks. Peak spend. Maximum urgency. Both tracks at full intensity.</div>
+
+    <div class="track-columns">
+      <div class="track marketing-track">
+        <div class="track-label marketing">Marketing Track — Kaizen</div>
+        <ul>
+          <li><strong>Peak ad spend: $1,000–$2,000/week</strong></li>
+          <li><strong>Target: 250–300 additional intros</strong> (total 400+ by opening)</li>
+          <li>CPL acceptable up to $10 as audience saturates</li>
+          <li>Messaging: scarcity and countdown. "Opening [date]. Limited intro spots."</li>
+          <li>Retarget all unconverted leads aggressively</li>
+          <li>Email/SMS: daily in final week</li>
+          <li>Final creative: instructor videos, studio reveal, VIP member testimonials</li>
+        </ul>
+      </div>
+      <div class="track studio-track">
+        <div class="track-label studio">Studio Sales Track — Studio Owner</div>
+        <ul>
+          <li><strong>VIP member offer closes at opening</strong> or when cap is reached. Real scarcity. "50 VIP spots. 38 taken. 12 left." Update publicly</li>
+          <li><strong>Target: 40–70 additional VIP memberships</strong> (total 100–150)</li>
+          <li><strong>VIP preview class</strong> in the final week — VIP members get first access. They'll post about it. Their friends will see it. This is the single highest-converting event in the presale</li>
+          <li>Final outreach to every unconverted lead: "We open Saturday. [X] VIP spots left. After that, it's full price."</li>
+          <li>All systems ready: class schedule live, booking tested, staff trained on intro experience and membership conversion conversation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="checkpoint">
+      <div class="checkpoint-title">Phase 3 Checkpoint — Opening Day</div>
+      <table>
+        <thead><tr><th>Metric</th><th>Marketing</th><th>Studio</th></tr></thead>
+        <tbody>
+          <tr><td>Leads (cumulative)</td><td>3,000+</td><td>—</td></tr>
+          <tr><td>Intros sold (cumulative)</td><td>400+</td><td>—</td></tr>
+          <tr><td>VIP memberships</td><td>—</td><td>100–150</td></tr>
+          <tr><td>VIP preview class</td><td>—</td><td>Hosted</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PHASE 4 -->
+  <div class="section">
+    <div class="eyebrow">Phase 4 · Weeks +1 to +6</div>
+    <div class="section-title">Convert the <em>Pipeline</em></div>
+    <div class="section-sub">6 weeks. The presale pipeline walks through the door. Memberships close.</div>
+
+    <div class="track-columns">
+      <div class="track marketing-track">
+        <div class="track-label marketing">Marketing Track — Kaizen</div>
+        <ul>
+          <li>Continued ad support at <strong>$300–$700/week</strong></li>
+          <li>Retargeting intro buyers who haven't converted</li>
+          <li>Email/SMS sequence: "How was your first class?" → "Your intro expires in X days" → "Lock in your membership"</li>
+          <li>Testimonial and social proof campaigns using real member content</li>
+          <li>Tag every conversion by source in Hapana Grow: VIP member, intro conversion, walk-in</li>
+          <li>Role: support the studio's conversion process, not replace it</li>
+        </ul>
+      </div>
+      <div class="track studio-track">
+        <div class="track-label studio">Studio Sales Track — Studio Owner</div>
+        <ul>
+          <li><strong>Target: 50–80 memberships from intro conversions</strong> (total 200+ with VIP members)</li>
+          <li><strong>First class experience.</strong> The intro buyer's first visit determines everything. Instructor knows their name. Front desk welcomes them personally. The class experience is exceptional. They leave feeling like they belong, not like they're being sold to</li>
+          <li><strong>Day 3–5 check-in:</strong> personal message. "How was your first class? Any questions about getting the most from your trial?" Relationship, not a pitch</li>
+          <li><strong>Day 10–14 conversion conversation:</strong> "You've been coming in consistently — have you thought about which membership works for you? Happy to walk through the options"</li>
+          <li><strong>Day 18–21 urgency:</strong> "Your intro wraps up in [X] days. I'd love to get you set up so there's no gap. Want me to lock in your rate?"</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RETENTION SECTION -->
+    <div style="background: var(--parchment); padding: 28px; margin: 24px 0; border-left: 3px solid var(--ink);">
+      <p style="margin: 0 0 4px; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink);">Retention — This Deserves Its Own Section</p>
+      <p style="margin: 12px 0; font-size: 14px; line-height: 1.8;">The audit data tells a stark story. Oakville converted 104 intro buyers to members and retained 94.2%. Yorkville converted 206 — nearly double — and retained 34%. Two-thirds of Yorkville's converted members have already cancelled. Same brand, same presale model, dramatically different outcomes.</p>
+      <p style="margin: 12px 0; font-size: 14px; line-height: 1.8;">Getting to 210 members means nothing if 140 of them cancel within three months. Retention is not an afterthought — it's the thing that determines whether the presale investment actually pays off for the studio owner.</p>
+      <p style="margin: 12px 0 0; font-size: 14px; line-height: 1.8;"><strong>The retention playbook starts in the first week:</strong></p>
+      <ul style="margin: 8px 0 0; padding-left: 20px; font-size: 14px; line-height: 1.8; color: var(--neutral-700);">
+        <li style="margin-bottom: 6px;"><strong>Week 1:</strong> Welcome message from the owner to every new member. Personal, not automated. "Welcome to the VIP family. Here's my number if you ever need anything."</li>
+        <li style="margin-bottom: 6px;"><strong>Week 2:</strong> Check-in. "How are you finding the classes? Have you tried [instructor name]'s class yet?" The goal is to get them to a second and third visit. Members who attend 3+ classes in the first 2 weeks retain at 2x the rate of those who attend once</li>
+        <li style="margin-bottom: 6px;"><strong>Week 4:</strong> Progress conversation. "You've been coming consistently — how are you feeling? Noticing any changes?" Anchor the experience to results, not just attendance</li>
+        <li style="margin-bottom: 6px;"><strong>Week 8:</strong> Community integration. Invite them to a member event, connect them with other members at their usual class time. Members with social connections in the studio are significantly less likely to cancel</li>
+        <li style="margin-bottom: 6px;"><strong>Ongoing:</strong> Track attendance weekly. Any member who drops from 2+ classes per week to zero for 2 consecutive weeks gets a personal reach-out before they decide to cancel</li>
+      </ul>
+    </div>
+
+    <div class="checkpoint">
+      <div class="checkpoint-title">Phase 4 Checkpoint — 6 Weeks Post-Opening</div>
+      <table>
+        <thead><tr><th>Metric</th><th>Marketing</th><th>Studio</th></tr></thead>
+        <tbody>
+          <tr><td>Post-opening ad spend</td><td>$2K–$4K</td><td>—</td></tr>
+          <tr><td>Memberships from intros</td><td>—</td><td>50–80</td></tr>
+          <tr><td>Total memberships</td><td>—</td><td>200+</td></tr>
+          <tr><td>Conversion rate</td><td>—</td><td>15–20% minimum</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ACCOUNTABILITY -->
+  <div class="section">
+    <div class="eyebrow">Accountability</div>
+    <div class="section-title">Who Owns <em>What</em></div>
+    <div class="section-sub">Both tracks have clear ownership. Neither side can blame the other if the targets are visible.</div>
+
+    <div class="accountability-grid">
+      <div class="acc-card marketing-card">
+        <h4>Marketing — Kaizen</h4>
+        <div class="acc-row"><span class="acc-metric">Leads generated</span><span class="acc-target">3,000+</span></div>
+        <div class="acc-row"><span class="acc-metric">Cost per lead</span><span class="acc-target">Under $10</span></div>
+        <div class="acc-row"><span class="acc-metric">Intros sold by opening</span><span class="acc-target">400+</span></div>
+        <div class="acc-row"><span class="acc-metric">Cost per intro</span><span class="acc-target">Under $35</span></div>
+        <div class="acc-row"><span class="acc-metric">Post-opening support</span><span class="acc-target">6 weeks</span></div>
+        <div class="acc-row"><span class="acc-metric">CRM setup and tagging</span><span class="acc-target">Full management in Hapana Grow</span></div>
+        <div class="acc-row"><span class="acc-metric">Total ad spend</span><span class="acc-target">$12K–$24K</span></div>
+        <div class="acc-row"><span class="acc-metric">Kaizen management fee</span><span class="acc-target">$300/week <span style="font-size: 11px; color: var(--stone); font-weight: 300;">(discounted from $500)</span></span></div>
+      </div>
+      <div class="acc-card studio-card">
+        <h4>Studio — Studio Owner</h4>
+        <div class="acc-row"><span class="acc-metric">VIP member offer</span><span class="acc-target">Finalised by W-10</span></div>
+        <div class="acc-row"><span class="acc-metric">Presale events</span><span class="acc-target">4–6 total</span></div>
+        <div class="acc-row"><span class="acc-metric">VIP memberships</span><span class="acc-target">100–150</span></div>
+        <div class="acc-row"><span class="acc-metric">Intro-to-member conversion</span><span class="acc-target">15–20%</span></div>
+        <div class="acc-row"><span class="acc-metric">Active memberships at W+6</span><span class="acc-target">200+</span></div>
+        <div class="acc-row"><span class="acc-metric">Retention at 12 weeks</span><span class="acc-target">60%+</span></div>
+      </div>
+    </div>
+
+    <div class="callout-dark">
+      <p>If marketing delivers 400 intros and the studio converts 12% instead of 20%, the data will show exactly where the gap is — and the solution <em>won't be "spend more on ads."</em></p>
+    </div>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="success-section">
+    <div class="success-inner">
+      <div class="eyebrow">At 6 Weeks Post-Opening</div>
+      <div class="section-title">What <em>Success</em> Looks Like</div>
+
+      <div class="success-grid">
+        <div class="success-card"><div class="stat-label">Total Leads</div><div class="stat-value">3,000+</div></div>
+        <div class="success-card"><div class="stat-label">Intro Offers Sold</div><div class="stat-value gold">400+</div></div>
+        <div class="success-card"><div class="stat-label">VIP Members</div><div class="stat-value">100–150</div></div>
+        <div class="success-card"><div class="stat-label">Converted Members</div><div class="stat-value">50–80</div></div>
+        <div class="success-card"><div class="stat-label">Total Active Members</div><div class="stat-value gold">200+</div></div>
+        <div class="success-card"><div class="stat-label">Marketing Investment</div><div class="stat-value">$12–24K</div></div>
+        <div class="success-card"><div class="stat-label">Blended Cost/Member</div><div class="stat-value">$60–120</div></div>
+        <div class="success-card"><div class="stat-label">Retention Rate</div><div class="stat-value">60%+</div></div>
+      </div>
+
+      <p style="color: var(--stone); text-align: center; margin-top: 32px; font-size: 14px; max-width: 680px; margin-left: auto; margin-right: auto;">These targets are derived from the six-studio audit and represent what the successful studios achieved. The VIP upsell rate (33%) is an untested assumption — the first presale we run together will validate or adjust it. What the data does confirm: the marketing pipeline works. The variable is what the studio does with it.</p>
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="section section-narrow" style="padding-bottom: 40px;">
+    <hr class="divider">
+    <div class="section-title" style="text-align: center;">Version 1 — <em>Built to Be Tested</em></div>
+    <p style="text-align: center; max-width: 660px; margin: 20px auto;">This is not a final playbook. It's a data-informed starting point — built from six studio audits, designed to be validated by the first presale we run together. The conversion assumptions, the spend curve, and the phase timing are all hypotheses until a real studio proves or disproves them.</p>
+    <p style="text-align: center; max-width: 660px; margin: 0 auto;">What isn't a hypothesis is the core insight: the presale doesn't fail because of bad marketing. It fails when there's no system to convert the pipeline marketing builds. This roadmap runs both tracks in parallel, with clear accountability on both sides. The first studio we run this with will tell us exactly what to adjust for the second.</p>
+  </div>
+
+  <div class="footer">
+    <p>Mario Paguio · Kaizen Collective · March 2026</p>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════
+     TAB SWITCHING
+     ═══════════════════════════════════════════ -->
+<script>
+function switchTab(tabId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  document.querySelector(`[onclick="switchTab('${tabId}')"]`).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
