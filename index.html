@@ -522,19 +522,24 @@ tbody tr:hover { background: var(--neutral-50); }
 <body>
 
 <!-- Password Gate -->
-<div id="password-gate" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:var(--ink);display:flex;align-items:center;justify-content:center;">
+<style>
+  body.locked { overflow: hidden !important; }
+  body.locked .top-bar,
+  body.locked .tab-content,
+  body.locked .hero,
+  body.locked > *:not(#password-gate):not(style):not(script) { display: none !important; }
+  #password-gate { position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:#1A1A18;display:flex;align-items:center;justify-content:center; }
+  #gate-input:focus { border-color: #C9A84C; }
+</style>
+<div id="password-gate">
   <div style="text-align:center;max-width:380px;padding:2rem;">
-    <div style="font-family:var(--font-heading);font-size:1.6rem;color:var(--cream);margin-bottom:.5rem;">STRONG Pilates</div>
-    <div style="font-family:var(--font-body);font-size:.85rem;color:var(--stone);margin-bottom:2rem;letter-spacing:.08em;text-transform:uppercase;">Presale Audit & Strategy</div>
-    <div style="font-family:var(--font-body);font-size:.9rem;color:var(--neutral-300);margin-bottom:1.2rem;">Enter password to continue</div>
-    <input id="gate-input" type="password" placeholder="Password" autocomplete="off" style="width:100%;padding:.75rem 1rem;font-family:var(--font-body);font-size:1rem;background:var(--charcoal);color:var(--cream);border:1px solid var(--neutral-600);border-radius:6px;outline:none;text-align:center;" />
-    <div id="gate-error" style="font-family:var(--font-body);font-size:.8rem;color:var(--red);margin-top:.75rem;opacity:0;transition:opacity .2s;">Incorrect password</div>
+    <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.6rem;color:#F5F0E8;margin-bottom:.5rem;">STRONG Pilates</div>
+    <div style="font-family:'DM Sans',sans-serif;font-size:.85rem;color:#8C8778;margin-bottom:2rem;letter-spacing:.08em;text-transform:uppercase;">Presale Audit &amp; Strategy</div>
+    <div style="font-family:'DM Sans',sans-serif;font-size:.9rem;color:#C7C1B7;margin-bottom:1.2rem;">Enter password to continue</div>
+    <input id="gate-input" type="password" placeholder="Password" autocomplete="off" style="width:100%;padding:.75rem 1rem;font-family:'DM Sans',sans-serif;font-size:1rem;background:#2E2E2A;color:#F5F0E8;border:1px solid #5C5850;border-radius:6px;outline:none;text-align:center;" />
+    <div id="gate-error" style="font-family:'DM Sans',sans-serif;font-size:.8rem;color:#C45B4A;margin-top:.75rem;opacity:0;transition:opacity .2s;">Incorrect password</div>
   </div>
 </div>
-<style>
-  body.locked { overflow: hidden; }
-  #gate-input:focus { border-color: var(--gold); }
-</style>
 <script>
 (function() {
   var KEY = 'presale_auth';
