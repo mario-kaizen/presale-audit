@@ -521,6 +521,47 @@ tbody tr:hover { background: var(--neutral-50); }
 </head>
 <body>
 
+<!-- Password Gate -->
+<div id="password-gate" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:var(--ink);display:flex;align-items:center;justify-content:center;">
+  <div style="text-align:center;max-width:380px;padding:2rem;">
+    <div style="font-family:var(--font-heading);font-size:1.6rem;color:var(--cream);margin-bottom:.5rem;">STRONG Pilates</div>
+    <div style="font-family:var(--font-body);font-size:.85rem;color:var(--stone);margin-bottom:2rem;letter-spacing:.08em;text-transform:uppercase;">Presale Audit & Strategy</div>
+    <div style="font-family:var(--font-body);font-size:.9rem;color:var(--neutral-300);margin-bottom:1.2rem;">Enter password to continue</div>
+    <input id="gate-input" type="password" placeholder="Password" autocomplete="off" style="width:100%;padding:.75rem 1rem;font-family:var(--font-body);font-size:1rem;background:var(--charcoal);color:var(--cream);border:1px solid var(--neutral-600);border-radius:6px;outline:none;text-align:center;" />
+    <div id="gate-error" style="font-family:var(--font-body);font-size:.8rem;color:var(--red);margin-top:.75rem;opacity:0;transition:opacity .2s;">Incorrect password</div>
+  </div>
+</div>
+<style>
+  body.locked { overflow: hidden; }
+  #gate-input:focus { border-color: var(--gold); }
+</style>
+<script>
+(function() {
+  var KEY = 'presale_auth';
+  if (sessionStorage.getItem(KEY) === '1') {
+    document.getElementById('password-gate').style.display = 'none';
+    return;
+  }
+  document.body.classList.add('locked');
+  var input = document.getElementById('gate-input');
+  var error = document.getElementById('gate-error');
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      if (input.value.toLowerCase() === 'strong') {
+        sessionStorage.setItem(KEY, '1');
+        document.getElementById('password-gate').style.display = 'none';
+        document.body.classList.remove('locked');
+      } else {
+        error.style.opacity = '1';
+        input.value = '';
+        setTimeout(function() { error.style.opacity = '0'; }, 2000);
+      }
+    }
+  });
+  input.focus();
+})();
+</script>
+
 <!-- ═══════════════════════════════════════════
      TOP BAR
      ═══════════════════════════════════════════ -->
