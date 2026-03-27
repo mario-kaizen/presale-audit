@@ -1412,10 +1412,18 @@ body {
       </button>
     </div>
 
-    <!-- 2. Ad Mockups (expandable) -->
+    <!-- 2. Ad Templates -->
+    <div class="nav-section">
+      <button class="nav-item" onclick="showPage('ad-templates', this)">
+        <span class="nav-num">02</span>
+        <span class="nav-label">Ad Templates</span>
+      </button>
+    </div>
+
+    <!-- 3. Ad Mockups (expandable) -->
     <div class="nav-section">
       <button class="nav-item strong-item" onclick="toggleAdMockups(this)" id="adMockupsToggle">
-        <span class="nav-num">02</span>
+        <span class="nav-num">03</span>
         <span class="nav-label">Ad Mockups</span>
         <span class="nav-expand" id="adMockupsArrow">&#9654;</span>
       </button>
@@ -1432,26 +1440,26 @@ body {
       </div>
     </div>
 
-    <!-- 3. Landing Page -->
+    <!-- 4. Landing Page -->
     <div class="nav-section">
       <button class="nav-item strong-item" onclick="showPage('landing-page', this)">
-        <span class="nav-num">03</span>
+        <span class="nav-num">04</span>
         <span class="nav-label">Landing Page</span>
       </button>
     </div>
 
-    <!-- 4. Thank You Page -->
+    <!-- 5. Thank You Page -->
     <div class="nav-section">
       <button class="nav-item strong-item" onclick="showPage('thank-you', this)">
-        <span class="nav-num">04</span>
+        <span class="nav-num">05</span>
         <span class="nav-label">Thank You Page</span>
       </button>
     </div>
 
-    <!-- 5. Automations -->
+    <!-- 6. Automations -->
     <div class="nav-section">
       <button class="nav-item" onclick="showPage('automations', this)">
-        <span class="nav-num">05</span>
+        <span class="nav-num">06</span>
         <span class="nav-label">Automations</span>
       </button>
     </div>
@@ -1647,7 +1655,207 @@ body {
 </div>
 
 <!-- ════════════════════════════════════════
-     PAGE 2A: AD MOCKUPS - ANNOUNCEMENT
+     PAGE 2: AD TEMPLATES (original concepts)
+     ════════════════════════════════════════ -->
+<div id="ad-templates" class="page">
+  <div class="hero">
+    <div class="hero-eyebrow">Phase 1 · Ad Concepts</div>
+    <h1>Awareness <em>Creative</em></h1>
+    <div class="hero-sub">Three ad directions for the "Coming Soon / Register Interest" campaign. Text-based templates — see Ad Mockups for the photo versions.</div>
+    <div class="hero-line"></div>
+  </div>
+
+  <div class="section">
+    <div class="eyebrow">Ad Direction 1</div>
+    <div class="section-title">The <em>Announcement</em></div>
+    <div class="section-sub">Clean, bold, curiosity-driven. Works for both Story/Reel and Feed placements.</div>
+    <div class="ad-showcase">
+      <div class="ad-mockup">
+        <div class="ad-story">
+          <div class="buildout-texture"></div>
+          <div class="ad-top">
+            <img src="strong-logo-white.png" alt="STRONG Pilates" style="height:22px;display:block;margin:0 auto;">
+            <div class="ad-location">Edmonton</div>
+          </div>
+          <div class="ad-center">
+            <div class="ad-headline"><em>Something</em><br>is coming.</div>
+            <div class="ad-subline">Row. Ride. Reform.<br>Edmonton's first STRONG studio opens July 2026.</div>
+          </div>
+          <div class="ad-bottom">
+            <div class="ad-cta">Register Interest</div>
+            <div class="ad-url">strongpilates.ca/edmonton</div>
+          </div>
+        </div>
+        <div class="ad-type-label">Story / Reel</div>
+      </div>
+      <div class="ad-mockup">
+        <div class="ad-feed">
+          <div class="buildout-texture"></div>
+          <img src="strong-logo-white.png" alt="STRONG Pilates" style="height:22px;margin-bottom:24px;">
+          <div style="font-family:var(--strong-heading);font-size:32px;color:white;font-weight:900;line-height:1.1;margin-bottom:12px;text-transform:uppercase;"><span style="color:var(--strong-blue);">Edmonton.</span><br>Coming July.</div>
+          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.5);font-weight:400;margin-bottom:28px;">Pilates inspired. Cardio infused. 45 minutes on<br>the Rowformer. This is STRONG.</div>
+          <div class="ad-cta" style="display:inline-block;background:white;color:#000;font-family:var(--strong-heading);font-size:11px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;padding:12px 32px;">Register Interest →</div>
+        </div>
+        <div class="ad-type-label">Feed (1:1)</div>
+      </div>
+      <div class="ad-mockup">
+        <div class="ad-feed" style="aspect-ratio:4/5; max-height:520px;">
+          <div style="position:absolute;top:24px;left:24px;right:24px;display:flex;justify-content:space-between;align-items:center;">
+            <div class="ad-label">Coming July 2026</div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:0.15em;">1/3</div>
+          </div>
+          <div style="font-family:var(--strong-heading);font-size:26px;color:white;font-weight:900;line-height:1.2;margin-bottom:16px;text-transform:uppercase;"><span style="color:var(--strong-blue);">45 minutes.</span><br>Full body.<br>Low impact.</div>
+          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.5);font-weight:400;line-height:1.6;max-width:240px;">Row. Ride. Reform. The class format that built a 500-member studio in Kelowna is landing in Edmonton.</div>
+          <div style="position:absolute;bottom:24px;left:24px;right:24px;text-align:center;">
+            <div style="font-size:10px;color:rgba(255,255,255,0.3);">Swipe →</div>
+          </div>
+        </div>
+        <div class="ad-type-label">Carousel Card (4:5)</div>
+      </div>
+    </div>
+    <div class="annotation">
+      <h4>Creative Notes</h4>
+      <p><strong>Imagery:</strong> Dark backgrounds as placeholder. Real ads use STRONG Rowformer footage from the HQ asset library or Kelowna shoots. See the Ad Mockups section for photo versions.<br><br>
+      <strong>Copy direction:</strong> Phase 1 is curiosity, not conversion. No pricing, no offers. "Row. Ride. Reform." does the heavy lifting.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <div class="eyebrow">Ad Direction 2</div>
+    <div class="section-title">The <em>Buildout</em></div>
+    <div class="section-sub">Behind-the-scenes content from the actual Edmonton buildout. Authentic, documentary-style.</div>
+    <div class="ad-showcase">
+      <div class="ad-mockup">
+        <div class="ad-story" style="background:#1a1a1a;">
+          <div class="ad-top">
+            <img src="strong-logo-white.png" alt="STRONG Pilates" style="height:22px;display:block;margin:0 auto;">
+            <div class="ad-location">Behind the scenes · Edmonton</div>
+          </div>
+          <div class="ad-center">
+            <div style="width:100%;aspect-ratio:16/9;background:#2a2a2a;display:flex;align-items:center;justify-content:center;margin-bottom:16px;border:1px solid rgba(255,255,255,0.08);">
+              <div style="text-align:center;">
+                <div style="font-size:28px;margin-bottom:4px;">📍</div>
+                <div style="font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;text-transform:uppercase;">Buildout photo here</div>
+              </div>
+            </div>
+            <div class="ad-subline" style="max-width:260px;text-align:left;">"Week 3 of construction. 15 Rowformers arriving next month. This city has no idea what's coming."</div>
+          </div>
+          <div class="ad-bottom">
+            <div class="ad-cta">Register Interest</div>
+          </div>
+        </div>
+        <div class="ad-type-label">Story — Buildout Update</div>
+      </div>
+      <div class="ad-mockup">
+        <div class="ad-story" style="background:#1a1a1a;">
+          <div class="ad-top">
+            <img src="strong-logo-white.png" alt="STRONG Pilates" style="height:22px;display:block;margin:0 auto;">
+            <div class="ad-location">Meet the Owners · Edmonton</div>
+          </div>
+          <div class="ad-center">
+            <div style="width:120px;height:120px;border-radius:50%;background:#2a2a2a;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;border:2px solid rgba(255,255,255,0.1);">
+              <div style="font-size:10px;color:rgba(255,255,255,0.3);text-align:center;letter-spacing:0.05em;">Owner<br>Photo</div>
+            </div>
+            <div class="ad-headline" style="font-size:20px;"><span style="color:var(--strong-blue);">Why I'm bringing</span><br>STRONG to Edmonton</div>
+            <div class="ad-subline">"I opened Kelowna and watched people get hooked on this format — the intensity, the community, the results. Edmonton deserves the same thing."</div>
+          </div>
+          <div class="ad-bottom">
+            <div class="ad-cta">Register Interest</div>
+          </div>
+        </div>
+        <div class="ad-type-label">Story — Owner Introduction</div>
+      </div>
+      <div class="ad-mockup">
+        <div class="ad-feed" style="background:#111;">
+          <div class="ad-label">Progress Update</div>
+          <div style="font-family:var(--strong-heading);font-size:24px;color:white;font-weight:900;line-height:1.2;margin-bottom:16px;text-transform:uppercase;"><span style="color:var(--strong-blue);">15 Rowformers.</span><br>Bikeformers.<br>One studio.</div>
+          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.5);font-weight:400;line-height:1.6;max-width:260px;margin-bottom:24px;">Equipment is locked in. Edmonton's first STRONG studio takes shape — register now for early access when doors open July.</div>
+          <div class="ad-cta" style="display:inline-block;background:white;color:#000;font-family:var(--strong-heading);font-size:11px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;padding:12px 32px;">I'm In →</div>
+        </div>
+        <div class="ad-type-label">Feed — Equipment Tease</div>
+      </div>
+    </div>
+    <div class="annotation">
+      <h4>Creative Notes</h4>
+      <p><strong>This direction requires real content from Marta.</strong> We need: (1) weekly buildout photos/videos from the Edmonton site, (2) a short owner introduction video (60-90 seconds, iPhone quality is fine), (3) any renders or plans of the final studio layout.<br><br>
+      <strong>Why this works:</strong> Documentary-style content consistently outperforms polished brand ads in Phase 1. People follow the journey.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <div class="eyebrow">Ad Direction 3</div>
+    <div class="section-title">The <em>Social Proof</em></div>
+    <div class="section-sub">Leverage Kelowna's success to build Edmonton credibility. "Already loved in BC — now coming to Alberta."</div>
+    <div class="ad-showcase">
+      <div class="ad-mockup">
+        <div class="ad-story" style="background:#000;">
+          <div class="ad-top">
+            <img src="strong-logo-white.png" alt="STRONG Pilates" style="height:22px;display:block;margin:0 auto;">
+          </div>
+          <div class="ad-center">
+            <div style="font-size:56px;font-family:var(--strong-heading);color:var(--strong-blue);font-weight:900;line-height:1;margin-bottom:20px;">500+</div>
+            <div style="font-family:var(--strong-heading);font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:24px;font-weight:600;">STRONG Humans in Kelowna</div>
+            <div style="width:80%;height:1px;background:rgba(255,255,255,0.1);margin:0 auto 24px;"></div>
+            <div class="ad-headline" style="font-size:22px;">Now it's<br><span style="color:var(--strong-blue);">Edmonton's</span> turn.</div>
+          </div>
+          <div class="ad-bottom">
+            <div class="ad-cta">Register Now</div>
+            <div class="ad-url">strongpilates.ca/edmonton</div>
+          </div>
+        </div>
+        <div class="ad-type-label">Story — Social Proof</div>
+      </div>
+      <div class="ad-mockup">
+        <div class="ad-feed" style="background:#000;">
+          <div style="display:flex;gap:4px;margin-bottom:24px;">
+            <div style="font-size:16px;">★★★★★</div>
+          </div>
+          <div style="font-family:var(--strong-body);font-size:18px;color:white;font-weight:400;line-height:1.4;font-style:italic;margin-bottom:16px;max-width:260px;">"I've tried every studio in Kelowna. Nothing comes close to STRONG."</div>
+          <div style="font-family:var(--strong-body);font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:32px;">— Placeholder (real Kelowna review needed)</div>
+          <div style="font-family:var(--strong-heading);font-size:13px;color:rgba(255,255,255,0.7);font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Edmonton. July 2026.</div>
+          <div style="margin-top:20px;">
+            <div class="ad-cta" style="display:inline-block;background:white;color:#000;font-family:var(--strong-heading);font-size:11px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;padding:12px 32px;">Register Interest →</div>
+          </div>
+        </div>
+        <div class="ad-type-label">Feed — Testimonial</div>
+      </div>
+      <div class="ad-mockup">
+        <div class="ad-feed" style="background:#000;aspect-ratio:4/5;max-height:520px;">
+          <div class="ad-label">Now in Alberta</div>
+          <div style="font-family:var(--strong-heading);font-size:26px;color:white;font-weight:900;line-height:1.2;margin-bottom:20px;text-transform:uppercase;">From Kelowna<br>to <span style="color:var(--strong-blue);">Edmonton.</span></div>
+          <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:10px;margin-bottom:24px;width:100%;max-width:320px;">
+            <div style="text-align:center;padding:14px 8px;border:1px solid rgba(255,255,255,0.1);">
+              <div style="font-family:var(--strong-heading);font-size:22px;color:var(--strong-blue);font-weight:900;">500+</div>
+              <div style="font-family:var(--strong-heading);font-size:8px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px;font-weight:600;">Members</div>
+            </div>
+            <div style="text-align:center;padding:14px 8px;border:1px solid rgba(255,255,255,0.1);">
+              <div style="font-family:var(--strong-heading);font-size:22px;color:var(--strong-blue);font-weight:900;">5.0★</div>
+              <div style="font-family:var(--strong-heading);font-size:8px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px;font-weight:600;">362 Google Reviews</div>
+            </div>
+            <div style="text-align:center;padding:14px 8px;border:1px solid rgba(255,255,255,0.1);">
+              <div style="font-family:var(--strong-heading);font-size:22px;color:var(--strong-blue);font-weight:900;">100+</div>
+              <div style="font-family:var(--strong-heading);font-size:8px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px;font-weight:600;">Studios Global</div>
+            </div>
+          </div>
+          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.5);font-weight:400;line-height:1.6;max-width:260px;">The class format that built 100+ studios worldwide. Row. Ride. Reform. Opening July 2026.</div>
+        </div>
+        <div class="ad-type-label">Feed — Stats (4:5)</div>
+      </div>
+    </div>
+    <div class="annotation">
+      <h4>Creative Notes</h4>
+      <p><strong>Numbers verified:</strong> 500+ members and 5.0★ Google rating (362 reviews) confirmed as of March 2026. Testimonial must be a real Google review with permission.<br><br>
+      <strong>Recommended mix:</strong> Run all three directions simultaneously. Direction 1 (Announcement) as the lead. Direction 2 (Buildout) as ongoing organic + boosted. Direction 3 (Social Proof) as retargeting.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 3A: AD MOCKUPS - ANNOUNCEMENT
      ════════════════════════════════════════ -->
 <div id="ad-announcement" class="page strong-page">
   <div class="strong-hero">
