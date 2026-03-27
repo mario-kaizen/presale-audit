@@ -72,7 +72,20 @@ body {
   letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500;
 }
 
-.sidebar-nav { padding: 16px 0; flex: 1; }
+.sidebar-nav { padding: 8px 0; flex: 1; overflow-y: auto; }
+.phase-header {
+  font-family: var(--font-body); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-dark);
+  padding: 20px 24px 8px; margin-top: 4px;
+}
+.phase-header:first-child { margin-top: 0; }
+.phase-header.coming-soon { color: var(--neutral-600); }
+.phase-header .phase-badge {
+  display: inline-block; font-size: 8px; letter-spacing: 0.15em;
+  color: var(--neutral-600); background: rgba(255,255,255,0.04);
+  padding: 2px 8px; margin-left: 8px; border: 1px solid rgba(255,255,255,0.06);
+  vertical-align: middle;
+}
 .tab-btn {
   display: flex; align-items: center; width: 100%;
   background: none; border: none; color: var(--neutral-500);
@@ -551,6 +564,7 @@ body {
     <div class="brand-context">Edmonton Presale Strategy</div>
   </div>
   <nav class="sidebar-nav">
+    <div class="phase-header">Phase 1 — Build the Audience</div>
     <button class="tab-btn active" onclick="switchTab('strategy', this)">
       <span class="tab-num">01</span>Strategy
     </button>
@@ -578,6 +592,10 @@ body {
     <button class="tab-btn" onclick="switchTab('automations', this)">
       <span class="tab-num">07</span>Automations
     </button>
+
+    <div class="phase-header coming-soon">Phase 2 — Sell Intros + VIP <span class="phase-badge">Coming Soon</span></div>
+    <div class="phase-header coming-soon">Phase 3 — Push to Opening <span class="phase-badge">Coming Soon</span></div>
+    <div class="phase-header coming-soon">Phase 4 — Convert the Pipeline <span class="phase-badge">Coming Soon</span></div>
   </nav>
   <div class="sidebar-footer">Prepared 27 March 2026<br>Mario Paguio</div>
 </aside>
