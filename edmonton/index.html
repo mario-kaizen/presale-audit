@@ -31,20 +31,17 @@
   --neutral-700: #3D3A35;
   --font-heading: 'Playfair Display', Georgia, serif;
   --font-body: 'DM Sans', -apple-system, sans-serif;
-  /* STRONG brand colors */
   --strong-black: #000000;
   --strong-white: #FFFFFF;
   --strong-blue: #97caeb;
   --strong-grey: #6B6B6B;
   --strong-accent: #E8E8E8;
-  /* STRONG brand fonts */
-  --strong-heading: 'Montserrat', -apple-system, sans-serif; /* Kessel 105 substitute */
+  --strong-heading: 'Montserrat', -apple-system, sans-serif;
   --strong-body: 'Montserrat', -apple-system, sans-serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-
 body {
   font-family: var(--font-body);
   background: var(--cream);
@@ -54,46 +51,258 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* TOP BAR */
-.top-bar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: var(--ink); border-bottom: 1px solid var(--charcoal);
+/* ═══════════════════════════════════════════
+   SIDEBAR LAYOUT SHELL
+   ═══════════════════════════════════════════ */
+.app {
+  display: flex;
+  min-height: 100vh;
 }
-.top-bar-inner {
-  max-width: 1200px; margin: 0 auto; padding: 0 40px;
-  display: flex; align-items: center; justify-content: space-between; height: 56px;
-}
-.brand { display: flex; align-items: center; gap: 14px; }
-.brand-logo {
-  font-family: var(--font-heading); font-size: 13px;
-  letter-spacing: 0.1em; color: var(--cream); font-weight: 500;
-}
-.brand-divider { width: 1px; height: 18px; background: var(--neutral-700); }
-.brand-context {
-  font-family: var(--font-body); font-size: 10px; color: var(--stone);
-  letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500;
-}
-.tab-nav { display: flex; gap: 0; }
-.tab-btn {
-  background: none; border: none; color: var(--neutral-500);
-  font-family: var(--font-body); font-size: 11px; font-weight: 500;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  padding: 18px 20px; cursor: pointer; transition: all 0.3s ease; position: relative;
-}
-.tab-btn:hover { color: var(--neutral-300); }
-.tab-btn.active { color: var(--cream); }
-.tab-btn.active::after {
-  content: ''; position: absolute; bottom: 0; left: 20px; right: 20px;
-  height: 2px; background: var(--gold);
-}
-.tab-btn .tab-num {
-  font-size: 9px; color: var(--neutral-600); margin-right: 6px; font-weight: 600;
-}
-.tab-btn.active .tab-num { color: var(--gold); }
 
-/* PAGE */
-.page { display: none; padding-top: 56px; }
+/* SIDEBAR */
+.sidebar {
+  width: 260px;
+  background: #0A0A0A;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+.sidebar-header {
+  padding: 24px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  flex-shrink: 0;
+}
+.sidebar-brand {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--cream);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.sidebar-context {
+  font-family: var(--font-body);
+  font-size: 9px;
+  color: var(--stone);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 16px 0;
+}
+
+.nav-section {
+  margin-bottom: 4px;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+.nav-item:hover {
+  background: rgba(255,255,255,0.04);
+}
+.nav-item.active {
+  background: rgba(255,255,255,0.06);
+}
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--gold);
+}
+.nav-item.active.strong-item::before {
+  background: var(--strong-blue);
+}
+.nav-num {
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  min-width: 16px;
+}
+.nav-item.strong-item .nav-num {
+  color: var(--strong-blue);
+}
+.nav-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-item:hover .nav-label { color: rgba(255,255,255,0.7); }
+.nav-item.active .nav-label { color: var(--cream); }
+
+/* Sub-items */
+.nav-sub-items {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+}
+.nav-sub-items.open {
+  max-height: 200px;
+}
+.nav-sub-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px 8px 46px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+.nav-sub-item:hover {
+  background: rgba(255,255,255,0.03);
+}
+.nav-sub-item.active {
+  background: rgba(255,255,255,0.05);
+}
+.nav-sub-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: var(--strong-blue);
+}
+.nav-sub-label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-sub-item:hover .nav-sub-label { color: rgba(255,255,255,0.55); }
+.nav-sub-item.active .nav-sub-label { color: rgba(255,255,255,0.8); }
+
+/* Expand arrow */
+.nav-expand {
+  margin-left: auto;
+  font-size: 10px;
+  color: rgba(255,255,255,0.2);
+  transition: transform 0.3s;
+}
+.nav-expand.open {
+  transform: rotate(90deg);
+}
+
+/* SIDEBAR FOOTER */
+.sidebar-footer {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  flex-shrink: 0;
+}
+.sidebar-footer-text {
+  font-family: var(--font-body);
+  font-size: 9px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.6;
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 1100;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: #0A0A0A;
+  border: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+.hamburger span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: rgba(255,255,255,0.6);
+  transition: all 0.3s ease;
+}
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 5px);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(4px, -5px);
+}
+
+/* SIDEBAR OVERLAY (mobile) */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.sidebar-overlay.visible {
+  opacity: 1;
+}
+
+/* MAIN CONTENT */
+.main-content {
+  flex: 1;
+  margin-left: 260px;
+  min-height: 100vh;
+}
+
+/* PAGE containers */
+.page { display: none; }
 .page.active { display: block; }
+
+/* ═══════════════════════════════════════════
+   KAIZEN DESIGN SYSTEM (Strategy + Automations)
+   ═══════════════════════════════════════════ */
 
 /* HERO */
 .hero {
@@ -214,8 +423,8 @@ body {
   background: var(--gold-light);
 }
 
-/* AD MOCKUPS */
-.ad-showcase {
+/* AD MOCKUPS (Kaizen wrapper) */
+.ad-showcase-kaizen {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
   margin: 40px 0;
 }
@@ -226,65 +435,62 @@ body {
 }
 .ad-mockup:hover { transform: translateY(-4px); }
 
-/* Story/Reel format */
-.ad-story {
+/* Story/Reel format (Kaizen wrapper) */
+.ad-story-kaizen {
   background: var(--strong-black); aspect-ratio: 9/16;
   display: flex; flex-direction: column; justify-content: space-between;
   padding: 40px 28px; position: relative; overflow: hidden;
   max-height: 520px;
 }
-.ad-story::before {
+.ad-story-kaizen::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
   background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.7) 100%);
   z-index: 1;
 }
-.ad-story * { position: relative; z-index: 2; }
-.ad-story .ad-top {
-  text-align: center;
-}
-.ad-story .ad-logo {
+.ad-story-kaizen * { position: relative; z-index: 2; }
+.ad-story-kaizen .ad-top { text-align: center; }
+.ad-story-kaizen .ad-logo {
   font-family: var(--strong-heading); font-size: 11px; font-weight: 900;
   letter-spacing: 0.35em; text-transform: uppercase; color: white;
   margin-bottom: 4px;
 }
-.ad-story .ad-location {
+.ad-story-kaizen .ad-location {
   font-family: var(--strong-body); font-size: 9px; font-weight: 400;
   letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.5);
 }
-.ad-story .ad-center {
+.ad-story-kaizen .ad-center {
   text-align: center; flex: 1; display: flex; flex-direction: column;
   justify-content: center; align-items: center;
 }
-.ad-story .ad-headline {
+.ad-story-kaizen .ad-headline {
   font-family: var(--strong-heading); font-size: 30px; font-weight: 900;
   color: white; line-height: 1.15; margin-bottom: 12px; text-transform: uppercase;
 }
-.ad-story .ad-headline em { font-style: normal; color: var(--strong-blue); }
-.ad-story .ad-subline {
+.ad-story-kaizen .ad-headline em { font-style: normal; color: var(--strong-blue); }
+.ad-story-kaizen .ad-subline {
   font-family: var(--strong-body);
   font-size: 12px; color: rgba(255,255,255,0.7); font-weight: 400;
   letter-spacing: 0.03em; line-height: 1.6; max-width: 220px;
 }
-.ad-story .ad-bottom { text-align: center; }
-.ad-story .ad-cta {
+.ad-story-kaizen .ad-bottom { text-align: center; }
+.ad-story-kaizen .ad-cta {
   display: inline-block; background: white; color: var(--strong-black);
   font-family: var(--strong-heading);
   font-size: 11px; font-weight: 800; letter-spacing: 0.15em;
   text-transform: uppercase; padding: 12px 32px; margin-bottom: 8px;
 }
-.ad-story .ad-url {
+.ad-story-kaizen .ad-url {
   font-family: var(--strong-body);
   font-size: 10px; color: rgba(255,255,255,0.4); font-weight: 400;
 }
 
-/* Feed format */
-.ad-feed {
+/* Feed format (Kaizen wrapper) */
+.ad-feed-kaizen {
   background: var(--strong-black); aspect-ratio: 1/1;
   display: flex; flex-direction: column; justify-content: center;
   align-items: center; padding: 40px 32px; text-align: center;
   position: relative; max-height: 520px;
 }
-
 .ad-label {
   display: inline-block; background: rgba(255,255,255,0.08);
   color: rgba(255,255,255,0.5); font-family: var(--strong-heading);
@@ -307,7 +513,7 @@ body {
   z-index: 0;
 }
 
-/* LANDING PAGE MOCKUP */
+/* LANDING PAGE MOCKUP (Kaizen wrapper) */
 .lp-container {
   background: white; border-radius: 12px; overflow: hidden;
   box-shadow: 0 8px 40px rgba(0,0,0,0.1); margin: 40px 0;
@@ -317,111 +523,13 @@ body {
   background: #F0F0F0; padding: 10px 16px; display: flex;
   align-items: center; gap: 8px;
 }
-.lp-dot {
-  width: 10px; height: 10px; border-radius: 50%;
-}
+.lp-dot { width: 10px; height: 10px; border-radius: 50%; }
 .lp-dot.r { background: #FF5F57; }
 .lp-dot.y { background: #FFBD2E; }
 .lp-dot.g { background: #28CA41; }
 .lp-url-bar {
   flex: 1; background: white; border-radius: 4px; padding: 5px 12px;
   font-size: 11px; color: #666; margin-left: 8px;
-}
-
-/* LP Hero */
-.lp-hero {
-  background: var(--strong-black); padding: 60px 48px; text-align: center;
-  position: relative; min-height: 420px;
-  display: flex; flex-direction: column; justify-content: center;
-}
-.lp-hero::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
-  z-index: 1;
-}
-.lp-hero * { position: relative; z-index: 2; }
-.lp-hero-badge {
-  display: inline-block; border: 1px solid rgba(255,255,255,0.2);
-  color: var(--strong-blue); font-family: var(--strong-heading);
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 0.2em; text-transform: uppercase; padding: 6px 18px;
-  margin-bottom: 24px;
-}
-.lp-hero h2 {
-  font-family: var(--strong-heading); font-size: 40px; color: white;
-  font-weight: 900; line-height: 1.1; margin-bottom: 14px; text-transform: uppercase;
-}
-.lp-hero h2 em { font-style: normal; color: var(--strong-blue); }
-.lp-hero p {
-  font-family: var(--strong-body);
-  font-size: 15px; color: rgba(255,255,255,0.65); font-weight: 400;
-  max-width: 500px; margin: 0 auto 32px; line-height: 1.6;
-}
-
-/* LP Form */
-.lp-form-area {
-  background: white; max-width: 440px; margin: 0 auto;
-  padding: 28px 32px; border-radius: 8px;
-}
-.lp-form-area h3 {
-  font-family: var(--strong-heading); font-size: 14px; font-weight: 800;
-  color: var(--strong-black); text-align: center; margin-bottom: 18px;
-  text-transform: uppercase; letter-spacing: 0.08em;
-}
-.lp-input {
-  width: 100%; padding: 12px 14px; border: 1px solid #DDD;
-  font-size: 13px; font-family: var(--strong-body); margin-bottom: 10px;
-  border-radius: 0; color: #999;
-}
-.lp-submit {
-  width: 100%; padding: 14px; background: var(--strong-black);
-  color: white; border: none; font-family: var(--strong-heading);
-  font-size: 12px; font-weight: 800;
-  letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer;
-  border-radius: 0; margin-top: 4px;
-}
-.lp-trust {
-  text-align: center; font-size: 10px; color: #999; margin-top: 10px;
-  font-weight: 300;
-}
-
-/* LP Benefits */
-.lp-benefits {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 0; border-top: 1px solid #F0F0F0;
-}
-.lp-benefit {
-  padding: 32px 24px; text-align: center;
-  border-right: 1px solid #F0F0F0;
-}
-.lp-benefit:last-child { border-right: none; }
-.lp-benefit-icon {
-  font-size: 24px; margin-bottom: 10px;
-}
-.lp-benefit h4 {
-  font-family: var(--strong-heading); font-size: 12px; font-weight: 800;
-  color: var(--strong-black); margin-bottom: 6px; text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.lp-benefit p {
-  font-family: var(--strong-body);
-  font-size: 12px; color: #888; font-weight: 400; line-height: 1.5;
-}
-
-/* LP Footer */
-.lp-footer {
-  background: var(--strong-black); padding: 24px;
-  text-align: center;
-}
-.lp-footer-logo {
-  font-family: var(--strong-heading); font-size: 10px; font-weight: 900;
-  letter-spacing: 0.35em; text-transform: uppercase; color: white;
-  margin-bottom: 4px;
-}
-.lp-footer-sub {
-  font-family: var(--strong-body);
-  font-size: 9px; color: rgba(255,255,255,0.3); letter-spacing: 0.15em;
-  text-transform: uppercase;
 }
 
 /* CALLOUTS */
@@ -447,11 +555,11 @@ body {
 .week-cell.current {
   background: var(--gold-pale); border-color: var(--gold);
 }
-.week-num {
+.week-num-cell {
   font-size: 9px; font-weight: 600; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--stone); margin-bottom: 4px;
 }
-.week-cell.current .week-num { color: var(--gold-dark); }
+.week-cell.current .week-num-cell { color: var(--gold-dark); }
 .week-date {
   font-size: 11px; font-weight: 500; color: var(--ink); margin-bottom: 6px;
 }
@@ -472,611 +580,9 @@ body {
   font-size: 13px; color: var(--neutral-600); line-height: 1.6;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .timeline-grid { grid-template-columns: 1fr 1fr; }
-  .ad-showcase { grid-template-columns: 1fr; max-width: 320px; margin-left: auto; margin-right: auto; }
-  .strategy-grid { grid-template-columns: 1fr; }
-  .week-grid { grid-template-columns: repeat(4, 1fr); }
-}
-</style>
-</head>
-<body>
-
-<header class="top-bar">
-  <div class="top-bar-inner">
-    <div class="brand">
-      <div class="brand-logo">KAIZEN COLLECTIVE</div>
-      <div class="brand-divider"></div>
-      <div class="brand-context">Edmonton Presale Strategy</div>
-    </div>
-    <nav class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('strategy')">
-        <span class="tab-num">01</span>Strategy
-      </button>
-      <button class="tab-btn" onclick="switchTab('ads')">
-        <span class="tab-num">02</span>Ads
-      </button>
-      <button class="tab-btn" onclick="switchTab('landing')">
-        <span class="tab-num">03</span>Landing Page
-      </button>
-      <button class="tab-btn" onclick="switchTab('automations')">
-        <span class="tab-num">04</span>Automations
-      </button>
-    </nav>
-  </div>
-</header>
-
-<!-- ════════════════════════════════════════
-     TAB 1: STRATEGY
-     ════════════════════════════════════════ -->
-<div id="strategy" class="page active">
-
-  <div class="hero">
-    <div class="hero-eyebrow">Presale Strategy · Phase 1</div>
-    <h1>STRONG Pilates <em>Edmonton</em></h1>
-    <div class="hero-sub">Awareness & Database Build · Prepared 27 March 2026 · Mario Paguio</div>
-    <div class="hero-line"></div>
-  </div>
-
-  <div class="urgency-banner">
-    <strong>TIMELINE:</strong> Mid-July opening = Phase 1 starts <strong>this week.</strong> 16 weeks of runway starts now.
-  </div>
-
-  <!-- 4-PHASE OVERVIEW -->
-  <div class="section">
-    <div class="eyebrow">The 16-Week Presale Framework</div>
-    <div class="section-title">Four Phases to <em>200+ Members</em></div>
-    <div class="section-sub">Validated across 6 STRONG presales — Oakville, Yorkville, West Hollywood, Central Austin, Garwood, Williston Park.</div>
-
-    <div class="timeline-grid">
-      <div class="phase-card active-phase">
-        <div class="phase-num">Phase 1 · Weeks -16 to -10</div>
-        <div class="phase-name">Build the Audience</div>
-        <div class="phase-dates">Mar 24 → May 5, 2026</div>
-        <div class="phase-goal">Register interest. Coming soon. Build the database before you sell anything.</div>
-        <div class="phase-stat">
-          <div class="phase-stat-label">Ad Spend</div>
-          <div class="phase-stat-value">$300–$500<span style="font-size:14px;color:var(--stone)">/wk</span></div>
-        </div>
-      </div>
-
-      <div class="phase-card">
-        <div class="phase-num">Phase 2 · Weeks -9 to -4</div>
-        <div class="phase-name">Sell Intros + VIP</div>
-        <div class="phase-dates">May 5 → Jun 9, 2026</div>
-        <div class="phase-goal">5-class intro offer goes live. VIP founding memberships pitched to warm leads.</div>
-        <div class="phase-stat">
-          <div class="phase-stat-label">Ad Spend</div>
-          <div class="phase-stat-value">$500–$1,000<span style="font-size:14px;color:var(--stone)">/wk</span></div>
-        </div>
-      </div>
-
-      <div class="phase-card">
-        <div class="phase-num">Phase 3 · Weeks -3 to Opening</div>
-        <div class="phase-name">Push to Opening</div>
-        <div class="phase-dates">Jun 9 → Jul 14, 2026</div>
-        <div class="phase-goal">Maximum urgency. VIP closes at opening. Scarcity and countdown.</div>
-        <div class="phase-stat">
-          <div class="phase-stat-label">Ad Spend</div>
-          <div class="phase-stat-value">$1,000–$2,000<span style="font-size:14px;color:var(--stone)">/wk</span></div>
-        </div>
-      </div>
-
-      <div class="phase-card">
-        <div class="phase-num">Phase 4 · Weeks +1 to +6</div>
-        <div class="phase-name">Convert the Pipeline</div>
-        <div class="phase-dates">Jul 14 → Aug 25, 2026</div>
-        <div class="phase-goal">Intro buyers become members. Retention playbook activates. Community forms.</div>
-        <div class="phase-stat">
-          <div class="phase-stat-label">Ad Spend</div>
-          <div class="phase-stat-value">$300–$700<span style="font-size:14px;color:var(--stone)">/wk</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- PHASE 1 DEEP DIVE -->
-  <div class="section">
-    <div class="eyebrow">Phase 1 Deep Dive</div>
-    <div class="section-title">Build the Audience — <em>7 Weeks</em></div>
-    <div class="section-sub">The goal is simple: 800–1,200 leads in the database before we sell anything. CPL target: under $6 CAD.</div>
-
-    <div class="strategy-grid">
-      <div class="strat-card">
-        <h4>What We're Running</h4>
-        <ul>
-          <li><strong>Meta Ads (Facebook + Instagram)</strong> — "Coming Soon" awareness campaigns targeting Edmonton locals within 15km of studio location</li>
-          <li><strong>Lead form ads</strong> — low-friction "Register Your Interest" with name, email, phone, suburb</li>
-          <li><strong>Retargeting</strong> — video viewers and page visitors see follow-up creative</li>
-          <li><strong>Organic content</strong> — buildout progress, owner introduction, behind-the-scenes, community teasers</li>
-        </ul>
-      </div>
-
-      <div class="strat-card">
-        <h4>Audience Targeting</h4>
-        <ul>
-          <li><strong>Primary:</strong> Women 25–45 within 15km — fitness, wellness, pilates interests</li>
-          <li><strong>Secondary:</strong> Lookalike audiences from Kelowna's existing member list</li>
-          <li><strong>Exclusion:</strong> Existing Kelowna members (prevent cross-contamination)</li>
-          <li><strong>Geo:</strong> Edmonton metro area — tight radius, not province-wide</li>
-        </ul>
-      </div>
-
-      <div class="strat-card">
-        <h4>Creative Strategy</h4>
-        <ul>
-          <li><strong>Hook:</strong> "Something new is coming to Edmonton" — curiosity-driven, not offer-driven</li>
-          <li><strong>Brand video:</strong> STRONG reformer footage + Edmonton-specific text overlays</li>
-          <li><strong>Buildout content:</strong> Real photos/videos of the space being built — creates anticipation</li>
-          <li><strong>Social proof:</strong> Kelowna member testimonials repurposed for Edmonton awareness</li>
-        </ul>
-      </div>
-
-      <div class="strat-card">
-        <h4>CRM & Automation (Grow)</h4>
-        <ul>
-          <li><strong>Lead capture:</strong> Meta lead form → Grow contact → tagged "Presale Lead"</li>
-          <li><strong>Welcome sequence:</strong> Immediate SMS + email confirmation on registration</li>
-          <li><strong>Nurture drip:</strong> Weekly buildout updates, owner story, "what is STRONG?" education</li>
-          <li><strong>Pre-sell warm-up:</strong> Last 2 weeks of Phase 1 tease the intro offer coming in Phase 2</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="callout">
-      <strong>Why no offer yet?</strong> The data from 6 presales shows that studios who build a warm database first convert at 2–3x the rate of studios that lead with offers. Phase 1 is about trust and anticipation — the selling happens in Phase 2.
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <!-- WEEK BY WEEK -->
-  <div class="section">
-    <div class="eyebrow">Phase 1 Week-by-Week</div>
-    <div class="section-title">The <em>7-Week</em> Awareness Sprint</div>
-    <div class="section-sub">Each week builds on the last. Content and ads work together.</div>
-
-    <div class="week-grid">
-      <div class="week-cell current">
-        <div class="week-num">Week 1</div>
-        <div class="week-date">Mar 24</div>
-        <div class="week-task">Ads live. Owner intro post. "Coming Soon" campaign launches.</div>
-      </div>
-      <div class="week-cell">
-        <div class="week-num">Week 2</div>
-        <div class="week-date">Mar 31</div>
-        <div class="week-task">Buildout content series begins. First retargeting audiences building.</div>
-      </div>
-      <div class="week-cell">
-        <div class="week-num">Week 3</div>
-        <div class="week-date">Apr 7</div>
-        <div class="week-task">Partnership outreach. Local business cross-promos. Community teasers.</div>
-      </div>
-      <div class="week-cell">
-        <div class="week-num">Week 4</div>
-        <div class="week-date">Apr 14</div>
-        <div class="week-task">Micro-influencer activation. Kelowna testimonials repurposed for Edmonton.</div>
-      </div>
-      <div class="week-cell">
-        <div class="week-num">Week 5</div>
-        <div class="week-date">Apr 21</div>
-        <div class="week-task">"What is STRONG?" education content. Brand video launches.</div>
-      </div>
-      <div class="week-cell">
-        <div class="week-num">Week 6</div>
-        <div class="week-date">Apr 28</div>
-        <div class="week-task">Teaser: "Something special is coming for early supporters." VIP offer hinted.</div>
-      </div>
-      <div class="week-cell">
-        <div class="week-num">Week 7</div>
-        <div class="week-date">May 5</div>
-        <div class="week-task">Phase 1 close. Checkpoint: 800+ leads. Transition to Phase 2 offer launch.</div>
-      </div>
-    </div>
-
-    <div class="callout-dark">
-      <p><strong>Phase 1 Checkpoint (Week -10):</strong> 800–1,200 leads in Grow · VIP member offer finalized and priced · 20+ partnerships approached, 5+ confirmed · Buildout content generating organic engagement · Retargeting audiences warm and ready for Phase 2 offer</p>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════
-     TAB 2: ADS
-     ════════════════════════════════════════ -->
-<div id="ads" class="page">
-
-  <div class="hero">
-    <div class="hero-eyebrow">Phase 1 · Ad Concepts</div>
-    <h1>Awareness <em>Creative</em></h1>
-    <div class="hero-sub">Three ad directions for the "Coming Soon / Register Interest" campaign</div>
-    <div class="hero-line"></div>
-  </div>
-
-  <div class="section">
-    <div class="eyebrow">Ad Direction 1</div>
-    <div class="section-title">The <em>Announcement</em></div>
-    <div class="section-sub">Clean, bold, curiosity-driven. Works for both Story/Reel and Feed placements.</div>
-
-    <div class="ad-showcase">
-      <div class="ad-mockup">
-        <div class="ad-story">
-          <div class="buildout-texture"></div>
-          <div class="ad-top">
-            <img src="strong-logo-white.png" alt="STRONG Pilates" style="height:22px;display:block;margin:0 auto;">
-            <div class="ad-location">Edmonton</div>
-          </div>
-          <div class="ad-center">
-            <div class="ad-headline"><em>Something</em><br>is coming.</div>
-            <div class="ad-subline">Row. Ride. Reform.<br>Edmonton's first STRONG studio opens July 2026.</div>
-          </div>
-          <div class="ad-bottom">
-            <div class="ad-cta">Register Interest</div>
-            <div class="ad-url">strongpilates.ca/edmonton</div>
-          </div>
-        </div>
-        <div class="ad-type-label">Story / Reel</div>
-      </div>
-
-      <div class="ad-mockup">
-        <div class="ad-feed">
-          <div class="buildout-texture"></div>
-          <img src="strong-logo-white.png" alt="STRONG Pilates" style="height:22px;margin-bottom:24px;">
-          <div style="font-family:var(--strong-heading);font-size:32px;color:white;font-weight:900;line-height:1.1;margin-bottom:12px;text-transform:uppercase;"><span style="color:var(--strong-blue);">Edmonton.</span><br>Coming July.</div>
-          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.5);font-weight:400;margin-bottom:28px;">Pilates inspired. Cardio infused. 45 minutes on<br>the Rowformer. This is STRONG.</div>
-          <div class="ad-cta" style="display:inline-block;background:white;color:#000;font-family:var(--strong-heading);font-size:11px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;padding:12px 32px;">Register Interest →</div>
-        </div>
-        <div class="ad-type-label">Feed (1:1)</div>
-      </div>
-
-      <div class="ad-mockup">
-        <div class="ad-feed" style="aspect-ratio:4/5; max-height:520px;">
-          <div style="position:absolute;top:24px;left:24px;right:24px;display:flex;justify-content:space-between;align-items:center;">
-            <div class="ad-label">Coming July 2026</div>
-            <div style="font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:0.15em;">1/3</div>
-          </div>
-          <div style="font-family:var(--strong-heading);font-size:26px;color:white;font-weight:900;line-height:1.2;margin-bottom:16px;text-transform:uppercase;"><span style="color:var(--strong-blue);">45 minutes.</span><br>Full body.<br>Low impact.</div>
-          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.5);font-weight:400;line-height:1.6;max-width:240px;">Row. Ride. Reform. The class format that built a 500-member studio in Kelowna is landing in Edmonton.</div>
-          <div style="position:absolute;bottom:24px;left:24px;right:24px;text-align:center;">
-            <div style="font-size:10px;color:rgba(255,255,255,0.3);">Swipe →</div>
-          </div>
-        </div>
-        <div class="ad-type-label">Carousel Card (4:5)</div>
-      </div>
-    </div>
-
-    <div class="annotation">
-      <h4>Creative Notes</h4>
-      <p><strong>Imagery:</strong> Dark backgrounds as placeholder. Real ads use STRONG Rowformer footage from the HQ asset library or Kelowna shoots. Buildout photos from the Edmonton site add authenticity.<br><br>
-      <strong>Copy direction:</strong> Phase 1 is curiosity, not conversion. No pricing, no offers. "Row. Ride. Reform." does the heavy lifting — it immediately communicates this isn't regular reformer pilates.</p>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <div class="section">
-    <div class="eyebrow">Ad Direction 2</div>
-    <div class="section-title">The <em>Buildout</em></div>
-    <div class="section-sub">Behind-the-scenes content from the actual Edmonton buildout. Authentic, documentary-style.</div>
-
-    <div class="ad-showcase">
-      <div class="ad-mockup">
-        <div class="ad-story" style="background:#1a1a1a;">
-          <div class="ad-top">
-            <img src="strong-logo-white.png" alt="STRONG Pilates" style="height:22px;display:block;margin:0 auto;">
-            <div class="ad-location">Behind the scenes · Edmonton</div>
-          </div>
-          <div class="ad-center">
-            <div style="width:100%;aspect-ratio:16/9;background:#2a2a2a;display:flex;align-items:center;justify-content:center;margin-bottom:16px;border:1px solid rgba(255,255,255,0.08);">
-              <div style="text-align:center;">
-                <div style="font-size:28px;margin-bottom:4px;">📍</div>
-                <div style="font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;text-transform:uppercase;">Buildout photo here</div>
-              </div>
-            </div>
-            <div class="ad-subline" style="max-width:260px;text-align:left;">"Week 3 of construction. 15 Rowformers arriving next month. This city has no idea what's coming."</div>
-          </div>
-          <div class="ad-bottom">
-            <div class="ad-cta">Register Interest</div>
-          </div>
-        </div>
-        <div class="ad-type-label">Story — Buildout Update</div>
-      </div>
-
-      <div class="ad-mockup">
-        <div class="ad-story" style="background:#1a1a1a;">
-          <div class="ad-top">
-            <img src="strong-logo-white.png" alt="STRONG Pilates" style="height:22px;display:block;margin:0 auto;">
-            <div class="ad-location">Meet the Owners · Edmonton</div>
-          </div>
-          <div class="ad-center">
-            <div style="width:120px;height:120px;border-radius:50%;background:#2a2a2a;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;border:2px solid rgba(255,255,255,0.1);">
-              <div style="font-size:10px;color:rgba(255,255,255,0.3);text-align:center;letter-spacing:0.05em;">Owner<br>Photo</div>
-            </div>
-            <div class="ad-headline" style="font-size:20px;"><span style="color:var(--strong-blue);">Why I'm bringing</span><br>STRONG to Edmonton</div>
-            <div class="ad-subline">"I opened Kelowna and watched people get hooked on this format — the intensity, the community, the results. Edmonton deserves the same thing."</div>
-          </div>
-          <div class="ad-bottom">
-            <div class="ad-cta">Register Interest</div>
-          </div>
-        </div>
-        <div class="ad-type-label">Story — Owner Introduction</div>
-      </div>
-
-      <div class="ad-mockup">
-        <div class="ad-feed" style="background:#111;">
-          <div class="ad-label">Progress Update</div>
-          <div style="font-family:var(--strong-heading);font-size:24px;color:white;font-weight:900;line-height:1.2;margin-bottom:16px;text-transform:uppercase;"><span style="color:var(--strong-blue);">15 Rowformers.</span><br>Bikeformers.<br>One studio.</div>
-          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.5);font-weight:400;line-height:1.6;max-width:260px;margin-bottom:24px;">Equipment is locked in. Edmonton's first STRONG studio takes shape — register now for early access when doors open July.</div>
-          <div class="ad-cta" style="display:inline-block;background:white;color:#000;font-family:var(--strong-heading);font-size:11px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;padding:12px 32px;">I'm In →</div>
-        </div>
-        <div class="ad-type-label">Feed — Equipment Tease</div>
-      </div>
-    </div>
-
-    <div class="annotation">
-      <h4>Creative Notes</h4>
-      <p><strong>This direction requires real content from Marta.</strong> We need: (1) weekly buildout photos/videos from the Edmonton site, (2) a short owner introduction video (60-90 seconds, iPhone quality is fine), (3) any renders or plans of the final studio layout.<br><br>
-      <strong>Why this works:</strong> Documentary-style content consistently outperforms polished brand ads in Phase 1. People follow the journey. By the time the studio opens, they feel like they were part of building it.</p>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <div class="section">
-    <div class="eyebrow">Ad Direction 3</div>
-    <div class="section-title">The <em>Social Proof</em></div>
-    <div class="section-sub">Leverage Kelowna's success to build Edmonton credibility. "Already loved in BC — now coming to Alberta."</div>
-
-    <div class="ad-showcase">
-      <div class="ad-mockup">
-        <div class="ad-story" style="background:#000;">
-          <div class="ad-top">
-            <img src="strong-logo-white.png" alt="STRONG Pilates" style="height:22px;display:block;margin:0 auto;">
-          </div>
-          <div class="ad-center">
-            <div style="font-size:56px;font-family:var(--strong-heading);color:var(--strong-blue);font-weight:900;line-height:1;margin-bottom:20px;">500+</div>
-            <div style="font-family:var(--strong-heading);font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:24px;font-weight:600;">STRONG Humans in Kelowna</div>
-            <div style="width:80%;height:1px;background:rgba(255,255,255,0.1);margin:0 auto 24px;"></div>
-            <div class="ad-headline" style="font-size:22px;">Now it's<br><span style="color:var(--strong-blue);">Edmonton's</span> turn.</div>
-          </div>
-          <div class="ad-bottom">
-            <div class="ad-cta">Register Now</div>
-            <div class="ad-url">strongpilates.ca/edmonton</div>
-          </div>
-        </div>
-        <div class="ad-type-label">Story — Social Proof</div>
-      </div>
-
-      <div class="ad-mockup">
-        <div class="ad-feed" style="background:#000;">
-          <div style="display:flex;gap:4px;margin-bottom:24px;">
-            <div style="font-size:16px;">★★★★★</div>
-          </div>
-          <div style="font-family:var(--strong-body);font-size:18px;color:white;font-weight:400;line-height:1.4;font-style:italic;margin-bottom:16px;max-width:260px;">"I've tried every studio in Kelowna. Nothing comes close to STRONG."</div>
-          <div style="font-family:var(--strong-body);font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:32px;">— Placeholder (real Kelowna review needed)</div>
-          <div style="font-family:var(--strong-heading);font-size:13px;color:rgba(255,255,255,0.7);font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Edmonton. July 2026.</div>
-          <div style="margin-top:20px;">
-            <div class="ad-cta" style="display:inline-block;background:white;color:#000;font-family:var(--strong-heading);font-size:11px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;padding:12px 32px;">Register Interest →</div>
-          </div>
-        </div>
-        <div class="ad-type-label">Feed — Testimonial</div>
-      </div>
-
-      <div class="ad-mockup">
-        <div class="ad-feed" style="background:#000;aspect-ratio:4/5;max-height:520px;">
-          <div class="ad-label">Now in Alberta</div>
-          <div style="font-family:var(--strong-heading);font-size:26px;color:white;font-weight:900;line-height:1.2;margin-bottom:20px;text-transform:uppercase;">From Kelowna<br>to <span style="color:var(--strong-blue);">Edmonton.</span></div>
-          <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:10px;margin-bottom:24px;width:100%;max-width:320px;">
-            <div style="text-align:center;padding:14px 8px;border:1px solid rgba(255,255,255,0.1);">
-              <div style="font-family:var(--strong-heading);font-size:22px;color:var(--strong-blue);font-weight:900;">500+</div>
-              <div style="font-family:var(--strong-heading);font-size:8px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px;font-weight:600;">Members</div>
-            </div>
-            <div style="text-align:center;padding:14px 8px;border:1px solid rgba(255,255,255,0.1);">
-              <div style="font-family:var(--strong-heading);font-size:22px;color:var(--strong-blue);font-weight:900;">5.0★</div>
-              <div style="font-family:var(--strong-heading);font-size:8px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px;font-weight:600;">362 Google Reviews</div>
-            </div>
-            <div style="text-align:center;padding:14px 8px;border:1px solid rgba(255,255,255,0.1);">
-              <div style="font-family:var(--strong-heading);font-size:22px;color:var(--strong-blue);font-weight:900;">100+</div>
-              <div style="font-family:var(--strong-heading);font-size:8px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px;font-weight:600;">Studios Global</div>
-            </div>
-          </div>
-          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.5);font-weight:400;line-height:1.6;max-width:260px;">The class format that built 100+ studios worldwide. Row. Ride. Reform. Opening July 2026.</div>
-        </div>
-        <div class="ad-type-label">Feed — Stats (4:5)</div>
-      </div>
-    </div>
-
-    <div class="annotation">
-      <h4>Creative Notes</h4>
-      <p><strong>Numbers need verifying with Marta.</strong> The 500+ members and 5.0★ Google rating (362 reviews) are verified as of March 2026. Testimonial must be a real Google review with permission. 100+ studios is accurate (STRONG hit this milestone in 2026).<br><br>
-      <strong>Recommended mix:</strong> Run all three directions simultaneously. Direction 1 (Announcement) as the lead. Direction 2 (Buildout) as ongoing organic + boosted. Direction 3 (Social Proof) as retargeting for people who've already seen the announcement.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════
-     TAB 3: LANDING PAGE
-     ════════════════════════════════════════ -->
-<div id="landing" class="page">
-
-  <div class="hero">
-    <div class="hero-eyebrow">Phase 1 · Landing Page</div>
-    <h1>Register <em>Interest</em></h1>
-    <div class="hero-sub">The page every ad points to. One job: capture the lead.</div>
-    <div class="hero-line"></div>
-  </div>
-
-  <div class="section">
-    <div class="eyebrow">Landing Page Mockup</div>
-    <div class="section-title">Not a wireframe. <em>A statement.</em></div>
-    <div class="section-sub">Full-screen, cinematic, zero distractions. This page needs to hit as hard as the workout.</div>
-
-    <div class="lp-container" style="max-width:1000px;">
-      <div class="lp-browser-bar">
-        <div class="lp-dot r"></div>
-        <div class="lp-dot y"></div>
-        <div class="lp-dot g"></div>
-        <div class="lp-url-bar">strongpilates.ca/edmonton</div>
-      </div>
-
-      <!-- SECTION 1: FULL SCREEN HERO -->
-      <div style="background:#000;padding:80px 48px 60px;text-align:center;position:relative;min-height:560px;display:flex;flex-direction:column;justify-content:center;">
-        <!-- Animated grid texture -->
-        <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,0.015) 60px,rgba(255,255,255,0.015) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,0.015) 60px,rgba(255,255,255,0.015) 61px);"></div>
-        <div style="position:relative;z-index:2;">
-          <img src="strong-logo-white.png" alt="STRONG Pilates" style="height:28px;margin-bottom:24px;"><div style="font-family:var(--strong-heading);font-size:10px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--strong-blue);margin-bottom:32px;">Coming July 2026 · Edmonton, Alberta</div>
-          <div style="font-family:var(--strong-heading);font-size:56px;font-weight:900;color:white;line-height:1.05;text-transform:uppercase;margin-bottom:20px;letter-spacing:-0.02em;">Row. Ride.<br><span style="color:var(--strong-blue);">Reform.</span></div>
-          <div style="font-family:var(--strong-body);font-size:15px;color:rgba(255,255,255,0.5);font-weight:400;max-width:460px;margin:0 auto 40px;line-height:1.7;">Pilates inspired. Cardio infused. 45 minutes on our exclusive Rowformer — half reformer, half rower. The format that built 100+ studios worldwide is coming to Edmonton.</div>
-
-          <!-- FORM -->
-          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);max-width:420px;margin:0 auto;padding:32px;">
-            <div style="font-family:var(--strong-heading);font-size:12px;font-weight:800;color:white;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:20px;">Register Your Interest</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
-              <div style="padding:12px 14px;border:1px solid rgba(255,255,255,0.12);font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.3);background:transparent;">First Name</div>
-              <div style="padding:12px 14px;border:1px solid rgba(255,255,255,0.12);font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.3);background:transparent;">Last Name</div>
-            </div>
-            <div style="padding:12px 14px;border:1px solid rgba(255,255,255,0.12);font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.3);background:transparent;margin-bottom:10px;">Email Address</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
-              <div style="padding:12px 14px;border:1px solid rgba(255,255,255,0.12);font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.3);background:transparent;">Phone Number</div>
-              <div style="padding:12px 14px;border:1px solid rgba(255,255,255,0.12);font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.3);background:transparent;">Suburb</div>
-            </div>
-            <div style="padding:14px;background:white;color:#000;font-family:var(--strong-heading);font-size:12px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;text-align:center;cursor:pointer;">Count Me In</div>
-            <div style="font-family:var(--strong-body);font-size:10px;color:rgba(255,255,255,0.25);margin-top:12px;text-align:center;">No commitment required · Be first to hear about exclusive opening offers</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION 2: WHAT IS STRONG -->
-      <div style="background:#0A0A0A;padding:56px 48px;border-top:1px solid rgba(255,255,255,0.06);">
-        <div style="text-align:center;margin-bottom:40px;">
-          <div style="font-family:var(--strong-heading);font-size:9px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--strong-blue);margin-bottom:12px;">What is STRONG</div>
-          <div style="font-family:var(--strong-heading);font-size:28px;font-weight:900;color:white;text-transform:uppercase;line-height:1.15;">Not your typical<br>pilates class.</div>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(255,255,255,0.08);">
-          <div style="padding:32px 24px;text-align:center;border-right:1px solid rgba(255,255,255,0.08);">
-            <div style="font-family:var(--strong-heading);font-size:32px;font-weight:900;color:white;margin-bottom:6px;">ROW</div>
-            <div style="font-family:var(--strong-heading);font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--strong-blue);margin-bottom:12px;">Rowformer</div>
-            <div style="font-family:var(--strong-body);font-size:11px;color:rgba(255,255,255,0.4);line-height:1.6;">Half reformer, half Concept 2 rower. Pilates strength meets rowing cardio in one machine.</div>
-          </div>
-          <div style="padding:32px 24px;text-align:center;border-right:1px solid rgba(255,255,255,0.08);">
-            <div style="font-family:var(--strong-heading);font-size:32px;font-weight:900;color:white;margin-bottom:6px;">RIDE</div>
-            <div style="font-family:var(--strong-heading);font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--strong-blue);margin-bottom:12px;">Bikeformer</div>
-            <div style="font-family:var(--strong-body);font-size:11px;color:rgba(255,255,255,0.4);line-height:1.6;">Half reformer, half stationary bike. Choose cycling as your cardio. Same intensity, different burn.</div>
-          </div>
-          <div style="padding:32px 24px;text-align:center;">
-            <div style="font-family:var(--strong-heading);font-size:32px;font-weight:900;color:white;margin-bottom:6px;">REFORM</div>
-            <div style="font-family:var(--strong-heading);font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--strong-blue);margin-bottom:12px;">Reformer</div>
-            <div style="font-family:var(--strong-body);font-size:11px;color:rgba(255,255,255,0.4);line-height:1.6;">Pure pilates flow. Dynamic movements for mobility, balance, and strength. No cardio — all control.</div>
-          </div>
-        </div>
-        <div style="text-align:center;margin-top:28px;">
-          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.35);line-height:1.6;max-width:500px;margin:0 auto;">You choose the cardio, we choose the beats. 45 minutes of low-impact, high-intensity training that builds lean muscle and core stability with a huge cardio burn.</div>
-        </div>
-      </div>
-
-      <!-- SECTION 3: STATS BAR -->
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);background:#000;border-top:1px solid rgba(255,255,255,0.06);">
-        <div style="padding:28px 20px;text-align:center;border-right:1px solid rgba(255,255,255,0.06);">
-          <div style="font-family:var(--strong-heading);font-size:28px;font-weight:900;color:var(--strong-blue);">100+</div>
-          <div style="font-family:var(--strong-heading);font-size:8px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:4px;">Studios Worldwide</div>
-        </div>
-        <div style="padding:28px 20px;text-align:center;border-right:1px solid rgba(255,255,255,0.06);">
-          <div style="font-family:var(--strong-heading);font-size:28px;font-weight:900;color:var(--strong-blue);">37K+</div>
-          <div style="font-family:var(--strong-heading);font-size:8px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:4px;">STRONG Humans</div>
-        </div>
-        <div style="padding:28px 20px;text-align:center;border-right:1px solid rgba(255,255,255,0.06);">
-          <div style="font-family:var(--strong-heading);font-size:28px;font-weight:900;color:var(--strong-blue);">14</div>
-          <div style="font-family:var(--strong-heading);font-size:8px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:4px;">Countries</div>
-        </div>
-        <div style="padding:28px 20px;text-align:center;">
-          <div style="font-family:var(--strong-heading);font-size:28px;font-weight:900;color:var(--strong-blue);">45</div>
-          <div style="font-family:var(--strong-heading);font-size:8px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:4px;">Minutes</div>
-        </div>
-      </div>
-
-      <!-- SECTION 4: VALUE PROPS -->
-      <div style="background:#0A0A0A;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid rgba(255,255,255,0.06);">
-        <div style="padding:28px 32px;border:1px solid rgba(255,255,255,0.06);border-right:none;">
-          <div style="font-family:var(--strong-heading);font-size:11px;font-weight:800;color:white;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">Low-Impact. High-Intensity.</div>
-          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;">Get the core stability from pilates and the exercise high from HIIT — without the joint damage. Built for progression, not punishment.</div>
-        </div>
-        <div style="padding:28px 32px;border:1px solid rgba(255,255,255,0.06);">
-          <div style="font-family:var(--strong-heading);font-size:11px;font-weight:800;color:white;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">Exclusive Equipment.</div>
-          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;">The Rowformer and Bikeformer are exclusive to STRONG. You won't find these machines anywhere else in Edmonton — or Alberta.</div>
-        </div>
-        <div style="padding:28px 32px;border:1px solid rgba(255,255,255,0.06);border-top:none;border-right:none;">
-          <div style="font-family:var(--strong-heading);font-size:11px;font-weight:800;color:white;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">Early Access Perks.</div>
-          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;">Founding member pricing. Priority class booking. Exclusive launch offers. Register now — these won't last.</div>
-        </div>
-        <div style="padding:28px 32px;border:1px solid rgba(255,255,255,0.06);border-top:none;">
-          <div style="font-family:var(--strong-heading);font-size:11px;font-weight:800;color:white;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">From Kelowna to Edmonton.</div>
-          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;">Founded by Marta & Riley, owners of STRONG Pilates Kelowna. 500+ members. 5.0★ on Google with 362 reviews. Now bringing it to Alberta.</div>
-        </div>
-      </div>
-
-      <!-- SECTION 5: BOTTOM CTA -->
-      <div style="background:#000;padding:48px;text-align:center;border-top:1px solid rgba(255,255,255,0.06);">
-        <div style="font-family:var(--strong-heading);font-size:22px;font-weight:900;color:white;text-transform:uppercase;margin-bottom:8px;">Down for more?</div>
-        <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:24px;">Register now. Be first through the doors July 2026.</div>
-        <div style="display:inline-block;padding:14px 48px;background:white;color:#000;font-family:var(--strong-heading);font-size:12px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;">Count Me In</div>
-      </div>
-
-      <!-- FOOTER -->
-      <div style="background:#000;padding:24px;text-align:center;border-top:1px solid rgba(255,255,255,0.04);">
-        <img src="strong-logo-white.png" alt="STRONG Pilates" style="height:18px;margin-bottom:4px;">
-        <div style="font-family:var(--strong-body);font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:0.15em;text-transform:uppercase;">Row. Ride. Reform. · Edmonton · July 2026</div>
-      </div>
-    </div>
-
-    <div class="annotation">
-      <h4>Landing Page Notes</h4>
-      <p><strong>Built in Grow (GHL page builder).</strong> Form submits directly to Edmonton Grow account, tags "Presale Lead", triggers welcome automation. Dark-on-dark design matches STRONG's brand identity — no white backgrounds.<br><br>
-      <strong>"What is STRONG" section is critical.</strong> Edmonton has zero STRONG awareness. People need to understand this isn't regular reformer pilates — the ROW/RIDE/REFORM breakdown does that in 3 seconds.<br><br>
-      <strong>Stats bar builds credibility.</strong> 100+ studios, 37K+ members, 14 countries — this isn't a startup. It's a global brand arriving in their city.<br><br>
-      <strong>"Down for more?"</strong> Uses the brand's secondary tagline as the bottom CTA. On-brand and direct.<br><br>
-      <strong>Icons:</strong> All icons in the final build should be custom SVGs — no emojis. Clean line icons matching STRONG's minimal aesthetic (black/white, consistent stroke weight).<br><br>
-      <strong>Suburb field:</strong> Critical for Phase 2 geo-targeting. Also helps Marta understand her catchment area.</p>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <div class="section">
-    <div class="eyebrow">Post-Registration Flow</div>
-    <div class="section-title">What Happens <em>After They Register</em></div>
-    <div class="section-sub">The nurture sequence that keeps them warm until Phase 2.</div>
-
-    <div class="strategy-grid">
-      <div class="strat-card">
-        <h4>Immediate (0–24 hours)</h4>
-        <ul>
-          <li><strong>SMS (instant):</strong> "Hey {{first_name}} — you're in. We're building something pretty special here in Edmonton and we're glad you want to be part of it. Doors open July 2026. We'll keep you posted along the way."</li>
-          <li><strong>Email (within 1 hour):</strong> Welcome email — what is STRONG (ROW/RIDE/REFORM explained), the Rowformer, what to expect, studio render or buildout photo</li>
-          <li><strong>Tag applied:</strong> "Presale Lead" in Grow — enters nurture workflow</li>
-        </ul>
-      </div>
-
-      <div class="strat-card">
-        <h4>Weekly Nurture (Phase 1)</h4>
-        <ul>
-          <li><strong>Week 1:</strong> "Meet the owner" — Marta & Riley's story, Kelowna success, why Edmonton</li>
-          <li><strong>Week 2:</strong> "What is STRONG?" — the Rowformer explained, class types (STRONG Body, STRONG Sweat, STRONG Loaded)</li>
-          <li><strong>Week 3:</strong> Buildout progress update — photo/video from the site</li>
-          <li><strong>Week 4:</strong> "What STRONG Humans say" — real Kelowna Google reviews</li>
-          <li><strong>Week 5–6:</strong> Community content — partnerships, local events, instructor intros</li>
-          <li><strong>Week 7:</strong> "Something is dropping soon..." — Phase 2 intro offer teaser</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════
-     TAB 4: AUTOMATIONS
-     ════════════════════════════════════════ -->
-<style>
+/* ═══════════════════════════════════════════
+   EMAIL / SMS PREVIEW STYLES (Automations)
+   ═══════════════════════════════════════════ */
 .email-preview {
   max-width:600px;margin:24px auto;background:white;
   box-shadow:0 4px 24px rgba(0,0,0,0.08);overflow:hidden;
@@ -1172,21 +678,1855 @@ body {
   background:white;border:1px solid #ddd;padding:12px 16px;
   font-family:var(--strong-body);font-size:12px;color:#666;margin-bottom:16px;
 }
-</style>
 
+/* ═══════════════════════════════════════════
+   STRONG BRAND PAGES (Ad Mockups, Landing, Thank You)
+   ═══════════════════════════════════════════ */
+.strong-page {
+  background: #0A0A0A;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+.strong-page img { display: block; }
+
+/* Strong page hero */
+.strong-hero {
+  padding: 80px 40px 60px; text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.strong-hero-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.3em;
+  text-transform: uppercase; color: #97caeb; margin-bottom: 16px;
+}
+.strong-hero h1 {
+  font-size: 42px; font-weight: 900; text-transform: uppercase;
+  line-height: 1.05; margin-bottom: 16px; color: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+.strong-hero h1 em { font-style: normal; color: #97caeb; }
+.strong-hero p {
+  font-size: 13px; color: rgba(255,255,255,0.4); font-weight: 400;
+  max-width: 560px; margin: 0 auto; line-height: 1.7;
+}
+
+/* Strong sections */
+.strong-section {
+  padding: 64px 40px; max-width: 1200px; margin: 0 auto;
+}
+.strong-section-eyebrow {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.3em;
+  text-transform: uppercase; color: #97caeb; margin-bottom: 12px;
+}
+.strong-section-title {
+  font-size: 28px; font-weight: 900; text-transform: uppercase;
+  line-height: 1.1; margin-bottom: 8px; color: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+.strong-section-title em { font-style: normal; color: #97caeb; }
+.strong-section-sub {
+  font-size: 12px; color: rgba(255,255,255,0.4); font-weight: 400;
+  margin-bottom: 40px; max-width: 500px; line-height: 1.6;
+}
+.strong-divider {
+  border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0 40px;
+}
+
+/* Ad showcase (STRONG pages) */
+.strong-ad-showcase {
+  display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;
+}
+.ad-mockup-wrapper {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+
+/* STORY (9:16) */
+.ad-story {
+  width: 280px; aspect-ratio: 9/16; position: relative; overflow: hidden;
+  border-radius: 16px; background: #000;
+}
+.ad-story img.bg {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: 0;
+}
+.ad-story .overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
+}
+.ad-story .content {
+  position: relative; z-index: 2; height: 100%;
+  display: flex; flex-direction: column; justify-content: space-between; padding: 24px;
+}
+.ad-story .top { text-align: center; }
+.ad-story .top img.logo { height: 20px; margin: 0 auto; display: block; }
+.ad-story .top .location {
+  font-size: 9px; color: rgba(255,255,255,0.5); letter-spacing: 0.2em;
+  text-transform: uppercase; margin-top: 8px; font-weight: 500;
+}
+.ad-story .center { text-align: center; }
+.ad-story .headline {
+  font-size: 28px; font-weight: 900; text-transform: uppercase; line-height: 1.1;
+  color: #fff; text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+.ad-story .headline em { font-style: normal; color: #97caeb; }
+.ad-story .subline {
+  font-size: 11px; color: rgba(255,255,255,0.7); font-weight: 400;
+  line-height: 1.5; margin-top: 12px; text-shadow: 0 1px 10px rgba(0,0,0,0.5);
+}
+.ad-story .bottom { text-align: center; }
+.ad-story .cta {
+  display: inline-block; background: #fff; color: #000; font-size: 10px;
+  font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; padding: 12px 28px;
+}
+.ad-story .url {
+  font-size: 8px; color: rgba(255,255,255,0.3); margin-top: 8px; letter-spacing: 0.1em;
+}
+
+/* FEED */
+.ad-feed { position: relative; overflow: hidden; background: #000; }
+.ad-feed.square { width: 340px; aspect-ratio: 1/1; }
+.ad-feed.portrait { width: 340px; aspect-ratio: 4/5; }
+.ad-feed img.bg {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: 0;
+}
+.ad-feed .overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
+}
+.ad-feed .content {
+  position: relative; z-index: 2; height: 100%;
+  display: flex; flex-direction: column; justify-content: center;
+  align-items: flex-start; padding: 32px;
+}
+.ad-feed .label {
+  font-size: 8px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: #97caeb; margin-bottom: 16px; background: rgba(0,0,0,0.4); padding: 5px 10px;
+}
+.ad-feed .feed-headline {
+  font-size: 28px; font-weight: 900; text-transform: uppercase; line-height: 1.1;
+  color: #fff; margin-bottom: 12px; text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+}
+.ad-feed .feed-headline em { font-style: normal; color: #97caeb; }
+.ad-feed .feed-body {
+  font-size: 11px; color: rgba(255,255,255,0.7); font-weight: 400; line-height: 1.6;
+  max-width: 260px; margin-bottom: 24px; text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+}
+.ad-feed .cta {
+  display: inline-block; background: #fff; color: #000; font-size: 10px;
+  font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; padding: 12px 28px;
+}
+
+.type-label {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: rgba(255,255,255,0.3); text-align: center;
+}
+
+.strong-notes {
+  margin-top: 40px; padding: 24px 28px;
+  border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02);
+}
+.strong-notes h4 {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: #97caeb; margin-bottom: 12px;
+}
+.strong-notes p {
+  font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.7; font-weight: 400;
+}
+.strong-notes strong { color: rgba(255,255,255,0.7); }
+
+.stat-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+  width: 100%; max-width: 280px; margin-bottom: 20px;
+}
+.stat-card {
+  text-align: center; padding: 12px 8px;
+  border: 1px solid rgba(255,255,255,0.15); background: rgba(0,0,0,0.4);
+}
+.stat-num { font-size: 20px; font-weight: 900; color: #97caeb; }
+.stat-label {
+  font-size: 7px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 4px;
+}
+
+.overlay-bottom { background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.1) 70%, transparent 100%); }
+.overlay-heavy { background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.3) 100%); }
+.overlay-tb { background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 30%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0.8) 100%); }
+.overlay-center { background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 100%); }
+
+/* ═══════════════════════════════════════════
+   LANDING PAGE MOCKUP (Full STRONG page)
+   ═══════════════════════════════════════════ */
+.lp-full .lp-hero-section {
+  position: relative; min-height: 100vh; display: flex; align-items: center;
+  justify-content: center; overflow: hidden;
+}
+.lp-full .lp-hero-bg {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center center; z-index: 0;
+}
+.lp-full .lp-hero-overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0.85) 100%);
+}
+.lp-full .lp-hero-content {
+  position: relative; z-index: 2; text-align: center; padding: 60px 40px;
+  max-width: 680px;
+}
+.lp-full .lp-hero-logo { height: 32px; margin: 0 auto 20px; }
+.lp-full .lp-hero-badge {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.3em;
+  text-transform: uppercase; color: #97caeb; margin-bottom: 36px;
+  padding: 6px 16px; border: 1px solid rgba(151,202,235,0.3);
+}
+.lp-full h1 {
+  font-size: 64px; font-weight: 900; text-transform: uppercase; line-height: 1.0;
+  letter-spacing: -0.02em; margin-bottom: 20px; color: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+.lp-full h1 span { color: #97caeb; }
+.lp-full .lp-hero-sub {
+  font-size: 15px; color: rgba(255,255,255,0.6); font-weight: 400; line-height: 1.7;
+  max-width: 480px; margin: 0 auto 44px;
+}
+
+/* Form */
+.lp-full .form-box {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  padding: 36px; max-width: 440px; margin: 0 auto;
+  backdrop-filter: blur(10px);
+}
+.lp-full .form-title {
+  font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em;
+  margin-bottom: 22px; color: #fff;
+}
+.lp-full .form-row { display: grid; gap: 10px; margin-bottom: 10px; }
+.lp-full .form-row.half { grid-template-columns: 1fr 1fr; }
+.lp-full .form-input {
+  padding: 13px 16px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03);
+  font-family: 'Montserrat', sans-serif; font-size: 12px; color: rgba(255,255,255,0.35);
+  font-weight: 400;
+}
+.lp-full .form-submit {
+  width: 100%; padding: 15px; background: #fff; color: #000; border: none;
+  font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 800;
+  letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer;
+  margin-top: 6px; transition: background 0.3s;
+}
+.lp-full .form-submit:hover { background: #97caeb; }
+.lp-full .form-trust {
+  font-size: 10px; color: rgba(255,255,255,0.25); text-align: center; margin-top: 14px; line-height: 1.5;
+}
+
+/* Scroll cue */
+.lp-full .scroll-cue {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); z-index: 3;
+  text-align: center;
+}
+.lp-full .scroll-cue span {
+  font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+}
+.lp-full .scroll-cue .arrow {
+  display: block; width: 1px; height: 28px; background: rgba(255,255,255,0.15);
+  margin: 8px auto 0; position: relative;
+}
+.lp-full .scroll-cue .arrow::after {
+  content: ''; position: absolute; bottom: 0; left: -3px;
+  width: 7px; height: 7px; border-right: 1px solid rgba(255,255,255,0.3);
+  border-bottom: 1px solid rgba(255,255,255,0.3); transform: rotate(45deg);
+}
+
+/* What is strong section */
+.lp-full .what-section {
+  padding: 80px 40px; border-top: 1px solid rgba(255,255,255,0.06);
+  background: #0A0A0A;
+}
+.lp-full .what-section .section-center { max-width: 960px; margin: 0 auto; }
+.lp-full .section-eyebrow {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase;
+  color: #97caeb; text-align: center; margin-bottom: 14px;
+}
+.lp-full .section-heading {
+  font-size: 36px; font-weight: 900; text-transform: uppercase; line-height: 1.1;
+  text-align: center; margin-bottom: 48px; color: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+.lp-full .section-heading span { color: #97caeb; }
+
+.lp-full .format-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.lp-full .format-card {
+  padding: 40px 28px; text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  position: relative; overflow: hidden;
+}
+.lp-full .format-card:last-child { border-right: none; }
+.lp-full .format-card img {
+  width: 100%; height: 200px; object-fit: cover; margin-bottom: 24px;
+  filter: brightness(0.8);
+}
+.lp-full .format-name {
+  font-size: 36px; font-weight: 900; text-transform: uppercase; margin-bottom: 6px; color: #fff;
+}
+.lp-full .format-machine {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+  color: #97caeb; margin-bottom: 14px;
+}
+.lp-full .format-desc {
+  font-size: 11px; color: rgba(255,255,255,0.45); line-height: 1.7;
+}
+
+/* Image break */
+.lp-full .image-break {
+  position: relative; height: 480px; overflow: hidden;
+}
+.lp-full .image-break img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.lp-full .image-break .ib-overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
+}
+.lp-full .image-break .ib-content {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;
+  display: flex; align-items: center; padding: 0 80px;
+}
+.lp-full .image-break .quote {
+  font-size: 28px; font-weight: 300; line-height: 1.4; max-width: 480px;
+  font-style: italic; color: #fff;
+}
+.lp-full .image-break .quote span { color: #97caeb; font-weight: 600; font-style: normal; }
+.lp-full .image-break .attribution {
+  font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 16px;
+  letter-spacing: 0.1em; text-transform: uppercase; font-style: normal;
+}
+
+/* Stats bar */
+.lp-full .stats-bar {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: #000;
+}
+.lp-full .stat-item {
+  padding: 36px 24px; text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.lp-full .stat-item:last-child { border-right: none; }
+.lp-full .stat-item-num { font-size: 36px; font-weight: 900; color: #97caeb; }
+.lp-full .stat-item-label {
+  font-size: 8px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); margin-top: 6px;
+}
+
+/* Value props */
+.lp-full .value-section {
+  padding: 80px 40px; background: #0A0A0A;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.lp-full .value-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  max-width: 960px; margin: 0 auto;
+}
+.lp-full .value-card { padding: 36px; border: 1px solid rgba(255,255,255,0.06); }
+.lp-full .value-card:nth-child(2) { border-left: none; }
+.lp-full .value-card:nth-child(3) { border-top: none; }
+.lp-full .value-card:nth-child(4) { border-top: none; border-left: none; }
+.lp-full .value-title {
+  font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 12px; color: #fff;
+}
+.lp-full .value-desc {
+  font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.7;
+}
+
+/* Owners section */
+.lp-full .owners-section {
+  position: relative; overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.lp-full .owners-bg {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 30%; filter: brightness(0.4);
+}
+.lp-full .owners-content {
+  position: relative; z-index: 2; padding: 80px;
+  display: flex; align-items: center; gap: 60px;
+  max-width: 1000px; margin: 0 auto;
+}
+.lp-full .owners-text { flex: 1; }
+.lp-full .owners-text .section-eyebrow { text-align: left; }
+.lp-full .owners-text h3 {
+  font-size: 28px; font-weight: 900; text-transform: uppercase; line-height: 1.15;
+  margin-bottom: 16px; color: #fff; font-family: 'Montserrat', sans-serif;
+}
+.lp-full .owners-text h3 span { color: #97caeb; }
+.lp-full .owners-text p {
+  font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 12px;
+}
+.lp-full .owners-img { width: 320px; flex-shrink: 0; }
+.lp-full .owners-img img {
+  width: 100%; height: 400px; object-fit: cover; object-position: center 20%;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Amenities */
+.lp-full .amenities-section {
+  padding: 80px 40px; background: #0A0A0A;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.lp-full .amenities-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  max-width: 960px; margin: 0 auto;
+}
+.lp-full .amenity-card { position: relative; overflow: hidden; }
+.lp-full .amenity-card img {
+  width: 100%; height: 280px; object-fit: cover; filter: brightness(0.85);
+  transition: transform 0.4s;
+}
+.lp-full .amenity-card:hover img { transform: scale(1.03); }
+.lp-full .amenity-card .amenity-label {
+  position: absolute; bottom: 16px; left: 16px;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  color: #fff; background: rgba(0,0,0,0.6); padding: 6px 12px;
+  backdrop-filter: blur(4px);
+}
+
+/* Bottom CTA */
+.lp-full .bottom-cta {
+  padding: 80px 40px; text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  background: #000; position: relative; overflow: hidden;
+}
+.lp-full .bottom-cta-bg {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: 0.15; filter: blur(2px);
+}
+.lp-full .bottom-cta .cta-content { position: relative; z-index: 2; }
+.lp-full .bottom-cta h2 {
+  font-size: 36px; font-weight: 900; text-transform: uppercase; margin-bottom: 12px; color: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+.lp-full .bottom-cta h2 span { color: #97caeb; }
+.lp-full .bottom-cta p {
+  font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 32px;
+}
+.lp-full .bottom-cta .cta-btn {
+  display: inline-block; padding: 16px 52px; background: #fff; color: #000;
+  font-size: 13px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase;
+  cursor: pointer; transition: background 0.3s;
+}
+.lp-full .bottom-cta .cta-btn:hover { background: #97caeb; }
+
+/* LP Footer */
+.lp-full .lp-footer {
+  padding: 28px; text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  background: #000;
+}
+.lp-full .lp-footer img { height: 18px; margin: 0 auto 6px; }
+.lp-full .lp-footer span {
+  font-size: 9px; color: rgba(255,255,255,0.2); letter-spacing: 0.15em; text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════
+   THANK YOU PAGE (Full STRONG page)
+   ═══════════════════════════════════════════ */
+.ty-full .ty-hero {
+  position: relative; min-height: 100vh; display: flex; align-items: center;
+  justify-content: center; overflow: hidden;
+}
+.ty-full .ty-hero-bg {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: 0;
+}
+.ty-full .ty-hero-overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.6) 70%, rgba(0,0,0,0.9) 100%);
+}
+.ty-full .ty-hero-content {
+  position: relative; z-index: 2; text-align: center; padding: 60px 40px;
+  max-width: 640px;
+}
+.ty-full .ty-hero-logo { height: 32px; margin: 0 auto 28px; }
+
+.ty-full .check-circle {
+  width: 72px; height: 72px; border-radius: 50%; border: 2px solid #97caeb;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 32px;
+}
+.ty-full .check-circle svg { width: 32px; height: 32px; }
+
+.ty-full h1 {
+  font-size: 48px; font-weight: 900; text-transform: uppercase; line-height: 1.05;
+  margin-bottom: 16px; color: #fff; font-family: 'Montserrat', sans-serif;
+}
+.ty-full h1 span { color: #97caeb; }
+.ty-full .ty-hero-sub {
+  font-size: 15px; color: rgba(255,255,255,0.6); font-weight: 400; line-height: 1.8;
+  max-width: 440px; margin: 0 auto 40px;
+}
+.ty-full .ty-hero-sub strong { color: rgba(255,255,255,0.85); }
+
+/* Confirmation box */
+.ty-full .confirm-box {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  padding: 32px; max-width: 420px; margin: 0 auto;
+  backdrop-filter: blur(10px);
+}
+.ty-full .confirm-title {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+  color: #97caeb; margin-bottom: 20px;
+}
+.ty-full .confirm-item {
+  display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px;
+}
+.ty-full .confirm-item:last-child { margin-bottom: 0; }
+.ty-full .confirm-icon {
+  width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px;
+  display: flex; align-items: center; justify-content: center;
+}
+.ty-full .confirm-icon svg { width: 14px; height: 14px; }
+.ty-full .confirm-text {
+  font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.6;
+}
+.ty-full .confirm-text strong { color: rgba(255,255,255,0.8); }
+
+/* Next section */
+.ty-full .next-section {
+  padding: 80px 40px; background: #0A0A0A;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.ty-full .next-center { max-width: 720px; margin: 0 auto; }
+
+.ty-full .timeline {
+  position: relative; padding-left: 40px;
+}
+.ty-full .timeline::before {
+  content: ''; position: absolute; top: 8px; bottom: 8px; left: 11px;
+  width: 1px; background: rgba(255,255,255,0.08);
+}
+.ty-full .timeline-item {
+  position: relative; margin-bottom: 40px;
+}
+.ty-full .timeline-item:last-child { margin-bottom: 0; }
+.ty-full .timeline-dot {
+  position: absolute; left: -40px; top: 6px;
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.15); background: #0A0A0A;
+  display: flex; align-items: center; justify-content: center;
+}
+.ty-full .timeline-dot.active-dot { border-color: #97caeb; }
+.ty-full .timeline-dot.active-dot::after {
+  content: ''; width: 8px; height: 8px; border-radius: 50%;
+  background: #97caeb;
+}
+.ty-full .timeline-when {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  color: #97caeb; margin-bottom: 6px;
+}
+.ty-full .timeline-what {
+  font-size: 14px; font-weight: 700; margin-bottom: 6px; color: #fff;
+}
+.ty-full .timeline-desc {
+  font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.7;
+}
+
+/* Share section */
+.ty-full .share-section {
+  padding: 64px 40px; text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  background: #000;
+}
+.ty-full .share-section h3 {
+  font-size: 22px; font-weight: 900; text-transform: uppercase; margin-bottom: 12px; color: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+.ty-full .share-section h3 span { color: #97caeb; }
+.ty-full .share-section p {
+  font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 28px; line-height: 1.6;
+  max-width: 420px; margin-left: auto; margin-right: auto;
+}
+.ty-full .share-link-box {
+  display: inline-flex; align-items: center; gap: 0;
+  border: 1px solid rgba(255,255,255,0.12); max-width: 400px;
+}
+.ty-full .share-url {
+  padding: 14px 20px; font-size: 12px; color: rgba(255,255,255,0.4);
+  letter-spacing: 0.02em; flex: 1;
+}
+.ty-full .share-copy {
+  padding: 14px 24px; background: #fff; color: #000;
+  font-size: 10px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase;
+  cursor: pointer; white-space: nowrap;
+}
+
+/* Peek section */
+.ty-full .peek-section {
+  padding: 80px 40px; background: #0A0A0A;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.ty-full .peek-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  max-width: 960px; margin: 0 auto;
+}
+.ty-full .peek-card {
+  position: relative; overflow: hidden; aspect-ratio: 4/5;
+}
+.ty-full .peek-card img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.7); transition: transform 0.5s;
+}
+.ty-full .peek-card:hover img { transform: scale(1.05); }
+.ty-full .peek-card .peek-label {
+  position: absolute; bottom: 16px; left: 16px; right: 16px;
+}
+.ty-full .peek-card .label-title {
+  font-size: 14px; font-weight: 800; text-transform: uppercase; margin-bottom: 4px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5); color: #fff;
+}
+.ty-full .peek-card .label-sub {
+  font-size: 10px; color: rgba(255,255,255,0.5); line-height: 1.5;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+}
+
+/* Social section */
+.ty-full .social-section {
+  padding: 48px 40px; text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  background: #000;
+}
+.ty-full .social-section p {
+  font-size: 12px; color: rgba(255,255,255,0.35); margin-bottom: 20px;
+}
+.ty-full .social-links { display: flex; gap: 16px; justify-content: center; }
+.ty-full .social-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border: 1px solid rgba(255,255,255,0.12);
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s;
+}
+.ty-full .social-link:hover { border-color: #97caeb; color: #97caeb; }
+
+/* TY Footer */
+.ty-full .ty-footer {
+  padding: 28px; text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  background: #000;
+}
+.ty-full .ty-footer img { height: 18px; margin: 0 auto 6px; }
+.ty-full .ty-footer span {
+  font-size: 9px; color: rgba(255,255,255,0.2); letter-spacing: 0.15em; text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .timeline-grid { grid-template-columns: 1fr 1fr; }
+  .ad-showcase-kaizen { grid-template-columns: 1fr; max-width: 320px; margin-left: auto; margin-right: auto; }
+  .strategy-grid { grid-template-columns: 1fr; }
+  .week-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 768px) {
+  /* Sidebar becomes overlay */
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .hamburger {
+    display: flex;
+  }
+  .sidebar-overlay.active {
+    display: block;
+  }
+  .main-content {
+    margin-left: 0;
+    padding-top: 60px;
+  }
+
+  /* Strong page responsive */
+  .strong-ad-showcase { flex-direction: column; align-items: center; }
+  .strong-hero h1 { font-size: 28px; }
+  .strong-section { padding: 40px 20px; }
+  .ad-feed.square, .ad-feed.portrait { width: 300px; }
+
+  /* Landing page responsive */
+  .lp-full h1 { font-size: 40px; }
+  .lp-full .format-grid { grid-template-columns: 1fr; }
+  .lp-full .format-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .lp-full .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .lp-full .value-grid { grid-template-columns: 1fr; }
+  .lp-full .value-card { border-left: none !important; }
+  .lp-full .owners-content { flex-direction: column; padding: 60px 40px; }
+  .lp-full .owners-img { width: 100%; }
+  .lp-full .amenities-grid { grid-template-columns: 1fr; }
+  .lp-full .image-break { height: 360px; }
+  .lp-full .image-break .ib-content { padding: 0 40px; }
+
+  /* Thank you page responsive */
+  .ty-full h1 { font-size: 36px; }
+  .ty-full .peek-grid { grid-template-columns: 1fr; max-width: 340px; }
+  .ty-full .share-link-box { flex-direction: column; width: 100%; max-width: 320px; }
+  .ty-full .social-links { flex-direction: column; align-items: center; }
+
+  /* Kaizen pages responsive */
+  .hero h1 { font-size: 36px; }
+  .timeline-grid { grid-template-columns: 1fr; }
+  .week-grid { grid-template-columns: repeat(3, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     HAMBURGER (mobile)
+     ═══════════════════════════════════════════ -->
+<button class="hamburger" id="hamburger" onclick="toggleSidebar()">
+  <span></span><span></span><span></span>
+</button>
+
+<!-- SIDEBAR OVERLAY (mobile) -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<div class="app">
+
+<!-- ═══════════════════════════════════════════
+     SIDEBAR
+     ═══════════════════════════════════════════ -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-brand">KAIZEN COLLECTIVE</div>
+    <div class="sidebar-context">Edmonton Presale Strategy</div>
+  </div>
+
+  <div class="sidebar-nav">
+    <!-- 1. Strategy -->
+    <div class="nav-section">
+      <button class="nav-item active" onclick="showPage('strategy', this)">
+        <span class="nav-num">01</span>
+        <span class="nav-label">Strategy</span>
+      </button>
+    </div>
+
+    <!-- 2. Ad Mockups (expandable) -->
+    <div class="nav-section">
+      <button class="nav-item strong-item" onclick="toggleAdMockups(this)" id="adMockupsToggle">
+        <span class="nav-num">02</span>
+        <span class="nav-label">Ad Mockups</span>
+        <span class="nav-expand" id="adMockupsArrow">&#9654;</span>
+      </button>
+      <div class="nav-sub-items" id="adMockupsSub">
+        <button class="nav-sub-item" onclick="showPage('ad-announcement', this)">
+          <span class="nav-sub-label">Announcement</span>
+        </button>
+        <button class="nav-sub-item" onclick="showPage('ad-buildout', this)">
+          <span class="nav-sub-label">Buildout</span>
+        </button>
+        <button class="nav-sub-item" onclick="showPage('ad-social', this)">
+          <span class="nav-sub-label">Social Proof</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 3. Landing Page -->
+    <div class="nav-section">
+      <button class="nav-item strong-item" onclick="showPage('landing-page', this)">
+        <span class="nav-num">03</span>
+        <span class="nav-label">Landing Page</span>
+      </button>
+    </div>
+
+    <!-- 4. Thank You Page -->
+    <div class="nav-section">
+      <button class="nav-item strong-item" onclick="showPage('thank-you', this)">
+        <span class="nav-num">04</span>
+        <span class="nav-label">Thank You Page</span>
+      </button>
+    </div>
+
+    <!-- 5. Automations -->
+    <div class="nav-section">
+      <button class="nav-item" onclick="showPage('automations', this)">
+        <span class="nav-num">05</span>
+        <span class="nav-label">Automations</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="sidebar-footer-text">
+      Prepared 27 March 2026<br>
+      Mario Paguio
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     MAIN CONTENT
+     ═══════════════════════════════════════════ -->
+<main class="main-content">
+
+<!-- ════════════════════════════════════════
+     PAGE 1: STRATEGY
+     ════════════════════════════════════════ -->
+<div id="strategy" class="page active">
+
+  <div class="hero">
+    <div class="hero-eyebrow">Presale Strategy - Phase 1</div>
+    <h1>STRONG Pilates <em>Edmonton</em></h1>
+    <div class="hero-sub">Awareness & Database Build - Prepared 27 March 2026 - Mario Paguio</div>
+    <div class="hero-line"></div>
+  </div>
+
+  <div class="urgency-banner">
+    <strong>TIMELINE:</strong> Mid-July opening = Phase 1 starts <strong>this week.</strong> 16 weeks of runway starts now.
+  </div>
+
+  <!-- 4-PHASE OVERVIEW -->
+  <div class="section">
+    <div class="eyebrow">The 16-Week Presale Framework</div>
+    <div class="section-title">Four Phases to <em>200+ Members</em></div>
+    <div class="section-sub">Validated across 6 STRONG presales -- Oakville, Yorkville, West Hollywood, Central Austin, Garwood, Williston Park.</div>
+
+    <div class="timeline-grid">
+      <div class="phase-card active-phase">
+        <div class="phase-num">Phase 1 - Weeks -16 to -10</div>
+        <div class="phase-name">Build the Audience</div>
+        <div class="phase-dates">Mar 24 &rarr; May 5, 2026</div>
+        <div class="phase-goal">Register interest. Coming soon. Build the database before you sell anything.</div>
+        <div class="phase-stat">
+          <div class="phase-stat-label">Ad Spend</div>
+          <div class="phase-stat-value">$300-$500<span style="font-size:14px;color:var(--stone)">/wk</span></div>
+        </div>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-num">Phase 2 - Weeks -9 to -4</div>
+        <div class="phase-name">Sell Intros + VIP</div>
+        <div class="phase-dates">May 5 &rarr; Jun 9, 2026</div>
+        <div class="phase-goal">5-class intro offer goes live. VIP founding memberships pitched to warm leads.</div>
+        <div class="phase-stat">
+          <div class="phase-stat-label">Ad Spend</div>
+          <div class="phase-stat-value">$500-$1,000<span style="font-size:14px;color:var(--stone)">/wk</span></div>
+        </div>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-num">Phase 3 - Weeks -3 to Opening</div>
+        <div class="phase-name">Push to Opening</div>
+        <div class="phase-dates">Jun 9 &rarr; Jul 14, 2026</div>
+        <div class="phase-goal">Maximum urgency. VIP closes at opening. Scarcity and countdown.</div>
+        <div class="phase-stat">
+          <div class="phase-stat-label">Ad Spend</div>
+          <div class="phase-stat-value">$1,000-$2,000<span style="font-size:14px;color:var(--stone)">/wk</span></div>
+        </div>
+      </div>
+
+      <div class="phase-card">
+        <div class="phase-num">Phase 4 - Weeks +1 to +6</div>
+        <div class="phase-name">Convert the Pipeline</div>
+        <div class="phase-dates">Jul 14 &rarr; Aug 25, 2026</div>
+        <div class="phase-goal">Intro buyers become members. Retention playbook activates. Community forms.</div>
+        <div class="phase-stat">
+          <div class="phase-stat-label">Ad Spend</div>
+          <div class="phase-stat-value">$300-$700<span style="font-size:14px;color:var(--stone)">/wk</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PHASE 1 DEEP DIVE -->
+  <div class="section">
+    <div class="eyebrow">Phase 1 Deep Dive</div>
+    <div class="section-title">Build the Audience -- <em>7 Weeks</em></div>
+    <div class="section-sub">The goal is simple: 800-1,200 leads in the database before we sell anything. CPL target: under $6 CAD.</div>
+
+    <div class="strategy-grid">
+      <div class="strat-card">
+        <h4>What We're Running</h4>
+        <ul>
+          <li><strong>Meta Ads (Facebook + Instagram)</strong> -- "Coming Soon" awareness campaigns targeting Edmonton locals within 15km of studio location</li>
+          <li><strong>Lead form ads</strong> -- low-friction "Register Your Interest" with name, email, phone, suburb</li>
+          <li><strong>Retargeting</strong> -- video viewers and page visitors see follow-up creative</li>
+          <li><strong>Organic content</strong> -- buildout progress, owner introduction, behind-the-scenes, community teasers</li>
+        </ul>
+      </div>
+
+      <div class="strat-card">
+        <h4>Audience Targeting</h4>
+        <ul>
+          <li><strong>Primary:</strong> Women 25-45 within 15km -- fitness, wellness, pilates interests</li>
+          <li><strong>Secondary:</strong> Lookalike audiences from Kelowna's existing member list</li>
+          <li><strong>Exclusion:</strong> Existing Kelowna members (prevent cross-contamination)</li>
+          <li><strong>Geo:</strong> Edmonton metro area -- tight radius, not province-wide</li>
+        </ul>
+      </div>
+
+      <div class="strat-card">
+        <h4>Creative Strategy</h4>
+        <ul>
+          <li><strong>Hook:</strong> "Something new is coming to Edmonton" -- curiosity-driven, not offer-driven</li>
+          <li><strong>Brand video:</strong> STRONG reformer footage + Edmonton-specific text overlays</li>
+          <li><strong>Buildout content:</strong> Real photos/videos of the space being built -- creates anticipation</li>
+          <li><strong>Social proof:</strong> Kelowna member testimonials repurposed for Edmonton awareness</li>
+        </ul>
+      </div>
+
+      <div class="strat-card">
+        <h4>CRM & Automation (Grow)</h4>
+        <ul>
+          <li><strong>Lead capture:</strong> Meta lead form &rarr; Grow contact &rarr; tagged "Presale Lead"</li>
+          <li><strong>Welcome sequence:</strong> Immediate SMS + email confirmation on registration</li>
+          <li><strong>Nurture drip:</strong> Weekly buildout updates, owner story, "what is STRONG?" education</li>
+          <li><strong>Pre-sell warm-up:</strong> Last 2 weeks of Phase 1 tease the intro offer coming in Phase 2</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Why no offer yet?</strong> The data from 6 presales shows that studios who build a warm database first convert at 2-3x the rate of studios that lead with offers. Phase 1 is about trust and anticipation -- the selling happens in Phase 2.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- WEEK BY WEEK -->
+  <div class="section">
+    <div class="eyebrow">Phase 1 Week-by-Week</div>
+    <div class="section-title">The <em>7-Week</em> Awareness Sprint</div>
+    <div class="section-sub">Each week builds on the last. Content and ads work together.</div>
+
+    <div class="week-grid">
+      <div class="week-cell current">
+        <div class="week-num-cell">Week 1</div>
+        <div class="week-date">Mar 24</div>
+        <div class="week-task">Ads live. Owner intro post. "Coming Soon" campaign launches.</div>
+      </div>
+      <div class="week-cell">
+        <div class="week-num-cell">Week 2</div>
+        <div class="week-date">Mar 31</div>
+        <div class="week-task">Buildout content series begins. First retargeting audiences building.</div>
+      </div>
+      <div class="week-cell">
+        <div class="week-num-cell">Week 3</div>
+        <div class="week-date">Apr 7</div>
+        <div class="week-task">Partnership outreach. Local business cross-promos. Community teasers.</div>
+      </div>
+      <div class="week-cell">
+        <div class="week-num-cell">Week 4</div>
+        <div class="week-date">Apr 14</div>
+        <div class="week-task">Micro-influencer activation. Kelowna testimonials repurposed for Edmonton.</div>
+      </div>
+      <div class="week-cell">
+        <div class="week-num-cell">Week 5</div>
+        <div class="week-date">Apr 21</div>
+        <div class="week-task">"What is STRONG?" education content. Brand video launches.</div>
+      </div>
+      <div class="week-cell">
+        <div class="week-num-cell">Week 6</div>
+        <div class="week-date">Apr 28</div>
+        <div class="week-task">Teaser: "Something special is coming for early supporters." VIP offer hinted.</div>
+      </div>
+      <div class="week-cell">
+        <div class="week-num-cell">Week 7</div>
+        <div class="week-date">May 5</div>
+        <div class="week-task">Phase 1 close. Checkpoint: 800+ leads. Transition to Phase 2 offer launch.</div>
+      </div>
+    </div>
+
+    <div class="callout-dark">
+      <p><strong>Phase 1 Checkpoint (Week -10):</strong> 800-1,200 leads in Grow - VIP member offer finalized and priced - 20+ partnerships approached, 5+ confirmed - Buildout content generating organic engagement - Retargeting audiences warm and ready for Phase 2 offer</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 2A: AD MOCKUPS - ANNOUNCEMENT
+     ════════════════════════════════════════ -->
+<div id="ad-announcement" class="page strong-page">
+  <div class="strong-hero">
+    <div class="strong-hero-eyebrow">Ad Direction 1</div>
+    <h1>The <em>Announcement</em></h1>
+    <p>Clean, bold, curiosity-driven. Studio imagery as the backdrop, text overlay does the heavy lifting. Phase 1 is about awareness -- no pricing, no offers.</p>
+  </div>
+
+  <!-- STORY x3 -->
+  <div class="strong-section">
+    <div class="strong-section-eyebrow">9:16 Vertical</div>
+    <div class="strong-section-title">Story / <em>Reel</em></div>
+    <div class="strong-section-sub">Full-screen mobile placements. Three image directions: studio interior, mirror reflection, and brand signage.</div>
+    <div class="strong-ad-showcase">
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-story">
+          <img class="bg" src="mockups/img/studio-interior.jpg" alt="" style="object-position:center 35%;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content">
+            <div class="top"><img class="logo" src="strong-logo-white.png" alt="STRONG"><div class="location">Edmonton</div></div>
+            <div class="center">
+              <div class="headline"><em>Something</em><br>is coming.</div>
+              <div class="subline">Row. Ride. Reform.<br>Edmonton's first STRONG studio opens July 2026.</div>
+            </div>
+            <div class="bottom"><div class="cta">Register Interest</div><div class="url">strongpilates.ca/edmonton</div></div>
+          </div>
+        </div>
+        <div class="type-label">Story -- Studio Reveal</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-story">
+          <img class="bg" src="mockups/img/mirror-reflection.jpg" alt="" style="object-position:center center;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content">
+            <div class="top"><img class="logo" src="strong-logo-white.png" alt="STRONG"><div class="location">Coming July 2026</div></div>
+            <div class="center">
+              <div class="headline"><em>45 minutes.</em><br>Full body.<br>Low impact.</div>
+              <div class="subline">Half reformer. Half rower. Entirely the point.</div>
+            </div>
+            <div class="bottom"><div class="cta">Register Interest</div></div>
+          </div>
+        </div>
+        <div class="type-label">Story -- Mirror Shot</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-story">
+          <img class="bg" src="mockups/img/logo-wall-class.jpg" alt="" style="object-position:center 20%;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content">
+            <div class="top"><div class="location" style="color:#97caeb;">Edmonton, Alberta</div></div>
+            <div class="center">
+              <div class="headline" style="font-size:22px;"><em>Row. Ride.<br>Reform.</em></div>
+              <div class="subline" style="max-width:220px;">The class format behind 100+ studios worldwide is landing in Edmonton.</div>
+            </div>
+            <div class="bottom"><div class="cta">I'm In</div><div class="url">strongpilates.ca/edmonton</div></div>
+          </div>
+        </div>
+        <div class="type-label">Story -- Logo + Class</div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="strong-divider">
+
+  <!-- FEED 1:1 x3 -->
+  <div class="strong-section">
+    <div class="strong-section-eyebrow">1:1 Square</div>
+    <div class="strong-section-title">Feed <em>Square</em></div>
+    <div class="strong-section-sub">In-feed placements for Facebook and Instagram. Optimised for the scroll.</div>
+    <div class="strong-ad-showcase">
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed square">
+          <img class="bg" src="mockups/img/class-wide-light.jpg" alt="" style="object-position:center 40%;">
+          <div class="overlay overlay-heavy"></div>
+          <div class="content">
+            <img src="strong-logo-white.png" alt="STRONG" style="height:20px;margin-bottom:24px;">
+            <div class="feed-headline"><em>Edmonton.</em><br>Coming July.</div>
+            <div class="feed-body">Pilates inspired. Cardio infused. 45 minutes on the Rowformer. This is STRONG.</div>
+            <div class="cta">Register Interest &rarr;</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 1:1 -- Class Wide</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed square">
+          <img class="bg" src="mockups/img/studio-wide-equipment.jpg" alt="" style="object-position:right 40%;">
+          <div class="overlay overlay-heavy"></div>
+          <div class="content">
+            <img src="strong-logo-white.png" alt="STRONG" style="height:20px;margin-bottom:24px;">
+            <div class="feed-headline"><em>15 Rowformers.</em><br>One studio.</div>
+            <div class="feed-body">Half reformer. Half rower. The machine you won't find anywhere else. Coming to Edmonton July 2026.</div>
+            <div class="cta">Register Interest &rarr;</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 1:1 -- Equipment</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed square">
+          <img class="bg" src="mockups/img/couple-logo-behind.jpg" alt="" style="object-position:center center;">
+          <div class="overlay overlay-bottom"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div class="feed-headline" style="font-size:22px;">We built <em>Kelowna.</em><br>Now it's<br>Edmonton's turn.</div>
+            <div class="feed-body">Meet Marta & Riley -- the owners behind STRONG Pilates Edmonton.</div>
+            <div class="cta">Register Interest &rarr;</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 1:1 -- Owners Teaser</div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="strong-divider">
+
+  <!-- FEED 4:5 x3 -->
+  <div class="strong-section">
+    <div class="strong-section-eyebrow">4:5 Portrait</div>
+    <div class="strong-section-title">Feed <em>Portrait</em></div>
+    <div class="strong-section-sub">Maximum visual real estate in the feed. Best performer for engagement.</div>
+    <div class="strong-ad-showcase">
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed portrait">
+          <img class="bg" src="mockups/img/mirror-reflection.jpg" alt="" style="object-position:center center;">
+          <div class="overlay overlay-heavy"></div>
+          <div class="content">
+            <div class="label">Coming July 2026</div>
+            <div class="feed-headline"><em>45 minutes.</em><br>Full body.<br>Low impact.</div>
+            <div class="feed-body">Row. Ride. Reform. The class format that built a 500-member studio in Kelowna is landing in Edmonton.</div>
+            <div style="position:absolute;bottom:32px;left:32px;"><div class="cta">Register Interest &rarr;</div></div>
+          </div>
+        </div>
+        <div class="type-label">Feed 4:5 -- Mirror</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed portrait">
+          <img class="bg" src="mockups/img/instructor-straps-behind.jpg" alt="" style="object-position:center 25%;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content">
+            <div class="label">Edmonton, Alberta</div>
+            <div class="feed-headline"><em>Row. Ride.</em><br>Reform.</div>
+            <div class="feed-body">The workout that built 100+ studios across 14 countries. Edmonton's turn starts July 2026.</div>
+            <div style="position:absolute;bottom:32px;left:32px;"><div class="cta">I'm In &rarr;</div></div>
+          </div>
+        </div>
+        <div class="type-label">Feed 4:5 -- Instructor Action</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed portrait">
+          <img class="bg" src="mockups/img/backlit-signage.jpg" alt="" style="object-position:center 40%;">
+          <div class="overlay overlay-heavy"></div>
+          <div class="content" style="align-items:center; text-align:center;">
+            <div style="margin-bottom:32px;">
+              <div class="feed-headline" style="text-align:center;"><em>Something</em><br>is coming<br>to Edmonton.</div>
+            </div>
+            <div class="feed-body" style="text-align:center;max-width:240px;">Pilates inspired. Cardio infused. Low impact. High intensity. Opening July 2026.</div>
+            <div class="cta">Register Interest &rarr;</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 4:5 -- Brand Signage</div>
+      </div>
+
+    </div>
+
+    <div class="strong-notes">
+      <h4>Creative Notes -- Direction 1</h4>
+      <p><strong>Imagery:</strong> All photos from STRONG Kelowna (Jordana Dickson). Real studio, real members, real equipment.<br><br>
+      <strong>Copy:</strong> Phase 1 is curiosity, not conversion. No pricing, no offers. "Row. Ride. Reform." communicates this isn't regular Pilates.<br><br>
+      <strong>A/B tests:</strong> Mirror reflection vs class-wide as primary. Studio interior vs logo-wall for secondary. Test "Something is coming" vs "45 minutes. Full body. Low impact." as headlines.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 2B: AD MOCKUPS - BUILDOUT
+     ════════════════════════════════════════ -->
+<div id="ad-buildout" class="page strong-page">
+  <div class="strong-hero">
+    <div class="strong-hero-eyebrow">Ad Direction 2</div>
+    <h1>The <em>Buildout</em></h1>
+    <p>Behind-the-scenes content that builds a following before the doors open. Meet the owners, see the space, follow the journey.</p>
+  </div>
+
+  <!-- STORY x3 -->
+  <div class="strong-section">
+    <div class="strong-section-eyebrow">9:16 Vertical</div>
+    <div class="strong-section-title">Owner <em>Story</em></div>
+    <div class="strong-section-sub">People follow people, not brands. These introduce the team and the space before doors open.</div>
+    <div class="strong-ad-showcase">
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-story">
+          <img class="bg" src="mockups/img/front-desk-owners.jpg" alt="" style="object-position:center 25%;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content">
+            <div class="top"><img class="logo" src="strong-logo-white.png" alt="STRONG"><div class="location">Meet the Owners - Edmonton</div></div>
+            <div class="center">
+              <div class="headline" style="font-size:20px;"><em>Why we're bringing</em><br>STRONG to Edmonton</div>
+              <div class="subline">"We opened Kelowna and watched people get hooked on this format. Edmonton deserves the same thing."</div>
+            </div>
+            <div class="bottom"><div class="cta">Register Interest</div></div>
+          </div>
+        </div>
+        <div class="type-label">Story -- Owner Introduction</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-story">
+          <img class="bg" src="mockups/img/owners-reception-dog.jpg" alt="" style="object-position:center 30%;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content">
+            <div class="top"><img class="logo" src="strong-logo-white.png" alt="STRONG"><div class="location">Behind the Scenes - Edmonton</div></div>
+            <div class="center">
+              <div class="headline" style="font-size:20px;"><em>500+ members</em><br>in Kelowna.</div>
+              <div class="subline">Now we're building something even better for Edmonton. Follow the journey.</div>
+            </div>
+            <div class="bottom"><div class="cta">Follow the Build</div></div>
+          </div>
+        </div>
+        <div class="type-label">Story -- Kelowna Success</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-story">
+          <img class="bg" src="mockups/img/down-for-more-neon.jpg" alt="" style="object-position:center 25%;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content">
+            <div class="top"><img class="logo" src="strong-logo-white.png" alt="STRONG"></div>
+            <div class="center">
+              <div class="headline" style="font-size:24px;"><em>Down<br>for more?</em></div>
+              <div class="subline">Edmonton's first STRONG studio is coming. Sign up for first access when doors open.</div>
+            </div>
+            <div class="bottom"><div class="cta">Register Interest</div><div class="url">strongpilates.ca/edmonton</div></div>
+          </div>
+        </div>
+        <div class="type-label">Story -- Brand Tagline</div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="strong-divider">
+
+  <!-- FEED 1:1 x3 -->
+  <div class="strong-section">
+    <div class="strong-section-eyebrow">1:1 Square</div>
+    <div class="strong-section-title">Studio <em>Preview</em></div>
+    <div class="strong-section-sub">Show Edmonton what the STRONG experience looks like -- the space, the amenities, the lifestyle.</div>
+    <div class="strong-ad-showcase">
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed square">
+          <img class="bg" src="mockups/img/vanity-room.jpg" alt="" style="object-position:center 35%;">
+          <div class="overlay overlay-bottom"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div class="label">Studio Preview</div>
+            <div class="feed-headline" style="font-size:20px;">More than<br>a <em>workout.</em></div>
+            <div class="feed-body">Dyson styling. LED vanity mirrors. Premium amenities. This is the STRONG experience.</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 1:1 -- Amenities</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed square">
+          <img class="bg" src="mockups/img/lounge-area.jpg" alt="" style="object-position:center center;">
+          <div class="overlay overlay-bottom"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div class="feed-headline" style="font-size:18px;">It's a <em>lifestyle,</em><br>not just a workout.</div>
+            <div class="feed-body">STRONG Pilates Edmonton. Coming July 2026.</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 1:1 -- Merch / Lifestyle</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed square">
+          <img class="bg" src="mockups/img/bw-editorial-owners.jpg" alt="" style="object-position:center center;">
+          <div class="overlay overlay-bottom"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div class="feed-headline" style="font-size:20px;">Meet<br><em>Marta & Riley.</em></div>
+            <div class="feed-body">Kelowna studio owners. 500+ members. 5.0 rating. Now they're building Edmonton.</div>
+            <div class="cta">Register Interest &rarr;</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 1:1 -- Owners Editorial</div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="strong-divider">
+
+  <!-- FEED 4:5 x3 -->
+  <div class="strong-section">
+    <div class="strong-section-eyebrow">4:5 Portrait</div>
+    <div class="strong-section-title">Equipment <em>Tease</em></div>
+    <div class="strong-section-sub">The Rowformer is the differentiator. Show what makes STRONG different from every other studio.</div>
+    <div class="strong-ad-showcase">
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed portrait">
+          <img class="bg" src="mockups/img/studio-interior.jpg" alt="" style="object-position:center 35%;">
+          <div class="overlay overlay-heavy"></div>
+          <div class="content">
+            <div class="label">Progress Update</div>
+            <div class="feed-headline"><em>15 Rowformers.</em><br>Bikeformers.<br>One studio.</div>
+            <div class="feed-body">Equipment is locked in. Edmonton's first STRONG studio takes shape -- register now for early access.</div>
+            <div class="cta">I'm In &rarr;</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 4:5 -- Equipment Tease</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed portrait">
+          <img class="bg" src="mockups/img/champagne-pop.jpg" alt="" style="object-position:center 20%;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div class="feed-headline" style="font-size:22px;">From <em>Kelowna</em><br>to Edmonton.<br>We're doing<br>it again.</div>
+            <div class="feed-body">Marta & Riley opened Kelowna. Now they're bringing STRONG to Edmonton. July 2026.</div>
+            <div class="cta">Register Interest &rarr;</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 4:5 -- Champagne Moment</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed portrait">
+          <img class="bg" src="mockups/img/team-exterior-logo.jpg" alt="" style="object-position:center 20%;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div class="feed-headline" style="font-size:22px;">Your <em>Edmonton</em><br>team is ready.</div>
+            <div class="feed-body">STRONG Pilates. Opening July 2026. Register now for first access to the intro offer.</div>
+            <div class="cta">Register Interest &rarr;</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 4:5 -- Team Shot</div>
+      </div>
+
+    </div>
+
+    <div class="strong-notes">
+      <h4>Creative Notes -- Direction 2</h4>
+      <p><strong>This direction requires real Edmonton content as the buildout progresses.</strong> These mockups use Kelowna photography as proxies. Swap in real Edmonton imagery for authenticity as it becomes available.<br><br>
+      <strong>Why this works:</strong> Documentary-style content consistently outperforms polished brand ads in Phase 1. People follow the journey. By the time the studio opens, they feel like they were part of building it.<br><br>
+      <strong>Content needed from Marta:</strong> Weekly buildout photos/videos, a short owner introduction video (60-90s, iPhone is fine), any renders or plans of the Edmonton layout.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 2C: AD MOCKUPS - SOCIAL PROOF
+     ════════════════════════════════════════ -->
+<div id="ad-social" class="page strong-page">
+  <div class="strong-hero">
+    <div class="strong-hero-eyebrow">Ad Direction 3</div>
+    <h1>The <em>Social Proof</em></h1>
+    <p>Leverage Kelowna's success to build Edmonton credibility. Real members, real classes, real numbers. "Already loved in BC -- now coming to Alberta."</p>
+  </div>
+
+  <!-- STORY x3 -->
+  <div class="strong-section">
+    <div class="strong-section-eyebrow">9:16 Vertical</div>
+    <div class="strong-section-title">Kelowna <em>Proof</em></div>
+    <div class="strong-section-sub">Numbers and testimonials from the Kelowna studio that make Edmonton inevitable.</div>
+    <div class="strong-ad-showcase">
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-story">
+          <img class="bg" src="mockups/img/class-plank.jpg" alt="" style="object-position:center center;">
+          <div class="overlay overlay-heavy"></div>
+          <div class="content">
+            <div class="top"><img class="logo" src="strong-logo-white.png" alt="STRONG"></div>
+            <div class="center">
+              <div style="font-size:48px;font-weight:900;color:#97caeb;line-height:1;margin-bottom:16px;">500+</div>
+              <div style="font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.15em;text-transform:uppercase;font-weight:600;margin-bottom:20px;">STRONG Humans in Kelowna</div>
+              <div style="width:60%;height:1px;background:rgba(255,255,255,0.15);margin:0 auto 20px;"></div>
+              <div class="headline" style="font-size:22px;">Now it's<br><em>Edmonton's</em> turn.</div>
+            </div>
+            <div class="bottom"><div class="cta">Register Now</div><div class="url">strongpilates.ca/edmonton</div></div>
+          </div>
+        </div>
+        <div class="type-label">Story -- 500+ Members</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-story">
+          <img class="bg" src="mockups/img/feet-straps-action.jpg" alt="" style="object-position:center center;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content">
+            <div class="top"><img class="logo" src="strong-logo-white.png" alt="STRONG"><div class="location">The Rowformer Experience</div></div>
+            <div class="center">
+              <div class="headline" style="font-size:20px;">Half reformer.<br>Half rower.<br><em>Entirely the point.</em></div>
+              <div class="subline">45 minutes. Low impact. High intensity. The workout that built 100+ studios worldwide.</div>
+            </div>
+            <div class="bottom"><div class="cta">Register Interest</div></div>
+          </div>
+        </div>
+        <div class="type-label">Story -- Rowformer Action</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-story">
+          <img class="bg" src="mockups/img/two-members-moody.jpg" alt="" style="object-position:center 30%;">
+          <div class="overlay overlay-heavy"></div>
+          <div class="content">
+            <div class="top"><img class="logo" src="strong-logo-white.png" alt="STRONG"></div>
+            <div class="center">
+              <div style="font-size:16px;margin-bottom:8px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <div style="font-size:16px;color:#fff;font-weight:400;line-height:1.5;font-style:italic;max-width:220px;margin:0 auto;text-shadow:0 2px 10px rgba(0,0,0,0.5);">"I've tried every studio in Kelowna. Nothing comes close to STRONG."</div>
+              <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:12px;">-- Real Kelowna Google Review</div>
+            </div>
+            <div class="bottom">
+              <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.7);margin-bottom:12px;">Edmonton. July 2026.</div>
+              <div class="cta">Register Interest</div>
+            </div>
+          </div>
+        </div>
+        <div class="type-label">Story -- Testimonial</div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="strong-divider">
+
+  <!-- FEED 1:1 x3 -->
+  <div class="strong-section">
+    <div class="strong-section-eyebrow">1:1 Square</div>
+    <div class="strong-section-title">Class <em>Energy</em></div>
+    <div class="strong-section-sub">Show the workout, the community, the results. Let the images sell the experience.</div>
+    <div class="strong-ad-showcase">
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed square">
+          <img class="bg" src="mockups/img/class-through-window.jpg" alt="" style="object-position:center center;">
+          <div class="overlay overlay-bottom"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div class="feed-headline" style="font-size:22px;">This is what<br>you're <em>signing up</em> for.</div>
+            <div class="feed-body">Real members. Real classes. Real results. STRONG Pilates is coming to Edmonton.</div>
+            <div class="cta">Register Interest &rarr;</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 1:1 -- Class Energy</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed square">
+          <img class="bg" src="mockups/img/class-plank-instructor.jpg" alt="" style="object-position:center center;">
+          <div class="overlay overlay-bottom"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div class="feed-headline" style="font-size:20px;"><em>Low impact.</em><br>High intensity.</div>
+            <div class="feed-body">Your joints are protected while your muscles do real work. 45 minutes on the Rowformer.</div>
+            <div class="cta">Register Interest &rarr;</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 1:1 -- Inclusive Class</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed square">
+          <img class="bg" src="mockups/img/group-class-paityn.jpg" alt="" style="object-position:center 30%;">
+          <div class="overlay overlay-bottom"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div class="feed-headline" style="font-size:20px;">Join the<br><em>community.</em></div>
+            <div class="feed-body">500+ STRONG Humans in Kelowna. Edmonton is next. Register for first access.</div>
+            <div class="cta">Register Interest &rarr;</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 1:1 -- Community</div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="strong-divider">
+
+  <!-- FEED 4:5 x3 -->
+  <div class="strong-section">
+    <div class="strong-section-eyebrow">4:5 Portrait</div>
+    <div class="strong-section-title">Stats + <em>Proof</em></div>
+    <div class="strong-section-sub">Numbers that build credibility. Photos that create FOMO. The combination that converts.</div>
+    <div class="strong-ad-showcase">
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed portrait">
+          <img class="bg" src="mockups/img/class-elevated.jpg" alt="" style="object-position:center 30%;">
+          <div class="overlay overlay-heavy"></div>
+          <div class="content">
+            <div class="label">Now in Alberta</div>
+            <div class="feed-headline">From Kelowna<br>to <em>Edmonton.</em></div>
+            <div class="stat-grid">
+              <div class="stat-card"><div class="stat-num">500+</div><div class="stat-label">Members</div></div>
+              <div class="stat-card"><div class="stat-num">5.0&#9733;</div><div class="stat-label">362 Reviews</div></div>
+              <div class="stat-card"><div class="stat-num">100+</div><div class="stat-label">Studios Global</div></div>
+            </div>
+            <div class="feed-body">The class format that built 100+ studios worldwide. Row. Ride. Reform.</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 4:5 -- Stats Overlay</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed portrait">
+          <img class="bg" src="mockups/img/rowformer-action-straps.jpg" alt="" style="object-position:center 20%;">
+          <div class="overlay overlay-heavy"></div>
+          <div class="content">
+            <div class="label">What is STRONG?</div>
+            <div class="feed-headline"><em>Row. Ride.</em><br>Reform.</div>
+            <div class="feed-body" style="max-width:240px;">Choose your cardio. Row on the Rowformer. Ride on the Bikeformer. Reform on the reformer. 45 minutes. Low impact. High intensity.</div>
+            <div style="position:absolute;bottom:32px;left:32px;"><div class="cta">Register Interest &rarr;</div></div>
+          </div>
+        </div>
+        <div class="type-label">Feed 4:5 -- Instructor Action</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed portrait">
+          <img class="bg" src="mockups/img/branded-top-closeup.jpg" alt="" style="object-position:center 25%;">
+          <div class="overlay overlay-bottom"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div style="font-size:16px;margin-bottom:8px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div style="font-size:15px;color:#fff;font-weight:400;line-height:1.5;font-style:italic;max-width:240px;margin-bottom:12px;text-shadow:0 2px 10px rgba(0,0,0,0.5);">"I was sceptical about another boutique studio. Two months in, I'm here five times a week."</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:20px;">-- Kelowna Google Review</div>
+            <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#97caeb;margin-bottom:16px;">Edmonton. July 2026.</div>
+            <div class="cta">Register Interest &rarr;</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 4:5 -- Lifestyle Testimonial</div>
+      </div>
+
+    </div>
+
+    <div class="strong-notes">
+      <h4>Creative Notes -- Direction 3</h4>
+      <p><strong>Numbers verified:</strong> 500+ members and 5.0 Google rating (362 reviews) confirmed as of March 2026. Testimonial copy is placeholder -- use real Google reviews from Kelowna with permission.<br><br>
+      <strong>Recommended mix:</strong> Run all three directions simultaneously. Direction 1 (Announcement) as the lead. Direction 2 (Buildout) as ongoing organic + boosted. Direction 3 (Social Proof) as retargeting for people who've already seen the announcement.<br><br>
+      <strong>A/B tests:</strong> Class-through-window vs plank-with-instructor for engagement. Stats overlay vs testimonial for conversion. Branded lifestyle shot vs class action for retargeting.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 3: LANDING PAGE
+     ════════════════════════════════════════ -->
+<div id="landing-page" class="page strong-page lp-full">
+
+  <!-- HERO -->
+  <section class="lp-hero-section">
+    <img class="lp-hero-bg" src="mockups/img/mirror-reflection.jpg" alt="" style="object-position:center center;">
+    <div class="lp-hero-overlay"></div>
+    <div class="lp-hero-content">
+      <img class="lp-hero-logo" src="strong-logo-white.png" alt="STRONG Pilates">
+      <div class="lp-hero-badge">Coming July 2026 - Edmonton, Alberta</div>
+      <h1>Row. Ride.<br><span>Reform.</span></h1>
+      <div class="lp-hero-sub">Pilates inspired. Cardio infused. 45 minutes on our exclusive Rowformer -- half reformer, half rower. The format that built 100+ studios worldwide is coming to Edmonton.</div>
+
+      <div class="form-box">
+        <div class="form-title">Register Your Interest</div>
+        <div class="form-row half">
+          <div class="form-input">First Name</div>
+          <div class="form-input">Last Name</div>
+        </div>
+        <div class="form-row">
+          <div class="form-input">Email Address</div>
+        </div>
+        <div class="form-row half">
+          <div class="form-input">Phone Number</div>
+          <div class="form-input">Suburb</div>
+        </div>
+        <button class="form-submit">Count Me In</button>
+        <div class="form-trust">No commitment required - Be first to hear about exclusive opening offers</div>
+      </div>
+    </div>
+    <div class="scroll-cue"><span>Scroll</span><div class="arrow"></div></div>
+  </section>
+
+  <!-- WHAT IS STRONG -->
+  <section class="what-section">
+    <div class="section-center">
+      <div class="section-eyebrow">What is STRONG</div>
+      <div class="section-heading">Not your typical<br>pilates <span>class.</span></div>
+      <div class="format-grid">
+        <div class="format-card">
+          <img src="mockups/img/instructor-straps-behind.jpg" alt="ROW" style="object-position:center 20%;">
+          <div class="format-name">ROW</div>
+          <div class="format-machine">Rowformer</div>
+          <div class="format-desc">Half reformer, half Concept 2 rower. Pilates strength meets rowing cardio in one machine. Exclusive to STRONG.</div>
+        </div>
+        <div class="format-card">
+          <img src="mockups/img/class-plank.jpg" alt="RIDE" style="object-position:center center;">
+          <div class="format-name">RIDE</div>
+          <div class="format-machine">Bikeformer</div>
+          <div class="format-desc">Half reformer, half stationary bike. Choose cycling as your cardio. Same intensity, different burn.</div>
+        </div>
+        <div class="format-card">
+          <img src="mockups/img/feet-straps-action.jpg" alt="REFORM" style="object-position:center center;">
+          <div class="format-name">REFORM</div>
+          <div class="format-machine">Reformer</div>
+          <div class="format-desc">Pure pilates flow. Dynamic movements for mobility, balance, and strength. No cardio -- all control.</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:32px;">
+        <div style="font-size:12px;color:rgba(255,255,255,0.35);line-height:1.7;max-width:520px;margin:0 auto;">You choose the cardio, we choose the beats. 45 minutes of low-impact, high-intensity training that builds lean muscle and core stability with a huge cardio burn.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FULL BLEED IMAGE BREAK -->
+  <section class="image-break">
+    <img src="mockups/img/class-wide-light.jpg" alt="" style="object-position:center 35%;">
+    <div class="ib-overlay"></div>
+    <div class="ib-content">
+      <div>
+        <div class="quote">"I've tried every studio in Kelowna. <span>Nothing comes close to STRONG.</span>"</div>
+        <div class="attribution">-- Real Google Review - STRONG Pilates Kelowna - 5.0&#9733; (362 reviews)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="stats-bar">
+    <div class="stat-item"><div class="stat-item-num">100+</div><div class="stat-item-label">Studios Worldwide</div></div>
+    <div class="stat-item"><div class="stat-item-num">37K+</div><div class="stat-item-label">STRONG Humans</div></div>
+    <div class="stat-item"><div class="stat-item-num">14</div><div class="stat-item-label">Countries</div></div>
+    <div class="stat-item"><div class="stat-item-num">45</div><div class="stat-item-label">Minutes Per Class</div></div>
+  </section>
+
+  <!-- VALUE PROPS -->
+  <section class="value-section">
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="value-title">Low-Impact. High-Intensity.</div>
+        <div class="value-desc">Get the core stability from pilates and the exercise high from HIIT -- without the joint damage. Built for progression, not punishment.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-title">Exclusive Equipment.</div>
+        <div class="value-desc">The Rowformer and Bikeformer are exclusive to STRONG. You won't find these machines anywhere else in Edmonton -- or Alberta.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-title">Early Access Perks.</div>
+        <div class="value-desc">Founding member pricing. Priority class booking. Exclusive launch offers. Register now -- these won't last.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-title">From Kelowna to Edmonton.</div>
+        <div class="value-desc">Founded by Marta & Riley, owners of STRONG Pilates Kelowna. 500+ members. 5.0&#9733; on Google with 362 reviews. Now bringing it to Alberta.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OWNERS -->
+  <section class="owners-section">
+    <img class="owners-bg" src="mockups/img/studio-wide-equipment.jpg" alt="">
+    <div class="owners-content">
+      <div class="owners-text">
+        <div class="section-eyebrow">Meet Your Owners</div>
+        <h3>Built <span>Kelowna.</span><br>Now building<br>Edmonton.</h3>
+        <p>Marta and Riley opened STRONG Pilates Kelowna and grew it to 500+ members with a perfect 5.0-star Google rating.</p>
+        <p>They're not operators who bought a franchise and handed it off. They'll be in the studio. They'll know your name.</p>
+        <p style="color:rgba(255,255,255,0.4);font-size:12px;margin-top:20px;">Edmonton is where they're putting everything they've learned to work.</p>
+      </div>
+      <div class="owners-img">
+        <img src="mockups/img/team-exterior-logo.jpg" alt="Marta & Riley" style="object-position:center 15%;">
+      </div>
+    </div>
+  </section>
+
+  <!-- AMENITIES -->
+  <section class="amenities-section">
+    <div class="section-center" style="max-width:960px;margin:0 auto;">
+      <div class="section-eyebrow">The Experience</div>
+      <div class="section-heading" style="margin-bottom:40px;">More than a <span>workout.</span></div>
+      <div class="amenities-grid">
+        <div class="amenity-card">
+          <img src="mockups/img/vanity-room.jpg" alt="Vanity Room" style="object-position:center 30%;">
+          <div class="amenity-label">Premium Amenities</div>
+        </div>
+        <div class="amenity-card">
+          <img src="mockups/img/merch-rack.jpg" alt="STRONG Merch" style="object-position:center center;">
+          <div class="amenity-label">Exclusive Merch</div>
+        </div>
+        <div class="amenity-card">
+          <img src="mockups/img/down-for-more-neon.jpg" alt="Studio Details" style="object-position:center 25%;">
+          <div class="amenity-label">Studio Culture</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section class="bottom-cta">
+    <img class="bottom-cta-bg" src="mockups/img/logo-wall-class.jpg" alt="">
+    <div class="cta-content">
+      <h2>Down for <span>more?</span></h2>
+      <p>Register now. Be first through the doors July 2026.</p>
+      <div class="cta-btn">Count Me In</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="lp-footer">
+    <img src="strong-logo-white.png" alt="STRONG Pilates">
+    <span>Row. Ride. Reform. - Edmonton - July 2026</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 4: THANK YOU PAGE
+     ════════════════════════════════════════ -->
+<div id="thank-you" class="page strong-page ty-full">
+
+  <!-- HERO -->
+  <section class="ty-hero">
+    <img class="ty-hero-bg" src="mockups/img/studio-interior.jpg" alt="" style="object-position:center 35%;">
+    <div class="ty-hero-overlay"></div>
+    <div class="ty-hero-content">
+      <img class="ty-hero-logo" src="strong-logo-white.png" alt="STRONG Pilates">
+
+      <div class="check-circle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#97caeb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+
+      <h1>You're <span>in.</span></h1>
+      <div class="ty-hero-sub">Welcome to the STRONG Pilates Edmonton pre-sale list. You'll be the <strong>first to know</strong> when our intro offer drops -- before anyone else.</div>
+
+      <div class="confirm-box">
+        <div class="confirm-title">What happens now</div>
+
+        <div class="confirm-item">
+          <div class="confirm-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#97caeb" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div class="confirm-text"><strong>Check your phone.</strong> You'll get a welcome SMS from Marta & Riley in the next few minutes.</div>
+        </div>
+
+        <div class="confirm-item">
+          <div class="confirm-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#97caeb" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="confirm-text"><strong>Check your inbox.</strong> A welcome email is on its way with the full STRONG story -- who we are, what we're building, and why Edmonton.</div>
+        </div>
+
+        <div class="confirm-item">
+          <div class="confirm-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#97caeb" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="confirm-text"><strong>Over the next few weeks,</strong> you'll get studio updates, buildout progress, and behind-the-scenes content as we bring STRONG to Edmonton.</div>
+        </div>
+
+        <div class="confirm-item">
+          <div class="confirm-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#97caeb" stroke-width="2" stroke-linecap="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="confirm-text"><strong>When the intro offer drops,</strong> you'll hear about it first. Before social. Before anyone else. That's the whole point of being early.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT HAPPENS NEXT -->
+  <section class="next-section">
+    <div class="next-center">
+      <div class="section-eyebrow" style="font-size:9px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:#97caeb;text-align:center;margin-bottom:14px;">Your Timeline</div>
+      <div class="section-heading" style="font-size:32px;font-weight:900;text-transform:uppercase;line-height:1.1;text-align:center;margin-bottom:48px;color:#fff;font-family:'Montserrat',sans-serif;">What happens <span>next.</span></div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot active-dot"></div>
+          <div class="timeline-when">Right Now</div>
+          <div class="timeline-what">You're on the list</div>
+          <div class="timeline-desc">Your spot is secured. Welcome SMS and email on the way.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-when">Coming Weeks</div>
+          <div class="timeline-what">Studio updates</div>
+          <div class="timeline-desc">Buildout progress, owner stories, equipment reveals, and community content -- straight to your inbox.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-when">Before Opening</div>
+          <div class="timeline-what">Exclusive intro offer</div>
+          <div class="timeline-desc">As a pre-sale member, you'll get first access to our best-ever opening offer. Limited spots.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-when">July 2026</div>
+          <div class="timeline-what">Doors open</div>
+          <div class="timeline-desc">First through the doors. First on the Rowformer. First to experience STRONG Edmonton.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHARE -->
+  <section class="share-section">
+    <h3>Know someone who'd <span>love this?</span></h3>
+    <p>No referral codes. No "unlock a bonus tier." Just -- the best communities start with people who know people.</p>
+    <div class="share-link-box">
+      <div class="share-url">strongpilates.ca/edmonton</div>
+      <div class="share-copy">Copy Link</div>
+    </div>
+  </section>
+
+  <!-- SNEAK PEEK -->
+  <section class="peek-section">
+    <div style="max-width:960px;margin:0 auto;">
+      <div class="section-eyebrow" style="font-size:9px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:#97caeb;text-align:center;margin-bottom:14px;">Sneak Peek</div>
+      <div class="section-heading" style="font-size:32px;font-weight:900;text-transform:uppercase;line-height:1.1;text-align:center;margin-bottom:48px;color:#fff;font-family:'Montserrat',sans-serif;">What you're <span>signing up</span> for.</div>
+      <div class="peek-grid">
+        <div class="peek-card">
+          <img src="mockups/img/class-plank-instructor.jpg" alt="The Workout" style="object-position:center center;">
+          <div class="peek-label">
+            <div class="label-title">The Workout</div>
+            <div class="label-sub">45 min. Low impact. High intensity. Rowformer, Bikeformer, or Reformer -- you choose.</div>
+          </div>
+        </div>
+        <div class="peek-card">
+          <img src="mockups/img/vanity-room.jpg" alt="The Space" style="object-position:center 30%;">
+          <div class="peek-label">
+            <div class="label-title">The Space</div>
+            <div class="label-sub">Dyson styling. LED mirrors. Premium everything. This is not your average studio.</div>
+          </div>
+        </div>
+        <div class="peek-card">
+          <img src="mockups/img/group-class-paityn.jpg" alt="The Community" style="object-position:center 25%;">
+          <div class="peek-label">
+            <div class="label-title">The Community</div>
+            <div class="label-sub">500+ STRONG Humans in Kelowna. Edmonton is next. You're already part of it.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <section class="social-section">
+    <p>Follow the Edmonton build on social</p>
+    <div class="social-links">
+      <div class="social-link">Instagram - @strongpilatesedmonton</div>
+      <div class="social-link">Facebook - STRONG Pilates Edmonton</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="ty-footer">
+    <img src="strong-logo-white.png" alt="STRONG Pilates">
+    <span>Row. Ride. Reform. - Edmonton - July 2026</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 5: AUTOMATIONS
+     ════════════════════════════════════════ -->
 <div id="automations" class="page">
 
   <div class="hero">
-    <div class="hero-eyebrow">Phase 1 · Automations</div>
+    <div class="hero-eyebrow">Phase 1 - Automations</div>
     <h1>Emails & <em>SMS</em></h1>
-    <div class="hero-sub">Every touchpoint from registration through Phase 1 — full copy previews for every email and SMS.</div>
+    <div class="hero-sub">Every touchpoint from registration through Phase 1 -- full copy previews for every email and SMS.</div>
     <div class="hero-line"></div>
   </div>
 
   <!-- FLOW DIAGRAM -->
   <div class="section">
     <div class="eyebrow">Automation Flow</div>
-    <div class="section-title">Registration → <em>Nurture → Phase 2 Handoff</em></div>
+    <div class="section-title">Registration &rarr; <em>Nurture &rarr; Phase 2 Handoff</em></div>
     <div class="section-sub">All built in Grow (GHL). 11 touchpoints across 7 weeks. Full copy previews below.</div>
 
     <!-- Visual flow -->
@@ -1212,7 +2552,7 @@ body {
   <!-- SMS: INSTANT -->
   <div class="section">
     <div class="eyebrow">Trigger: Instant</div>
-    <div class="section-title"><em>SMS</em> — Registration Confirmation</div>
+    <div class="section-title"><em>SMS</em> -- Registration Confirmation</div>
     <div class="section-sub">Sent immediately when a lead submits the form.</div>
 
     <div class="sms-mockup">
@@ -1220,7 +2560,7 @@ body {
         <div class="sms-screen">
           <div class="sms-sender">STRONG Pilates Edmonton</div>
           <div class="sms-bubble">
-            <p>Hey {{first_name}} — it's Marta & Riley from STRONG Pilates Edmonton. You're on the list. We'll keep you posted as the studio comes together. Talk soon.</p>
+            <p>Hey {{first_name}} -- it's Marta & Riley from STRONG Pilates Edmonton. You're on the list. We'll keep you posted as the studio comes together. Talk soon.</p>
           </div>
           <div class="sms-time">Just now</div>
         </div>
@@ -1233,26 +2573,26 @@ body {
   <!-- EMAIL 1 -->
   <div class="section">
     <div class="eyebrow">Trigger: 1 Hour After Registration</div>
-    <div class="section-title"><em>Email 1</em> — Welcome to STRONG</div>
+    <div class="section-title"><em>Email 1</em> -- Welcome to STRONG</div>
     <div class="section-sub">Introduces STRONG, explains the Rowformer, sets expectations.</div>
 
     <div class="email-preview">
       <div class="email-header"><img src="strong-logo-white.png" alt="STRONG Pilates" style="height:20px;"><div class="email-logo-sub">Edmonton</div></div>
-      <div class="email-subject-bar"><div class="email-subject-label">Subject</div><div class="email-subject-text">You're in — here's what happens next</div></div>
+      <div class="email-subject-bar"><div class="email-subject-label">Subject</div><div class="email-subject-text">You're in -- here's what happens next</div></div>
       <div class="email-body">
         <p>Hey {{first_name}},</p>
-        <p>You just signed up for STRONG Pilates Edmonton, and we wanted to say — genuinely — thanks for being early.</p>
+        <p>You just signed up for STRONG Pilates Edmonton, and we wanted to say -- genuinely -- thanks for being early.</p>
         <p>We're not open yet. The studio is still being built. But the fact that you're here before the doors are even on tells us something about you.</p>
         <p>So here's what to expect from us over the coming weeks:</p>
-        <p><strong>Studio updates</strong> — real photos, real progress, no stock images of someone pretending to sweat.</p>
-        <p><strong>The backstory</strong> — who we are, why we're bringing STRONG to Edmonton, and what makes this different from every other fitness studio in the city.</p>
-        <p><strong>First access</strong> — when our intro offer goes live, you'll know before anyone else.</p>
+        <p><strong>Studio updates</strong> -- real photos, real progress, no stock images of someone pretending to sweat.</p>
+        <p><strong>The backstory</strong> -- who we are, why we're bringing STRONG to Edmonton, and what makes this different from every other fitness studio in the city.</p>
+        <p><strong>First access</strong> -- when our intro offer goes live, you'll know before anyone else.</p>
         <p>That's it. No spam. No daily "HURRY LIMITED TIME" nonsense. Just the good stuff, when there's actually something worth sharing.</p>
         <div class="email-img-placeholder"><span>Studio interior or Rowformer beauty shot</span></div>
         <p>Talk soon,</p>
         <p><strong>Marta & Riley</strong><br><span style="color:#888;font-size:12px;">STRONG Pilates Edmonton</span></p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. · STRONG Pilates Edmonton · July 2026</span></div>
+      <div class="email-footer"><span>Row. Ride. Reform. - STRONG Pilates Edmonton - July 2026</span></div>
     </div>
   </div>
 
@@ -1261,7 +2601,7 @@ body {
   <!-- EMAIL 2 -->
   <div class="section">
     <div class="eyebrow">Trigger: Day 3</div>
-    <div class="section-title"><em>Email 2</em> — Meet the Owners</div>
+    <div class="section-title"><em>Email 2</em> -- Meet the Owners</div>
     <div class="section-sub">Marta & Riley's story. Why Edmonton. Personal connection.</div>
 
     <div class="email-preview">
@@ -1269,19 +2609,19 @@ body {
       <div class="email-subject-bar"><div class="email-subject-label">Subject</div><div class="email-subject-text">The two people building your new studio</div></div>
       <div class="email-body">
         <p>Hey {{first_name}},</p>
-        <p>Quick intro — we're Marta and Riley, and we're the ones behind STRONG Pilates Edmonton.</p>
-        <p>This isn't our first studio. We opened STRONG Kelowna a while back, and it's grown into something we're genuinely proud of — 500+ members, a perfect 5.0 rating from 362 Google reviews, and a community that actually shows up for each other.</p>
+        <p>Quick intro -- we're Marta and Riley, and we're the ones behind STRONG Pilates Edmonton.</p>
+        <p>This isn't our first studio. We opened STRONG Kelowna a while back, and it's grown into something we're genuinely proud of -- 500+ members, a perfect 5.0 rating from 362 Google reviews, and a community that actually shows up for each other.</p>
         <p>But here's the thing that matters more than numbers: we learned what works and what doesn't. What makes people stay. What makes a studio feel like <em>theirs</em> and not just a place they pay to visit.</p>
         <div class="email-img-placeholder">
           <div style="width:60px;height:60px;border-radius:50%;background:#ddd;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;"><span style="font-size:8px;color:#999;">Photo</span></div>
-          <span>Marta & Riley — Owners, STRONG Pilates Kelowna & Edmonton</span>
+          <span>Marta & Riley -- Owners, STRONG Pilates Kelowna & Edmonton</span>
         </div>
         <p>Edmonton is where we're putting all of that to work.</p>
-        <p>We're not operators who bought a franchise and handed it off. We'll be in the studio. We'll know your name. That's not a tagline — it's just how we do things.</p>
+        <p>We're not operators who bought a franchise and handed it off. We'll be in the studio. We'll know your name. That's not a tagline -- it's just how we do things.</p>
         <p>More on what STRONG actually <em>is</em> coming soon. For now, just wanted to say hi properly.</p>
         <p>Marta & Riley</p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. · STRONG Pilates Edmonton · July 2026</span></div>
+      <div class="email-footer"><span>Row. Ride. Reform. - STRONG Pilates Edmonton - July 2026</span></div>
     </div>
   </div>
 
@@ -1290,7 +2630,7 @@ body {
   <!-- EMAIL 3 -->
   <div class="section">
     <div class="eyebrow">Trigger: Day 7</div>
-    <div class="section-title"><em>Email 3</em> — Share With a Friend</div>
+    <div class="section-title"><em>Email 3</em> -- Share With a Friend</div>
     <div class="section-sub">Referral nudge. Simple ask, no gimmicks.</div>
 
     <div class="email-preview">
@@ -1299,17 +2639,17 @@ body {
       <div class="email-body">
         <p>Hey {{first_name}},</p>
         <p>You've been on the Edmonton pre-sale list for about a week now, so we'll keep this short.</p>
-        <p>If you know someone who'd be into STRONG — someone who's been looking for a workout that's actually challenging but won't wreck their joints — would you send them this link?</p>
+        <p>If you know someone who'd be into STRONG -- someone who's been looking for a workout that's actually challenging but won't wreck their joints -- would you send them this link?</p>
         <div class="share-box">
           <div class="share-box-label">Share the link</div>
           <div class="share-box-url">strongpilates.ca/edmonton</div>
           <div class="email-cta-btn">Send to a Friend</div>
         </div>
-        <p>No referral codes. No "unlock a bonus tier." Just — the best communities start with people who know people. And you're already here, which means you probably have good taste in friends too.</p>
+        <p>No referral codes. No "unlock a bonus tier." Just -- the best communities start with people who know people. And you're already here, which means you probably have good taste in friends too.</p>
         <p>Thanks for spreading the word.</p>
         <p>Marta & Riley</p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. · STRONG Pilates Edmonton · July 2026</span></div>
+      <div class="email-footer"><span>Row. Ride. Reform. - STRONG Pilates Edmonton - July 2026</span></div>
     </div>
   </div>
 
@@ -1317,14 +2657,14 @@ body {
 
   <!-- WEEK 1 -->
   <div class="section">
-    <div class="eyebrow">Week 1 · Email + SMS</div>
-    <div class="section-title"><em>Meet the Owners</em> — The Full Story</div>
+    <div class="eyebrow">Week 1 - Email + SMS</div>
+    <div class="section-title"><em>Meet the Owners</em> -- The Full Story</div>
     <div class="section-sub">What they learned from Kelowna. Why Edmonton.</div>
 
     <div class="sms-mockup" style="margin-bottom:32px;">
       <div class="sms-phone"><div class="sms-screen">
         <div class="sms-sender">STRONG Pilates Edmonton</div>
-        <div class="sms-bubble"><p>{{first_name}} — new email from us. The full story behind why we're opening STRONG in Edmonton (and what we learned from our first 500+ members in Kelowna).</p></div>
+        <div class="sms-bubble"><p>{{first_name}} -- new email from us. The full story behind why we're opening STRONG in Edmonton (and what we learned from our first 500+ members in Kelowna).</p></div>
         <div class="sms-time">Week 1</div>
       </div></div>
     </div>
@@ -1338,16 +2678,16 @@ body {
         <p>Most of those plans were wrong.</p>
         <p>Not in a dramatic way. More in a "the things we thought mattered turned out to matter less than the things we didn't plan for" kind of way.</p>
         <p><strong>What we thought would matter most:</strong> the equipment, the programming, the aesthetic.</p>
-        <p><strong>What actually mattered most:</strong> how people felt when they walked in. Whether they felt like they belonged — regardless of their fitness level, their body, or how many times they'd quit a gym before.</p>
-        <p>The Kelowna studio has 500+ members now. 5.0 stars on Google from 362 reviews. But the thing we're proudest of is harder to measure — it's the number of people who told us they'd given up on fitness before they found STRONG.</p>
+        <p><strong>What actually mattered most:</strong> how people felt when they walked in. Whether they felt like they belonged -- regardless of their fitness level, their body, or how many times they'd quit a gym before.</p>
+        <p>The Kelowna studio has 500+ members now. 5.0 stars on Google from 362 reviews. But the thing we're proudest of is harder to measure -- it's the number of people who told us they'd given up on fitness before they found STRONG.</p>
         <p>That's what we're building in Edmonton.</p>
-        <div class="email-img-placeholder"><span>Kelowna studio in action — full class, energy visible</span></div>
-        <p>Not a carbon copy of Kelowna. Something better, because we know more now. We know that the first impression matters more than the hundredth class. We know that "low-impact, high-intensity" isn't just a category — it's the reason people with bad knees and desk-job backs actually stick around.</p>
-        <p>We'll share more about the actual workout soon — the Rowformer, the class formats, all of it. But we wanted to start with the why, because the why is what makes the what make sense.</p>
+        <div class="email-img-placeholder"><span>Kelowna studio in action -- full class, energy visible</span></div>
+        <p>Not a carbon copy of Kelowna. Something better, because we know more now. We know that the first impression matters more than the hundredth class. We know that "low-impact, high-intensity" isn't just a category -- it's the reason people with bad knees and desk-job backs actually stick around.</p>
+        <p>We'll share more about the actual workout soon -- the Rowformer, the class formats, all of it. But we wanted to start with the why, because the why is what makes the what make sense.</p>
         <p>Thanks for being here early.</p>
         <p>Marta & Riley</p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. · STRONG Pilates Edmonton · July 2026</span></div>
+      <div class="email-footer"><span>Row. Ride. Reform. - STRONG Pilates Edmonton - July 2026</span></div>
     </div>
   </div>
 
@@ -1355,7 +2695,7 @@ body {
 
   <!-- WEEK 2 -->
   <div class="section">
-    <div class="eyebrow">Week 2 · Email</div>
+    <div class="eyebrow">Week 2 - Email</div>
     <div class="section-title"><em>What is STRONG?</em></div>
     <div class="section-sub">The Rowformer explained. ROW vs RIDE vs REFORM. Every class type.</div>
 
@@ -1364,22 +2704,22 @@ body {
       <div class="email-subject-bar"><div class="email-subject-label">Subject</div><div class="email-subject-text">Half reformer. Half rower. Entirely the point.</div></div>
       <div class="email-body">
         <p>Hey {{first_name}},</p>
-        <p>Time to talk about the thing that makes STRONG different from every other Pilates studio — and honestly, from every other workout — you've tried.</p>
+        <p>Time to talk about the thing that makes STRONG different from every other Pilates studio -- and honestly, from every other workout -- you've tried.</p>
         <p>It starts with a machine called the <strong>Rowformer</strong>.</p>
-        <p>Picture a Pilates reformer. Now attach a Concept 2 rower to it. That's the Rowformer — half reformer, half rowing machine, fully engineered to do things neither can do alone. It's exclusive to STRONG. You won't find it anywhere else.</p>
-        <p>And then there's the <strong>Bikeformer</strong> — same idea, but with a stationary bike integrated into the reformer. Same exclusivity.</p>
-        <div class="email-img-placeholder"><span>Rowformer close-up — beauty shot, moody lighting</span></div>
+        <p>Picture a Pilates reformer. Now attach a Concept 2 rower to it. That's the Rowformer -- half reformer, half rowing machine, fully engineered to do things neither can do alone. It's exclusive to STRONG. You won't find it anywhere else.</p>
+        <p>And then there's the <strong>Bikeformer</strong> -- same idea, but with a stationary bike integrated into the reformer. Same exclusivity.</p>
+        <div class="email-img-placeholder"><span>Rowformer close-up -- beauty shot, moody lighting</span></div>
         <p><strong>You'll choose from three formats:</strong></p>
-        <p>&#8226; <strong>ROW</strong> — Rowformer-based. Cardio meets resistance in a way that makes 45 minutes feel like 20.<br>&#8226; <strong>RIDE</strong> — Bikeformer-based. Low-impact cycling fused with reformer work.<br>&#8226; <strong>REFORM</strong> — Pure reformer. Classical Pilates principles, STRONG programming.</p>
+        <p>&#8226; <strong>ROW</strong> -- Rowformer-based. Cardio meets resistance in a way that makes 45 minutes feel like 20.<br>&#8226; <strong>RIDE</strong> -- Bikeformer-based. Low-impact cycling fused with reformer work.<br>&#8226; <strong>REFORM</strong> -- Pure reformer. Classical Pilates principles, STRONG programming.</p>
         <p><strong>Class types:</strong></p>
-        <p>&#8226; <strong>STRONG Body</strong> — balanced, full-body, the one most people start with.<br>&#8226; <strong>STRONG Sweat</strong> — cardio-forward. You'll know.<br>&#8226; <strong>STRONG Loaded</strong> — strength-focused. Slower tempos, heavier springs.<br>&#8226; <strong>Pilates Only</strong> — exactly what it sounds like. No rower, no bike. Just reformer.</p>
-        <p>Every class is 45 minutes. Low-impact, high-intensity. Edmonton will have <strong>15 Rowformers</strong> — a full studio, every class.</p>
-        <div class="email-img-placeholder"><span>Action shot — someone mid-ROW class</span></div>
+        <p>&#8226; <strong>STRONG Body</strong> -- balanced, full-body, the one most people start with.<br>&#8226; <strong>STRONG Sweat</strong> -- cardio-forward. You'll know.<br>&#8226; <strong>STRONG Loaded</strong> -- strength-focused. Slower tempos, heavier springs.<br>&#8226; <strong>Pilates Only</strong> -- exactly what it sounds like. No rower, no bike. Just reformer.</p>
+        <p>Every class is 45 minutes. Low-impact, high-intensity. Edmonton will have <strong>15 Rowformers</strong> -- a full studio, every class.</p>
+        <div class="email-img-placeholder"><span>Action shot -- someone mid-ROW class</span></div>
         <p>This format is now in <strong>100+ studios across 14 countries</strong>, with over <strong>37,000 STRONG Humans</strong> worldwide. It started in Melbourne in 2019 and it's grown because the workout speaks for itself.</p>
         <p>You'll get to experience it soon.</p>
         <p>Marta & Riley</p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. Down For More. · STRONG Pilates Edmonton</span></div>
+      <div class="email-footer"><span>Row. Ride. Reform. Down For More. - STRONG Pilates Edmonton</span></div>
     </div>
   </div>
 
@@ -1387,14 +2727,14 @@ body {
 
   <!-- WEEK 3 -->
   <div class="section">
-    <div class="eyebrow">Week 3 · Email + SMS</div>
+    <div class="eyebrow">Week 3 - Email + SMS</div>
     <div class="section-title"><em>Buildout Update</em></div>
     <div class="section-sub">Construction progress. Raw photos. Documentary feel.</div>
 
     <div class="sms-mockup" style="margin-bottom:32px;">
       <div class="sms-phone"><div class="sms-screen">
         <div class="sms-sender">STRONG Pilates Edmonton</div>
-        <div class="sms-bubble"><p>{{first_name}} — walls are going up at STRONG Edmonton. Snuck a few photos for you. Check your inbox.</p></div>
+        <div class="sms-bubble"><p>{{first_name}} -- walls are going up at STRONG Edmonton. Snuck a few photos for you. Check your inbox.</p></div>
         <div class="sms-time">Week 3</div>
       </div></div>
     </div>
@@ -1405,14 +2745,14 @@ body {
       <div class="email-body">
         <p>Hey {{first_name}},</p>
         <p>Quick update from the construction site (a.k.a. your future studio).</p>
-        <div class="email-img-placeholder"><span>Construction progress photo 1 — framing, walls going up</span></div>
-        <p>It doesn't look like much yet. Honestly, it looks like a construction site. But if you squint, you can start to see it — where the Rowformers will go, where the front desk will be, where you'll grab water between sets and pretend you're not out of breath.</p>
-        <div class="email-img-placeholder"><span>Construction progress photo 2 — different angle or detail</span></div>
+        <div class="email-img-placeholder"><span>Construction progress photo 1 -- framing, walls going up</span></div>
+        <p>It doesn't look like much yet. Honestly, it looks like a construction site. But if you squint, you can start to see it -- where the Rowformers will go, where the front desk will be, where you'll grab water between sets and pretend you're not out of breath.</p>
+        <div class="email-img-placeholder"><span>Construction progress photo 2 -- different angle or detail</span></div>
         <p>We're on schedule. The team is doing incredible work, and every week it looks a little less like a warehouse and a little more like a STRONG studio.</p>
-        <p>More updates coming. We'll show you everything — the pretty stages and the messy ones.</p>
+        <p>More updates coming. We'll show you everything -- the pretty stages and the messy ones.</p>
         <p>Marta & Riley</p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. · STRONG Pilates Edmonton · July 2026</span></div>
+      <div class="email-footer"><span>Row. Ride. Reform. - STRONG Pilates Edmonton - July 2026</span></div>
     </div>
   </div>
 
@@ -1420,7 +2760,7 @@ body {
 
   <!-- WEEK 4 -->
   <div class="section">
-    <div class="eyebrow">Week 4 · Email</div>
+    <div class="eyebrow">Week 4 - Email</div>
     <div class="section-title"><em>STRONG Humans Speak</em></div>
     <div class="section-sub">Real Kelowna reviews. Let the members do the talking.</div>
 
@@ -1432,15 +2772,15 @@ body {
         <p>We've told you about the Rowformer. We've told you about the classes. We've told you why we're opening in Edmonton.</p>
         <p>But we're biased. Obviously.</p>
         <p>So here's what actual STRONG Humans from our Kelowna studio have to say:</p>
-        <div class="email-quote">"[PLACEHOLDER — Real quote from Kelowna member. Newcomer/sceptic perspective.]"<br><strong style="font-style:normal;font-size:12px;color:#999;">— [Name], STRONG Kelowna</strong></div>
+        <div class="email-quote">"[PLACEHOLDER -- Real quote from Kelowna member. Newcomer/sceptic perspective.]"<br><strong style="font-style:normal;font-size:12px;color:#999;">-- [Name], STRONG Kelowna</strong></div>
         <div class="email-img-placeholder"><span>Member photo or candid class shot</span></div>
-        <div class="email-quote">"[PLACEHOLDER — Real quote about community, feeling welcome, or low-impact benefit.]"<br><strong style="font-style:normal;font-size:12px;color:#999;">— [Name], STRONG Kelowna</strong></div>
-        <div class="email-quote">"[PLACEHOLDER — Real quote about the addictive quality or something unexpected.]"<br><strong style="font-style:normal;font-size:12px;color:#999;">— [Name], STRONG Kelowna</strong></div>
+        <div class="email-quote">"[PLACEHOLDER -- Real quote about community, feeling welcome, or low-impact benefit.]"<br><strong style="font-style:normal;font-size:12px;color:#999;">-- [Name], STRONG Kelowna</strong></div>
+        <div class="email-quote">"[PLACEHOLDER -- Real quote about the addictive quality or something unexpected.]"<br><strong style="font-style:normal;font-size:12px;color:#999;">-- [Name], STRONG Kelowna</strong></div>
         <p style="background:#fff3cd;padding:12px 16px;font-size:12px;color:#856404;border-left:3px solid #ffc107;">NOTE: Source from real Kelowna Google reviews with permission. Do not fabricate.</p>
         <p>These are real people. Not influencers, not ambassadors. Just people who showed up, tried it, and kept coming back.</p>
         <p>Marta & Riley</p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. · STRONG Pilates Edmonton · July 2026</span></div>
+      <div class="email-footer"><span>Row. Ride. Reform. - STRONG Pilates Edmonton - July 2026</span></div>
     </div>
   </div>
 
@@ -1448,7 +2788,7 @@ body {
 
   <!-- WEEK 5 -->
   <div class="section">
-    <div class="eyebrow">Week 5 · Email</div>
+    <div class="eyebrow">Week 5 - Email</div>
     <div class="section-title"><em>Community</em></div>
     <div class="section-sub">Instructors, partnerships, neighbourhood. The community starts before the doors open.</div>
 
@@ -1459,18 +2799,18 @@ body {
         <p>Hey {{first_name}},</p>
         <p>A studio is equipment and walls and lighting. A community is everything else.</p>
         <p><strong>Your instructors</strong></p>
-        <p>We're assembling the Edmonton team right now, and we're being deliberate about it. Every STRONG instructor goes through a certification program specific to the Rowformer and Bikeformer — this isn't standard Pilates teaching.</p>
-        <p>We'll introduce them properly once the team is locked in. For now, just know — we're not hiring resumes. We're hiring people who make you want to come back.</p>
+        <p>We're assembling the Edmonton team right now, and we're being deliberate about it. Every STRONG instructor goes through a certification program specific to the Rowformer and Bikeformer -- this isn't standard Pilates teaching.</p>
+        <p>We'll introduce them properly once the team is locked in. For now, just know -- we're not hiring resumes. We're hiring people who make you want to come back.</p>
         <div class="email-img-placeholder"><span>Instructor training shot, or Kelowna instructors mid-class</span></div>
         <p><strong>Local partnerships</strong></p>
-        <p>We're in conversations with local businesses in the Edmonton area — coffee shops, wellness brands, active lifestyle companies — to create something that goes beyond the studio walls. Being a STRONG Human comes with perks beyond the workout.</p>
+        <p>We're in conversations with local businesses in the Edmonton area -- coffee shops, wellness brands, active lifestyle companies -- to create something that goes beyond the studio walls. Being a STRONG Human comes with perks beyond the workout.</p>
         <p><strong>The bigger picture</strong></p>
         <p>STRONG now has over 100 studios in 14 countries. 37,000+ STRONG Humans worldwide. But we've never been interested in being big for the sake of being big. Every studio is locally owned. Every community is its own thing.</p>
         <p>Edmonton's will be yours.</p>
         <p>More soon.</p>
         <p>Marta & Riley</p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. Down For More. · STRONG Pilates Edmonton</span></div>
+      <div class="email-footer"><span>Row. Ride. Reform. Down For More. - STRONG Pilates Edmonton</span></div>
     </div>
   </div>
 
@@ -1478,14 +2818,14 @@ body {
 
   <!-- WEEK 6 -->
   <div class="section">
-    <div class="eyebrow">Week 6 · Email + SMS</div>
-    <div class="section-title"><em>Buildout Update #2</em> — The Rowformers Are In</div>
+    <div class="eyebrow">Week 6 - Email + SMS</div>
+    <div class="section-title"><em>Buildout Update #2</em> -- The Rowformers Are In</div>
     <div class="section-sub">The money shot. Equipment installed. It looks like a studio now.</div>
 
     <div class="sms-mockup" style="margin-bottom:32px;">
       <div class="sms-phone"><div class="sms-screen">
         <div class="sms-sender">STRONG Pilates Edmonton</div>
-        <div class="sms-bubble"><p>{{first_name}} — the Rowformers are in. Your studio just got very real. Photos in your inbox.</p></div>
+        <div class="sms-bubble"><p>{{first_name}} -- the Rowformers are in. Your studio just got very real. Photos in your inbox.</p></div>
         <div class="sms-time">Week 6</div>
       </div></div>
     </div>
@@ -1497,15 +2837,15 @@ body {
         <p>Hey {{first_name}},</p>
         <p>Remember when we showed you a construction site and asked you to squint?</p>
         <p>You can stop squinting.</p>
-        <div class="email-img-placeholder"><span>Hero shot — Rowformers installed. The "wow" moment.</span></div>
-        <p>The equipment is in. Fifteen Rowformers, lined up and ready. The flooring is done. The lighting is set. It's starting to look — and feel — like a STRONG studio.</p>
-        <div class="email-img-placeholder"><span>Detail shot — close-up of Rowformer, lighting, aesthetic</span></div>
+        <div class="email-img-placeholder"><span>Hero shot -- Rowformers installed. The "wow" moment.</span></div>
+        <p>The equipment is in. Fifteen Rowformers, lined up and ready. The flooring is done. The lighting is set. It's starting to look -- and feel -- like a STRONG studio.</p>
+        <div class="email-img-placeholder"><span>Detail shot -- close-up of Rowformer, lighting, aesthetic</span></div>
         <p>There's still work to do. Final touches, tech setup, instructor rehearsals, the kind of details you won't notice but would definitely notice if we skipped them. We're in the stage where it goes from "almost done" to "done right."</p>
         <p>We're getting close. And the next email from us is going to be one you'll want to open fast.</p>
         <p>Stay tuned.</p>
         <p>Marta & Riley</p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. · STRONG Pilates Edmonton · July 2026</span></div>
+      <div class="email-footer"><span>Row. Ride. Reform. - STRONG Pilates Edmonton - July 2026</span></div>
     </div>
   </div>
 
@@ -1513,14 +2853,14 @@ body {
 
   <!-- WEEK 7 -->
   <div class="section">
-    <div class="eyebrow">Week 7 · Email + SMS</div>
-    <div class="section-title"><em>Phase 2 Teaser</em> — Something Is Coming</div>
+    <div class="eyebrow">Week 7 - Email + SMS</div>
+    <div class="section-title"><em>Phase 2 Teaser</em> -- Something Is Coming</div>
     <div class="section-sub">The bridge to Phase 2. Teases the intro offer. Maximum anticipation.</div>
 
     <div class="sms-mockup" style="margin-bottom:32px;">
       <div class="sms-phone"><div class="sms-screen">
         <div class="sms-sender">STRONG Pilates Edmonton</div>
-        <div class="sms-bubble"><p>{{first_name}} — something's coming for STRONG Edmonton pre-sale members. Check your inbox this week. You'll want to be ready.</p></div>
+        <div class="sms-bubble"><p>{{first_name}} -- something's coming for STRONG Edmonton pre-sale members. Check your inbox this week. You'll want to be ready.</p></div>
         <div class="sms-time">Week 7</div>
       </div></div>
     </div>
@@ -1533,34 +2873,111 @@ body {
         <p>You've been following along since before there were walls.</p>
         <p>You've seen the construction updates, met us, learned about the Rowformer, and heard from real STRONG Humans. You've been here since this was just a plan and a mailing list.</p>
         <p>That matters to us. And it's about to matter to you.</p>
-        <p>We're putting together an introductory offer for our pre-sale community — the people who believed in this before the doors were open. It's designed to reward exactly that.</p>
+        <p>We're putting together an introductory offer for our pre-sale community -- the people who believed in this before the doors were open. It's designed to reward exactly that.</p>
         <p>Here's what we can tell you:</p>
-        <p>&#8226; It will be <strong>exclusive to the pre-sale list</strong> (that's you).<br>&#8226; It will be the <strong>best offer we'll ever run</strong> for Edmonton.<br>&#8226; It will have a <strong>limited window</strong> — once it's gone, it's gone.</p>
+        <p>&#8226; It will be <strong>exclusive to the pre-sale list</strong> (that's you).<br>&#8226; It will be the <strong>best offer we'll ever run</strong> for Edmonton.<br>&#8226; It will have a <strong>limited window</strong> -- once it's gone, it's gone.</p>
         <p>When it drops, you'll get an email and an SMS at the same time. You won't need to go searching for it.</p>
-        <p>Between now and then — if you have friends who've been on the fence, this is the moment to nudge them. Once the offer goes live, the pre-sale list closes.</p>
+        <p>Between now and then -- if you have friends who've been on the fence, this is the moment to nudge them. Once the offer goes live, the pre-sale list closes.</p>
         <div style="text-align:center;margin:24px 0;">
           <div class="email-cta-btn">Share the Pre-Sale Link</div>
         </div>
         <p>Almost time.</p>
         <p>Marta & Riley</p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. Down For More. · STRONG Pilates Edmonton</span></div>
+      <div class="email-footer"><span>Row. Ride. Reform. Down For More. - STRONG Pilates Edmonton</span></div>
     </div>
 
     <div class="callout">
-      <strong>This is the bridge to Phase 2.</strong> The next message they receive is the 5-class intro offer. By this point they've had 7 weeks of warming — they know what STRONG is, they've seen the buildout, they've met Marta & Riley, they've read reviews. They're ready to buy.
+      <strong>This is the bridge to Phase 2.</strong> The next message they receive is the 5-class intro offer. By this point they've had 7 weeks of warming -- they know what STRONG is, they've seen the buildout, they've met Marta & Riley, they've read reviews. They're ready to buy.
     </div>
   </div>
 
 </div>
 
+</main>
+</div>
+
 <script>
-function switchTab(tabId) {
+// Page switching
+function showPage(pageId, clickedEl) {
+  // Hide all pages
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById(tabId).classList.add('active');
-  event.target.closest('.tab-btn').classList.add('active');
+  // Show target page
+  document.getElementById(pageId).classList.add('active');
+
+  // Clear all active states
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.nav-sub-item').forEach(n => n.classList.remove('active'));
+
+  // Set active state
+  if (clickedEl) {
+    clickedEl.classList.add('active');
+  }
+
+  // If it's an ad mockup sub-page, also highlight the parent
+  if (pageId.startsWith('ad-')) {
+    document.getElementById('adMockupsToggle').classList.add('active');
+    // Make sure sub-items are open
+    document.getElementById('adMockupsSub').classList.add('open');
+    document.getElementById('adMockupsArrow').classList.add('open');
+  }
+
+  // Scroll to top
   window.scrollTo(0, 0);
+
+  // Close sidebar on mobile
+  closeSidebar();
+}
+
+// Toggle ad mockups sub-navigation
+function toggleAdMockups(el) {
+  var sub = document.getElementById('adMockupsSub');
+  var arrow = document.getElementById('adMockupsArrow');
+  var isOpen = sub.classList.contains('open');
+
+  if (isOpen) {
+    sub.classList.remove('open');
+    arrow.classList.remove('open');
+  } else {
+    sub.classList.add('open');
+    arrow.classList.add('open');
+    // If no sub-item is active, show announcement by default
+    var hasActiveSub = sub.querySelector('.nav-sub-item.active');
+    if (!hasActiveSub) {
+      showPage('ad-announcement', sub.querySelector('.nav-sub-item'));
+    }
+  }
+}
+
+// Mobile sidebar toggle
+function toggleSidebar() {
+  var sidebar = document.getElementById('sidebar');
+  var overlay = document.getElementById('sidebarOverlay');
+  var hamburger = document.getElementById('hamburger');
+
+  sidebar.classList.toggle('open');
+  hamburger.classList.toggle('open');
+
+  if (sidebar.classList.contains('open')) {
+    overlay.classList.add('active');
+    overlay.classList.add('visible');
+  } else {
+    overlay.classList.remove('visible');
+    setTimeout(function() { overlay.classList.remove('active'); }, 300);
+  }
+}
+
+function closeSidebar() {
+  if (window.innerWidth <= 768) {
+    var sidebar = document.getElementById('sidebar');
+    var overlay = document.getElementById('sidebarOverlay');
+    var hamburger = document.getElementById('hamburger');
+
+    sidebar.classList.remove('open');
+    hamburger.classList.remove('open');
+    overlay.classList.remove('visible');
+    setTimeout(function() { overlay.classList.remove('active'); }, 300);
+  }
 }
 </script>
 
