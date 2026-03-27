@@ -54,143 +54,45 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* SIDEBAR LAYOUT */
-.app-layout { display: flex; min-height: 100vh; }
-
-.sidebar {
-  width: 260px; background: var(--ink); position: fixed; top: 0; left: 0; bottom: 0;
-  z-index: 1000; display: flex; flex-direction: column; border-right: 1px solid var(--charcoal);
-  overflow-y: auto;
+/* TOP BAR */
+.top-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: var(--ink); border-bottom: 1px solid var(--charcoal);
 }
-.sidebar-brand { padding: 28px 24px 24px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.top-bar-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 40px;
+  display: flex; align-items: center; justify-content: space-between; height: 56px;
+}
+.brand { display: flex; align-items: center; gap: 14px; }
 .brand-logo {
   font-family: var(--font-heading); font-size: 13px;
-  letter-spacing: 0.1em; color: var(--cream); font-weight: 500; margin-bottom: 6px;
+  letter-spacing: 0.1em; color: var(--cream); font-weight: 500;
 }
+.brand-divider { width: 1px; height: 18px; background: var(--neutral-700); }
 .brand-context {
   font-family: var(--font-body); font-size: 10px; color: var(--stone);
   letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500;
 }
-
-.sidebar-nav { padding: 8px 0; flex: 1; overflow-y: auto; }
-.phase-header {
-  font-family: var(--font-body); font-size: 9px; font-weight: 700;
-  letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-dark);
-  padding: 20px 24px 8px; margin-top: 4px;
-}
-.phase-header:first-child { margin-top: 0; }
-.phase-header.coming-soon { color: var(--neutral-600); }
-.phase-header .phase-badge {
-  display: inline-block; font-size: 8px; letter-spacing: 0.15em;
-  color: var(--neutral-600); background: rgba(255,255,255,0.04);
-  padding: 2px 8px; margin-left: 8px; border: 1px solid rgba(255,255,255,0.06);
-  vertical-align: middle;
-}
+.tab-nav { display: flex; gap: 0; }
 .tab-btn {
-  display: flex; align-items: center; width: 100%;
   background: none; border: none; color: var(--neutral-500);
   font-family: var(--font-body); font-size: 11px; font-weight: 500;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 14px 24px; cursor: pointer; transition: all 0.3s ease; position: relative;
-  text-align: left;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 18px 20px; cursor: pointer; transition: all 0.3s ease; position: relative;
 }
-.tab-btn:hover { color: var(--neutral-300); background: rgba(255,255,255,0.02); }
-.tab-btn.active { color: var(--cream); background: rgba(255,255,255,0.04); }
-.tab-btn.active::before {
-  content: ''; position: absolute; top: 8px; bottom: 8px; left: 0;
-  width: 2px; background: var(--gold);
+.tab-btn:hover { color: var(--neutral-300); }
+.tab-btn.active { color: var(--cream); }
+.tab-btn.active::after {
+  content: ''; position: absolute; bottom: 0; left: 20px; right: 20px;
+  height: 2px; background: var(--gold);
 }
 .tab-btn .tab-num {
-  font-size: 9px; color: var(--neutral-600); margin-right: 10px; font-weight: 600;
-  min-width: 16px;
+  font-size: 9px; color: var(--neutral-600); margin-right: 6px; font-weight: 600;
 }
 .tab-btn.active .tab-num { color: var(--gold); }
 
-/* Sub-items for expandable sections */
-.tab-sub-items { display: none; }
-.tab-sub-items.open { display: block; }
-.tab-sub-btn {
-  display: block; width: 100%; background: none; border: none;
-  color: var(--neutral-500); font-family: var(--font-body); font-size: 10px;
-  font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 10px 24px 10px 50px; cursor: pointer; text-align: left;
-  transition: all 0.2s;
-}
-.tab-sub-btn:hover { color: var(--neutral-300); }
-.tab-sub-btn.active { color: var(--cream); }
-.tab-sub-btn.active::before {
-  content: ''; position: absolute; top: 4px; bottom: 4px; left: 0;
-  width: 2px; background: var(--strong-blue);
-}
-.tab-sub-btn { position: relative; }
-
-/* STRONG-branded tab accent */
-.tab-btn.strong-tab.active::before { background: var(--strong-blue); }
-.tab-btn.strong-tab.active .tab-num { color: var(--strong-blue); }
-
-.tab-expand {
-  margin-left: auto; font-size: 8px; transition: transform 0.2s;
-  color: var(--neutral-600);
-}
-.tab-expand.open { transform: rotate(90deg); }
-
-.sidebar-footer {
-  padding: 16px 24px; border-top: 1px solid rgba(255,255,255,0.06);
-  font-family: var(--font-body); font-size: 9px; color: var(--neutral-600);
-  line-height: 1.6;
-}
-
-.main-content { margin-left: 260px; flex: 1; min-width: 0; }
-
-/* MOBILE: hamburger + overlay sidebar */
-.hamburger {
-  display: none; position: fixed; top: 12px; left: 12px; z-index: 1100;
-  background: var(--ink); border: 1px solid var(--charcoal); color: var(--cream);
-  width: 44px; height: 44px; cursor: pointer; font-size: 20px;
-  align-items: center; justify-content: center; border-radius: 4px;
-}
-.sidebar-backdrop {
-  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.6); z-index: 999;
-}
-@media (max-width: 900px) {
-  .hamburger { display: flex; }
-  .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; z-index: 1001; }
-  .sidebar.open { transform: translateX(0); }
-  .sidebar-backdrop.open { display: block; }
-  .main-content { margin-left: 0; }
-  /* Add top padding for hamburger on mobile */
-  .page { padding-top: 56px; }
-  .page.strong-page { padding-top: 0; }
-}
-@media (max-width: 600px) {
-  /* Kaizen-branded pages */
-  .hero { padding: 60px 20px 48px; }
-  .hero h1 { font-size: 32px; }
-  .section { padding: 36px 20px; }
-  .section-title { font-size: 24px; }
-  .urgency-banner { padding: 12px 16px; font-size: 11px; }
-  .divider { margin: 0 20px; }
-  /* Phase cards */
-  .timeline-grid { grid-template-columns: 1fr !important; }
-  .strategy-grid { grid-template-columns: 1fr !important; }
-  .week-grid { grid-template-columns: repeat(3, 1fr) !important; font-size: 10px; }
-  /* Ad template cards */
-  .ad-showcase { display: flex !important; flex-direction: column; align-items: center; max-width: 100%; }
-  .ad-mockup { width: 100%; max-width: 320px; }
-  .ad-story { width: 100%; max-width: 280px; margin: 0 auto; }
-  .ad-feed { width: 100%; max-width: 320px; }
-  /* Email/SMS previews */
-  .email-preview { margin: 16px 0; }
-  .email-body { padding: 24px 20px; }
-  .sms-mockup { max-width: 100%; }
-  /* Annotation boxes */
-  .annotation { padding: 16px; }
-  .callout { padding: 16px; }
-}
-
 /* PAGE */
-.page { display: none; }
+.page { display: none; padding-top: 56px; }
 .page.active { display: block; }
 
 /* HERO */
@@ -570,214 +472,40 @@ body {
   font-size: 13px; color: var(--neutral-600); line-height: 1.6;
 }
 
-/* RESPONSIVE — Kaizen pages */
+/* RESPONSIVE */
 @media (max-width: 900px) {
   .timeline-grid { grid-template-columns: 1fr 1fr; }
   .ad-showcase { grid-template-columns: 1fr; max-width: 320px; margin-left: auto; margin-right: auto; }
   .strategy-grid { grid-template-columns: 1fr; }
   .week-grid { grid-template-columns: repeat(4, 1fr); }
-  /* Email flow diagram scroll */
-  .section > div[style*="display:flex"] { -webkit-overflow-scrolling: touch; }
-}
-@media (max-width: 600px) {
-  .timeline-grid { grid-template-columns: 1fr; }
-  .week-grid { grid-template-columns: repeat(3, 1fr); }
-  /* LP wireframe mockup container */
-  .lp-container { margin: 0 -20px; }
-  .lp-container > div { padding-left: 20px !important; padding-right: 20px !important; }
-  /* Share box in email */
-  .share-box { padding: 12px; }
 }
 </style>
 </head>
 <body>
 
-<button class="hamburger" onclick="toggleSidebar()">☰</button>
-<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
-
-<div class="app-layout">
-
-<aside class="sidebar" id="sidebar">
-  <div class="sidebar-brand">
-    <div class="brand-logo">KAIZEN COLLECTIVE</div>
-    <div class="brand-context">Edmonton Presale Strategy</div>
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <div class="brand">
+      <div class="brand-logo">KAIZEN COLLECTIVE</div>
+      <div class="brand-divider"></div>
+      <div class="brand-context">Edmonton Presale Strategy</div>
+    </div>
+    <nav class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('strategy')">
+        <span class="tab-num">01</span>Strategy
+      </button>
+      <button class="tab-btn" onclick="switchTab('ads')">
+        <span class="tab-num">02</span>Ads
+      </button>
+      <button class="tab-btn" onclick="switchTab('landing')">
+        <span class="tab-num">03</span>Landing Page
+      </button>
+      <button class="tab-btn" onclick="switchTab('automations')">
+        <span class="tab-num">04</span>Automations
+      </button>
+    </nav>
   </div>
-  <nav class="sidebar-nav">
-    <button class="tab-btn" onclick="switchTab('brand-guidelines', this)" style="margin-bottom:8px;">
-      Brand Guidelines
-    </button>
-
-    <div class="phase-header">Phase 1 — Build the Audience</div>
-
-    <button class="tab-btn active" onclick="switchTab('strategy', this)">
-      Strategy
-    </button>
-
-    <button class="tab-btn" onclick="toggleSection('templates', this)" id="templatesToggle">
-      Templates
-      <span class="tab-expand" id="templatesArrow">&#9654;</span>
-    </button>
-    <div class="tab-sub-items" id="templatesSub">
-      <button class="tab-sub-btn" onclick="switchTab('ads', this)">Ad Templates</button>
-      <button class="tab-sub-btn" onclick="switchTab('landing', this)">Funnel Templates</button>
-    </div>
-
-    <button class="tab-btn strong-tab" onclick="toggleSection('mockups', this)" id="mockupsToggle">
-      Mockups
-      <span class="tab-expand" id="mockupsArrow">&#9654;</span>
-    </button>
-    <div class="tab-sub-items" id="mockupsSub">
-      <button class="tab-sub-btn" onclick="switchTab('mockup-announcement', this)">Announcement</button>
-      <button class="tab-sub-btn" onclick="switchTab('mockup-buildout', this)">Buildout</button>
-      <button class="tab-sub-btn" onclick="switchTab('mockup-social', this)">Social Proof</button>
-      <button class="tab-sub-btn" onclick="switchTab('lp-mockup', this)">Landing Page</button>
-      <button class="tab-sub-btn" onclick="switchTab('ty-mockup', this)">Thank You Page</button>
-    </div>
-
-    <button class="tab-btn" onclick="switchTab('automations', this)">
-      Automations
-    </button>
-
-    <div class="phase-header coming-soon">Phase 2 — Sell Intros + VIP <span class="phase-badge">Coming Soon</span></div>
-    <div class="phase-header coming-soon">Phase 3 — Push to Opening <span class="phase-badge">Coming Soon</span></div>
-    <div class="phase-header coming-soon">Phase 4 — Convert the Pipeline <span class="phase-badge">Coming Soon</span></div>
-  </nav>
-  <div class="sidebar-footer">Prepared 27 March 2026<br>Mario Paguio</div>
-</aside>
-
-<main class="main-content">
-
-<!-- ════════════════════════════════════════
-     BRAND GUIDELINES
-     ════════════════════════════════════════ -->
-<div id="brand-guidelines" class="page strong-page">
-  <div class="s-hero">
-    <div class="s-hero-eyebrow">STRONG Pilates</div>
-    <h2>Brand <em>Guidelines</em></h2>
-    <p>The visual identity system for all Edmonton presale creative. Colours, typography, logos, and voice.</p>
-  </div>
-
-  <!-- LOGOS -->
-  <div class="s-section">
-    <div class="s-eyebrow">Logos</div>
-    <div class="s-title">Logo <em>Usage</em></div>
-    <div class="s-sub">Two logo variants. Use white on dark backgrounds, black on light backgrounds. Never modify, stretch, or recolour.</div>
-    <div style="display:flex;gap:40px;flex-wrap:wrap;align-items:center;justify-content:center;">
-      <div style="background:#000;padding:48px 60px;border:1px solid rgba(255,255,255,0.1);text-align:center;">
-        <img src="strong-logo-white.png" alt="STRONG Pilates — White" style="height:32px;">
-        <div style="font-size:9px;color:rgba(255,255,255,0.3);margin-top:12px;letter-spacing:0.1em;text-transform:uppercase;">White · Dark Backgrounds</div>
-      </div>
-      <div style="background:#F5F0E8;padding:48px 60px;border:1px solid rgba(0,0,0,0.08);text-align:center;">
-        <img src="strong-logo-black.png" alt="STRONG Pilates — Black" style="height:32px;">
-        <div style="font-size:9px;color:rgba(0,0,0,0.35);margin-top:12px;letter-spacing:0.1em;text-transform:uppercase;">Black · Light Backgrounds</div>
-      </div>
-    </div>
-  </div>
-
-  <hr class="s-divider">
-
-  <!-- COLOURS -->
-  <div class="s-section">
-    <div class="s-eyebrow">Colour Palette</div>
-    <div class="s-title">Brand <em>Colours</em></div>
-    <div class="s-sub">Three colours only. Black and white are primary. Sky blue is the accent — used sparingly for highlights and CTAs.</div>
-    <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center;">
-      <div style="text-align:center;">
-        <div style="width:120px;height:120px;background:#000000;border:1px solid rgba(255,255,255,0.1);margin-bottom:12px;"></div>
-        <div style="font-size:11px;font-weight:700;color:#fff;">Black</div>
-        <div style="font-size:10px;color:rgba(255,255,255,0.4);font-family:monospace;">#000000</div>
-        <div style="font-size:9px;color:rgba(255,255,255,0.3);margin-top:4px;">Primary · Backgrounds, text</div>
-      </div>
-      <div style="text-align:center;">
-        <div style="width:120px;height:120px;background:#FFFFFF;border:1px solid rgba(255,255,255,0.1);margin-bottom:12px;"></div>
-        <div style="font-size:11px;font-weight:700;color:#fff;">White</div>
-        <div style="font-size:10px;color:rgba(255,255,255,0.4);font-family:monospace;">#FFFFFF</div>
-        <div style="font-size:9px;color:rgba(255,255,255,0.3);margin-top:4px;">Primary · Text, CTAs</div>
-      </div>
-      <div style="text-align:center;">
-        <div style="width:120px;height:120px;background:#97CAEB;border:1px solid rgba(255,255,255,0.1);margin-bottom:12px;"></div>
-        <div style="font-size:11px;font-weight:700;color:#fff;">Sky Blue</div>
-        <div style="font-size:10px;color:rgba(255,255,255,0.4);font-family:monospace;">#97CAEB</div>
-        <div style="font-size:9px;color:rgba(255,255,255,0.3);margin-top:4px;">Accent only · Highlights, emphasis</div>
-      </div>
-    </div>
-  </div>
-
-  <hr class="s-divider">
-
-  <!-- TYPOGRAPHY -->
-  <div class="s-section">
-    <div class="s-eyebrow">Typography</div>
-    <div class="s-title">Fonts & <em>Type Scale</em></div>
-    <div class="s-sub">Kessel 105 Heavy for headings (Montserrat as web substitute). Montserrat Classic for body text.</div>
-    <div style="border:1px solid rgba(255,255,255,0.08);padding:40px;margin-bottom:24px;">
-      <div style="font-size:9px;color:#97caeb;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;margin-bottom:16px;">Headings — Montserrat (Kessel 105 substitute)</div>
-      <div style="font-size:48px;font-weight:900;text-transform:uppercase;line-height:1.05;margin-bottom:8px;">ROW. RIDE. REFORM.</div>
-      <div style="font-size:32px;font-weight:900;text-transform:uppercase;line-height:1.1;color:rgba(255,255,255,0.6);margin-bottom:8px;">SOMETHING IS COMING.</div>
-      <div style="font-size:20px;font-weight:800;text-transform:uppercase;line-height:1.2;color:rgba(255,255,255,0.4);">Edmonton. July 2026.</div>
-    </div>
-    <div style="border:1px solid rgba(255,255,255,0.08);padding:40px;">
-      <div style="font-size:9px;color:#97caeb;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;margin-bottom:16px;">Body — Montserrat Classic</div>
-      <div style="font-size:15px;font-weight:400;line-height:1.8;color:rgba(255,255,255,0.6);max-width:560px;">Pilates inspired. Cardio infused. 45 minutes on our exclusive Rowformer — half reformer, half rower. The format that built 100+ studios worldwide is coming to Edmonton.</div>
-      <div style="font-size:12px;font-weight:400;line-height:1.6;color:rgba(255,255,255,0.4);margin-top:16px;">Secondary body text at 12px for descriptions, labels, and supporting copy.</div>
-    </div>
-  </div>
-
-  <hr class="s-divider">
-
-  <!-- VOICE -->
-  <div class="s-section">
-    <div class="s-eyebrow">Tone of Voice</div>
-    <div class="s-title">Brand <em>Voice</em></div>
-    <div class="s-sub">How STRONG speaks. Direct, punchy, casual — like chatting with a friend who also happens to run a world-class studio.</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-      <div style="border:1px solid rgba(255,255,255,0.08);padding:28px;">
-        <div style="font-size:10px;font-weight:700;color:#5A9E6F;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:14px;">Do</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.7;">
-          Direct and confident<br>
-          Gender-neutral language<br>
-          Short, punchy sentences<br>
-          Casual but not sloppy<br>
-          Let the product speak<br>
-          "Row. Ride. Reform."
-        </div>
-      </div>
-      <div style="border:1px solid rgba(255,255,255,0.08);padding:28px;">
-        <div style="font-size:10px;font-weight:700;color:#C45B4A;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:14px;">Don't</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.55);line-height:1.7;">
-          No exclamation marks<br>
-          No corporate jargon<br>
-          No "transformative journey"<br>
-          No generic fitness cliches<br>
-          No overselling or hype<br>
-          Never say "boutique fitness"
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <hr class="s-divider">
-
-  <!-- TAGLINES -->
-  <div class="s-section">
-    <div class="s-eyebrow">Brand Lines</div>
-    <div class="s-title">Key <em>Taglines</em></div>
-    <div style="display:flex;flex-direction:column;gap:16px;margin-top:24px;">
-      <div style="border-left:2px solid #97caeb;padding:16px 24px;">
-        <div style="font-size:24px;font-weight:900;text-transform:uppercase;">Row. Ride. Reform.</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:6px;">Primary tagline — used on all presale creative</div>
-      </div>
-      <div style="border-left:2px solid rgba(255,255,255,0.15);padding:16px 24px;">
-        <div style="font-size:24px;font-weight:900;text-transform:uppercase;">Down For More.</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:6px;">Secondary tagline — used for CTAs and bottom-of-page</div>
-      </div>
-      <div style="border-left:2px solid rgba(255,255,255,0.15);padding:16px 24px;">
-        <div style="font-size:20px;font-weight:700;text-transform:uppercase;">STRONG Humans</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:6px;">What members are called — never "clients" or "customers"</div>
-      </div>
-    </div>
-  </div>
-</div>
+</header>
 
 <!-- ════════════════════════════════════════
      TAB 1: STRATEGY
@@ -1826,221 +1554,13 @@ body {
 
 </div>
 
-<!-- ════════════════════════════════════════
-     AD MOCKUP PAGES (STRONG branded, dark bg)
-     ════════════════════════════════════════ -->
-<style>
-.strong-page { background: #0A0A0A; color: #fff; font-family: 'Montserrat', sans-serif; }
-.strong-page .s-hero { padding: 80px 40px 60px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.06); }
-.strong-page .s-hero-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: #97caeb; margin-bottom: 16px; }
-.strong-page .s-hero h2 { font-size: 42px; font-weight: 900; text-transform: uppercase; line-height: 1.05; margin-bottom: 16px; color: #fff; }
-.strong-page .s-hero h2 em { font-style: normal; color: #97caeb; }
-.strong-page .s-hero p { font-size: 13px; color: rgba(255,255,255,0.4); max-width: 560px; margin: 0 auto; line-height: 1.7; }
-.strong-page .s-section { padding: 64px 40px; max-width: 1100px; margin: 0 auto; }
-.strong-page .s-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: #97caeb; margin-bottom: 12px; }
-.strong-page .s-title { font-size: 28px; font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: 8px; color: #fff; }
-.strong-page .s-title em { font-style: normal; color: #97caeb; }
-.strong-page .s-sub { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 40px; max-width: 500px; line-height: 1.6; }
-.strong-page .s-divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0 40px; }
-.strong-page .s-showcase { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
-.strong-page .s-wrapper { display: flex; flex-direction: column; align-items: center; gap: 12px; }
-.strong-page .s-label { font-size: 9px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
-.strong-page .s-notes { margin-top: 40px; padding: 24px 28px; border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); }
-.strong-page .s-notes h4 { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #97caeb; margin-bottom: 12px; }
-.strong-page .s-notes p { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.7; }
-.strong-page .s-notes strong { color: rgba(255,255,255,0.7); }
-
-/* Ad mockup frames */
-.m-story { width: 280px; aspect-ratio: 9/16; position: relative; overflow: hidden; border-radius: 16px; background: #000; }
-.m-feed { position: relative; overflow: hidden; background: #000; }
-.m-feed.sq { width: 340px; aspect-ratio: 1/1; }
-.m-feed.pt { width: 340px; aspect-ratio: 4/5; }
-.m-story img.bg, .m-feed img.bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-.m-ov { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
-.m-ov-tb { background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 30%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0.8) 100%); }
-.m-ov-hv { background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.3) 100%); }
-.m-ov-bt { background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 40%, transparent 100%); }
-.m-ct { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; padding: 24px; }
-.m-ct.center { justify-content: center; align-items: flex-start; padding: 32px; }
-.m-ct.between { justify-content: space-between; }
-.m-ct.end { justify-content: flex-end; }
-.m-logo { height: 20px; margin: 0 auto; display: block; }
-.m-loc { font-size: 9px; color: rgba(255,255,255,0.5); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 8px; text-align: center; }
-.m-hl { font-size: 28px; font-weight: 900; text-transform: uppercase; line-height: 1.1; color: #fff; text-shadow: 0 2px 20px rgba(0,0,0,0.5); }
-.m-hl em { font-style: normal; color: #97caeb; }
-.m-sl { font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.5; margin-top: 12px; text-shadow: 0 1px 10px rgba(0,0,0,0.5); }
-.m-cta { display: inline-block; background: #fff; color: #000; font-size: 10px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; padding: 12px 28px; }
-.m-url { font-size: 8px; color: rgba(255,255,255,0.3); margin-top: 8px; letter-spacing: 0.1em; text-align: center; }
-.m-tag { font-size: 8px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #97caeb; background: rgba(0,0,0,0.4); padding: 5px 10px; margin-bottom: 16px; display: inline-block; }
-.m-fhl { font-size: 28px; font-weight: 900; text-transform: uppercase; line-height: 1.1; color: #fff; margin-bottom: 12px; text-shadow: 0 2px 20px rgba(0,0,0,0.6); }
-.m-fhl em { font-style: normal; color: #97caeb; }
-.m-fb { font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.6; max-width: 260px; margin-bottom: 24px; text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
-.m-stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: 100%; max-width: 280px; margin-bottom: 20px; }
-.m-stat { text-align: center; padding: 12px 8px; border: 1px solid rgba(255,255,255,0.15); background: rgba(0,0,0,0.4); }
-.m-stat-n { font-size: 20px; font-weight: 900; color: #97caeb; }
-.m-stat-l { font-size: 7px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 4px; }
-
-@media (max-width: 900px) {
-  .strong-page .s-showcase { flex-direction: column; align-items: center; }
-  .strong-page .s-hero h2 { font-size: 28px; }
-  .strong-page .s-hero { padding: 60px 20px 40px; }
-  .strong-page .s-hero p { font-size: 12px; }
-  .strong-page .s-section { padding: 40px 20px; }
-  .strong-page .s-title { font-size: 22px; }
-  .strong-page .s-divider { margin: 0 20px; }
-  .strong-page .s-notes { margin-top: 24px; padding: 16px 20px; }
-  .m-story { width: 260px; }
-  .m-feed.sq { width: 300px; }
-  .m-feed.pt { width: 300px; }
-  .m-hl { font-size: 24px; }
-  .m-fhl { font-size: 24px; }
-}
-@media (max-width: 600px) {
-  /* Brand guidelines responsive */
-  #brand-guidelines div[style*="display:flex"][style*="gap:40px"] { flex-direction: column; align-items: center; }
-  #brand-guidelines div[style*="display:grid"][style*="1fr 1fr"] { display: flex !important; flex-direction: column; }
-  #brand-guidelines div[style*="display:flex"][style*="gap:20px"] { gap: 16px; }
-  #brand-guidelines div[style*="width:120px"] { width: 80px !important; height: 80px !important; }
-}
-@media (max-width: 400px) {
-  .strong-page .s-hero h2 { font-size: 24px; }
-  .m-story { width: 100%; max-width: 280px; }
-  .m-feed.sq, .m-feed.pt { width: 100%; max-width: 300px; }
-  .m-hl { font-size: 20px; }
-  .m-fhl { font-size: 20px; }
-  .m-fb { font-size: 10px; }
-  .m-cta { font-size: 9px; padding: 10px 20px; }
-}
-/* iframe pages need full height on mobile */
-.page.strong-page iframe { min-height: 100vh; height: 100vh; }
-@media (max-width: 900px) {
-  .page.strong-page iframe { height: calc(100vh - 56px); }
-}
-</style>
-
-<!-- MOCKUP: ANNOUNCEMENT -->
-<div id="mockup-announcement" class="page strong-page">
-  <div class="s-hero"><div class="s-hero-eyebrow">Ad Direction 1</div><h2>The <em>Announcement</em></h2><p>Clean, bold, curiosity-driven. Real Kelowna photography as the backdrop. Phase 1 is awareness — no pricing, no offers.</p></div>
-  <div class="s-section"><div class="s-eyebrow">9:16 Vertical</div><div class="s-title">Story / <em>Reel</em></div><div class="s-sub">Full-screen mobile placements.</div>
-    <div class="s-showcase">
-      <div class="s-wrapper"><div class="m-story"><img class="bg" src="mockups/img/studio-interior.jpg" alt="" style="object-position:center 35%;"><div class="m-ov m-ov-tb"></div><div class="m-ct between"><div style="text-align:center"><img class="m-logo" src="strong-logo-white.png" alt="STRONG"><div class="m-loc">Edmonton</div></div><div style="text-align:center"><div class="m-hl"><em>Something</em><br>is coming.</div><div class="m-sl">Row. Ride. Reform.<br>Edmonton's first STRONG studio opens July 2026.</div></div><div style="text-align:center"><div class="m-cta">Register Interest</div><div class="m-url">strongpilates.ca/edmonton</div></div></div></div><div class="s-label">Story — Studio Reveal</div></div>
-      <div class="s-wrapper"><div class="m-story"><img class="bg" src="mockups/img/mirror-reflection.jpg" alt=""><div class="m-ov m-ov-tb"></div><div class="m-ct between"><div style="text-align:center"><img class="m-logo" src="strong-logo-white.png" alt="STRONG"><div class="m-loc">Coming July 2026</div></div><div style="text-align:center"><div class="m-hl"><em>45 minutes.</em><br>Full body.<br>Low impact.</div><div class="m-sl">Half reformer. Half rower. Entirely the point.</div></div><div style="text-align:center"><div class="m-cta">Register Interest</div></div></div></div><div class="s-label">Story — Mirror Shot</div></div>
-      <div class="s-wrapper"><div class="m-story"><img class="bg" src="mockups/img/logo-wall-class.jpg" alt="" style="object-position:center 20%;"><div class="m-ov m-ov-tb"></div><div class="m-ct between"><div style="text-align:center"><div class="m-loc" style="color:#97caeb;">Edmonton, Alberta</div></div><div style="text-align:center"><div class="m-hl" style="font-size:22px;"><em>Row. Ride.<br>Reform.</em></div><div class="m-sl" style="max-width:220px;">The class format behind 100+ studios worldwide is landing in Edmonton.</div></div><div style="text-align:center"><div class="m-cta">I'm In</div><div class="m-url">strongpilates.ca/edmonton</div></div></div></div><div class="s-label">Story — Logo + Class</div></div>
-    </div>
-  </div>
-  <hr class="s-divider">
-  <div class="s-section"><div class="s-eyebrow">Feed Placements</div><div class="s-title">Feed <em>Ads</em></div><div class="s-sub">Square (1:1) and portrait (4:5) formats for Facebook and Instagram in-feed.</div>
-    <div class="s-showcase">
-      <div class="s-wrapper"><div class="m-feed sq"><img class="bg" src="mockups/img/class-wide-light.jpg" alt="" style="object-position:center 40%;"><div class="m-ov m-ov-hv"></div><div class="m-ct center"><img src="strong-logo-white.png" alt="STRONG" style="height:20px;margin-bottom:24px;"><div class="m-fhl"><em>Edmonton.</em><br>Coming July.</div><div class="m-fb">Pilates inspired. Cardio infused. 45 minutes on the Rowformer. This is STRONG.</div><div class="m-cta">Register Interest →</div></div></div><div class="s-label">Feed 1:1 — Class Wide</div></div>
-      <div class="s-wrapper"><div class="m-feed sq"><img class="bg" src="mockups/img/studio-wide-equipment.jpg" alt="" style="object-position:right 40%;"><div class="m-ov m-ov-hv"></div><div class="m-ct center"><img src="strong-logo-white.png" alt="STRONG" style="height:20px;margin-bottom:24px;"><div class="m-fhl"><em>15 Rowformers.</em><br>One studio.</div><div class="m-fb">Half reformer. Half rower. The machine you won't find anywhere else. Coming to Edmonton July 2026.</div><div class="m-cta">Register Interest →</div></div></div><div class="s-label">Feed 1:1 — Equipment</div></div>
-      <div class="s-wrapper"><div class="m-feed sq"><img class="bg" src="mockups/img/couple-logo-behind.jpg" alt=""><div class="m-ov m-ov-bt"></div><div class="m-ct end" style="padding:32px;"><div class="m-fhl" style="font-size:22px;">We built <em>Kelowna.</em><br>Now it's<br>Edmonton's turn.</div><div class="m-fb">Meet Marta & Riley — the owners behind STRONG Pilates Edmonton.</div><div class="m-cta">Register Interest →</div></div></div><div class="s-label">Feed 1:1 — Owners Teaser</div></div>
-      <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/mirror-reflection.jpg" alt=""><div class="m-ov m-ov-hv"></div><div class="m-ct center"><div class="m-tag">Coming July 2026</div><div class="m-fhl"><em>45 minutes.</em><br>Full body.<br>Low impact.</div><div class="m-fb">Row. Ride. Reform. The class format that built a 500-member studio in Kelowna is landing in Edmonton.</div><div style="position:absolute;bottom:32px;left:32px;"><div class="m-cta">Register Interest →</div></div></div></div><div class="s-label">Feed 4:5 — Mirror</div></div>
-      <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/instructor-straps-behind.jpg" alt="" style="object-position:center 25%;"><div class="m-ov m-ov-tb"></div><div class="m-ct center"><div class="m-tag">Edmonton, Alberta</div><div class="m-fhl"><em>Row. Ride.</em><br>Reform.</div><div class="m-fb">The workout that built 100+ studios across 14 countries. Edmonton's turn starts July 2026.</div><div style="position:absolute;bottom:32px;left:32px;"><div class="m-cta">I'm In →</div></div></div></div><div class="s-label">Feed 4:5 — Instructor</div></div>
-      <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/backlit-signage.jpg" alt="" style="object-position:center 40%;"><div class="m-ov m-ov-hv"></div><div class="m-ct center" style="align-items:center;text-align:center;"><div class="m-fhl" style="text-align:center;"><em>Something</em><br>is coming<br>to Edmonton.</div><div class="m-fb" style="text-align:center;max-width:240px;">Pilates inspired. Cardio infused. Low impact. High intensity. Opening July 2026.</div><div class="m-cta">Register Interest →</div></div></div><div class="s-label">Feed 4:5 — Signage</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- MOCKUP: BUILDOUT -->
-<div id="mockup-buildout" class="page strong-page">
-  <div class="s-hero"><div class="s-hero-eyebrow">Ad Direction 2</div><h2>The <em>Buildout</em></h2><p>Behind-the-scenes content that builds a following before the doors open. Meet the owners, see the space, follow the journey.</p></div>
-  <div class="s-section"><div class="s-eyebrow">9:16 Vertical</div><div class="s-title">Owner <em>Story</em></div><div class="s-sub">People follow people, not brands.</div>
-    <div class="s-showcase">
-      <div class="s-wrapper"><div class="m-story"><img class="bg" src="mockups/img/front-desk-owners.jpg" alt="" style="object-position:center 25%;"><div class="m-ov m-ov-tb"></div><div class="m-ct between"><div style="text-align:center"><img class="m-logo" src="strong-logo-white.png" alt="STRONG"><div class="m-loc">Meet the Owners · Edmonton</div></div><div style="text-align:center"><div class="m-hl" style="font-size:20px;"><em>Why we're bringing</em><br>STRONG to Edmonton</div><div class="m-sl">"We opened Kelowna and watched people get hooked on this format. Edmonton deserves the same thing."</div></div><div style="text-align:center"><div class="m-cta">Register Interest</div></div></div></div><div class="s-label">Story — Owner Introduction</div></div>
-      <div class="s-wrapper"><div class="m-story"><img class="bg" src="mockups/img/owners-reception-dog.jpg" alt="" style="object-position:center 30%;"><div class="m-ov m-ov-tb"></div><div class="m-ct between"><div style="text-align:center"><img class="m-logo" src="strong-logo-white.png" alt="STRONG"><div class="m-loc">Behind the Scenes · Edmonton</div></div><div style="text-align:center"><div class="m-hl" style="font-size:20px;"><em>500+ members</em><br>in Kelowna.</div><div class="m-sl">Now we're building something even better for Edmonton.</div></div><div style="text-align:center"><div class="m-cta">Follow the Build</div></div></div></div><div class="s-label">Story — Kelowna Success</div></div>
-      <div class="s-wrapper"><div class="m-story"><img class="bg" src="mockups/img/down-for-more-neon.jpg" alt="" style="object-position:center 25%;"><div class="m-ov m-ov-tb"></div><div class="m-ct between"><div style="text-align:center"><img class="m-logo" src="strong-logo-white.png" alt="STRONG"></div><div style="text-align:center"><div class="m-hl" style="font-size:24px;"><em>Down<br>for more?</em></div><div class="m-sl">Edmonton's first STRONG studio is coming. Sign up for first access.</div></div><div style="text-align:center"><div class="m-cta">Register Interest</div><div class="m-url">strongpilates.ca/edmonton</div></div></div></div><div class="s-label">Story — Brand Tagline</div></div>
-    </div>
-  </div>
-  <hr class="s-divider">
-  <div class="s-section"><div class="s-eyebrow">Feed Placements</div><div class="s-title">Feed <em>Ads</em></div><div class="s-sub">Studio preview and equipment tease across square (1:1) and portrait (4:5) formats.</div>
-    <div class="s-showcase">
-      <div class="s-wrapper"><div class="m-feed sq"><img class="bg" src="mockups/img/vanity-room.jpg" alt="" style="object-position:center 35%;"><div class="m-ov m-ov-bt"></div><div class="m-ct end" style="padding:32px;"><div class="m-tag">Studio Preview</div><div class="m-fhl" style="font-size:20px;">More than<br>a <em>workout.</em></div><div class="m-fb">Dyson styling. LED vanity mirrors. Premium amenities. This is the STRONG experience.</div></div></div><div class="s-label">Feed 1:1 — Amenities</div></div>
-      <div class="s-wrapper"><div class="m-feed sq"><img class="bg" src="mockups/img/lounge-area.jpg" alt=""><div class="m-ov m-ov-bt"></div><div class="m-ct end" style="padding:32px;"><div class="m-fhl" style="font-size:18px;">It's a <em>lifestyle,</em><br>not just a workout.</div><div class="m-fb">STRONG Pilates Edmonton. Coming July 2026.</div></div></div><div class="s-label">Feed 1:1 — Lifestyle</div></div>
-      <div class="s-wrapper"><div class="m-feed sq"><img class="bg" src="mockups/img/bw-editorial-owners.jpg" alt=""><div class="m-ov m-ov-bt"></div><div class="m-ct end" style="padding:32px;"><div class="m-fhl" style="font-size:20px;">Meet<br><em>Marta & Riley.</em></div><div class="m-fb">Kelowna studio owners. 500+ members. 5.0★ rating. Now they're building Edmonton.</div><div class="m-cta">Register Interest →</div></div></div><div class="s-label">Feed 1:1 — Owners Editorial</div></div>
-      <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/studio-interior.jpg" alt="" style="object-position:center 35%;"><div class="m-ov m-ov-hv"></div><div class="m-ct center"><div class="m-tag">Progress Update</div><div class="m-fhl"><em>15 Rowformers.</em><br>Bikeformers.<br>One studio.</div><div class="m-fb">Equipment is locked in. Edmonton's first STRONG studio takes shape.</div><div class="m-cta">I'm In →</div></div></div><div class="s-label">Feed 4:5 — Equipment</div></div>
-      <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/champagne-pop.jpg" alt="" style="object-position:center 20%;"><div class="m-ov m-ov-tb"></div><div class="m-ct end" style="padding:32px;"><div class="m-fhl" style="font-size:22px;">From <em>Kelowna</em><br>to Edmonton.<br>We're doing<br>it again.</div><div class="m-fb">Marta & Riley opened Kelowna. Now they're bringing STRONG to Edmonton.</div><div class="m-cta">Register Interest →</div></div></div><div class="s-label">Feed 4:5 — Champagne</div></div>
-      <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/team-exterior-logo.jpg" alt="" style="object-position:center 20%;"><div class="m-ov m-ov-tb"></div><div class="m-ct end" style="padding:32px;"><div class="m-fhl" style="font-size:22px;">Your <em>Edmonton</em><br>team is ready.</div><div class="m-fb">STRONG Pilates. Opening July 2026. Register now for first access.</div><div class="m-cta">Register Interest →</div></div></div><div class="s-label">Feed 4:5 — Team</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- MOCKUP: SOCIAL PROOF -->
-<div id="mockup-social" class="page strong-page">
-  <div class="s-hero"><div class="s-hero-eyebrow">Ad Direction 3</div><h2>The <em>Social Proof</em></h2><p>Leverage Kelowna's success to build Edmonton credibility. Real members, real classes, real numbers.</p></div>
-  <div class="s-section"><div class="s-eyebrow">9:16 Vertical</div><div class="s-title">Kelowna <em>Proof</em></div><div class="s-sub">Numbers and testimonials that make Edmonton inevitable.</div>
-    <div class="s-showcase">
-      <div class="s-wrapper"><div class="m-story"><img class="bg" src="mockups/img/class-plank.jpg" alt=""><div class="m-ov m-ov-hv"></div><div class="m-ct between"><div style="text-align:center"><img class="m-logo" src="strong-logo-white.png" alt="STRONG"></div><div style="text-align:center"><div style="font-size:48px;font-weight:900;color:#97caeb;line-height:1;margin-bottom:16px;">500+</div><div style="font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.15em;text-transform:uppercase;font-weight:600;margin-bottom:20px;">STRONG Humans in Kelowna</div><div style="width:60%;height:1px;background:rgba(255,255,255,0.15);margin:0 auto 20px;"></div><div class="m-hl" style="font-size:22px;">Now it's<br><em>Edmonton's</em> turn.</div></div><div style="text-align:center"><div class="m-cta">Register Now</div><div class="m-url">strongpilates.ca/edmonton</div></div></div></div><div class="s-label">Story — 500+ Members</div></div>
-      <div class="s-wrapper"><div class="m-story"><img class="bg" src="mockups/img/feet-straps-action.jpg" alt=""><div class="m-ov m-ov-tb"></div><div class="m-ct between"><div style="text-align:center"><img class="m-logo" src="strong-logo-white.png" alt="STRONG"><div class="m-loc">The Rowformer Experience</div></div><div style="text-align:center"><div class="m-hl" style="font-size:20px;">Half reformer.<br>Half rower.<br><em>Entirely the point.</em></div><div class="m-sl">45 minutes. Low impact. High intensity. The workout that built 100+ studios worldwide.</div></div><div style="text-align:center"><div class="m-cta">Register Interest</div></div></div></div><div class="s-label">Story — Rowformer Action</div></div>
-      <div class="s-wrapper"><div class="m-story"><img class="bg" src="mockups/img/two-members-moody.jpg" alt="" style="object-position:center 30%;"><div class="m-ov m-ov-hv"></div><div class="m-ct between"><div style="text-align:center"><img class="m-logo" src="strong-logo-white.png" alt="STRONG"></div><div style="text-align:center"><div style="font-size:16px;margin-bottom:8px;">★★★★★</div><div style="font-size:16px;color:#fff;font-weight:400;line-height:1.5;font-style:italic;max-width:220px;margin:0 auto;">"I've tried every studio in Kelowna. Nothing comes close to STRONG."</div><div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:12px;">— Real Kelowna Google Review</div></div><div style="text-align:center"><div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.7);margin-bottom:12px;">Edmonton. July 2026.</div><div class="m-cta">Register Interest</div></div></div></div><div class="s-label">Story — Testimonial</div></div>
-    </div>
-  </div>
-  <hr class="s-divider">
-  <div class="s-section"><div class="s-eyebrow">Feed Placements</div><div class="s-title">Feed <em>Ads</em></div><div class="s-sub">Class energy and stats across square (1:1) and portrait (4:5) formats.</div>
-    <div class="s-showcase">
-      <div class="s-wrapper"><div class="m-feed sq"><img class="bg" src="mockups/img/class-through-window.jpg" alt=""><div class="m-ov m-ov-bt"></div><div class="m-ct end" style="padding:32px;"><div class="m-fhl" style="font-size:22px;">This is what<br>you're <em>signing up</em> for.</div><div class="m-fb">Real members. Real classes. Real results. STRONG Pilates is coming to Edmonton.</div><div class="m-cta">Register Interest →</div></div></div><div class="s-label">Feed 1:1 — Class Energy</div></div>
-      <div class="s-wrapper"><div class="m-feed sq"><img class="bg" src="mockups/img/class-plank-instructor.jpg" alt=""><div class="m-ov m-ov-bt"></div><div class="m-ct end" style="padding:32px;"><div class="m-fhl" style="font-size:20px;"><em>Low impact.</em><br>High intensity.</div><div class="m-fb">Your joints are protected while your muscles do real work. 45 minutes on the Rowformer.</div><div class="m-cta">Register Interest →</div></div></div><div class="s-label">Feed 1:1 — Inclusive</div></div>
-      <div class="s-wrapper"><div class="m-feed sq"><img class="bg" src="mockups/img/group-class-paityn.jpg" alt="" style="object-position:center 30%;"><div class="m-ov m-ov-bt"></div><div class="m-ct end" style="padding:32px;"><div class="m-fhl" style="font-size:20px;">Join the<br><em>community.</em></div><div class="m-fb">500+ STRONG Humans in Kelowna. Edmonton is next.</div><div class="m-cta">Register Interest →</div></div></div><div class="s-label">Feed 1:1 — Community</div></div>
-      <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/class-elevated.jpg" alt="" style="object-position:center 30%;"><div class="m-ov m-ov-hv"></div><div class="m-ct center"><div class="m-tag">Now in Alberta</div><div class="m-fhl">From Kelowna<br>to <em>Edmonton.</em></div><div class="m-stat-grid"><div class="m-stat"><div class="m-stat-n">500+</div><div class="m-stat-l">Members</div></div><div class="m-stat"><div class="m-stat-n">5.0★</div><div class="m-stat-l">362 Reviews</div></div><div class="m-stat"><div class="m-stat-n">100+</div><div class="m-stat-l">Studios Global</div></div></div><div class="m-fb">The class format that built 100+ studios worldwide. Row. Ride. Reform.</div></div></div><div class="s-label">Feed 4:5 — Stats</div></div>
-      <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/rowformer-action-straps.jpg" alt="" style="object-position:center 20%;"><div class="m-ov m-ov-hv"></div><div class="m-ct center"><div class="m-tag">What is STRONG?</div><div class="m-fhl"><em>Row. Ride.</em><br>Reform.</div><div class="m-fb" style="max-width:240px;">Choose your cardio. Row on the Rowformer. Ride on the Bikeformer. Reform on the reformer. 45 min. Low impact. High intensity.</div><div style="position:absolute;bottom:32px;left:32px;"><div class="m-cta">Register Interest →</div></div></div></div><div class="s-label">Feed 4:5 — Instructor</div></div>
-      <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/branded-top-closeup.jpg" alt="" style="object-position:center 25%;"><div class="m-ov m-ov-bt"></div><div class="m-ct end" style="padding:32px;"><div style="font-size:16px;margin-bottom:8px;">★★★★★</div><div style="font-size:15px;color:#fff;font-weight:400;line-height:1.5;font-style:italic;max-width:240px;margin-bottom:12px;">"I was sceptical about another boutique studio. Two months in, I'm here five times a week."</div><div style="font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:20px;">— Kelowna Google Review</div><div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#97caeb;margin-bottom:16px;">Edmonton. July 2026.</div><div class="m-cta">Register Interest →</div></div></div><div class="s-label">Feed 4:5 — Testimonial</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- LANDING PAGE MOCKUP -->
-<div id="lp-mockup" class="page strong-page">
-  <iframe src="mockups/landing-page.html" style="width:100%;height:100vh;border:none;display:block;"></iframe>
-</div>
-
-<!-- THANK YOU PAGE MOCKUP -->
-<div id="ty-mockup" class="page strong-page">
-  <iframe src="mockups/thank-you.html" style="width:100%;height:100vh;border:none;display:block;"></iframe>
-</div>
-
-</main>
-</div><!-- end app-layout -->
-
 <script>
-function switchTab(tabId, el) {
+function switchTab(tabId) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.tab-sub-btn').forEach(b => b.classList.remove('active'));
   document.getElementById(tabId).classList.add('active');
-  if (el) {
-    if (el.classList.contains('tab-sub-btn')) {
-      el.classList.add('active');
-      // Highlight parent toggle
-      var parent = el.closest('.tab-sub-items');
-      if (parent && parent.previousElementSibling) {
-        parent.previousElementSibling.classList.add('active');
-      }
-    } else {
-      el.classList.add('active');
-    }
-  }
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('sidebarBackdrop').classList.remove('open');
+  event.target.closest('.tab-btn').classList.add('active');
   window.scrollTo(0, 0);
-}
-
-function toggleSection(name, el) {
-  var sub = document.getElementById(name + 'Sub');
-  var arrow = document.getElementById(name + 'Arrow');
-  sub.classList.toggle('open');
-  arrow.classList.toggle('open');
-  // If opening and nothing selected, click the first sub-item
-  if (sub.classList.contains('open')) {
-    var activeSub = sub.querySelector('.tab-sub-btn.active');
-    if (!activeSub) {
-      var first = sub.querySelector('.tab-sub-btn');
-      if (first) switchTab(first.getAttribute('onclick').match(/'([^']+)'/)[1], first);
-    }
-  }
-}
-
-function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
-  document.getElementById('sidebarBackdrop').classList.toggle('open');
 }
 </script>
 

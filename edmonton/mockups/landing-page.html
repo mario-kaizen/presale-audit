@@ -290,16 +290,35 @@ img { display:block; }
 /* RESPONSIVE */
 @media (max-width:768px) {
   .hero h1 { font-size:40px; }
+  .hero-content { padding:40px 20px; }
+  .hero-sub { font-size:13px; }
+  .form-box { padding:24px; }
   .format-grid { grid-template-columns:1fr; }
   .format-card { border-right:none; border-bottom:1px solid rgba(255,255,255,0.08); }
   .stats-bar { grid-template-columns:repeat(2, 1fr); }
   .value-grid { grid-template-columns:1fr; }
   .value-card { border-left:none !important; }
-  .owners-content { flex-direction:column; padding:60px 40px; }
+  .value-section { padding:48px 20px; }
+  .owners-content { flex-direction:column; padding:48px 20px; gap:32px; }
   .owners-img { width:100%; }
+  .owners-img img { height:300px; }
   .amenities-grid { grid-template-columns:1fr; }
-  .image-break { height:360px; }
-  .image-break .content { padding:0 40px; }
+  .amenities-section { padding:48px 20px; }
+  .image-break { height:320px; }
+  .image-break .content { padding:0 20px; }
+  .image-break .quote { font-size:20px; }
+  .what-section { padding:48px 20px; }
+  .section-heading { font-size:28px; }
+  .bottom-cta { padding:48px 20px; }
+  .bottom-cta h2 { font-size:28px; }
+}
+@media (max-width:400px) {
+  .hero h1 { font-size:32px; }
+  .hero-badge { font-size:8px; letter-spacing:0.2em; padding:4px 12px; }
+  .section-heading { font-size:24px; }
+  .stat-num { font-size:28px; }
+  .format-name { font-size:28px; }
+  .owners-text h3 { font-size:22px; }
 }
 </style>
 </head>
