@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaizen Collective — Presale Digital Advertising</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A18;
+    --cream: #F5F0E8;
+    --gold: #C9A84C;
+    --gold-dark: #A8893D;
+    --gold-light: #E8DDB8;
+    --gold-pale: #F5F0DC;
+    --charcoal: #2E2E2A;
+    --stone: #8C8778;
+    --parchment: #EDE8DC;
+    --white: #FEFDFB;
+    --green: #5A9E6F;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @page { size: A4; margin: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-weight: 300;
+    line-height: 1.8;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 800px; margin: 0 auto; background: var(--white); min-height: 100vh; }
+
+  /* Header */
+  .header {
+    background: var(--ink);
+    padding: 60px 56px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 48px;
+  }
+  .logo {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600; font-size: 11px;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .date {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; color: var(--stone);
+    letter-spacing: 0.05em;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400; font-size: 38px;
+    line-height: 1.2; color: var(--cream);
+    margin-bottom: 12px;
+  }
+  .header h1 em { color: var(--gold); font-style: italic; }
+  .header .subtitle {
+    font-size: 14px; color: var(--stone);
+    font-weight: 300; max-width: 480px; line-height: 1.7;
+  }
+
+  /* Region Tabs */
+  .region-tabs {
+    display: flex;
+    background: var(--ink);
+    border-bottom: 1px solid var(--charcoal);
+  }
+  .region-tab {
+    flex: 1;
+    padding: 16px 24px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+    background: none;
+    border-top: none; border-left: none; border-right: none;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .region-tab:hover { color: var(--cream); }
+  .region-tab.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+  .region-content { display: none; }
+  .region-content.active { display: block; }
+
+  /* Sections */
+  .section { padding: 48px 56px; }
+  .section + .section { border-top: 1px solid var(--parchment); }
+  .section-dark {
+    background: var(--ink);
+    color: var(--cream);
+    border-top: none !important;
+  }
+  .eyebrow {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold-dark); margin-bottom: 12px;
+  }
+  .section-dark .eyebrow { color: var(--gold); }
+  .section h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400; font-size: 26px;
+    line-height: 1.25; margin-bottom: 8px;
+  }
+  .section h2 em { color: var(--gold-dark); font-style: italic; }
+  .section-dark h2 em { color: var(--gold); }
+  .section-desc {
+    font-size: 14px; color: var(--stone);
+    margin-bottom: 32px; max-width: 520px; line-height: 1.7;
+  }
+
+  /* Fee Card */
+  .fee-card {
+    background: var(--cream); border-radius: 8px;
+    padding: 36px 40px; margin-bottom: 20px;
+    position: relative; border: 1px solid var(--parchment);
+  }
+  .fee-card-highlight {
+    border: 1px solid var(--gold-light);
+    background: var(--gold-pale);
+  }
+  .fee-label {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--stone); margin-bottom: 6px;
+  }
+  .fee-card-highlight .fee-label { color: var(--gold-dark); }
+  .fee-value {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 42px; font-weight: 400;
+    color: var(--ink); line-height: 1.1;
+  }
+  .fee-value span {
+    font-size: 18px; color: var(--stone);
+    font-family: 'DM Sans', sans-serif; font-weight: 300;
+  }
+  .fee-note {
+    font-size: 13px; color: var(--stone);
+    margin-top: 8px; line-height: 1.6;
+  }
+  .fee-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin-bottom: 20px;
+  }
+
+  /* What's Included */
+  .included-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px 40px; margin-top: 8px;
+  }
+  .included-item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--parchment);
+  }
+  .included-item h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500; font-size: 14px;
+    margin-bottom: 4px; color: var(--ink);
+  }
+  .included-item p {
+    font-size: 13px; color: var(--stone); line-height: 1.6;
+  }
+
+  /* Timeline */
+  .timeline { margin-top: 8px; }
+  .timeline-phase {
+    display: grid; grid-template-columns: 100px 1fr;
+    gap: 24px; padding: 20px 0;
+    border-bottom: 1px solid rgba(232, 221, 184, 0.15);
+    align-items: start;
+  }
+  .timeline-phase:last-child { border-bottom: none; }
+  .phase-weeks {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 14px; color: var(--gold); padding-top: 2px;
+  }
+  .phase-name {
+    font-weight: 500; font-size: 14px;
+    color: var(--cream); margin-bottom: 4px;
+  }
+  .phase-desc {
+    font-size: 13px; color: var(--stone); line-height: 1.6;
+  }
+  .phase-marker {
+    font-size: 11px; color: var(--gold);
+    font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; margin-top: 6px;
+  }
+
+  /* Results */
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--parchment);
+    border-radius: 8px; overflow: hidden; margin-top: 8px;
+  }
+  .stat-card {
+    background: var(--white); padding: 24px 20px; text-align: center;
+  }
+  .stat-label {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--stone); margin-bottom: 8px;
+  }
+  .stat-value {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28px; font-weight: 400;
+    color: var(--ink); line-height: 1.1;
+  }
+
+  /* Callout */
+  .callout {
+    background: var(--parchment); border-left: 3px solid var(--gold);
+    padding: 20px 24px; margin-top: 32px; border-radius: 0 6px 6px 0;
+  }
+  .callout p {
+    font-size: 14px; color: var(--ink); line-height: 1.7; font-weight: 300;
+  }
+  .callout strong { font-weight: 500; }
+  .callout-dark {
+    background: var(--charcoal); border-left: 3px solid var(--gold);
+    margin: 32px 0 0; padding: 28px 32px; border-radius: 0 6px 6px 0;
+  }
+  .callout-dark p {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px; color: var(--cream);
+    line-height: 1.6; font-weight: 400; font-style: italic;
+  }
+  .callout-dark p em { color: var(--gold); font-style: italic; }
+
+  /* Accountability table */
+  .acc-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .acc-table th {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--stone); text-align: left;
+    padding: 12px 0; border-bottom: 2px solid var(--parchment);
+  }
+  .acc-table td {
+    padding: 14px 0; border-bottom: 1px solid var(--parchment);
+    font-size: 14px; vertical-align: top;
+  }
+  .acc-table td:first-child { font-weight: 500; color: var(--ink); width: 45%; }
+  .acc-table td:last-child { color: var(--stone); }
+
+  /* Footer */
+  .footer {
+    padding: 40px 56px; background: var(--ink);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-left { font-size: 11px; color: var(--stone); letter-spacing: 0.05em; }
+  .footer-right {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600; font-size: 10px;
+    letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold);
+  }
+
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; max-width: 100%; }
+    .section-dark, .header, .footer, .region-tabs { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .region-content { display: block !important; }
+    .region-content + .region-content { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-top">
+      <div class="logo">Kaizen Collective</div>
+      <div class="date">March 2026</div>
+    </div>
+    <h1>Presale Digital <em>Advertising</em></h1>
+    <p class="subtitle">Full-service presale marketing for STRONG Pilates studio launches — from first lead to 200+ members.</p>
+  </div>
+
+  <!-- Region Tabs -->
+  <div class="region-tabs">
+    <button class="region-tab active" onclick="switchRegion('americas')">Americas (US / Canada)</button>
+    <button class="region-tab" onclick="switchRegion('apac')">APAC (Australia / NZ / Asia)</button>
+  </div>
+
+  <!-- The Service (shared) -->
+  <div class="section">
+    <div class="eyebrow">The Service</div>
+    <h2>What We <em>Deliver</em></h2>
+    <p class="section-desc">Kaizen manages the full digital advertising engine for your presale — Meta Ads, CRM, landing pages, email/SMS nurture, and weekly reporting. You focus on your studio. We fill your pipeline.</p>
+
+    <div class="included-grid">
+      <div class="included-item">
+        <h4>Meta Ads Management</h4>
+        <p>Full campaign setup, creative, audience targeting, and daily optimisation across Facebook and Instagram.</p>
+      </div>
+      <div class="included-item">
+        <h4>CRM & Automation</h4>
+        <p>Hapana Grow setup with lead tagging, automated email/SMS sequences, and pipeline tracking.</p>
+      </div>
+      <div class="included-item">
+        <h4>Landing Pages</h4>
+        <p>High-converting presale landing pages for intro offers and VIP membership upsells.</p>
+      </div>
+      <div class="included-item">
+        <h4>Email & SMS Nurture</h4>
+        <p>Automated sequences that move leads from awareness to intro purchase to membership conversion.</p>
+      </div>
+      <div class="included-item">
+        <h4>Weekly Reporting</h4>
+        <p>Transparent performance dashboards with leads, intros, cost per lead, and conversion tracking.</p>
+      </div>
+      <div class="included-item">
+        <h4>Post-Opening Support</h4>
+        <p>Continued ad support and conversion campaigns after doors open.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- AMERICAS -->
+  <div class="region-content active" id="americas">
+
+    <!-- Fees -->
+    <div class="section">
+      <div class="eyebrow">Investment — Americas</div>
+      <h2>Fee <em>Structure</em></h2>
+      <p class="section-desc">Simple, transparent pricing. Management fee covers all strategy, execution, and reporting. Ad spend is paid directly to Meta by the studio.</p>
+
+      <div class="fee-grid">
+        <div class="fee-card fee-card-highlight">
+          <div class="fee-label">Management Fee</div>
+          <div class="fee-value">$300 <span>USD / week</span></div>
+          <p class="fee-note">Covers all strategy, campaign management, CRM setup, creative, nurture sequences, and reporting.</p>
+        </div>
+        <div class="fee-card">
+          <div class="fee-label">Recommended Ad Budget</div>
+          <div class="fee-value">$15K+ <span>USD total</span></div>
+          <p class="fee-note">Paid directly to Meta by studio. Allocated across the presale and post-opening window.</p>
+        </div>
+      </div>
+
+      <div class="fee-card">
+        <div class="fee-label">Engagement Duration</div>
+        <div class="fee-value" style="font-size: 32px;">16 Weeks <span>total</span></div>
+        <p class="fee-note">12 weeks presale + 4 weeks post-opening support. Total management fee: $4,800 USD.</p>
+      </div>
+
+      <div class="callout">
+        <p><strong>No lock-in contracts.</strong> Weekly billing with full transparency on every dollar spent. You see exactly what's running, what it costs, and what it's producing.</p>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="section section-dark">
+      <div class="eyebrow">How It Works — Americas</div>
+      <h2 style="color: var(--cream);">The 16-Week <em>Roadmap</em></h2>
+      <p class="section-desc">Four phases counting down to opening day. Marketing pipeline and studio sales track run in parallel.</p>
+
+      <div class="timeline">
+        <div class="timeline-phase">
+          <div class="phase-weeks">W-12 → W-9</div>
+          <div>
+            <div class="phase-name">Build the Audience</div>
+            <p class="phase-desc">Low-spend lead generation. "Coming soon" positioning. Build email, SMS, and retargeting audiences. $300–500/week ad spend. Target: 800+ leads.</p>
+          </div>
+        </div>
+        <div class="timeline-phase">
+          <div class="phase-weeks">W-8 → W-4</div>
+          <div>
+            <div class="phase-name">Sell Intros + Upsell VIP</div>
+            <p class="phase-desc">Launch intro offer campaigns. Ramp spend to $500–1,000/week. Retarget Phase 1 leads. Email/SMS nurture pushing both intro and VIP offers. Target: 150+ intros, 50+ VIP members.</p>
+          </div>
+        </div>
+        <div class="timeline-phase">
+          <div class="phase-weeks">W-3 → W-1</div>
+          <div>
+            <div class="phase-name">Push to Opening</div>
+            <p class="phase-desc">Peak spend: $1,000–2,000/week. Maximum urgency. Scarcity messaging. Daily email/SMS in final week. Target: 400+ intros, 100+ VIP members.</p>
+            <div class="phase-marker">→ Opening Day</div>
+          </div>
+        </div>
+        <div class="timeline-phase">
+          <div class="phase-weeks">W+1 → W+4</div>
+          <div>
+            <div class="phase-name">Convert the Pipeline</div>
+            <p class="phase-desc">Post-opening support. Retarget intro buyers. Conversion sequences. Spend tapers to $300–700/week. Target: 200+ total members.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expected Results -->
+    <div class="section">
+      <div class="eyebrow">Expected Outcomes — Americas</div>
+      <h2>Target Results by <em>Week +4</em></h2>
+      <p class="section-desc">Based on audited data from six STRONG Pilates studio launches across the US and Canada.</p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-label">Leads</div>
+          <div class="stat-value">3,000+</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Intros Sold</div>
+          <div class="stat-value">400+</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Members</div>
+          <div class="stat-value">200+</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Cost / Member</div>
+          <div class="stat-value">$60–120</div>
+        </div>
+      </div>
+
+      <div class="callout-dark">
+        <p>These targets are built from real data — not a pitch deck. Six studios audited, 4,087 intro journeys tracked. The studios that hit 200+ members ran marketing <em>and</em> a studio sales track in parallel.</p>
+      </div>
+    </div>
+
+    <!-- Accountability -->
+    <div class="section">
+      <div class="eyebrow">Accountability — Americas</div>
+      <h2>Who Owns <em>What</em></h2>
+      <p class="section-desc">Clear lines. No grey areas. Every metric has an owner.</p>
+
+      <table class="acc-table">
+        <thead><tr><th>Kaizen Delivers</th><th>Target</th></tr></thead>
+        <tbody>
+          <tr><td>Leads generated</td><td>3,000+</td></tr>
+          <tr><td>Cost per lead</td><td>Under $10</td></tr>
+          <tr><td>Intro offers sold</td><td>400+ by opening</td></tr>
+          <tr><td>Cost per intro</td><td>Under $35</td></tr>
+          <tr><td>CRM setup & tagging</td><td>Full Hapana Grow management</td></tr>
+          <tr><td>Post-opening ad support</td><td>4 weeks included</td></tr>
+        </tbody>
+      </table>
+      <br>
+      <table class="acc-table">
+        <thead><tr><th>Studio Delivers</th><th>Target</th></tr></thead>
+        <tbody>
+          <tr><td>VIP membership upsells</td><td>100–150 during presale</td></tr>
+          <tr><td>Intro-to-member conversion</td><td>15–20% minimum</td></tr>
+          <tr><td>Community presale events</td><td>4–6 total</td></tr>
+          <tr><td>Active members by W+4</td><td>200+</td></tr>
+          <tr><td>12-week retention rate</td><td>60%+</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout" style="margin-top: 32px;">
+        <p><strong>Full transparency, always.</strong> If marketing delivers 400 intros and the studio converts 12% instead of 20%, the data will show exactly where the gap is — and the solution won't be "spend more on ads."</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- APAC -->
+  <div class="region-content" id="apac">
+
+    <!-- Fees -->
+    <div class="section">
+      <div class="eyebrow">Investment — APAC</div>
+      <h2>Fee <em>Structure</em></h2>
+      <p class="section-desc">Simple, transparent pricing. Management fee covers all strategy, execution, and reporting. Ad spend is paid directly to Meta by the studio.</p>
+
+      <div class="fee-grid">
+        <div class="fee-card fee-card-highlight">
+          <div class="fee-label">Management Fee</div>
+          <div class="fee-value">$300 <span>AUD / week</span></div>
+          <p class="fee-note">Covers all strategy, campaign management, CRM setup, creative, nurture sequences, and reporting.</p>
+        </div>
+        <div class="fee-card">
+          <div class="fee-label">Recommended Ad Budget</div>
+          <div class="fee-value">$15K+ <span>AUD total</span></div>
+          <p class="fee-note">Paid directly to Meta by studio. Allocated across the presale and post-opening window.</p>
+        </div>
+      </div>
+
+      <div class="fee-card">
+        <div class="fee-label">Engagement Duration</div>
+        <div class="fee-value" style="font-size: 32px;">16 Weeks <span>total</span></div>
+        <p class="fee-note">12 weeks presale + 4 weeks post-opening support. Total management fee: $4,800 AUD.</p>
+      </div>
+
+      <div class="callout">
+        <p><strong>No lock-in contracts.</strong> Weekly billing with full transparency on every dollar spent. You see exactly what's running, what it costs, and what it's producing.</p>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="section section-dark">
+      <div class="eyebrow">How It Works — APAC</div>
+      <h2 style="color: var(--cream);">The 16-Week <em>Roadmap</em></h2>
+      <p class="section-desc">Four phases counting down to opening day. Marketing pipeline and studio sales track run in parallel.</p>
+
+      <div class="timeline">
+        <div class="timeline-phase">
+          <div class="phase-weeks">W-12 → W-9</div>
+          <div>
+            <div class="phase-name">Build the Audience</div>
+            <p class="phase-desc">Low-spend lead generation. "Coming soon" positioning. Build email, SMS, and retargeting audiences. $300–500/week ad spend. Target: 800+ leads.</p>
+          </div>
+        </div>
+        <div class="timeline-phase">
+          <div class="phase-weeks">W-8 → W-4</div>
+          <div>
+            <div class="phase-name">Sell Intros + Upsell VIP</div>
+            <p class="phase-desc">Launch intro offer campaigns. Ramp spend to $500–1,000/week. Retarget Phase 1 leads. Email/SMS nurture pushing both intro and VIP offers. Target: 100+ intros, 30+ VIP members.</p>
+          </div>
+        </div>
+        <div class="timeline-phase">
+          <div class="phase-weeks">W-3 → W-1</div>
+          <div>
+            <div class="phase-name">Push to Opening</div>
+            <p class="phase-desc">Peak spend: $1,000–2,000/week. Maximum urgency. Scarcity messaging. Daily email/SMS in final week. Target: 200+ intros, 80+ VIP members.</p>
+            <div class="phase-marker">→ Opening Day</div>
+          </div>
+        </div>
+        <div class="timeline-phase">
+          <div class="phase-weeks">W+1 → W+4</div>
+          <div>
+            <div class="phase-name">Convert the Pipeline</div>
+            <p class="phase-desc">Post-opening support. Retarget intro buyers. Conversion sequences. Spend tapers to $300–700/week. Target: 200+ total members.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expected Results -->
+    <div class="section">
+      <div class="eyebrow">Expected Outcomes — APAC</div>
+      <h2>Target Results by <em>Week +4</em></h2>
+      <p class="section-desc">Targets calibrated for Australian, New Zealand, and Asian markets where intro-to-member conversion rates are typically higher.</p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-label">Leads</div>
+          <div class="stat-value">2,000+</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Intros Sold</div>
+          <div class="stat-value">200+</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Members</div>
+          <div class="stat-value">200+</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Cost / Member</div>
+          <div class="stat-value">$60–100</div>
+        </div>
+      </div>
+
+      <div class="callout-dark">
+        <p>APAC markets typically show stronger intro-to-member conversion. The target is the same — <em>200+ members</em> — with fewer intros required to get there. The studio sales track is even more critical in this model.</p>
+      </div>
+    </div>
+
+    <!-- Accountability -->
+    <div class="section">
+      <div class="eyebrow">Accountability — APAC</div>
+      <h2>Who Owns <em>What</em></h2>
+      <p class="section-desc">Clear lines. No grey areas. Every metric has an owner.</p>
+
+      <table class="acc-table">
+        <thead><tr><th>Kaizen Delivers</th><th>Target</th></tr></thead>
+        <tbody>
+          <tr><td>Leads generated</td><td>2,000+</td></tr>
+          <tr><td>Cost per lead</td><td>Under $10</td></tr>
+          <tr><td>Intro offers sold</td><td>200+ by opening</td></tr>
+          <tr><td>Cost per intro</td><td>Under $50</td></tr>
+          <tr><td>CRM setup & tagging</td><td>Full Hapana Grow management</td></tr>
+          <tr><td>Post-opening ad support</td><td>4 weeks included</td></tr>
+        </tbody>
+      </table>
+      <br>
+      <table class="acc-table">
+        <thead><tr><th>Studio Delivers</th><th>Target</th></tr></thead>
+        <tbody>
+          <tr><td>VIP membership upsells</td><td>80–120 during presale</td></tr>
+          <tr><td>Intro-to-member conversion</td><td>20–30%</td></tr>
+          <tr><td>Community presale events</td><td>4–6 total</td></tr>
+          <tr><td>Active members by W+4</td><td>200+</td></tr>
+          <tr><td>12-week retention rate</td><td>60%+</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout" style="margin-top: 32px;">
+        <p><strong>Full transparency, always.</strong> If marketing delivers 200 intros and the studio converts 15% instead of 25%, the data will show exactly where the gap is — and the solution won't be "spend more on ads."</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-left">
+      Mario Paguio · mario@kaizencollective.com.au · kaizencollective.com.au
+    </div>
+    <div class="footer-right">Kaizen Collective</div>
+  </div>
+
+</div>
+
+<script>
+function switchRegion(region) {
+  document.querySelectorAll('.region-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.region-content').forEach(c => c.classList.remove('active'));
+  document.getElementById(region).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>
