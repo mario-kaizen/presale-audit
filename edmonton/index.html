@@ -565,32 +565,34 @@ body {
   </div>
   <nav class="sidebar-nav">
     <div class="phase-header">Phase 1 — Build the Audience</div>
+
     <button class="tab-btn active" onclick="switchTab('strategy', this)">
-      <span class="tab-num">01</span>Strategy
+      Strategy
     </button>
-    <button class="tab-btn" onclick="switchTab('ads', this)">
-      <span class="tab-num">02</span>Ad Templates
+
+    <button class="tab-btn" onclick="toggleSection('templates', this)" id="templatesToggle">
+      Templates
+      <span class="tab-expand" id="templatesArrow">&#9654;</span>
     </button>
-    <button class="tab-btn strong-tab" onclick="toggleMockups(this)" id="mockupsToggle">
-      <span class="tab-num">03</span>Ad Mockups
+    <div class="tab-sub-items" id="templatesSub">
+      <button class="tab-sub-btn" onclick="switchTab('ads', this)">Ad Templates</button>
+      <button class="tab-sub-btn" onclick="switchTab('landing', this)">Funnel Templates</button>
+    </div>
+
+    <button class="tab-btn strong-tab" onclick="toggleSection('mockups', this)" id="mockupsToggle">
+      Mockups
       <span class="tab-expand" id="mockupsArrow">&#9654;</span>
     </button>
     <div class="tab-sub-items" id="mockupsSub">
       <button class="tab-sub-btn" onclick="switchTab('mockup-announcement', this)">Announcement</button>
       <button class="tab-sub-btn" onclick="switchTab('mockup-buildout', this)">Buildout</button>
       <button class="tab-sub-btn" onclick="switchTab('mockup-social', this)">Social Proof</button>
+      <button class="tab-sub-btn" onclick="switchTab('lp-mockup', this)">Landing Page</button>
+      <button class="tab-sub-btn" onclick="switchTab('ty-mockup', this)">Thank You Page</button>
     </div>
-    <button class="tab-btn strong-tab" onclick="switchTab('lp-mockup', this)">
-      <span class="tab-num">04</span>Landing Page
-    </button>
-    <button class="tab-btn strong-tab" onclick="switchTab('ty-mockup', this)">
-      <span class="tab-num">05</span>Thank You Page
-    </button>
-    <button class="tab-btn" onclick="switchTab('landing', this)">
-      <span class="tab-num">06</span>LP Wireframe
-    </button>
+
     <button class="tab-btn" onclick="switchTab('automations', this)">
-      <span class="tab-num">07</span>Automations
+      Automations
     </button>
 
     <div class="phase-header coming-soon">Phase 2 — Sell Intros + VIP <span class="phase-badge">Coming Soon</span></div>
@@ -1816,24 +1818,32 @@ function switchTab(tabId, el) {
   if (el) {
     if (el.classList.contains('tab-sub-btn')) {
       el.classList.add('active');
-      document.getElementById('mockupsToggle').classList.add('active');
+      // Highlight parent toggle
+      var parent = el.closest('.tab-sub-items');
+      if (parent && parent.previousElementSibling) {
+        parent.previousElementSibling.classList.add('active');
+      }
     } else {
       el.classList.add('active');
     }
   }
-  // Close sidebar on mobile
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('sidebarBackdrop').classList.remove('open');
   window.scrollTo(0, 0);
 }
 
-function toggleMockups(el) {
-  var sub = document.getElementById('mockupsSub');
-  var arrow = document.getElementById('mockupsArrow');
+function toggleSection(name, el) {
+  var sub = document.getElementById(name + 'Sub');
+  var arrow = document.getElementById(name + 'Arrow');
   sub.classList.toggle('open');
   arrow.classList.toggle('open');
-  if (sub.classList.contains('open') && !document.querySelector('.tab-sub-btn.active')) {
-    switchTab('mockup-announcement', sub.querySelector('.tab-sub-btn'));
+  // If opening and nothing selected, click the first sub-item
+  if (sub.classList.contains('open')) {
+    var activeSub = sub.querySelector('.tab-sub-btn.active');
+    if (!activeSub) {
+      var first = sub.querySelector('.tab-sub-btn');
+      if (first) switchTab(first.getAttribute('onclick').match(/'([^']+)'/)[1], first);
+    }
   }
 }
 
