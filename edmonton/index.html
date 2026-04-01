@@ -7,6 +7,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
+@font-face { font-family:"Kessel 105"; src:url("/fonts/Kessel105-Light.otf") format("opentype"); font-weight:300; font-style:normal; font-display:swap; }
+@font-face { font-family:"Kessel 105"; src:url("/fonts/Kessel105-Book.otf") format("opentype"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:"Kessel 105"; src:url("/fonts/Kessel105-Medium.otf") format("opentype"); font-weight:500; font-style:normal; font-display:swap; }
+@font-face { font-family:"Kessel 105"; src:url("/fonts/Kessel105-Bold.otf") format("opentype"); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:"Kessel 105"; src:url("/fonts/Kessel105-Heavy.otf") format("opentype"); font-weight:900; font-style:normal; font-display:swap; }
+
 :root {
   --ink: #1A1A18;
   --cream: #F5F0E8;
@@ -38,8 +44,8 @@
   --strong-grey: #6B6B6B;
   --strong-accent: #E8E8E8;
   /* STRONG brand fonts */
-  --strong-heading: 'Montserrat', -apple-system, sans-serif; /* Kessel 105 substitute */
-  --strong-body: 'Montserrat', -apple-system, sans-serif;
+  --strong-heading: 'Kessel 105', 'Montserrat', -apple-system, sans-serif;
+  --strong-body: 'Kessel 105', 'Montserrat', -apple-system, sans-serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -680,7 +686,7 @@ body {
   <div class="s-section">
     <div class="s-eyebrow">Colour Palette</div>
     <div class="s-title">Brand <em>Colours</em></div>
-    <div class="s-sub">Three colours only. Black and white are primary. Sky blue is the accent — used sparingly for highlights and CTAs.</div>
+    <div class="s-sub">Three colours only. Black and white are primary. Sky blue is the accent. Used sparingly for highlights and CTAs.</div>
     <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center;">
       <div style="text-align:center;">
         <div style="width:120px;height:120px;background:#000000;border:1px solid rgba(255,255,255,0.1);margin-bottom:12px;"></div>
@@ -709,16 +715,16 @@ body {
   <div class="s-section">
     <div class="s-eyebrow">Typography</div>
     <div class="s-title">Fonts & <em>Type Scale</em></div>
-    <div class="s-sub">Kessel 105 Heavy for headings (Montserrat as web substitute). Montserrat Classic for body text.</div>
+    <div class="s-sub">Kessel 105 Heavy for headings and CTAs. Kessel 105 Book/Medium for body and subcopy.</div>
     <div style="border:1px solid rgba(255,255,255,0.08);padding:40px;margin-bottom:24px;">
-      <div style="font-size:9px;color:#97caeb;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;margin-bottom:16px;">Headings — Montserrat (Kessel 105 substitute)</div>
-      <div style="font-size:48px;font-weight:900;text-transform:uppercase;line-height:1.05;margin-bottom:8px;">ROW. RIDE. REFORM.</div>
+      <div style="font-size:9px;color:#97caeb;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;margin-bottom:16px;">Headings — Kessel 105 Heavy</div>
+      <div style="font-size:48px;font-weight:900;text-transform:uppercase;line-height:1.05;margin-bottom:8px;">PILATES. STRENGTH. CARDIO.</div>
       <div style="font-size:32px;font-weight:900;text-transform:uppercase;line-height:1.1;color:rgba(255,255,255,0.6);margin-bottom:8px;">SOMETHING IS COMING.</div>
       <div style="font-size:20px;font-weight:800;text-transform:uppercase;line-height:1.2;color:rgba(255,255,255,0.4);">Edmonton. July 2026.</div>
     </div>
     <div style="border:1px solid rgba(255,255,255,0.08);padding:40px;">
-      <div style="font-size:9px;color:#97caeb;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;margin-bottom:16px;">Body — Montserrat Classic</div>
-      <div style="font-size:15px;font-weight:400;line-height:1.8;color:rgba(255,255,255,0.6);max-width:560px;">Pilates inspired. Cardio infused. 45 minutes on our exclusive Rowformer or Bikeformer — you choose your cardio. The format that built 100+ studios worldwide is coming to Edmonton.</div>
+      <div style="font-size:9px;color:#97caeb;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;margin-bottom:16px;">Body — Kessel 105 Book</div>
+      <div style="font-size:15px;font-weight:400;line-height:1.8;color:rgba(255,255,255,0.6);max-width:560px;">Pilates inspired. Cardio infused. 45 minutes on our exclusive Rowformer or Bikeformer. You choose your cardio. The format that built 100+ studios worldwide is coming to Edmonton.</div>
       <div style="font-size:12px;font-weight:400;line-height:1.6;color:rgba(255,255,255,0.4);margin-top:16px;">Secondary body text at 12px for descriptions, labels, and supporting copy.</div>
     </div>
   </div>
@@ -729,7 +735,7 @@ body {
   <div class="s-section">
     <div class="s-eyebrow">Tone of Voice</div>
     <div class="s-title">Brand <em>Voice</em></div>
-    <div class="s-sub">How STRONG speaks. Direct, punchy, casual — like chatting with a friend who also happens to run a world-class studio.</div>
+    <div class="s-sub">How STRONG speaks. Direct, punchy, casual. Like chatting with a friend who also happens to run a world-class studio.</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
       <div style="border:1px solid rgba(255,255,255,0.08);padding:28px;">
         <div style="font-size:10px;font-weight:700;color:#5A9E6F;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:14px;">Do</div>
@@ -739,7 +745,7 @@ body {
           Short, punchy sentences<br>
           Casual but not sloppy<br>
           Let the product speak<br>
-          "Row. Ride. Reform."
+          "Pilates. Strength. Cardio."
         </div>
       </div>
       <div style="border:1px solid rgba(255,255,255,0.08);padding:28px;">
@@ -764,7 +770,7 @@ body {
     <div class="s-title">Key <em>Taglines</em></div>
     <div style="display:flex;flex-direction:column;gap:16px;margin-top:24px;">
       <div style="border-left:2px solid #97caeb;padding:16px 24px;">
-        <div style="font-size:24px;font-weight:900;text-transform:uppercase;">Row. Ride. Reform.</div>
+        <div style="font-size:24px;font-weight:900;text-transform:uppercase;">Pilates. Strength. Cardio.</div>
         <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:6px;">Primary tagline — used on all presale creative</div>
       </div>
       <div style="border-left:2px solid rgba(255,255,255,0.15);padding:16px 24px;">
@@ -982,7 +988,7 @@ body {
           </div>
           <div class="ad-center">
             <div class="ad-headline"><em>Something</em><br>is coming.</div>
-            <div class="ad-subline">Row. Ride. Reform.<br>Edmonton's first STRONG studio opens July 2026.</div>
+            <div class="ad-subline">Pilates. Strength. Cardio.<br>Edmonton's first STRONG studio opens July 2026.</div>
           </div>
           <div class="ad-bottom">
             <div class="ad-cta">Get Early Access</div>
@@ -1010,7 +1016,7 @@ body {
             <div style="font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:0.15em;">1/3</div>
           </div>
           <div style="font-family:var(--strong-heading);font-size:26px;color:white;font-weight:900;line-height:1.2;margin-bottom:16px;text-transform:uppercase;"><span style="color:var(--strong-blue);">45 minutes.</span><br>Full body.<br>Low impact.</div>
-          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.5);font-weight:400;line-height:1.6;max-width:240px;">Row. Ride. Reform. The class format that built a 500-member studio in Kelowna is landing in Edmonton.</div>
+          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.5);font-weight:400;line-height:1.6;max-width:240px;">Pilates. Strength. Cardio. The class format that built a 500-member studio in Kelowna is landing in Edmonton.</div>
           <div style="position:absolute;bottom:24px;left:24px;right:24px;text-align:center;">
             <div style="font-size:10px;color:rgba(255,255,255,0.3);">Swipe →</div>
           </div>
@@ -1022,7 +1028,7 @@ body {
     <div class="annotation">
       <h4>Creative Notes</h4>
       <p><strong>Imagery:</strong> Dark backgrounds as placeholder. Real ads use STRONG Rowformer footage from the HQ asset library or Kelowna shoots. Buildout photos from the Edmonton site add authenticity.<br><br>
-      <strong>Copy direction:</strong> Phase 1 is curiosity, not conversion. No pricing, no offers. "Row. Ride. Reform." does the heavy lifting — it immediately communicates this isn't regular reformer pilates.</p>
+      <strong>Copy direction:</strong> Phase 1 is curiosity, not conversion. No pricing, no offers. "Pilates. Strength. Cardio." does the heavy lifting — it immediately communicates this isn't regular reformer pilates.</p>
     </div>
   </div>
 
@@ -1067,7 +1073,7 @@ body {
               <div style="font-size:10px;color:rgba(255,255,255,0.3);text-align:center;letter-spacing:0.05em;">Owner<br>Photo</div>
             </div>
             <div class="ad-headline" style="font-size:20px;"><span style="color:var(--strong-blue);">Why I'm bringing</span><br>STRONG to Edmonton</div>
-            <div class="ad-subline">"I opened Kelowna and watched people get hooked on this format — the intensity, the community, the results. Edmonton deserves the same thing."</div>
+            <div class="ad-subline">"I opened Kelowna and watched people get hooked on this format. The intensity, the community, the results. Edmonton deserves the same thing."</div>
           </div>
           <div class="ad-bottom">
             <div class="ad-cta">Get Early Access</div>
@@ -1080,7 +1086,7 @@ body {
         <div class="ad-feed" style="background:#111;">
           <div class="ad-label">Progress Update</div>
           <div style="font-family:var(--strong-heading);font-size:24px;color:white;font-weight:900;line-height:1.2;margin-bottom:16px;text-transform:uppercase;"><span style="color:var(--strong-blue);">15 Rowformers.</span><br>Bikeformers.<br>One studio.</div>
-          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.5);font-weight:400;line-height:1.6;max-width:260px;margin-bottom:24px;">Equipment is locked in. Edmonton's first STRONG studio takes shape — join the waitlist for early access when doors open July.</div>
+          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.5);font-weight:400;line-height:1.6;max-width:260px;margin-bottom:24px;">Equipment is locked in. Edmonton's first STRONG studio takes shape. Join the waitlist for early access when doors open July.</div>
           <div class="ad-cta" style="display:inline-block;background:white;color:#000;font-family:var(--strong-heading);font-size:11px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;padding:12px 32px;">I'm In →</div>
         </div>
         <div class="ad-type-label">Feed — Equipment Tease</div>
@@ -1127,7 +1133,7 @@ body {
             <div style="font-size:16px;">★★★★★</div>
           </div>
           <div style="font-family:var(--strong-body);font-size:18px;color:white;font-weight:400;line-height:1.4;font-style:italic;margin-bottom:16px;max-width:260px;">"I've tried every studio in Kelowna. Nothing comes close to STRONG."</div>
-          <div style="font-family:var(--strong-body);font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:32px;">— Placeholder (real Kelowna review needed)</div>
+          <div style="font-family:var(--strong-body);font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:32px;">Placeholder (real Kelowna review needed)</div>
           <div style="font-family:var(--strong-heading);font-size:13px;color:rgba(255,255,255,0.7);font-weight:700;text-transform:uppercase;letter-spacing:0.05em;">Edmonton. July 2026.</div>
           <div style="margin-top:20px;">
             <div class="ad-cta" style="display:inline-block;background:white;color:#000;font-family:var(--strong-heading);font-size:11px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;padding:12px 32px;">Get Early Access →</div>
@@ -1154,7 +1160,7 @@ body {
               <div style="font-family:var(--strong-heading);font-size:8px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px;font-weight:600;">Studios Global</div>
             </div>
           </div>
-          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.5);font-weight:400;line-height:1.6;max-width:260px;">The class format that built 100+ studios worldwide. Row. Ride. Reform. Opening July 2026.</div>
+          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.5);font-weight:400;line-height:1.6;max-width:260px;">The class format that built 100+ studios worldwide. Pilates. Strength. Cardio. Opening July 2026.</div>
         </div>
         <div class="ad-type-label">Feed — Stats (4:5)</div>
       </div>
@@ -1199,8 +1205,8 @@ body {
         <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,0.015) 60px,rgba(255,255,255,0.015) 61px),repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,0.015) 60px,rgba(255,255,255,0.015) 61px);"></div>
         <div style="position:relative;z-index:2;">
           <img src="strong-logo-white.png" alt="STRONG Pilates" style="height:28px;margin-bottom:24px;"><div style="font-family:var(--strong-heading);font-size:10px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;color:var(--strong-blue);margin-bottom:32px;">Coming July 2026 · Edmonton, Alberta</div>
-          <div style="font-family:var(--strong-heading);font-size:56px;font-weight:900;color:white;line-height:1.05;text-transform:uppercase;margin-bottom:20px;letter-spacing:-0.02em;">Row. Ride.<br><span style="color:var(--strong-blue);">Reform.</span></div>
-          <div style="font-family:var(--strong-body);font-size:15px;color:rgba(255,255,255,0.5);font-weight:400;max-width:460px;margin:0 auto 40px;line-height:1.7;">Pilates inspired. Cardio infused. 45 minutes on our exclusive Rowformer or Bikeformer — you choose your cardio. The format that built 100+ studios worldwide is coming to Edmonton.</div>
+          <div style="font-family:var(--strong-heading);font-size:56px;font-weight:900;color:white;line-height:1.05;text-transform:uppercase;margin-bottom:20px;letter-spacing:-0.02em;">Pilates. Strength.<br><span style="color:var(--strong-blue);">Cardio.</span></div>
+          <div style="font-family:var(--strong-body);font-size:15px;color:rgba(255,255,255,0.5);font-weight:400;max-width:460px;margin:0 auto 40px;line-height:1.7;">Pilates inspired. Cardio infused. 45 minutes on our exclusive Rowformer or Bikeformer. You choose your cardio. The format that built 100+ studios worldwide is coming to Edmonton.</div>
 
           <!-- FORM -->
           <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);max-width:420px;margin:0 auto;padding:32px;">
@@ -1228,7 +1234,7 @@ body {
           <div style="padding:32px 24px;text-align:center;border-right:1px solid rgba(255,255,255,0.08);">
             <div style="font-family:var(--strong-heading);font-size:32px;font-weight:900;color:white;margin-bottom:6px;">ROW</div>
             <div style="font-family:var(--strong-heading);font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--strong-blue);margin-bottom:12px;">Rowformer</div>
-            <div style="font-family:var(--strong-body);font-size:11px;color:rgba(255,255,255,0.4);line-height:1.6;">Half reformer, half rower. Pilates strength meets rowing cardio in one machine.</div>
+            <div style="font-family:var(--strong-body);font-size:11px;color:rgba(255,255,255,0.4);line-height:1.6;">Half reformer, half rower. Pilates strength meets rowing cardio in one piece of equipment.</div>
           </div>
           <div style="padding:32px 24px;text-align:center;border-right:1px solid rgba(255,255,255,0.08);">
             <div style="font-family:var(--strong-heading);font-size:32px;font-weight:900;color:white;margin-bottom:6px;">RIDE</div>
@@ -1238,7 +1244,7 @@ body {
           <div style="padding:32px 24px;text-align:center;">
             <div style="font-family:var(--strong-heading);font-size:32px;font-weight:900;color:white;margin-bottom:6px;">REFORM</div>
             <div style="font-family:var(--strong-heading);font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--strong-blue);margin-bottom:12px;">Reformer</div>
-            <div style="font-family:var(--strong-body);font-size:11px;color:rgba(255,255,255,0.4);line-height:1.6;">Pure pilates flow. Dynamic movements for mobility, balance, and strength. No cardio — all control.</div>
+            <div style="font-family:var(--strong-body);font-size:11px;color:rgba(255,255,255,0.4);line-height:1.6;">Pure pilates flow. Dynamic movements for mobility, balance, and strength. No cardio. All control.</div>
           </div>
         </div>
         <div style="text-align:center;margin-top:28px;">
@@ -1300,15 +1306,15 @@ body {
       <div style="background:#0A0A0A;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid rgba(255,255,255,0.06);">
         <div style="padding:28px 32px;border:1px solid rgba(255,255,255,0.06);border-right:none;">
           <div style="font-family:var(--strong-heading);font-size:11px;font-weight:800;color:white;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">Low-Impact. High-Intensity.</div>
-          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;">Get the core stability from pilates and the exercise high from HIIT — without the joint damage. Built for progression, not punishment.</div>
+          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;">Get the core stability from pilates and the exercise high from HIIT. Without the joint damage. Built for progression, not punishment.</div>
         </div>
         <div style="padding:28px 32px;border:1px solid rgba(255,255,255,0.06);">
           <div style="font-family:var(--strong-heading);font-size:11px;font-weight:800;color:white;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">Exclusive Equipment.</div>
-          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;">The Rowformer and Bikeformer are exclusive to STRONG. You won't find these machines anywhere else in Edmonton — or Alberta.</div>
+          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;">The Rowformer and Bikeformer are exclusive to STRONG. You won't find this equipment anywhere else in Edmonton. Or Alberta.</div>
         </div>
         <div style="padding:28px 32px;border:1px solid rgba(255,255,255,0.06);border-top:none;border-right:none;">
           <div style="font-family:var(--strong-heading);font-size:11px;font-weight:800;color:white;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">Early Access Perks.</div>
-          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;">Founding member pricing. Priority class booking. Exclusive launch offers. Get early access — these won't last.</div>
+          <div style="font-family:var(--strong-body);font-size:12px;color:rgba(255,255,255,0.4);line-height:1.6;">Founding member pricing. Priority class booking. Exclusive launch offers. Get early access. These won't last.</div>
         </div>
         <div style="padding:28px 32px;border:1px solid rgba(255,255,255,0.06);border-top:none;">
           <div style="font-family:var(--strong-heading);font-size:11px;font-weight:800;color:white;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">From Kelowna to Edmonton.</div>
@@ -1326,7 +1332,7 @@ body {
       <!-- FOOTER -->
       <div style="background:#000;padding:24px;text-align:center;border-top:1px solid rgba(255,255,255,0.04);">
         <img src="strong-logo-white.png" alt="STRONG Pilates" style="height:18px;margin-bottom:4px;">
-        <div style="font-family:var(--strong-body);font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:0.15em;text-transform:uppercase;">Row. Ride. Reform. · Edmonton · July 2026</div>
+        <div style="font-family:var(--strong-body);font-size:9px;color:rgba(255,255,255,0.2);letter-spacing:0.15em;text-transform:uppercase;">Pilates. Strength. Cardio. · Edmonton · July 2026</div>
       </div>
     </div>
 
@@ -1352,7 +1358,7 @@ body {
       <div class="strat-card">
         <h4>Immediate (0–24 hours)</h4>
         <ul>
-          <li><strong>SMS (instant):</strong> "Hey {{first_name}} — you're in. We're building something pretty special here in Edmonton and we're glad you want to be part of it. Doors open July 2026. We'll keep you posted along the way."</li>
+          <li><strong>SMS (instant):</strong> "Hey {{first_name}}, you're in. We're building something pretty special here in Edmonton and we're glad you want to be part of it. Doors open July 2026. We'll keep you posted along the way."</li>
           <li><strong>Email (within 1 hour):</strong> Welcome email — what is STRONG (ROW/RIDE/REFORM explained), the Rowformer, what to expect, studio render or buildout photo</li>
           <li><strong>Tag applied:</strong> "Presale Lead" in Grow — enters nurture workflow</li>
         </ul>
@@ -1520,7 +1526,7 @@ body {
         <div class="sms-screen">
           <div class="sms-sender">STRONG Pilates Edmonton</div>
           <div class="sms-bubble">
-            <p>Hey {{first_name}} — it's Marta & Riley from STRONG Pilates Edmonton. You're on the list. We'll keep you posted as the studio comes together. Talk soon.</p>
+            <p>Hey {{first_name}}, it's Marta & Riley from STRONG Pilates Edmonton. You're on the list. We'll keep you posted as the studio comes together. Talk soon.</p>
           </div>
           <div class="sms-time">Just now</div>
         </div>
@@ -1538,21 +1544,21 @@ body {
 
     <div class="email-preview">
       <div class="email-header"><img src="strong-logo-white.png" alt="STRONG Pilates" style="height:20px;"><div class="email-logo-sub">Edmonton</div></div>
-      <div class="email-subject-bar"><div class="email-subject-label">Subject</div><div class="email-subject-text">You're in — here's what happens next</div></div>
+      <div class="email-subject-bar"><div class="email-subject-label">Subject</div><div class="email-subject-text">You're in. Here's what happens next</div></div>
       <div class="email-body">
         <p>Hey {{first_name}},</p>
-        <p>You just signed up for STRONG Pilates Edmonton, and we wanted to say — genuinely — thanks for being early.</p>
+        <p>You just signed up for STRONG Pilates Edmonton, and we wanted to say, genuinely, thanks for being early.</p>
         <p>We're not open yet. The studio is still being built. But the fact that you're here before the doors are even on tells us something about you.</p>
         <p>So here's what to expect from us over the coming weeks:</p>
-        <p><strong>Studio updates</strong> — real photos, real progress, no stock images of someone pretending to sweat.</p>
-        <p><strong>The backstory</strong> — who we are, why we're bringing STRONG to Edmonton, and what makes this different from every other fitness studio in the city.</p>
-        <p><strong>First access</strong> — when our intro offer goes live, you'll know before anyone else.</p>
+        <p><strong>Studio updates</strong>. Real photos, real progress, no stock images of someone pretending to sweat.</p>
+        <p><strong>The backstory</strong>. Who we are, why we're bringing STRONG to Edmonton, and what makes this different from every other fitness studio in the city.</p>
+        <p><strong>First access</strong>. When our intro offer goes live, you'll know before anyone else.</p>
         <p>That's it. No spam. No daily "HURRY LIMITED TIME" nonsense. Just the good stuff, when there's actually something worth sharing.</p>
         <div class="email-img-placeholder"><span>Studio interior or Rowformer beauty shot</span></div>
         <p>Talk soon,</p>
         <p><strong>Marta & Riley</strong><br><span style="color:#888;font-size:12px;">STRONG Pilates Edmonton</span></p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. · STRONG Pilates Edmonton · July 2026</span></div>
+      <div class="email-footer"><span>Pilates. Strength. Cardio. · STRONG Pilates Edmonton · July 2026</span></div>
     </div>
   </div>
 
@@ -1569,19 +1575,19 @@ body {
       <div class="email-subject-bar"><div class="email-subject-label">Subject</div><div class="email-subject-text">The two people building your new studio</div></div>
       <div class="email-body">
         <p>Hey {{first_name}},</p>
-        <p>Quick intro — we're Marta and Riley, and we're the ones behind STRONG Pilates Edmonton.</p>
-        <p>This isn't our first studio. We opened STRONG Kelowna a while back, and it's grown into something we're genuinely proud of — 500+ members, a perfect 5.0 rating from 362 Google reviews, and a community that actually shows up for each other.</p>
+        <p>Quick intro. We're Marta and Riley, and we're the ones behind STRONG Pilates Edmonton.</p>
+        <p>This isn't our first studio. We opened STRONG Kelowna a while back, and it's grown into something we're genuinely proud of. 500+ members, a perfect 5.0 rating from 362 Google reviews, and a community that actually shows up for each other.</p>
         <p>But here's the thing that matters more than numbers: we learned what works and what doesn't. What makes people stay. What makes a studio feel like <em>theirs</em> and not just a place they pay to visit.</p>
         <div class="email-img-placeholder">
           <div style="width:60px;height:60px;border-radius:50%;background:#ddd;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;"><span style="font-size:8px;color:#999;">Photo</span></div>
-          <span>Marta & Riley — Owners, STRONG Pilates Kelowna & Edmonton</span>
+          <span>Marta & Riley, Owners, STRONG Pilates Kelowna & Edmonton</span>
         </div>
         <p>Edmonton is where we're putting all of that to work.</p>
-        <p>We're not operators who bought a franchise and handed it off. We'll be in the studio. We'll know your name. That's not a tagline — it's just how we do things.</p>
+        <p>We're not operators who bought a franchise and handed it off. We'll be in the studio. We'll know your name. That's not a tagline. It's just how we do things.</p>
         <p>More on what STRONG actually <em>is</em> coming soon. For now, just wanted to say hi properly.</p>
         <p>Marta & Riley</p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. · STRONG Pilates Edmonton · July 2026</span></div>
+      <div class="email-footer"><span>Pilates. Strength. Cardio. · STRONG Pilates Edmonton · July 2026</span></div>
     </div>
   </div>
 
@@ -1599,17 +1605,17 @@ body {
       <div class="email-body">
         <p>Hey {{first_name}},</p>
         <p>You've been on the Edmonton pre-sale list for about a week now, so we'll keep this short.</p>
-        <p>If you know someone who'd be into STRONG — someone who's been looking for a workout that's actually challenging but won't wreck their joints — would you send them this link?</p>
+        <p>If you know someone who'd be into STRONG, someone who's been looking for a workout that's actually challenging but won't wreck their joints, would you send them this link?</p>
         <div class="share-box">
           <div class="share-box-label">Share the link</div>
           <div class="share-box-url">strongpilates.ca/edmonton</div>
           <div class="email-cta-btn">Send to a Friend</div>
         </div>
-        <p>No referral codes. No "unlock a bonus tier." Just — the best communities start with people who know people. And you're already here, which means you probably have good taste in friends too.</p>
+        <p>No referral codes. No "unlock a bonus tier." Just... the best communities start with people who know people. And you're already here, which means you probably have good taste in friends too.</p>
         <p>Thanks for spreading the word.</p>
         <p>Marta & Riley</p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. · STRONG Pilates Edmonton · July 2026</span></div>
+      <div class="email-footer"><span>Pilates. Strength. Cardio. · STRONG Pilates Edmonton · July 2026</span></div>
     </div>
   </div>
 
@@ -1624,7 +1630,7 @@ body {
     <div class="sms-mockup" style="margin-bottom:32px;">
       <div class="sms-phone"><div class="sms-screen">
         <div class="sms-sender">STRONG Pilates Edmonton</div>
-        <div class="sms-bubble"><p>{{first_name}} — new email from us. The full story behind why we're opening STRONG in Edmonton (and what we learned from our first 500+ members in Kelowna).</p></div>
+        <div class="sms-bubble"><p>{{first_name}}, new email from us. The full story behind why we're opening STRONG in Edmonton (and what we learned from our first 500+ members in Kelowna).</p></div>
         <div class="sms-time">Week 1</div>
       </div></div>
     </div>
@@ -1638,16 +1644,16 @@ body {
         <p>Most of those plans were wrong.</p>
         <p>Not in a dramatic way. More in a "the things we thought mattered turned out to matter less than the things we didn't plan for" kind of way.</p>
         <p><strong>What we thought would matter most:</strong> the equipment, the programming, the aesthetic.</p>
-        <p><strong>What actually mattered most:</strong> how people felt when they walked in. Whether they felt like they belonged — regardless of their fitness level, their body, or how many times they'd quit a gym before.</p>
-        <p>The Kelowna studio has 500+ members now. 5.0 stars on Google from 362 reviews. But the thing we're proudest of is harder to measure — it's the number of people who told us they'd given up on fitness before they found STRONG.</p>
+        <p><strong>What actually mattered most:</strong> how people felt when they walked in. Whether they felt like they belonged, regardless of their fitness level, their body, or how many times they'd quit a gym before.</p>
+        <p>The Kelowna studio has 500+ members now. 5.0 stars on Google from 362 reviews. But the thing we're proudest of is harder to measure. It's the number of people who told us they'd given up on fitness before they found STRONG.</p>
         <p>That's what we're building in Edmonton.</p>
         <div class="email-img-placeholder"><span>Kelowna studio in action — full class, energy visible</span></div>
-        <p>Not a carbon copy of Kelowna. Something better, because we know more now. We know that the first impression matters more than the hundredth class. We know that "low-impact, high-intensity" isn't just a category — it's the reason people with bad knees and desk-job backs actually stick around.</p>
-        <p>We'll share more about the actual workout soon — the Rowformer, the class formats, all of it. But we wanted to start with the why, because the why is what makes the what make sense.</p>
+        <p>Not a carbon copy of Kelowna. Something better, because we know more now. We know that the first impression matters more than the hundredth class. We know that "low-impact, high-intensity" isn't just a category. It's the reason people with bad knees and desk-job backs actually stick around.</p>
+        <p>We'll share more about the actual workout soon. The Rowformer, the class formats, all of it. But we wanted to start with the why, because the why is what makes the what make sense.</p>
         <p>Thanks for being here early.</p>
         <p>Marta & Riley</p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. · STRONG Pilates Edmonton · July 2026</span></div>
+      <div class="email-footer"><span>Pilates. Strength. Cardio. · STRONG Pilates Edmonton · July 2026</span></div>
     </div>
   </div>
 
@@ -1664,22 +1670,22 @@ body {
       <div class="email-subject-bar"><div class="email-subject-label">Subject</div><div class="email-subject-text">Half reformer. Half rower. Entirely the point.</div></div>
       <div class="email-body">
         <p>Hey {{first_name}},</p>
-        <p>Time to talk about the thing that makes STRONG different from every other Pilates studio — and honestly, from every other workout — you've tried.</p>
-        <p>It starts with a machine called the <strong>Rowformer</strong>.</p>
-        <p>Picture a Pilates reformer. Now attach a rower to it. That's the Rowformer — half reformer, half rowing machine, fully engineered to do things neither can do alone. It's exclusive to STRONG. You won't find it anywhere else.</p>
-        <p>And then there's the <strong>Bikeformer</strong> — same idea, but with a stationary bike integrated into the reformer. Same exclusivity.</p>
+        <p>Time to talk about the thing that makes STRONG different from every other Pilates studio, and honestly, from every other workout you've tried.</p>
+        <p>It starts with a piece of equipment called the <strong>Rowformer</strong>.</p>
+        <p>Picture a Pilates reformer. Now attach a rower to it. That's the Rowformer. Half reformer, half rower, fully engineered to do things neither can do alone. It's exclusive to STRONG. You won't find it anywhere else.</p>
+        <p>And then there's the <strong>Bikeformer</strong>. Same idea, but with a stationary bike integrated into the reformer. Same exclusivity.</p>
         <div class="email-img-placeholder"><span>Rowformer close-up — beauty shot, moody lighting</span></div>
         <p><strong>You'll choose from three formats:</strong></p>
-        <p>&#8226; <strong>ROW</strong> — Rowformer-based. Cardio meets resistance in a way that makes 45 minutes feel like 20.<br>&#8226; <strong>RIDE</strong> — Bikeformer-based. Low-impact cycling fused with reformer work.<br>&#8226; <strong>REFORM</strong> — Pure reformer. Classical Pilates principles, STRONG programming.</p>
+        <p>&#8226; <strong>ROW</strong>. Rowformer-based. Cardio meets resistance in a way that makes 45 minutes feel like 20.<br>&#8226; <strong>RIDE</strong>. Bikeformer-based. Low-impact cycling fused with reformer work.<br>&#8226; <strong>REFORM</strong>. Pure reformer. Classical Pilates principles, STRONG programming.</p>
         <p><strong>Class types:</strong></p>
-        <p>&#8226; <strong>STRONG Body</strong> — Our OG STRONG class. Full-body Pilates-inspired training paired with cardio bursts.<br>&#8226; <strong>STRONG Loaded</strong> — Built for progress. Deliberate, full-body strength work with heavy springs and dumbbells.<br>&#8226; <strong>STRONG 360</strong> — Pilates, strength, and cardio in one dynamic, full-body session. Fresh format every week.<br>&#8226; <strong>Pilates Strength</strong> — The best of traditional Pilates with strength-based movements. Progressive overload built in.<br>&#8226; <strong>Pilates Only</strong> — Dynamic movements and Pilates flows for strength, stability and mobility.</p>
-        <p>Every class is 45 minutes. Low-impact, high-intensity. Edmonton will have <strong>15 Rowformers</strong> — a full studio, every class.</p>
+        <p>&#8226; <strong>STRONG Body</strong>. Our OG STRONG class. Full-body Pilates-inspired training paired with cardio bursts.<br>&#8226; <strong>STRONG Loaded</strong>. Built for progress. Deliberate, full-body strength work with heavy springs and dumbbells.<br>&#8226; <strong>STRONG 360</strong>. Pilates, strength, and cardio in one dynamic, full-body session. Fresh format every week.<br>&#8226; <strong>Pilates Strength</strong>. The best of traditional Pilates with strength-based movements. Progressive overload built in.<br>&#8226; <strong>Pilates Only</strong>. Dynamic movements and Pilates flows for strength, stability and mobility.</p>
+        <p>Every class is 45 minutes. Low-impact, high-intensity. Edmonton will have <strong>15 Rowformers</strong>. A full studio, every class.</p>
         <div class="email-img-placeholder"><span>Action shot — someone mid-ROW class</span></div>
         <p>This format is now in <strong>100+ studios across 14 countries</strong>, with over <strong>37,000 STRONG Humans</strong> worldwide. It started in Melbourne in 2019 and it's grown because the workout speaks for itself.</p>
         <p>You'll get to experience it soon.</p>
         <p>Marta & Riley</p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. Down For More. · STRONG Pilates Edmonton</span></div>
+      <div class="email-footer"><span>Pilates. Strength. Cardio. Down For More. · STRONG Pilates Edmonton</span></div>
     </div>
   </div>
 
@@ -1694,7 +1700,7 @@ body {
     <div class="sms-mockup" style="margin-bottom:32px;">
       <div class="sms-phone"><div class="sms-screen">
         <div class="sms-sender">STRONG Pilates Edmonton</div>
-        <div class="sms-bubble"><p>{{first_name}} — walls are going up at STRONG Edmonton. Snuck a few photos for you. Check your inbox.</p></div>
+        <div class="sms-bubble"><p>{{first_name}}, walls are going up at STRONG Edmonton. Snuck a few photos for you. Check your inbox.</p></div>
         <div class="sms-time">Week 3</div>
       </div></div>
     </div>
@@ -1706,13 +1712,13 @@ body {
         <p>Hey {{first_name}},</p>
         <p>Quick update from the construction site (a.k.a. your future studio).</p>
         <div class="email-img-placeholder"><span>Construction progress photo 1 — framing, walls going up</span></div>
-        <p>It doesn't look like much yet. Honestly, it looks like a construction site. But if you squint, you can start to see it — where the Rowformers will go, where the front desk will be, where you'll grab water between sets and pretend you're not out of breath.</p>
+        <p>It doesn't look like much yet. Honestly, it looks like a construction site. But if you squint, you can start to see it. Where the Rowformers will go, where the front desk will be, where you'll grab water between sets and pretend you're not out of breath.</p>
         <div class="email-img-placeholder"><span>Construction progress photo 2 — different angle or detail</span></div>
         <p>We're on schedule. The team is doing incredible work, and every week it looks a little less like a warehouse and a little more like a STRONG studio.</p>
-        <p>More updates coming. We'll show you everything — the pretty stages and the messy ones.</p>
+        <p>More updates coming. We'll show you everything. The pretty stages and the messy ones.</p>
         <p>Marta & Riley</p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. · STRONG Pilates Edmonton · July 2026</span></div>
+      <div class="email-footer"><span>Pilates. Strength. Cardio. · STRONG Pilates Edmonton · July 2026</span></div>
     </div>
   </div>
 
@@ -1732,15 +1738,15 @@ body {
         <p>We've told you about the Rowformer. We've told you about the classes. We've told you why we're opening in Edmonton.</p>
         <p>But we're biased. Obviously.</p>
         <p>So here's what actual STRONG Humans from our Kelowna studio have to say:</p>
-        <div class="email-quote">"[PLACEHOLDER — Real quote from Kelowna member. Newcomer/sceptic perspective.]"<br><strong style="font-style:normal;font-size:12px;color:#999;">— [Name], STRONG Kelowna</strong></div>
+        <div class="email-quote">"[PLACEHOLDER. Real quote from Kelowna member. Newcomer/sceptic perspective.]"<br><strong style="font-style:normal;font-size:12px;color:#999;">[Name], STRONG Kelowna</strong></div>
         <div class="email-img-placeholder"><span>Member photo or candid class shot</span></div>
-        <div class="email-quote">"[PLACEHOLDER — Real quote about community, feeling welcome, or low-impact benefit.]"<br><strong style="font-style:normal;font-size:12px;color:#999;">— [Name], STRONG Kelowna</strong></div>
-        <div class="email-quote">"[PLACEHOLDER — Real quote about the addictive quality or something unexpected.]"<br><strong style="font-style:normal;font-size:12px;color:#999;">— [Name], STRONG Kelowna</strong></div>
+        <div class="email-quote">"[PLACEHOLDER. Real quote about community, feeling welcome, or low-impact benefit.]"<br><strong style="font-style:normal;font-size:12px;color:#999;">[Name], STRONG Kelowna</strong></div>
+        <div class="email-quote">"[PLACEHOLDER. Real quote about the addictive quality or something unexpected.]"<br><strong style="font-style:normal;font-size:12px;color:#999;">[Name], STRONG Kelowna</strong></div>
         <p style="background:#fff3cd;padding:12px 16px;font-size:12px;color:#856404;border-left:3px solid #ffc107;">NOTE: Source from real Kelowna Google reviews with permission. Do not fabricate.</p>
         <p>These are real people. Not influencers, not ambassadors. Just people who showed up, tried it, and kept coming back.</p>
         <p>Marta & Riley</p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. · STRONG Pilates Edmonton · July 2026</span></div>
+      <div class="email-footer"><span>Pilates. Strength. Cardio. · STRONG Pilates Edmonton · July 2026</span></div>
     </div>
   </div>
 
@@ -1759,18 +1765,18 @@ body {
         <p>Hey {{first_name}},</p>
         <p>A studio is equipment and walls and lighting. A community is everything else.</p>
         <p><strong>Your instructors</strong></p>
-        <p>We're assembling the Edmonton team right now, and we're being deliberate about it. Every STRONG instructor goes through a certification program specific to the Rowformer and Bikeformer — this isn't standard Pilates teaching.</p>
-        <p>We'll introduce them properly once the team is locked in. For now, just know — we're not hiring resumes. We're hiring people who make you want to come back.</p>
+        <p>We're assembling the Edmonton team right now, and we're being deliberate about it. Every STRONG instructor goes through a certification program specific to the Rowformer and Bikeformer. This isn't standard Pilates teaching.</p>
+        <p>We'll introduce them properly once the team is locked in. For now, just know. We're not hiring resumes. We're hiring people who make you want to come back.</p>
         <div class="email-img-placeholder"><span>Instructor training shot, or Kelowna instructors mid-class</span></div>
         <p><strong>Local partnerships</strong></p>
-        <p>We're in conversations with local businesses in the Edmonton area — coffee shops, wellness brands, active lifestyle companies — to create something that goes beyond the studio walls. Being a STRONG Human comes with perks beyond the workout.</p>
+        <p>We're in conversations with local businesses in the Edmonton area. Coffee shops, wellness brands, active lifestyle companies. All to create something that goes beyond the studio walls. Being a STRONG Human comes with perks beyond the workout.</p>
         <p><strong>The bigger picture</strong></p>
         <p>STRONG now has over 100 studios in 14 countries. 37,000+ STRONG Humans worldwide. But we've never been interested in being big for the sake of being big. Every studio is locally owned. Every community is its own thing.</p>
         <p>Edmonton's will be yours.</p>
         <p>More soon.</p>
         <p>Marta & Riley</p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. Down For More. · STRONG Pilates Edmonton</span></div>
+      <div class="email-footer"><span>Pilates. Strength. Cardio. Down For More. · STRONG Pilates Edmonton</span></div>
     </div>
   </div>
 
@@ -1785,7 +1791,7 @@ body {
     <div class="sms-mockup" style="margin-bottom:32px;">
       <div class="sms-phone"><div class="sms-screen">
         <div class="sms-sender">STRONG Pilates Edmonton</div>
-        <div class="sms-bubble"><p>{{first_name}} — the Rowformers are in. Your studio just got very real. Photos in your inbox.</p></div>
+        <div class="sms-bubble"><p>{{first_name}}, the Rowformers are in. Your studio just got very real. Photos in your inbox.</p></div>
         <div class="sms-time">Week 6</div>
       </div></div>
     </div>
@@ -1798,14 +1804,14 @@ body {
         <p>Remember when we showed you a construction site and asked you to squint?</p>
         <p>You can stop squinting.</p>
         <div class="email-img-placeholder"><span>Hero shot — Rowformers installed. The "wow" moment.</span></div>
-        <p>The equipment is in. Fifteen Rowformers, lined up and ready. The flooring is done. The lighting is set. It's starting to look — and feel — like a STRONG studio.</p>
+        <p>The equipment is in. Fifteen Rowformers, lined up and ready. The flooring is done. The lighting is set. It's starting to look and feel like a STRONG studio.</p>
         <div class="email-img-placeholder"><span>Detail shot — close-up of Rowformer, lighting, aesthetic</span></div>
         <p>There's still work to do. Final touches, tech setup, instructor rehearsals, the kind of details you won't notice but would definitely notice if we skipped them. We're in the stage where it goes from "almost done" to "done right."</p>
         <p>We're getting close. And the next email from us is going to be one you'll want to open fast.</p>
         <p>Stay tuned.</p>
         <p>Marta & Riley</p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. · STRONG Pilates Edmonton · July 2026</span></div>
+      <div class="email-footer"><span>Pilates. Strength. Cardio. · STRONG Pilates Edmonton · July 2026</span></div>
     </div>
   </div>
 
@@ -1820,7 +1826,7 @@ body {
     <div class="sms-mockup" style="margin-bottom:32px;">
       <div class="sms-phone"><div class="sms-screen">
         <div class="sms-sender">STRONG Pilates Edmonton</div>
-        <div class="sms-bubble"><p>{{first_name}} — something's coming for STRONG Edmonton pre-sale members. Check your inbox this week. You'll want to be ready.</p></div>
+        <div class="sms-bubble"><p>{{first_name}}, something's coming for STRONG Edmonton pre-sale members. Check your inbox this week. You'll want to be ready.</p></div>
         <div class="sms-time">Week 7</div>
       </div></div>
     </div>
@@ -1833,18 +1839,18 @@ body {
         <p>You've been following along since before there were walls.</p>
         <p>You've seen the construction updates, met us, learned about the Rowformer, and heard from real STRONG Humans. You've been here since this was just a plan and a mailing list.</p>
         <p>That matters to us. And it's about to matter to you.</p>
-        <p>We're putting together an introductory offer for our pre-sale community — the people who believed in this before the doors were open. It's designed to reward exactly that.</p>
+        <p>We're putting together an introductory offer for our pre-sale community. The people who believed in this before the doors were open. It's designed to reward exactly that.</p>
         <p>Here's what we can tell you:</p>
-        <p>&#8226; It will be <strong>exclusive to the pre-sale list</strong> (that's you).<br>&#8226; It will be the <strong>best offer we'll ever run</strong> for Edmonton.<br>&#8226; It will have a <strong>limited window</strong> — once it's gone, it's gone.</p>
+        <p>&#8226; It will be <strong>exclusive to the pre-sale list</strong> (that's you).<br>&#8226; It will be the <strong>best offer we'll ever run</strong> for Edmonton.<br>&#8226; It will have a <strong>limited window</strong>. Once it's gone, it's gone.</p>
         <p>When it drops, you'll get an email and an SMS at the same time. You won't need to go searching for it.</p>
-        <p>Between now and then — if you have friends who've been on the fence, this is the moment to nudge them. Once the offer goes live, the pre-sale list closes.</p>
+        <p>Between now and then, if you have friends who've been on the fence, this is the moment to nudge them. Once the offer goes live, the pre-sale list closes.</p>
         <div style="text-align:center;margin:24px 0;">
           <div class="email-cta-btn">Share the Pre-Sale Link</div>
         </div>
         <p>Almost time.</p>
         <p>Marta & Riley</p>
       </div>
-      <div class="email-footer"><span>Row. Ride. Reform. Down For More. · STRONG Pilates Edmonton</span></div>
+      <div class="email-footer"><span>Pilates. Strength. Cardio. Down For More. · STRONG Pilates Edmonton</span></div>
     </div>
 
     <div class="callout">
@@ -1951,19 +1957,19 @@ body {
   <div class="s-hero"><div class="s-hero-eyebrow">Ad Direction 1</div><h2>The <em>Announcement</em></h2><p>Clean, bold, curiosity-driven. Real Kelowna photography as the backdrop. Phase 1 is awareness — no pricing, no offers.</p></div>
   <div class="s-section"><div class="s-eyebrow">9:16 Vertical</div><div class="s-title">Story / <em>Reel</em></div><div class="s-sub">Full-screen mobile placements.</div>
     <div class="s-showcase">
-      <div class="s-wrapper"><div class="m-story"><img class="bg" src="mockups/img/studio-interior.jpg" alt="" style="object-position:center 35%;"><div class="m-ov m-ov-tb"></div><div class="m-ct between"><div style="text-align:center"><img class="m-logo" src="strong-logo-white.png" alt="STRONG"><div class="m-loc">Edmonton</div></div><div style="text-align:center"><div class="m-hl"><em>Something</em><br>is coming.</div><div class="m-sl">Row. Ride. Reform.<br>Edmonton's first STRONG studio opens July 2026.</div></div><div style="text-align:center"><div class="m-cta">Get Early Access</div><div class="m-url">strongpilates.ca/edmonton</div></div></div></div><div class="s-label">Story — Studio Reveal</div></div>
+      <div class="s-wrapper"><div class="m-story"><img class="bg" src="mockups/img/studio-interior.jpg" alt="" style="object-position:center 35%;"><div class="m-ov m-ov-tb"></div><div class="m-ct between"><div style="text-align:center"><img class="m-logo" src="strong-logo-white.png" alt="STRONG"><div class="m-loc">Edmonton</div></div><div style="text-align:center"><div class="m-hl"><em>Something</em><br>is coming.</div><div class="m-sl">Pilates. Strength. Cardio.<br>Edmonton's first STRONG studio opens July 2026.</div></div><div style="text-align:center"><div class="m-cta">Get Early Access</div><div class="m-url">strongpilates.ca/edmonton</div></div></div></div><div class="s-label">Story — Studio Reveal</div></div>
       <div class="s-wrapper"><div class="m-story"><img class="bg" src="mockups/img/mirror-reflection.jpg" alt=""><div class="m-ov m-ov-tb"></div><div class="m-ct between"><div style="text-align:center"><img class="m-logo" src="strong-logo-white.png" alt="STRONG"><div class="m-loc">Coming July 2026</div></div><div style="text-align:center"><div class="m-hl"><em>45 minutes.</em><br>Full body.<br>Low impact.</div><div class="m-sl">Half reformer. Half rower. Entirely the point.</div></div><div style="text-align:center"><div class="m-cta">Get Early Access</div></div></div></div><div class="s-label">Story — Mirror Shot</div></div>
-      <div class="s-wrapper"><div class="m-story"><img class="bg" src="mockups/img/logo-wall-class.jpg" alt="" style="object-position:center 20%;"><div class="m-ov m-ov-tb"></div><div class="m-ct between"><div style="text-align:center"><div class="m-loc" style="color:#97caeb;">Edmonton, Alberta</div></div><div style="text-align:center"><div class="m-hl" style="font-size:22px;"><em>Row. Ride.<br>Reform.</em></div><div class="m-sl" style="max-width:220px;">The class format behind 100+ studios worldwide is landing in Edmonton.</div></div><div style="text-align:center"><div class="m-cta">I'm In</div><div class="m-url">strongpilates.ca/edmonton</div></div></div></div><div class="s-label">Story — Logo + Class</div></div>
+      <div class="s-wrapper"><div class="m-story"><img class="bg" src="mockups/img/logo-wall-class.jpg" alt="" style="object-position:center 20%;"><div class="m-ov m-ov-tb"></div><div class="m-ct between"><div style="text-align:center"><div class="m-loc" style="color:#97caeb;">Edmonton, Alberta</div></div><div style="text-align:center"><div class="m-hl" style="font-size:22px;"><em>Pilates. Strength.<br>Cardio.</em></div><div class="m-sl" style="max-width:220px;">The class format behind 100+ studios worldwide is landing in Edmonton.</div></div><div style="text-align:center"><div class="m-cta">I'm In</div><div class="m-url">strongpilates.ca/edmonton</div></div></div></div><div class="s-label">Story — Logo + Class</div></div>
     </div>
   </div>
   <hr class="s-divider">
   <div class="s-section"><div class="s-eyebrow">Feed Placements</div><div class="s-title">Feed <em>Ads</em></div><div class="s-sub">Square (1:1) and portrait (4:5) formats for Facebook and Instagram in-feed.</div>
     <div class="s-showcase">
       <div class="s-wrapper"><div class="m-feed sq"><img class="bg" src="mockups/img/class-wide-light.jpg" alt="" style="object-position:center 40%;"><div class="m-ov m-ov-hv"></div><div class="m-ct center"><img src="strong-logo-white.png" alt="STRONG" style="height:20px;margin-bottom:24px;"><div class="m-fhl"><em>Edmonton.</em><br>Coming July.</div><div class="m-fb">Pilates inspired. Cardio infused. 45 minutes on the Rowformer. This is STRONG.</div><div class="m-cta">Get Early Access →</div></div></div><div class="s-label">Feed 1:1 — Class Wide</div></div>
-      <div class="s-wrapper"><div class="m-feed sq"><img class="bg" src="mockups/img/studio-wide-equipment.jpg" alt="" style="object-position:right 40%;"><div class="m-ov m-ov-hv"></div><div class="m-ct center"><img src="strong-logo-white.png" alt="STRONG" style="height:20px;margin-bottom:24px;"><div class="m-fhl"><em>15 Rowformers.</em><br>One studio.</div><div class="m-fb">Half reformer. Half rower. The machine you won't find anywhere else. Coming to Edmonton July 2026.</div><div class="m-cta">Get Early Access →</div></div></div><div class="s-label">Feed 1:1 — Equipment</div></div>
-      <div class="s-wrapper"><div class="m-feed sq"><img class="bg" src="mockups/img/couple-logo-behind.jpg" alt=""><div class="m-ov m-ov-bt"></div><div class="m-ct end" style="padding:32px;"><div class="m-fhl" style="font-size:22px;">We built <em>Kelowna.</em><br>Now it's<br>Edmonton's turn.</div><div class="m-fb">Meet Marta & Riley — the owners behind STRONG Pilates Edmonton.</div><div class="m-cta">Get Early Access →</div></div></div><div class="s-label">Feed 1:1 — Owners Teaser</div></div>
-      <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/mirror-reflection.jpg" alt=""><div class="m-ov m-ov-hv"></div><div class="m-ct center"><div class="m-tag">Coming July 2026</div><div class="m-fhl"><em>45 minutes.</em><br>Full body.<br>Low impact.</div><div class="m-fb">Row. Ride. Reform. The class format that built a 500-member studio in Kelowna is landing in Edmonton.</div><div style="position:absolute;bottom:32px;left:32px;"><div class="m-cta">Get Early Access →</div></div></div></div><div class="s-label">Feed 4:5 — Mirror</div></div>
-      <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/instructor-straps-behind.jpg" alt="" style="object-position:center 25%;"><div class="m-ov m-ov-tb"></div><div class="m-ct center"><div class="m-tag">Edmonton, Alberta</div><div class="m-fhl"><em>Row. Ride.</em><br>Reform.</div><div class="m-fb">The workout that built 100+ studios across 14 countries. Edmonton's turn starts July 2026.</div><div style="position:absolute;bottom:32px;left:32px;"><div class="m-cta">I'm In →</div></div></div></div><div class="s-label">Feed 4:5 — Instructor</div></div>
+      <div class="s-wrapper"><div class="m-feed sq"><img class="bg" src="mockups/img/studio-wide-equipment.jpg" alt="" style="object-position:right 40%;"><div class="m-ov m-ov-hv"></div><div class="m-ct center"><img src="strong-logo-white.png" alt="STRONG" style="height:20px;margin-bottom:24px;"><div class="m-fhl"><em>15 Rowformers.</em><br>One studio.</div><div class="m-fb">Half reformer. Half rower. The equipment you won't find anywhere else. Coming to Edmonton July 2026.</div><div class="m-cta">Get Early Access →</div></div></div><div class="s-label">Feed 1:1 — Equipment</div></div>
+      <div class="s-wrapper"><div class="m-feed sq"><img class="bg" src="mockups/img/couple-logo-behind.jpg" alt=""><div class="m-ov m-ov-bt"></div><div class="m-ct end" style="padding:32px;"><div class="m-fhl" style="font-size:22px;">We built <em>Kelowna.</em><br>Now it's<br>Edmonton's turn.</div><div class="m-fb">Meet Marta & Riley. The owners behind STRONG Pilates Edmonton.</div><div class="m-cta">Get Early Access →</div></div></div><div class="s-label">Feed 1:1 — Owners Teaser</div></div>
+      <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/mirror-reflection.jpg" alt=""><div class="m-ov m-ov-hv"></div><div class="m-ct center"><div class="m-tag">Coming July 2026</div><div class="m-fhl"><em>45 minutes.</em><br>Full body.<br>Low impact.</div><div class="m-fb">Pilates. Strength. Cardio. The class format that built a 500-member studio in Kelowna is landing in Edmonton.</div><div style="position:absolute;bottom:32px;left:32px;"><div class="m-cta">Get Early Access →</div></div></div></div><div class="s-label">Feed 4:5 — Mirror</div></div>
+      <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/instructor-straps-behind.jpg" alt="" style="object-position:center 25%;"><div class="m-ov m-ov-tb"></div><div class="m-ct center"><div class="m-tag">Edmonton, Alberta</div><div class="m-fhl"><em>Pilates. Strength.</em><br>Cardio.</div><div class="m-fb">The workout that built 100+ studios across 14 countries. Edmonton's turn starts July 2026.</div><div style="position:absolute;bottom:32px;left:32px;"><div class="m-cta">I'm In →</div></div></div></div><div class="s-label">Feed 4:5 — Instructor</div></div>
       <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/backlit-signage.jpg" alt="" style="object-position:center 40%;"><div class="m-ov m-ov-hv"></div><div class="m-ct center" style="align-items:center;text-align:center;"><div class="m-fhl" style="text-align:center;"><em>Something</em><br>is coming<br>to Edmonton.</div><div class="m-fb" style="text-align:center;max-width:240px;">Pilates inspired. Cardio infused. Low impact. High intensity. Opening July 2026.</div><div class="m-cta">Get Early Access →</div></div></div><div class="s-label">Feed 4:5 — Signage</div></div>
     </div>
   </div>
@@ -1999,7 +2005,7 @@ body {
     <div class="s-showcase">
       <div class="s-wrapper"><div class="m-story"><img class="bg" src="mockups/img/class-plank.jpg" alt=""><div class="m-ov m-ov-hv"></div><div class="m-ct between"><div style="text-align:center"><img class="m-logo" src="strong-logo-white.png" alt="STRONG"></div><div style="text-align:center"><div style="font-size:48px;font-weight:900;color:#97caeb;line-height:1;margin-bottom:16px;">500+</div><div style="font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.15em;text-transform:uppercase;font-weight:600;margin-bottom:20px;">STRONG Humans in Kelowna</div><div style="width:60%;height:1px;background:rgba(255,255,255,0.15);margin:0 auto 20px;"></div><div class="m-hl" style="font-size:22px;">Now it's<br><em>Edmonton's</em> turn.</div></div><div style="text-align:center"><div class="m-cta">Join the Waitlist</div><div class="m-url">strongpilates.ca/edmonton</div></div></div></div><div class="s-label">Story — 500+ Members</div></div>
       <div class="s-wrapper"><div class="m-story"><img class="bg" src="mockups/img/feet-straps-action.jpg" alt=""><div class="m-ov m-ov-tb"></div><div class="m-ct between"><div style="text-align:center"><img class="m-logo" src="strong-logo-white.png" alt="STRONG"><div class="m-loc">The Rowformer Experience</div></div><div style="text-align:center"><div class="m-hl" style="font-size:20px;">Half reformer.<br>Half rower.<br><em>Entirely the point.</em></div><div class="m-sl">45 minutes. Low impact. High intensity. The workout that built 100+ studios worldwide.</div></div><div style="text-align:center"><div class="m-cta">Get Early Access</div></div></div></div><div class="s-label">Story — Rowformer Action</div></div>
-      <div class="s-wrapper"><div class="m-story"><img class="bg" src="mockups/img/two-members-moody.jpg" alt="" style="object-position:center 30%;"><div class="m-ov m-ov-hv"></div><div class="m-ct between"><div style="text-align:center"><img class="m-logo" src="strong-logo-white.png" alt="STRONG"></div><div style="text-align:center"><div style="font-size:16px;margin-bottom:8px;">★★★★★</div><div style="font-size:16px;color:#fff;font-weight:400;line-height:1.5;font-style:italic;max-width:220px;margin:0 auto;">"I've tried every studio in Kelowna. Nothing comes close to STRONG."</div><div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:12px;">— Real Kelowna Google Review</div></div><div style="text-align:center"><div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.7);margin-bottom:12px;">Edmonton. July 2026.</div><div class="m-cta">Get Early Access</div></div></div></div><div class="s-label">Story — Testimonial</div></div>
+      <div class="s-wrapper"><div class="m-story"><img class="bg" src="mockups/img/two-members-moody.jpg" alt="" style="object-position:center 30%;"><div class="m-ov m-ov-hv"></div><div class="m-ct between"><div style="text-align:center"><img class="m-logo" src="strong-logo-white.png" alt="STRONG"></div><div style="text-align:center"><div style="font-size:16px;margin-bottom:8px;">★★★★★</div><div style="font-size:16px;color:#fff;font-weight:400;line-height:1.5;font-style:italic;max-width:220px;margin:0 auto;">"I've tried every studio in Kelowna. Nothing comes close to STRONG."</div><div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:12px;">Real Kelowna Google Review</div></div><div style="text-align:center"><div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.7);margin-bottom:12px;">Edmonton. July 2026.</div><div class="m-cta">Get Early Access</div></div></div></div><div class="s-label">Story — Testimonial</div></div>
     </div>
   </div>
   <hr class="s-divider">
@@ -2008,9 +2014,9 @@ body {
       <div class="s-wrapper"><div class="m-feed sq"><img class="bg" src="mockups/img/class-through-window.jpg" alt=""><div class="m-ov m-ov-bt"></div><div class="m-ct end" style="padding:32px;"><div class="m-fhl" style="font-size:22px;">This is what<br>you're <em>signing up</em> for.</div><div class="m-fb">Real members. Real classes. Real results. STRONG Pilates is coming to Edmonton.</div><div class="m-cta">Get Early Access →</div></div></div><div class="s-label">Feed 1:1 — Class Energy</div></div>
       <div class="s-wrapper"><div class="m-feed sq"><img class="bg" src="mockups/img/class-plank-instructor.jpg" alt=""><div class="m-ov m-ov-bt"></div><div class="m-ct end" style="padding:32px;"><div class="m-fhl" style="font-size:20px;"><em>Low impact.</em><br>High intensity.</div><div class="m-fb">Your joints are protected while your muscles do real work. 45 minutes on the Rowformer.</div><div class="m-cta">Get Early Access →</div></div></div><div class="s-label">Feed 1:1 — Inclusive</div></div>
       <div class="s-wrapper"><div class="m-feed sq"><img class="bg" src="mockups/img/group-class-paityn.jpg" alt="" style="object-position:center 30%;"><div class="m-ov m-ov-bt"></div><div class="m-ct end" style="padding:32px;"><div class="m-fhl" style="font-size:20px;">Join the<br><em>community.</em></div><div class="m-fb">500+ STRONG Humans in Kelowna. Edmonton is next.</div><div class="m-cta">Get Early Access →</div></div></div><div class="s-label">Feed 1:1 — Community</div></div>
-      <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/class-elevated.jpg" alt="" style="object-position:center 30%;"><div class="m-ov m-ov-hv"></div><div class="m-ct center"><div class="m-tag">Now in Alberta</div><div class="m-fhl">From Kelowna<br>to <em>Edmonton.</em></div><div class="m-stat-grid"><div class="m-stat"><div class="m-stat-n">500+</div><div class="m-stat-l">Members</div></div><div class="m-stat"><div class="m-stat-n">5.0★</div><div class="m-stat-l">362 Reviews</div></div><div class="m-stat"><div class="m-stat-n">100+</div><div class="m-stat-l">Studios Global</div></div></div><div class="m-fb">The class format that built 100+ studios worldwide. Row. Ride. Reform.</div></div></div><div class="s-label">Feed 4:5 — Stats</div></div>
-      <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/rowformer-action-straps.jpg" alt="" style="object-position:center 20%;"><div class="m-ov m-ov-hv"></div><div class="m-ct center"><div class="m-tag">What is STRONG?</div><div class="m-fhl"><em>Row. Ride.</em><br>Reform.</div><div class="m-fb" style="max-width:240px;">Choose your cardio. Row on the Rowformer. Ride on the Bikeformer. Reform on the reformer. 45 min. Low impact. High intensity.</div><div style="position:absolute;bottom:32px;left:32px;"><div class="m-cta">Get Early Access →</div></div></div></div><div class="s-label">Feed 4:5 — Instructor</div></div>
-      <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/branded-top-closeup.jpg" alt="" style="object-position:center 25%;"><div class="m-ov m-ov-bt"></div><div class="m-ct end" style="padding:32px;"><div style="font-size:16px;margin-bottom:8px;">★★★★★</div><div style="font-size:15px;color:#fff;font-weight:400;line-height:1.5;font-style:italic;max-width:240px;margin-bottom:12px;">"I was sceptical about another boutique studio. Two months in, I'm here five times a week."</div><div style="font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:20px;">— Kelowna Google Review</div><div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#97caeb;margin-bottom:16px;">Edmonton. July 2026.</div><div class="m-cta">Get Early Access →</div></div></div><div class="s-label">Feed 4:5 — Testimonial</div></div>
+      <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/class-elevated.jpg" alt="" style="object-position:center 30%;"><div class="m-ov m-ov-hv"></div><div class="m-ct center"><div class="m-tag">Now in Alberta</div><div class="m-fhl">From Kelowna<br>to <em>Edmonton.</em></div><div class="m-stat-grid"><div class="m-stat"><div class="m-stat-n">500+</div><div class="m-stat-l">Members</div></div><div class="m-stat"><div class="m-stat-n">5.0★</div><div class="m-stat-l">362 Reviews</div></div><div class="m-stat"><div class="m-stat-n">100+</div><div class="m-stat-l">Studios Global</div></div></div><div class="m-fb">The class format that built 100+ studios worldwide. Pilates. Strength. Cardio.</div></div></div><div class="s-label">Feed 4:5 — Stats</div></div>
+      <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/rowformer-action-straps.jpg" alt="" style="object-position:center 20%;"><div class="m-ov m-ov-hv"></div><div class="m-ct center"><div class="m-tag">What is STRONG?</div><div class="m-fhl"><em>Pilates. Strength.</em><br>Cardio.</div><div class="m-fb" style="max-width:240px;">Choose your cardio. Row on the Rowformer. Ride on the Bikeformer. Reform on the reformer. 45 min. Low impact. High intensity.</div><div style="position:absolute;bottom:32px;left:32px;"><div class="m-cta">Get Early Access →</div></div></div></div><div class="s-label">Feed 4:5 — Instructor</div></div>
+      <div class="s-wrapper"><div class="m-feed pt"><img class="bg" src="mockups/img/branded-top-closeup.jpg" alt="" style="object-position:center 25%;"><div class="m-ov m-ov-bt"></div><div class="m-ct end" style="padding:32px;"><div style="font-size:16px;margin-bottom:8px;">★★★★★</div><div style="font-size:15px;color:#fff;font-weight:400;line-height:1.5;font-style:italic;max-width:240px;margin-bottom:12px;">"I was sceptical about another boutique studio. Two months in, I'm here five times a week."</div><div style="font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:20px;">Kelowna Google Review</div><div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#97caeb;margin-bottom:16px;">Edmonton. July 2026.</div><div class="m-cta">Get Early Access →</div></div></div><div class="s-label">Feed 4:5 — Testimonial</div></div>
     </div>
   </div>
 </div>
