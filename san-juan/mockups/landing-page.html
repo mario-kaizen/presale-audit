@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STRONG Pilates San Juan — Landing Page Mockup</title>
+<style>
+@font-face { font-family:"Kessel 105"; src:url("/fonts/Kessel105-Light.otf") format("opentype"); font-weight:300; font-style:normal; font-display:swap; }
+@font-face { font-family:"Kessel 105"; src:url("/fonts/Kessel105-Book.otf") format("opentype"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:"Kessel 105"; src:url("/fonts/Kessel105-Medium.otf") format("opentype"); font-weight:500; font-style:normal; font-display:swap; }
+@font-face { font-family:"Kessel 105"; src:url("/fonts/Kessel105-Bold.otf") format("opentype"); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:"Kessel 105"; src:url("/fonts/Kessel105-Heavy.otf") format("opentype"); font-weight:900; font-style:normal; font-display:swap; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#000; color:#fff; font-family:'Kessel 105',sans-serif; -webkit-font-smoothing:antialiased; }
+img { display:block; }
+
+/* ========== HERO ========== */
+.hero {
+  position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+.hero-bg {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  object-fit:cover; object-position:center center; z-index:0;
+}
+.hero-overlay {
+  position:absolute; top:0; left:0; width:100%; height:100%; z-index:1;
+  background:linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0.85) 100%);
+}
+.hero-content {
+  position:relative; z-index:2; text-align:center; padding:60px 40px;
+  max-width:680px;
+}
+.hero-logo { height:32px; margin:0 auto 20px; }
+.hero-badge {
+  display:inline-block; font-size:10px; font-weight:700; letter-spacing:0.3em;
+  text-transform:uppercase; color:#97caeb; margin-bottom:36px;
+  padding:6px 16px; border:1px solid rgba(151,202,235,0.3);
+}
+.hero h1 {
+  font-size:64px; font-weight:900; text-transform:uppercase; line-height:1.0;
+  letter-spacing:-0.02em; margin-bottom:20px;
+}
+.hero h1 span { color:#97caeb; }
+.hero-sub {
+  font-size:15px; color:rgba(255,255,255,0.6); font-weight:400; line-height:1.7;
+  max-width:480px; margin:0 auto 44px;
+}
+
+/* FORM */
+.form-box {
+  background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+  padding:36px; max-width:440px; margin:0 auto;
+  backdrop-filter:blur(10px);
+}
+.form-title {
+  font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:0.12em;
+  margin-bottom:22px; color:#fff;
+}
+.form-row { display:grid; gap:10px; margin-bottom:10px; }
+.form-row.half { grid-template-columns:1fr 1fr; }
+.form-input {
+  padding:13px 16px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.03);
+  font-family:'Kessel 105',sans-serif; font-size:12px; color:rgba(255,255,255,0.35);
+  font-weight:400;
+}
+.form-submit {
+  width:100%; padding:15px; background:#fff; color:#000; border:none;
+  font-family:'Kessel 105',sans-serif; font-size:12px; font-weight:800;
+  letter-spacing:0.15em; text-transform:uppercase; cursor:pointer;
+  margin-top:6px; transition:background 0.3s;
+}
+.form-submit:hover { background:#97caeb; }
+.form-trust {
+  font-size:10px; color:rgba(255,255,255,0.25); text-align:center; margin-top:14px; line-height:1.5;
+}
+
+/* SCROLL CUE */
+.scroll-cue {
+  position:absolute; bottom:28px; left:50%; transform:translateX(-50%); z-index:3;
+  text-align:center;
+}
+.scroll-cue span {
+  font-size:8px; letter-spacing:0.2em; text-transform:uppercase;
+  color:rgba(255,255,255,0.25);
+}
+.scroll-cue .arrow {
+  display:block; width:1px; height:28px; background:rgba(255,255,255,0.15);
+  margin:8px auto 0; position:relative;
+}
+.scroll-cue .arrow::after {
+  content:''; position:absolute; bottom:0; left:-3px;
+  width:7px; height:7px; border-right:1px solid rgba(255,255,255,0.3);
+  border-bottom:1px solid rgba(255,255,255,0.3); transform:rotate(45deg);
+}
+
+/* ========== WHAT IS STRONG ========== */
+.what-section {
+  padding:80px 40px; border-top:1px solid rgba(255,255,255,0.06);
+  background:#0A0A0A;
+}
+.what-section .section-center { max-width:960px; margin:0 auto; }
+.section-eyebrow {
+  font-size:9px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase;
+  color:#97caeb; text-align:center; margin-bottom:14px;
+}
+.section-heading {
+  font-size:36px; font-weight:900; text-transform:uppercase; line-height:1.1;
+  text-align:center; margin-bottom:48px;
+}
+.section-heading span { color:#97caeb; }
+
+.format-grid {
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:0;
+  border:1px solid rgba(255,255,255,0.08);
+}
+.format-card {
+  padding:40px 28px; text-align:center;
+  border-right:1px solid rgba(255,255,255,0.08);
+  position:relative; overflow:hidden;
+}
+.format-card:last-child { border-right:none; }
+.format-card img {
+  width:100%; height:200px; object-fit:cover; margin-bottom:24px;
+  filter:brightness(0.8);
+}
+.format-name {
+  font-size:36px; font-weight:900; text-transform:uppercase; margin-bottom:6px;
+}
+.format-machine {
+  font-size:9px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase;
+  color:#97caeb; margin-bottom:14px;
+}
+.format-desc {
+  font-size:11px; color:rgba(255,255,255,0.45); line-height:1.7;
+}
+
+/* ========== FULL-BLEED IMAGE SECTION ========== */
+.image-break {
+  position:relative; height:480px; overflow:hidden;
+}
+.image-break img {
+  width:100%; height:100%; object-fit:cover;
+}
+.image-break .overlay {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  background:linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
+}
+.image-break .content {
+  position:absolute; top:0; left:0; width:100%; height:100%; z-index:2;
+  display:flex; align-items:center; padding:0 80px;
+}
+.image-break .quote {
+  font-size:28px; font-weight:300; line-height:1.4; max-width:480px;
+  font-style:italic;
+}
+.image-break .quote span { color:#97caeb; font-weight:600; font-style:normal; }
+.image-break .attribution {
+  font-size:10px; color:rgba(255,255,255,0.4); margin-top:16px;
+  letter-spacing:0.1em; text-transform:uppercase; font-style:normal;
+}
+
+/* ========== STATS BAR ========== */
+.stats-bar {
+  display:grid; grid-template-columns:repeat(4, 1fr);
+  border-top:1px solid rgba(255,255,255,0.06);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  background:#000;
+}
+.stat {
+  padding:36px 24px; text-align:center;
+  border-right:1px solid rgba(255,255,255,0.06);
+}
+.stat:last-child { border-right:none; }
+.stat-num { font-size:36px; font-weight:900; color:#97caeb; }
+.stat-label {
+  font-size:8px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase;
+  color:rgba(255,255,255,0.3); margin-top:6px;
+}
+
+/* ========== VALUE PROPS ========== */
+.value-section {
+  padding:80px 40px; background:#0A0A0A;
+  border-top:1px solid rgba(255,255,255,0.06);
+}
+.value-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:0;
+  max-width:960px; margin:0 auto;
+}
+.value-card {
+  padding:36px; border:1px solid rgba(255,255,255,0.06);
+}
+.value-card:nth-child(2) { border-left:none; }
+.value-card:nth-child(3) { border-top:none; }
+.value-card:nth-child(4) { border-top:none; border-left:none; }
+.value-title {
+  font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:0.1em;
+  margin-bottom:12px;
+}
+.value-desc {
+  font-size:12px; color:rgba(255,255,255,0.45); line-height:1.7;
+}
+
+/* ========== OWNERS SECTION ========== */
+.owners-section {
+  position:relative; overflow:hidden;
+  border-top:1px solid rgba(255,255,255,0.06);
+}
+.owners-bg {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  object-fit:cover; object-position:center 30%; filter:brightness(0.4);
+}
+.owners-content {
+  position:relative; z-index:2; padding:80px;
+  display:flex; align-items:center; gap:60px;
+  max-width:1000px; margin:0 auto;
+}
+.owners-text { flex:1; }
+.owners-text .section-eyebrow { text-align:left; }
+.owners-text h3 {
+  font-size:28px; font-weight:900; text-transform:uppercase; line-height:1.15;
+  margin-bottom:16px;
+}
+.owners-text h3 span { color:#97caeb; }
+.owners-text p {
+  font-size:13px; color:rgba(255,255,255,0.6); line-height:1.8; margin-bottom:12px;
+}
+.owners-img {
+  width:320px; flex-shrink:0;
+}
+.owners-img img {
+  width:100%; height:400px; object-fit:cover; object-position:center 20%;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+/* ========== AMENITIES ========== */
+.amenities-section {
+  padding:80px 40px; background:#0A0A0A;
+  border-top:1px solid rgba(255,255,255,0.06);
+}
+.amenities-grid {
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;
+  max-width:960px; margin:0 auto;
+}
+.amenity-card { position:relative; overflow:hidden; }
+.amenity-card img {
+  width:100%; height:280px; object-fit:cover; filter:brightness(0.85);
+  transition:transform 0.4s;
+}
+.amenity-card:hover img { transform:scale(1.03); }
+.amenity-card .label {
+  position:absolute; bottom:16px; left:16px;
+  font-size:9px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase;
+  color:#fff; background:rgba(0,0,0,0.6); padding:6px 12px;
+  backdrop-filter:blur(4px);
+}
+
+/* ========== BOTTOM CTA ========== */
+.bottom-cta {
+  padding:80px 40px; text-align:center;
+  border-top:1px solid rgba(255,255,255,0.06);
+  background:#000; position:relative; overflow:hidden;
+}
+.bottom-cta-bg {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  object-fit:cover; opacity:0.15; filter:blur(2px);
+}
+.bottom-cta .content { position:relative; z-index:2; }
+.bottom-cta h2 {
+  font-size:36px; font-weight:900; text-transform:uppercase; margin-bottom:12px;
+}
+.bottom-cta h2 span { color:#97caeb; }
+.bottom-cta p {
+  font-size:13px; color:rgba(255,255,255,0.5); margin-bottom:32px;
+}
+.bottom-cta .cta-btn {
+  display:inline-block; padding:16px 52px; background:#fff; color:#000;
+  font-size:13px; font-weight:800; letter-spacing:0.15em; text-transform:uppercase;
+  cursor:pointer; transition:background 0.3s;
+}
+.bottom-cta .cta-btn:hover { background:#97caeb; }
+
+/* ========== FOOTER ========== */
+.footer {
+  padding:28px; text-align:center;
+  border-top:1px solid rgba(255,255,255,0.04);
+  background:#000;
+}
+.footer img { height:18px; margin:0 auto 6px; }
+.footer span {
+  font-size:9px; color:rgba(255,255,255,0.2); letter-spacing:0.15em; text-transform:uppercase;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px) {
+  .hero h1 { font-size:40px; }
+  .hero-content { padding:40px 20px; }
+  .hero-sub { font-size:13px; }
+  .form-box { padding:24px; }
+  .format-grid { grid-template-columns:1fr; }
+  .format-card { border-right:none; border-bottom:1px solid rgba(255,255,255,0.08); }
+  .stats-bar { grid-template-columns:repeat(2, 1fr); }
+  .value-grid { grid-template-columns:1fr; }
+  .value-card { border-left:none !important; }
+  .value-section { padding:48px 20px; }
+  .owners-content { flex-direction:column; padding:48px 20px; gap:32px; }
+  .owners-img { width:100%; }
+  .owners-img img { height:300px; }
+  .amenities-grid { grid-template-columns:1fr; }
+  .amenities-section { padding:48px 20px; }
+  .image-break { height:320px; }
+  .image-break .content { padding:0 20px; }
+  .image-break .quote { font-size:20px; }
+  .what-section { padding:48px 20px; }
+  .section-heading { font-size:28px; }
+  .bottom-cta { padding:48px 20px; }
+  .bottom-cta h2 { font-size:28px; }
+}
+@media (max-width:400px) {
+  .hero h1 { font-size:32px; }
+  .hero-badge { font-size:8px; letter-spacing:0.2em; padding:4px 12px; }
+  .section-heading { font-size:24px; }
+  .stat-num { font-size:28px; }
+  .format-name { font-size:28px; }
+  .owners-text h3 { font-size:22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <img class="hero-bg" src="img/mirror-reflection.jpg" alt="" style="object-position:center center;">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <img class="hero-logo" src="../strong-logo-white.png" alt="STRONG Pilates">
+    <div class="hero-badge">Coming July 2026 · San Juan, Philippines</div>
+    <h1>Pilates. Strength.<br><span>Cardio.</span></h1>
+    <div class="hero-sub">Pilates inspired. Cardio infused. 45 minutes on our exclusive Rowformer or Bikeformer — you choose your cardio. The format that built 100+ studios worldwide is coming to San Juan.</div>
+
+    <div class="form-box">
+      <div class="form-title">Save me a spot.</div>
+      <div class="form-row">
+        <div class="form-input">Your name</div>
+      </div>
+      <div class="form-row">
+        <div class="form-input">Best email</div>
+      </div>
+      <div class="form-row">
+        <div class="form-input">Phone (we text, we don't spam)</div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;margin:14px 0 6px;">
+        <div style="width:18px;height:18px;border:1px solid rgba(255,255,255,0.25);flex-shrink:0;margin-top:1px;"></div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.35);line-height:1.5;">I agree to receive emails and texts from STRONG Pilates San Juan about studio updates and offers. Unsubscribe anytime.</div>
+      </div>
+      <button class="form-submit">I'm In</button>
+      <div class="form-trust">No strings. Just first dibs when doors open.</div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><div class="arrow"></div></div>
+</section>
+
+<!-- ===== WHAT IS STRONG ===== -->
+<section class="what-section">
+  <div class="section-center">
+    <div class="section-eyebrow">What is STRONG</div>
+    <div class="section-heading">Not your typical<br>pilates <span>class.</span></div>
+    <div class="format-grid">
+      <div class="format-card">
+        <img src="img/n7401708-1.jpg" alt="ROW" style="object-position:center 20%;">
+        <div class="format-name">ROW</div>
+        <div class="format-machine">Rowformer</div>
+        <div class="format-desc">Half reformer, half rower. Pilates strength meets rowing cardio in one piece of equipment. Exclusive to STRONG.</div>
+      </div>
+      <div class="format-card">
+        <img src="img/n7401933.jpg" alt="RIDE" style="object-position:center center;">
+        <div class="format-name">RIDE</div>
+        <div class="format-machine">Bikeformer</div>
+        <div class="format-desc">Half reformer, half stationary bike. Choose cycling as your cardio. Same intensity, different burn.</div>
+      </div>
+      <div class="format-card">
+        <img src="img/feet-straps-action.jpg" alt="REFORM" style="object-position:center center;">
+        <div class="format-name">REFORM</div>
+        <div class="format-machine">Reformer</div>
+        <div class="format-desc">Pure pilates flow. Dynamic movements for mobility, balance, and strength. No cardio. All control.</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px;">
+      <div style="font-size:12px;color:rgba(255,255,255,0.35);line-height:1.7;max-width:520px;margin:0 auto;">You choose the cardio, we choose the beats. 45 minutes of low-impact, high-intensity training that builds lean muscle and core stability with a huge cardio burn.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLASS TYPES ===== -->
+<section class="what-section" style="padding-top:0;">
+  <div class="section-center">
+    <div class="section-eyebrow" style="margin-top:48px;">Class Types</div>
+    <div class="section-heading">Choose your <span>burn.</span></div>
+    <div style="display:grid;grid-template-columns:1fr;gap:0;border:1px solid rgba(255,255,255,0.08);max-width:720px;margin:0 auto;">
+      <div style="padding:28px 32px;border-bottom:1px solid rgba(255,255,255,0.08);">
+        <div style="font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">STRONG Body</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);line-height:1.7;">Our OG STRONG class. Full-body Pilates-inspired training paired with cardio bursts. Each session is designed to push limits and build your strength, mobility, and endurance.</div>
+      </div>
+      <div style="padding:28px 32px;border-bottom:1px solid rgba(255,255,255,0.08);">
+        <div style="font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">STRONG Loaded</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);line-height:1.7;">Built for progress. Focused, structured and designed around true progressive overload. Deliberate, full-body strength work with a lower or upper bias using heavy springs and dumbbells.</div>
+      </div>
+      <div style="padding:28px 32px;border-bottom:1px solid rgba(255,255,255,0.08);">
+        <div style="font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">STRONG 360</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);line-height:1.7;">Pilates, strength, and cardio in one dynamic, full-body session. Each week brings a new challenge and fresh format designed to build strength, movement and resilience.</div>
+      </div>
+      <div style="padding:28px 32px;border-bottom:1px solid rgba(255,255,255,0.08);">
+        <div style="font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">Pilates Strength</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);line-height:1.7;">The best of traditional Pilates with strength-based movements. Controlled, deliberate sequences build strength, balance, and mobility while delivering that signature STRONG burn. Progressive overload built into each training block.</div>
+      </div>
+      <div style="padding:28px 32px;">
+        <div style="font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">Pilates Only</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.45);line-height:1.7;">Dynamic movements and Pilates flows designed to enhance strength, stability and mobility. Core strength with the use of props to deepen muscle engagement and precision.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FULL BLEED IMAGE BREAK ===== -->
+<section class="image-break">
+  <img src="img/class-wide-light.jpg" alt="" style="object-position:center 35%;">
+  <div class="overlay"></div>
+  <div class="content">
+    <div>
+      <div class="quote">"I've tried every studio in Proscenium. <span>Nothing comes close to STRONG.</span>"</div>
+      <div class="attribution">— Real Google Review · STRONG Pilates Proscenium · 4.9★ (124 reviews)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS BAR ===== -->
+<section class="stats-bar">
+  <div class="stat"><div class="stat-num">100+</div><div class="stat-label">Studios Worldwide</div></div>
+  <div class="stat"><div class="stat-num">37K+</div><div class="stat-label">STRONG Humans</div></div>
+  <div class="stat"><div class="stat-num">14</div><div class="stat-label">Countries</div></div>
+  <div class="stat"><div class="stat-num">45</div><div class="stat-label">Minutes Per Class</div></div>
+</section>
+
+<!-- ===== VALUE PROPS ===== -->
+<section class="value-section">
+  <div class="value-grid">
+    <div class="value-card">
+      <div class="value-title">Low-Impact. High-Intensity.</div>
+      <div class="value-desc">Get the core stability from pilates and the exercise high from HIIT — without the joint damage. Built for progression, not punishment.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-title">Exclusive Equipment.</div>
+      <div class="value-desc">The Rowformer and Bikeformer are exclusive to STRONG. You won't find this equipment anywhere else in San Juan or the Philippines.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-title">Early Access Perks.</div>
+      <div class="value-desc">Founding member pricing. Priority class booking. Exclusive launch offers. Get early access — these won't last.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-title">From Proscenium to San Juan.</div>
+      <div class="value-desc">Founded by Kenneth & Adrienne, owners of STRONG Pilates Proscenium. 130+ members. 4.9★ on Google with 124 reviews. Now bringing it to San Juan.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OWNERS ===== -->
+<section class="owners-section">
+  <img class="owners-bg" src="img/studio-wide-equipment.jpg" alt="">
+  <div class="owners-content">
+    <div class="owners-text">
+      <div class="section-eyebrow">Meet Your Owners</div>
+      <h3>Built <span>Proscenium.</span><br>Now building<br>San Juan.</h3>
+      <p>Kenneth and Adrienne opened STRONG Pilates Proscenium and grew it to 130+ members with a 4.9-star Google rating in just 21 months.</p>
+      <p>They're not operators who bought a franchise and handed it off. They'll be in the studio. They'll know your name.</p>
+      <p style="color:rgba(255,255,255,0.4);font-size:12px;margin-top:20px;">San Juan is where they're putting everything they've learned to work.</p>
+    </div>
+    <div class="owners-img">
+      <img src="img/n7401677.jpg" alt="Kenneth & Adrienne" style="object-position:center 15%;">
+    </div>
+  </div>
+</section>
+
+<!-- ===== AMENITIES ===== -->
+<section class="amenities-section">
+  <div class="section-center" style="max-width:960px;margin:0 auto;">
+    <div class="section-eyebrow">The Experience</div>
+    <div class="section-heading" style="margin-bottom:40px;">More than a <span>workout.</span></div>
+    <div class="amenities-grid">
+      <div class="amenity-card">
+        <img src="img/vanity-room.jpg" alt="Vanity Room" style="object-position:center 30%;">
+        <div class="label">Premium Amenities</div>
+      </div>
+      <div class="amenity-card">
+        <img src="img/merch-rack.jpg" alt="STRONG Merch" style="object-position:center center;">
+        <div class="label">Exclusive Merch</div>
+      </div>
+      <div class="amenity-card">
+        <img src="img/down-for-more-neon.jpg" alt="Studio Details" style="object-position:center 25%;">
+        <div class="label">Studio Culture</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOTTOM CTA ===== -->
+<section class="bottom-cta">
+  <img class="bottom-cta-bg" src="img/logo-wall-class.jpg" alt="">
+  <div class="content">
+    <h2>Down for <span>more?</span></h2>
+    <p>Join the waitlist. Be first through the doors July 2026.</p>
+    <div class="cta-btn">Count Me In</div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+  <img src="../strong-logo-white.png" alt="STRONG Pilates">
+  <span>Pilates. Strength. Cardio. · San Juan · July 2026</span>
+</div>
+
+</body>
+</html>

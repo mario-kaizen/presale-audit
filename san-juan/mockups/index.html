@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STRONG Pilates San Juan — Ad Mockups</title>
+<style>
+@font-face { font-family:"Kessel 105"; src:url("/fonts/Kessel105-Light.otf") format("opentype"); font-weight:300; font-style:normal; font-display:swap; }
+@font-face { font-family:"Kessel 105"; src:url("/fonts/Kessel105-Book.otf") format("opentype"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:"Kessel 105"; src:url("/fonts/Kessel105-Medium.otf") format("opentype"); font-weight:500; font-style:normal; font-display:swap; }
+@font-face { font-family:"Kessel 105"; src:url("/fonts/Kessel105-Bold.otf") format("opentype"); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:"Kessel 105"; src:url("/fonts/Kessel105-Heavy.otf") format("opentype"); font-weight:900; font-style:normal; font-display:swap; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0A0A0A; color:#fff; font-family:'Kessel 105',sans-serif; }
+
+.top-bar {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  background:rgba(10,10,10,0.95); backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.top-bar-inner {
+  max-width:1200px; margin:0 auto; padding:0 40px;
+  display:flex; align-items:center; justify-content:space-between; height:52px;
+}
+.brand { font-size:10px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:#97caeb; }
+.nav-tabs { display:flex; gap:0; }
+.nav-tab {
+  background:none; border:none; color:rgba(255,255,255,0.35);
+  font-family:'Kessel 105',sans-serif; font-size:10px; font-weight:600;
+  letter-spacing:0.15em; text-transform:uppercase;
+  padding:16px 20px; cursor:pointer; transition:all 0.3s; position:relative;
+}
+.nav-tab:hover { color:rgba(255,255,255,0.6); }
+.nav-tab.active { color:#fff; }
+.nav-tab.active::after {
+  content:''; position:absolute; bottom:0; left:20px; right:20px;
+  height:2px; background:#97caeb;
+}
+.nav-num { color:#97caeb; margin-right:6px; }
+
+.page { display:none; padding-top:52px; }
+.page.active { display:block; }
+
+.hero {
+  padding:80px 40px 60px; text-align:center;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.hero-eyebrow { font-size:10px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:#97caeb; margin-bottom:16px; }
+.hero h1 { font-size:42px; font-weight:900; text-transform:uppercase; line-height:1.05; margin-bottom:16px; }
+.hero h1 em { font-style:normal; color:#97caeb; }
+.hero p { font-size:13px; color:rgba(255,255,255,0.4); font-weight:400; max-width:560px; margin:0 auto; line-height:1.7; }
+
+.section { padding:64px 40px; max-width:1200px; margin:0 auto; }
+.section-eyebrow { font-size:9px; font-weight:700; letter-spacing:0.3em; text-transform:uppercase; color:#97caeb; margin-bottom:12px; }
+.section-title { font-size:28px; font-weight:900; text-transform:uppercase; line-height:1.1; margin-bottom:8px; }
+.section-title em { font-style:normal; color:#97caeb; }
+.section-sub { font-size:12px; color:rgba(255,255,255,0.4); font-weight:400; margin-bottom:40px; max-width:500px; line-height:1.6; }
+.divider { border:none; border-top:1px solid rgba(255,255,255,0.06); margin:0 40px; }
+
+.ad-showcase { display:flex; gap:24px; flex-wrap:wrap; justify-content:center; }
+.ad-mockup-wrapper { display:flex; flex-direction:column; align-items:center; gap:12px; }
+
+/* STORY (9:16) */
+.ad-story {
+  width:280px; aspect-ratio:9/16; position:relative; overflow:hidden;
+  border-radius:16px; background:#000;
+}
+.ad-story img.bg {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  object-fit:cover; z-index:0;
+}
+.ad-story .overlay { position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; }
+.ad-story .content {
+  position:relative; z-index:2; height:100%;
+  display:flex; flex-direction:column; justify-content:space-between; padding:24px;
+}
+.ad-story .top { text-align:center; }
+.ad-story .top img.logo { height:20px; margin:0 auto; display:block; }
+.ad-story .top .location { font-size:9px; color:rgba(255,255,255,0.5); letter-spacing:0.2em; text-transform:uppercase; margin-top:8px; font-weight:500; }
+.ad-story .center { text-align:center; }
+.ad-story .headline { font-size:28px; font-weight:900; text-transform:uppercase; line-height:1.1; color:#fff; text-shadow:0 2px 20px rgba(0,0,0,0.5); }
+.ad-story .headline em { font-style:normal; color:#97caeb; }
+.ad-story .subline { font-size:11px; color:rgba(255,255,255,0.7); font-weight:400; line-height:1.5; margin-top:12px; text-shadow:0 1px 10px rgba(0,0,0,0.5); }
+.ad-story .bottom { text-align:center; }
+.ad-story .cta { display:inline-block; background:#fff; color:#000; font-size:10px; font-weight:800; letter-spacing:0.15em; text-transform:uppercase; padding:12px 28px; }
+.ad-story .url { font-size:8px; color:rgba(255,255,255,0.3); margin-top:8px; letter-spacing:0.1em; }
+
+/* FEED */
+.ad-feed { position:relative; overflow:hidden; background:#000; }
+.ad-feed.square { width:340px; aspect-ratio:1/1; }
+.ad-feed.portrait { width:340px; aspect-ratio:4/5; }
+.ad-feed img.bg { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+.ad-feed .overlay { position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; }
+.ad-feed .content {
+  position:relative; z-index:2; height:100%;
+  display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding:32px;
+}
+.ad-feed .label { font-size:8px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#97caeb; margin-bottom:16px; background:rgba(0,0,0,0.4); padding:5px 10px; }
+.ad-feed .feed-headline { font-size:28px; font-weight:900; text-transform:uppercase; line-height:1.1; color:#fff; margin-bottom:12px; text-shadow:0 2px 20px rgba(0,0,0,0.6); }
+.ad-feed .feed-headline em { font-style:normal; color:#97caeb; }
+.ad-feed .feed-body { font-size:11px; color:rgba(255,255,255,0.7); font-weight:400; line-height:1.6; max-width:260px; margin-bottom:24px; text-shadow:0 1px 8px rgba(0,0,0,0.5); }
+.ad-feed .cta { display:inline-block; background:#fff; color:#000; font-size:10px; font-weight:800; letter-spacing:0.15em; text-transform:uppercase; padding:12px 28px; }
+
+.type-label { font-size:9px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.3); text-align:center; }
+
+.notes { margin-top:40px; padding:24px 28px; border:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.02); }
+.notes h4 { font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#97caeb; margin-bottom:12px; }
+.notes p { font-size:12px; color:rgba(255,255,255,0.5); line-height:1.7; font-weight:400; }
+.notes strong { color:rgba(255,255,255,0.7); }
+
+.stat-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; width:100%; max-width:280px; margin-bottom:20px; }
+.stat-card { text-align:center; padding:12px 8px; border:1px solid rgba(255,255,255,0.15); background:rgba(0,0,0,0.4); }
+.stat-num { font-size:20px; font-weight:900; color:#97caeb; }
+.stat-label { font-size:7px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-top:4px; }
+
+.overlay-bottom { background:linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.1) 70%, transparent 100%); }
+.overlay-heavy { background:linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.3) 100%); }
+.overlay-tb { background:linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 30%, rgba(0,0,0,0.2) 70%, rgba(0,0,0,0.8) 100%); }
+.overlay-center { background:radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 100%); }
+
+@media (max-width:768px) {
+  .ad-showcase { flex-direction:column; align-items:center; }
+  .hero h1 { font-size:28px; }
+  .section { padding:40px 20px; }
+  .ad-feed.square, .ad-feed.portrait { width:300px; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="brand">STRONG Pilates San Juan · Ad Mockups</div>
+    <div class="nav-tabs">
+      <button class="nav-tab active" onclick="showPage('announcement')"><span class="nav-num">01</span> Announcement</button>
+      <button class="nav-tab" onclick="showPage('buildout')"><span class="nav-num">02</span> Buildout</button>
+      <button class="nav-tab" onclick="showPage('social')"><span class="nav-num">03</span> Social Proof</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DIRECTION 1: ANNOUNCEMENT ==================== -->
+<div id="announcement" class="page active">
+  <div class="hero">
+    <div class="hero-eyebrow">Ad Direction 1</div>
+    <h1>The <em>Announcement</em></h1>
+    <p>Clean, bold, curiosity-driven. Studio imagery as the backdrop, text overlay does the heavy lifting. Phase 1 is about awareness — no pricing, no offers.</p>
+  </div>
+
+  <!-- STORY x3 -->
+  <div class="section">
+    <div class="section-eyebrow">9:16 Vertical</div>
+    <div class="section-title">Story / <em>Reel</em></div>
+    <div class="section-sub">Full-screen mobile placements. Three image directions: studio interior, mirror reflection, and brand signage.</div>
+    <div class="ad-showcase">
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-story">
+          <img class="bg" src="img/studio-interior.jpg" alt="" style="object-position:center 35%;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content">
+            <div class="top"><img class="logo" src="../strong-logo-white.png" alt="STRONG"><div class="location">San Juan</div></div>
+            <div class="center">
+              <div class="headline"><em>Something</em><br>is coming.</div>
+              <div class="subline">Pilates. Strength. Cardio.<br>San Juan's first STRONG studio opens July 2026.</div>
+            </div>
+            <div class="bottom"><div class="cta">Get Early Access</div><div class="url">strongpilates.ca/san-juan</div></div>
+          </div>
+        </div>
+        <div class="type-label">Story — Studio Reveal</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-story">
+          <img class="bg" src="img/mirror-reflection.jpg" alt="" style="object-position:center center;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content">
+            <div class="top"><img class="logo" src="../strong-logo-white.png" alt="STRONG"><div class="location">Coming July 2026</div></div>
+            <div class="center">
+              <div class="headline"><em>45 minutes.</em><br>Full body.<br>Low impact.</div>
+              <div class="subline">Half reformer. Half rower. Entirely the point.</div>
+            </div>
+            <div class="bottom"><div class="cta">Get Early Access</div></div>
+          </div>
+        </div>
+        <div class="type-label">Story — Mirror Shot</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-story">
+          <img class="bg" src="img/logo-wall-class.jpg" alt="" style="object-position:center 20%;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content">
+            <div class="top"><div class="location" style="color:#97caeb;">San Juan, Philippines</div></div>
+            <div class="center">
+              <div class="headline" style="font-size:22px;"><em>Pilates. Strength.</em><br>Cardio.</div>
+              <div class="subline" style="max-width:220px;">The class format behind 100+ studios worldwide is landing in San Juan.</div>
+            </div>
+            <div class="bottom"><div class="cta">I'm In</div><div class="url">strongpilates.ca/san-juan</div></div>
+          </div>
+        </div>
+        <div class="type-label">Story — Logo + Class</div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- FEED 1:1 x3 -->
+  <div class="section">
+    <div class="section-eyebrow">1:1 Square</div>
+    <div class="section-title">Feed <em>Square</em></div>
+    <div class="section-sub">In-feed placements for Facebook and Instagram. Optimised for the scroll.</div>
+    <div class="ad-showcase">
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed square">
+          <img class="bg" src="img/class-wide-light.jpg" alt="" style="object-position:center 40%;">
+          <div class="overlay overlay-heavy"></div>
+          <div class="content">
+            <img src="../strong-logo-white.png" alt="STRONG" style="height:20px;margin-bottom:24px;">
+            <div class="feed-headline"><em>San Juan.</em><br>Coming July.</div>
+            <div class="feed-body">Pilates inspired. Cardio infused. 45 minutes on the Rowformer. This is STRONG.</div>
+            <div class="cta">Get Early Access →</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 1:1 — Class Wide</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed square">
+          <img class="bg" src="img/studio-wide-equipment.jpg" alt="" style="object-position:right 40%;">
+          <div class="overlay overlay-heavy"></div>
+          <div class="content">
+            <img src="../strong-logo-white.png" alt="STRONG" style="height:20px;margin-bottom:24px;">
+            <div class="feed-headline"><em>12 Rowformers.</em><br>6 Bikeformers.<br>One studio.</div>
+            <div class="feed-body">Half reformer. Half rower. Or half bike. Equipment you won't find anywhere else. Coming to San Juan July 2026.</div>
+            <div class="cta">Get Early Access →</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 1:1 — Equipment</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed square">
+          <img class="bg" src="img/nppw-may-24-76.jpg" alt="" style="object-position:center center;">
+          <div class="overlay overlay-bottom"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div class="feed-headline" style="font-size:22px;">We built <em>Proscenium.</em><br>Now it's<br>San Juan's turn.</div>
+            <div class="feed-body">Meet Kenneth & Adrienne — the owners behind STRONG Pilates San Juan.</div>
+            <div class="cta">Get Early Access →</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 1:1 — Owners Teaser</div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- FEED 4:5 x3 -->
+  <div class="section">
+    <div class="section-eyebrow">4:5 Portrait</div>
+    <div class="section-title">Feed <em>Portrait</em></div>
+    <div class="section-sub">Maximum visual real estate in the feed. Best performer for engagement.</div>
+    <div class="ad-showcase">
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed portrait">
+          <img class="bg" src="img/mirror-reflection.jpg" alt="" style="object-position:center center;">
+          <div class="overlay overlay-heavy"></div>
+          <div class="content">
+            <div class="label">Coming July 2026</div>
+            <div class="feed-headline"><em>45 minutes.</em><br>Full body.<br>Low impact.</div>
+            <div class="feed-body">Pilates. Strength. Cardio. The class format that built a 130-member studio in 21 months at Proscenium is landing in San Juan.</div>
+            <div style="position:absolute;bottom:32px;left:32px;"><div class="cta">Get Early Access →</div></div>
+          </div>
+        </div>
+        <div class="type-label">Feed 4:5 — Mirror</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed portrait">
+          <img class="bg" src="img/n7401708-1.jpg" alt="" style="object-position:center 25%;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content">
+            <div class="label">San Juan, Philippines</div>
+            <div class="feed-headline"><em>Pilates. Strength.</em><br>Cardio.</div>
+            <div class="feed-body">The workout that built 100+ studios across 14 countries. San Juan's turn starts July 2026.</div>
+            <div style="position:absolute;bottom:32px;left:32px;"><div class="cta">I'm In →</div></div>
+          </div>
+        </div>
+        <div class="type-label">Feed 4:5 — Instructor Action</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed portrait">
+          <img class="bg" src="img/backlit-signage.jpg" alt="" style="object-position:center 40%;">
+          <div class="overlay overlay-heavy"></div>
+          <div class="content" style="align-items:center; text-align:center;">
+            <div style="margin-bottom:32px;">
+              <div class="feed-headline" style="text-align:center;"><em>Something</em><br>is coming<br>to San Juan.</div>
+            </div>
+            <div class="feed-body" style="text-align:center;max-width:240px;">Pilates inspired. Cardio infused. Low impact. High intensity. Opening July 2026.</div>
+            <div class="cta">Get Early Access →</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 4:5 — Brand Signage</div>
+      </div>
+
+    </div>
+
+    <div class="notes">
+      <h4>Creative Notes — Direction 1</h4>
+      <p><strong>Imagery:</strong> All photos from STRONG Proscenium (Jordana Dickson). Real studio, real members, real equipment.<br><br>
+      <strong>Copy:</strong> Phase 1 is curiosity, not conversion. No pricing, no offers. "Pilates. Strength. Cardio." communicates this isn't regular Pilates.<br><br>
+      <strong>A/B tests:</strong> Mirror reflection vs class-wide as primary. Studio interior vs logo-wall for secondary. Test "Something is coming" vs "45 minutes. Full body. Low impact." as headlines.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DIRECTION 2: BUILDOUT ==================== -->
+<div id="buildout" class="page">
+  <div class="hero">
+    <div class="hero-eyebrow">Ad Direction 2</div>
+    <h1>The <em>Buildout</em></h1>
+    <p>Behind-the-scenes content that builds a following before the doors open. Meet the owners, see the space, follow the journey.</p>
+  </div>
+
+  <!-- STORY x3 -->
+  <div class="section">
+    <div class="section-eyebrow">9:16 Vertical</div>
+    <div class="section-title">Owner <em>Story</em></div>
+    <div class="section-sub">People follow people, not brands. These introduce the team and the space before doors open.</div>
+    <div class="ad-showcase">
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-story">
+          <img class="bg" src="img/march-24-edits-35.jpg" alt="" style="object-position:center 25%;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content">
+            <div class="top"><img class="logo" src="../strong-logo-white.png" alt="STRONG"><div class="location">Meet the Owners · San Juan</div></div>
+            <div class="center">
+              <div class="headline" style="font-size:20px;"><em>Why we're bringing</em><br>STRONG to San Juan</div>
+              <div class="subline">"We opened Proscenium and watched people get hooked on this format. San Juan deserves the same thing."</div>
+            </div>
+            <div class="bottom"><div class="cta">Get Early Access</div></div>
+          </div>
+        </div>
+        <div class="type-label">Story — Owner Introduction</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-story">
+          <img class="bg" src="img/n7401904-1.jpg" alt="" style="object-position:center 30%;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content">
+            <div class="top"><img class="logo" src="../strong-logo-white.png" alt="STRONG"><div class="location">Behind the Scenes · San Juan</div></div>
+            <div class="center">
+              <div class="headline" style="font-size:20px;"><em>130+ members</em><br>in Proscenium.</div>
+              <div class="subline">Now we're building something even better for San Juan. Follow the journey.</div>
+            </div>
+            <div class="bottom"><div class="cta">Follow the Build</div></div>
+          </div>
+        </div>
+        <div class="type-label">Story — Proscenium Success</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-story">
+          <img class="bg" src="img/down-for-more-neon.jpg" alt="" style="object-position:center 25%;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content">
+            <div class="top"><img class="logo" src="../strong-logo-white.png" alt="STRONG"></div>
+            <div class="center">
+              <div class="headline" style="font-size:24px;"><em>Down<br>for more?</em></div>
+              <div class="subline">San Juan's first STRONG studio is coming. Sign up for first access when doors open.</div>
+            </div>
+            <div class="bottom"><div class="cta">Get Early Access</div><div class="url">strongpilates.ca/san-juan</div></div>
+          </div>
+        </div>
+        <div class="type-label">Story — Brand Tagline</div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- FEED 1:1 x3 -->
+  <div class="section">
+    <div class="section-eyebrow">1:1 Square</div>
+    <div class="section-title">Studio <em>Preview</em></div>
+    <div class="section-sub">Show San Juan what the STRONG experience looks like — the space, the amenities, the lifestyle.</div>
+    <div class="ad-showcase">
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed square">
+          <img class="bg" src="img/vanity-room.jpg" alt="" style="object-position:center 35%;">
+          <div class="overlay overlay-bottom"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div class="label">Studio Preview</div>
+            <div class="feed-headline" style="font-size:20px;">More than<br>a <em>workout.</em></div>
+            <div class="feed-body">Dyson styling. LED vanity mirrors. Premium amenities. This is the STRONG experience.</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 1:1 — Amenities</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed square">
+          <img class="bg" src="img/lounge-area.jpg" alt="" style="object-position:center center;">
+          <div class="overlay overlay-bottom"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div class="feed-headline" style="font-size:18px;">It's a <em>lifestyle,</em><br>not just a workout.</div>
+            <div class="feed-body">STRONG Pilates San Juan. Coming July 2026.</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 1:1 — Merch / Lifestyle</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed square">
+          <img class="bg" src="img/march-24-edits-39-3.jpg" alt="" style="object-position:center center;">
+          <div class="overlay overlay-bottom"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div class="feed-headline" style="font-size:20px;">Meet<br><em>Kenneth & Adrienne.</em></div>
+            <div class="feed-body">Proscenium studio owners. 130+ members. 4.9★ rating. Now they're building San Juan.</div>
+            <div class="cta">Get Early Access →</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 1:1 — Owners Editorial</div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- FEED 4:5 x3 -->
+  <div class="section">
+    <div class="section-eyebrow">4:5 Portrait</div>
+    <div class="section-title">Equipment <em>Tease</em></div>
+    <div class="section-sub">The Rowformer is the differentiator. Show what makes STRONG different from every other studio.</div>
+    <div class="ad-showcase">
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed portrait">
+          <img class="bg" src="img/studio-interior.jpg" alt="" style="object-position:center 35%;">
+          <div class="overlay overlay-heavy"></div>
+          <div class="content">
+            <div class="label">Progress Update</div>
+            <div class="feed-headline"><em>12 Rowformers.</em><br>6 Bikeformers.<br>One studio.</div>
+            <div class="feed-body">Equipment is locked in. San Juan's first STRONG studio takes shape — join the waitlist for early access.</div>
+            <div class="cta">I'm In →</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 4:5 — Equipment Tease</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed portrait">
+          <img class="bg" src="img/strong-pilates-55.jpg" alt="" style="object-position:center 20%;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div class="feed-headline" style="font-size:22px;">From <em>Proscenium</em><br>to San Juan.<br>We're doing<br>it again.</div>
+            <div class="feed-body">Kenneth & Adrienne opened Proscenium. Now they're bringing STRONG to San Juan. July 2026.</div>
+            <div class="cta">Get Early Access →</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 4:5 — Champagne Moment</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed portrait">
+          <img class="bg" src="img/n7401677.jpg" alt="" style="object-position:center 20%;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div class="feed-headline" style="font-size:22px;">Your <em>San Juan</em><br>team is ready.</div>
+            <div class="feed-body">STRONG Pilates. Opening July 2026. Get early access to the intro offer.</div>
+            <div class="cta">Get Early Access →</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 4:5 — Team Shot</div>
+      </div>
+
+    </div>
+
+    <div class="notes">
+      <h4>Creative Notes — Direction 2</h4>
+      <p><strong>This direction requires real San Juan content as the buildout progresses.</strong> These mockups use Proscenium photography as proxies. Swap in real San Juan imagery for authenticity as it becomes available.<br><br>
+      <strong>Why this works:</strong> Documentary-style content consistently outperforms polished brand ads in Phase 1. People follow the journey. By the time the studio opens, they feel like they were part of building it.<br><br>
+      <strong>Content needed from Kenneth:</strong> Weekly buildout photos/videos, a short owner introduction video (60-90s, iPhone is fine), any renders or plans of the San Juan layout.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DIRECTION 3: SOCIAL PROOF ==================== -->
+<div id="social" class="page">
+  <div class="hero">
+    <div class="hero-eyebrow">Ad Direction 3</div>
+    <h1>The <em>Social Proof</em></h1>
+    <p>Leverage Proscenium's success to build San Juan credibility. Real members, real classes, real numbers. "Already loved in Makati — now coming to San Juan."</p>
+  </div>
+
+  <!-- STORY x3 -->
+  <div class="section">
+    <div class="section-eyebrow">9:16 Vertical</div>
+    <div class="section-title">Proscenium <em>Proof</em></div>
+    <div class="section-sub">Numbers and testimonials from the Proscenium studio that make San Juan inevitable.</div>
+    <div class="ad-showcase">
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-story">
+          <img class="bg" src="img/n7401933.jpg" alt="" style="object-position:center center;">
+          <div class="overlay overlay-heavy"></div>
+          <div class="content">
+            <div class="top"><img class="logo" src="../strong-logo-white.png" alt="STRONG"></div>
+            <div class="center">
+              <div style="font-size:48px;font-weight:900;color:#97caeb;line-height:1;margin-bottom:16px;">130+</div>
+              <div style="font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.15em;text-transform:uppercase;font-weight:600;margin-bottom:20px;">STRONG Humans in Proscenium</div>
+              <div style="width:60%;height:1px;background:rgba(255,255,255,0.15);margin:0 auto 20px;"></div>
+              <div class="headline" style="font-size:22px;">Now it's<br><em>San Juan's</em> turn.</div>
+            </div>
+            <div class="bottom"><div class="cta">Join the Waitlist</div><div class="url">strongpilates.ca/san-juan</div></div>
+          </div>
+        </div>
+        <div class="type-label">Story — 130+ Members</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-story">
+          <img class="bg" src="img/feet-straps-action.jpg" alt="" style="object-position:center center;">
+          <div class="overlay overlay-tb"></div>
+          <div class="content">
+            <div class="top"><img class="logo" src="../strong-logo-white.png" alt="STRONG"><div class="location">The Rowformer Experience</div></div>
+            <div class="center">
+              <div class="headline" style="font-size:20px;">Half reformer.<br>Half rower.<br><em>Entirely the point.</em></div>
+              <div class="subline">45 minutes. Low impact. High intensity. The workout that built 100+ studios worldwide.</div>
+            </div>
+            <div class="bottom"><div class="cta">Get Early Access</div></div>
+          </div>
+        </div>
+        <div class="type-label">Story — Rowformer Action</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-story">
+          <img class="bg" src="img/two-members-moody.jpg" alt="" style="object-position:center 30%;">
+          <div class="overlay overlay-heavy"></div>
+          <div class="content">
+            <div class="top"><img class="logo" src="../strong-logo-white.png" alt="STRONG"></div>
+            <div class="center">
+              <div style="font-size:16px;margin-bottom:8px;">★★★★★</div>
+              <div style="font-size:16px;color:#fff;font-weight:400;line-height:1.5;font-style:italic;max-width:220px;margin:0 auto;text-shadow:0 2px 10px rgba(0,0,0,0.5);">"I've tried every studio in Proscenium. Nothing comes close to STRONG."</div>
+              <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-top:12px;">— Real Proscenium Google Review</div>
+            </div>
+            <div class="bottom">
+              <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.7);margin-bottom:12px;">San Juan. July 2026.</div>
+              <div class="cta">Get Early Access</div>
+            </div>
+          </div>
+        </div>
+        <div class="type-label">Story — Testimonial</div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- FEED 1:1 x3 -->
+  <div class="section">
+    <div class="section-eyebrow">1:1 Square</div>
+    <div class="section-title">Class <em>Energy</em></div>
+    <div class="section-sub">Show the workout, the community, the results. Let the images sell the experience.</div>
+    <div class="ad-showcase">
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed square">
+          <img class="bg" src="img/march-24-edits-4-2.jpg" alt="" style="object-position:center center;">
+          <div class="overlay overlay-bottom"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div class="feed-headline" style="font-size:22px;">This is what<br>you're <em>signing up</em> for.</div>
+            <div class="feed-body">Real members. Real classes. Real results. STRONG Pilates is coming to San Juan.</div>
+            <div class="cta">Get Early Access →</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 1:1 — Class Energy</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed square">
+          <img class="bg" src="img/march-24-edits-1-1.jpg" alt="" style="object-position:center center;">
+          <div class="overlay overlay-bottom"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div class="feed-headline" style="font-size:20px;"><em>Low impact.</em><br>High intensity.</div>
+            <div class="feed-body">Your joints are protected while your muscles do real work. 45 minutes on the Rowformer.</div>
+            <div class="cta">Get Early Access →</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 1:1 — Inclusive Class</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed square">
+          <img class="bg" src="img/strong-pilates-55.jpg" alt="" style="object-position:center 30%;">
+          <div class="overlay overlay-bottom"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div class="feed-headline" style="font-size:20px;">Join the<br><em>community.</em></div>
+            <div class="feed-body">130+ STRONG Humans in Proscenium. San Juan is next. Get early access.</div>
+            <div class="cta">Get Early Access →</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 1:1 — Community</div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- FEED 4:5 x3 -->
+  <div class="section">
+    <div class="section-eyebrow">4:5 Portrait</div>
+    <div class="section-title">Stats + <em>Proof</em></div>
+    <div class="section-sub">Numbers that build credibility. Photos that create FOMO. The combination that converts.</div>
+    <div class="ad-showcase">
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed portrait">
+          <img class="bg" src="img/nppw-may-24-57.jpg" alt="" style="object-position:center 30%;">
+          <div class="overlay overlay-heavy"></div>
+          <div class="content">
+            <div class="label">Now in the Philippines</div>
+            <div class="feed-headline">From Proscenium<br>to <em>San Juan.</em></div>
+            <div class="stat-grid">
+              <div class="stat-card"><div class="stat-num">130+</div><div class="stat-label">Members</div></div>
+              <div class="stat-card"><div class="stat-num">4.9★</div><div class="stat-label">124 Reviews</div></div>
+              <div class="stat-card"><div class="stat-num">100+</div><div class="stat-label">Studios Global</div></div>
+            </div>
+            <div class="feed-body">The class format that built 100+ studios worldwide. Pilates. Strength. Cardio.</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 4:5 — Stats Overlay</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed portrait">
+          <img class="bg" src="img/march-24-edits-74-1.jpg" alt="" style="object-position:center 20%;">
+          <div class="overlay overlay-heavy"></div>
+          <div class="content">
+            <div class="label">What is STRONG?</div>
+            <div class="feed-headline"><em>Pilates. Strength.</em><br>Cardio.</div>
+            <div class="feed-body" style="max-width:240px;">Choose your cardio. Row on the Rowformer. Ride on the Bikeformer. Reform on the reformer. 45 minutes. Low impact. High intensity.</div>
+            <div style="position:absolute;bottom:32px;left:32px;"><div class="cta">Get Early Access →</div></div>
+          </div>
+        </div>
+        <div class="type-label">Feed 4:5 — Instructor Action</div>
+      </div>
+
+      <div class="ad-mockup-wrapper">
+        <div class="ad-feed portrait">
+          <img class="bg" src="img/nppw-may-24-85.jpg" alt="" style="object-position:center 25%;">
+          <div class="overlay overlay-bottom"></div>
+          <div class="content" style="justify-content:flex-end;">
+            <div style="font-size:16px;margin-bottom:8px;">★★★★★</div>
+            <div style="font-size:15px;color:#fff;font-weight:400;line-height:1.5;font-style:italic;max-width:240px;margin-bottom:12px;text-shadow:0 2px 10px rgba(0,0,0,0.5);">"I was sceptical about another boutique studio. Two months in, I'm here five times a week."</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:20px;">— Proscenium Google Review</div>
+            <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#97caeb;margin-bottom:16px;">San Juan. July 2026.</div>
+            <div class="cta">Get Early Access →</div>
+          </div>
+        </div>
+        <div class="type-label">Feed 4:5 — Lifestyle Testimonial</div>
+      </div>
+
+    </div>
+
+    <div class="notes">
+      <h4>Creative Notes — Direction 3</h4>
+      <p><strong>Numbers verified:</strong> 130+ members and 4.9★ Google rating (124 reviews) confirmed as of April 2026. 488 total members have trained at Proscenium since opening in July 2024. Testimonial copy is placeholder — use real Google reviews from Proscenium with permission.<br><br>
+      <strong>Recommended mix:</strong> Run all three directions simultaneously. Direction 1 (Announcement) as the lead. Direction 2 (Buildout) as ongoing organic + boosted. Direction 3 (Social Proof) as retargeting for people who've already seen the announcement.<br><br>
+      <strong>A/B tests:</strong> Class-through-window vs plank-with-instructor for engagement. Stats overlay vs testimonial for conversion. Branded lifestyle shot (wine bottle) vs class action for retargeting.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>
