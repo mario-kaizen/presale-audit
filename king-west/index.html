@@ -271,6 +271,27 @@ body {
   margin-top: 12px; line-height: 1.5;
 }
 
+/* WEEK BREAKDOWN */
+.week-grid {
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin: 24px 0;
+}
+.week-cell {
+  background: var(--white); border: 1px solid var(--neutral-200); padding: 14px 10px; text-align: center;
+}
+.week-cell.current {
+  background: var(--gold-pale); border-color: var(--gold);
+}
+.week-num {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); margin-bottom: 4px;
+}
+.week-cell.current .week-num { color: var(--gold-dark); }
+.week-date {
+  font-size: 11px; font-weight: 500; color: var(--ink); margin-bottom: 6px;
+}
+.week-task {
+  font-size: 10px; color: var(--neutral-500); font-weight: 300; line-height: 1.4;
+}
+
 /* RESPONSIVE */
 @media (max-width: 600px) {
   .hero { padding: 60px 20px 48px; }
@@ -285,6 +306,7 @@ body {
   .engine-grid { grid-template-columns: 1fr; }
   .accountability-grid { grid-template-columns: 1fr; }
   .callout { padding: 16px; }
+  .week-grid { grid-template-columns: repeat(3, 1fr) !important; }
 }
 </style>
 </head>
@@ -529,10 +551,14 @@ body {
       <div class="phase-num">Phase 1 · Weeks 1–6</div>
       <div class="phase-name">Build the Audience</div>
       <div class="phase-dates">May 23 → Jul 4, 2026</div>
-      <div class="phase-goal">Register interest. Coming soon. Build the database before selling anything. Curiosity and anticipation.</div>
+      <div class="phase-goal">Register interest. Build the database before selling anything. Create curiosity, anticipation, and a warm audience ready to buy when the offer drops.</div>
       <div class="phase-stat">
-        <div class="phase-stat-label">Focus</div>
-        <div class="phase-stat-value" style="font-size:18px;">Awareness + Leads</div>
+        <div class="phase-stat-label">Ad Spend</div>
+        <div class="phase-stat-value">$1,200<span style="font-size:14px;color:var(--stone)"> ($200/wk)</span></div>
+      </div>
+      <div class="phase-stat" style="border-top: none; margin-top: 8px; padding-top: 0;">
+        <div class="phase-stat-label">Lead Target</div>
+        <div class="phase-stat-value" style="font-size:22px;">150–200</div>
       </div>
     </div>
 
@@ -540,10 +566,14 @@ body {
       <div class="phase-num">Phase 2 · Weeks 7–11</div>
       <div class="phase-name">Sell Intros</div>
       <div class="phase-dates">Jul 4 → Aug 8, 2026</div>
-      <div class="phase-goal">Intro offer goes live. Sell 5-class packs to warm database. VIP founding memberships pitched.</div>
+      <div class="phase-goal">Intro offer goes live. Sell 5-class packs to warm database. VIP founding memberships pitched to high-intent leads. Conversion-focused creative replaces awareness.</div>
       <div class="phase-stat">
-        <div class="phase-stat-label">Focus</div>
-        <div class="phase-stat-value" style="font-size:18px;">Conversion + Sales</div>
+        <div class="phase-stat-label">Ad Spend</div>
+        <div class="phase-stat-value">$3,000<span style="font-size:14px;color:var(--stone)"> ($600/wk)</span></div>
+      </div>
+      <div class="phase-stat" style="border-top: none; margin-top: 8px; padding-top: 0;">
+        <div class="phase-stat-label">Lead Target</div>
+        <div class="phase-stat-value" style="font-size:22px;">250–300</div>
       </div>
     </div>
 
@@ -551,10 +581,14 @@ body {
       <div class="phase-num">Phase 3 · Weeks 12–16</div>
       <div class="phase-name">Push to Opening</div>
       <div class="phase-dates">Aug 8 → Sept 12, 2026</div>
-      <div class="phase-goal">Maximum urgency. Countdown. Scarcity messaging. VIP closes at opening. Every lead gets touched.</div>
+      <div class="phase-goal">Maximum urgency. Countdown to opening. Scarcity messaging. VIP closes at opening. Every lead in the database gets touched multiple times.</div>
       <div class="phase-stat">
-        <div class="phase-stat-label">Focus</div>
-        <div class="phase-stat-value" style="font-size:18px;">Urgency + FOMO</div>
+        <div class="phase-stat-label">Ad Spend</div>
+        <div class="phase-stat-value">$4,000<span style="font-size:14px;color:var(--stone)"> ($800/wk)</span></div>
+      </div>
+      <div class="phase-stat" style="border-top: none; margin-top: 8px; padding-top: 0;">
+        <div class="phase-stat-label">Lead Target</div>
+        <div class="phase-stat-value" style="font-size:22px;">350–400</div>
       </div>
     </div>
 
@@ -562,10 +596,60 @@ body {
       <div class="phase-num">Phase 4 · Weeks 17–22</div>
       <div class="phase-name">Convert Pipeline</div>
       <div class="phase-dates">Sept 12 → Oct 24, 2026</div>
-      <div class="phase-goal">Intro buyers become members. Retention sequences activate. Community solidifies. Long-term growth begins.</div>
+      <div class="phase-goal">Intro buyers become members. Retention sequences activate. Community solidifies. Unconverted pipeline worked through email and SMS.</div>
       <div class="phase-stat">
-        <div class="phase-stat-label">Focus</div>
-        <div class="phase-stat-value" style="font-size:18px;">Retention + Growth</div>
+        <div class="phase-stat-label">Ad Spend</div>
+        <div class="phase-stat-value">$1,400<span style="font-size:14px;color:var(--stone)"> (~$230/wk)</span></div>
+      </div>
+      <div class="phase-stat" style="border-top: none; margin-top: 8px; padding-top: 0;">
+        <div class="phase-stat-label">Lead Target</div>
+        <div class="phase-stat-value" style="font-size:22px;">100–150</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout-dark">
+    <p><strong>Phase 1 Checkpoint (Week 6):</strong> 150+ leads in database · Retargeting audiences warm · Buildout content generating organic engagement · Partnership outreach underway</p>
+    <p style="margin-top: 12px;"><strong>Phase 2 Checkpoint (Week 11):</strong> 400+ total leads · First intro offer sales converting · VIP founding memberships open · Email nurture driving repeat engagement</p>
+    <p style="margin-top: 12px;"><strong>Phase 3 Checkpoint (Week 16):</strong> 750+ total leads · Opening week fully booked · Pipeline of unconverted leads ready for Phase 4 follow-up</p>
+    <p style="margin-top: 12px;"><strong>Phase 4 Checkpoint (Week 22):</strong> 900+ total paid leads · Intro buyers converting to memberships · Retention sequences active · Community momentum established</p>
+  </div>
+
+  <div style="margin-top: 48px;">
+    <div class="eyebrow">Phase 1 Week-by-Week</div>
+    <div class="section-title">The <em>6-Week</em> Awareness Sprint</div>
+    <div class="section-sub">Each week builds on the last. Here's what's happening when.</div>
+
+    <div class="week-grid">
+      <div class="week-cell current">
+        <div class="week-num">Week 1</div>
+        <div class="week-date">May 23</div>
+        <div class="week-task">Ads live. "Coming Soon" campaign launches. Lead form active.</div>
+      </div>
+      <div class="week-cell">
+        <div class="week-num">Week 2</div>
+        <div class="week-date">May 30</div>
+        <div class="week-task">Retargeting audiences building. Nurture emails begin. Buildout content.</div>
+      </div>
+      <div class="week-cell">
+        <div class="week-num">Week 3</div>
+        <div class="week-date">Jun 6</div>
+        <div class="week-task">Partnership outreach begins. Local business cross-promos. Community teasers.</div>
+      </div>
+      <div class="week-cell">
+        <div class="week-num">Week 4</div>
+        <div class="week-date">Jun 13</div>
+        <div class="week-task">Creative refresh. New ad angles based on Week 1-3 data. Lookalike audiences tested.</div>
+      </div>
+      <div class="week-cell">
+        <div class="week-num">Week 5</div>
+        <div class="week-date">Jun 20</div>
+        <div class="week-task">"What is STRONG?" education content. Brand video launched if available.</div>
+      </div>
+      <div class="week-cell">
+        <div class="week-num">Week 6</div>
+        <div class="week-date">Jun 27</div>
+        <div class="week-task">Phase 1 close. Checkpoint: 150+ leads. Tease intro offer for Phase 2 launch.</div>
       </div>
     </div>
   </div>
