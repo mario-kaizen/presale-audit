@@ -242,6 +242,35 @@ body {
 .accountability-col.deliver li::before { background: var(--gold); }
 .accountability-col.own li::before { background: var(--neutral-300); }
 
+/* BUDGET TABLE */
+.budget-table {
+  width: 100%; border-collapse: collapse; margin: 32px 0;
+}
+.budget-table th {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--stone); text-align: left;
+  padding: 12px 16px; border-bottom: 2px solid var(--neutral-200);
+}
+.budget-table td {
+  font-size: 14px; padding: 14px 16px; border-bottom: 1px solid var(--neutral-100);
+  color: var(--ink);
+}
+.budget-table td:last-child {
+  font-family: var(--font-heading); font-size: 18px; font-weight: 500;
+  text-align: right;
+}
+.budget-table tr.total td {
+  border-top: 2px solid var(--ink); border-bottom: none;
+  font-weight: 600;
+}
+.budget-table tr.total td:last-child {
+  font-size: 22px; color: var(--gold-dark);
+}
+.budget-note {
+  font-size: 12px; color: var(--neutral-500); font-style: italic;
+  margin-top: 12px; line-height: 1.5;
+}
+
 /* RESPONSIVE */
 @media (max-width: 600px) {
   .hero { padding: 60px 20px 48px; }
@@ -353,6 +382,230 @@ body {
   </div>
 </div>
 <hr class="divider">
+
+<!-- Section 6: Engine 1 Paid Detail -->
+<div class="section">
+  <div class="eyebrow">Engine 1 Detail</div>
+  <div class="section-title">Paid Acquisition — <em>How It Works</em></div>
+  <div class="section-sub">The full breakdown of what Kaizen delivers across 16 weeks.</div>
+
+  <div class="strategy-grid">
+    <div class="strat-card">
+      <h4>What We Run</h4>
+      <ul>
+        <li><strong>Meta Ads (Facebook + Instagram)</strong> — awareness and lead generation campaigns targeting King West locals</li>
+        <li><strong>Lead form ads</strong> — low-friction "Register Interest" and "Get Early Access" capture</li>
+        <li><strong>Retargeting</strong> — video viewers, page visitors, and form abandoners see follow-up creative</li>
+        <li><strong>Conversion campaigns</strong> — Phase 2 onwards, driving intro offer purchases from warm database</li>
+      </ul>
+    </div>
+
+    <div class="strat-card">
+      <h4>Audience Targeting</h4>
+      <ul>
+        <li><strong>Primary:</strong> Women 25–45 within 5km of King West — fitness, wellness, pilates interests</li>
+        <li><strong>Secondary:</strong> Lookalike audiences built from existing STRONG member lists</li>
+        <li><strong>Exclusion:</strong> Existing STRONG members at other Toronto locations</li>
+        <li><strong>Geo:</strong> King West core (1km) + surrounding Toronto neighbourhoods (5km)</li>
+      </ul>
+    </div>
+
+    <div class="strat-card">
+      <h4>Creative Strategy</h4>
+      <ul>
+        <li><strong>Phase 1:</strong> "Coming Soon" curiosity-driven — no pricing, no offers. Build anticipation.</li>
+        <li><strong>Phase 2:</strong> Intro offer launch creative — urgency, social proof, class format education</li>
+        <li><strong>Phase 3:</strong> Countdown and scarcity — "X spots left", opening week push</li>
+        <li><strong>All phases:</strong> Studio buildout content, owner story, STRONG brand video assets</li>
+      </ul>
+    </div>
+
+    <div class="strat-card">
+      <h4>CRM & Automation</h4>
+      <ul>
+        <li><strong>Lead capture:</strong> Meta lead form → Grow CRM → tagged and pipelined automatically</li>
+        <li><strong>Welcome sequence:</strong> Immediate SMS + email on registration</li>
+        <li><strong>Nurture drip:</strong> Weekly updates — buildout progress, what is STRONG, owner story, community</li>
+        <li><strong>Phase transitions:</strong> Automated offer announcements to warm database as phases progress</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- Section 7: Engine 2 Organic Context -->
+<div class="section">
+  <div class="eyebrow">Engine 2 Context</div>
+  <div class="section-title">Community + Organic — <em>Your Engine</em></div>
+  <div class="section-sub">This is not a Kaizen deliverable. This section outlines what HQ provides and what you execute to close the gap between paid leads and your opening target.</div>
+
+  <div class="strategy-grid">
+    <div class="strat-card">
+      <h4>HQ Provides</h4>
+      <ul>
+        <li><strong>Organic playbook</strong> — content calendar, post templates, hashtag strategy, engagement tactics</li>
+        <li><strong>Local area marketing strategy</strong> — partnership outreach templates, event ideas, grassroots activation plan</li>
+        <li><strong>Brand assets</strong> — photography, video content, design templates for organic use</li>
+        <li><strong>Guidance and support</strong> — regular check-ins on organic execution progress</li>
+      </ul>
+    </div>
+
+    <div class="strat-card">
+      <h4>You Execute</h4>
+      <ul>
+        <li><strong>Content posting</strong> — Instagram, TikTok, local community groups. Consistent presence.</li>
+        <li><strong>Local partnerships</strong> — cafes, wellness businesses, corporate buildings within King West</li>
+        <li><strong>Community activations</strong> — pop-up events, free class tasters, buildout open days</li>
+        <li><strong>Grassroots outreach</strong> — door-to-door in condo buildings, local flyer drops, gym bag inserts</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>Why this matters:</strong> Paid acquisition is projected to deliver ~960 leads. The organic engine is what takes you beyond that number toward your opening goals. Studios that execute both engines consistently outperform those that rely on paid alone.
+  </div>
+</div>
+<hr class="divider">
+
+<!-- Section 8: Budget Transparency -->
+<div class="section">
+  <div class="eyebrow">Investment</div>
+  <div class="section-title">Budget <em>Transparency</em></div>
+  <div class="section-sub">No hidden math. Here's exactly where every dollar goes.</div>
+
+  <table class="budget-table">
+    <thead>
+      <tr>
+        <th>Line Item</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Ad Budget (your spend on Meta)</td>
+        <td>$9,600</td>
+      </tr>
+      <tr>
+        <td>Target Cost Per Lead</td>
+        <td>$10</td>
+      </tr>
+      <tr>
+        <td>Projected Leads from Paid</td>
+        <td>~960</td>
+      </tr>
+      <tr>
+        <td>Service Fee — Option A (upfront, 16 weeks)</td>
+        <td>$3,000</td>
+      </tr>
+      <tr>
+        <td>Service Fee — Option B (weekly, 16 weeks)</td>
+        <td>$300/wk</td>
+      </tr>
+      <tr class="total">
+        <td>Total Investment (Option A)</td>
+        <td>~$12,600</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="budget-note">
+    Service fee covers campaign management, funnel build, CRM automation, creative direction, and weekly reporting. It is charged on top of your ad spend — your full $9,600 goes directly to Meta for advertising.
+  </div>
+
+  <div class="callout" style="margin-top: 24px;">
+    <strong>Important:</strong> The service fee is separate from and on top of your ad budget. Your $9,600 ad spend goes directly to Meta — none of it is absorbed by management fees.
+  </div>
+</div>
+<hr class="divider">
+
+<!-- Section 9: 16-Week Phase Timeline -->
+<div class="section">
+  <div class="eyebrow">The 16-Week Framework</div>
+  <div class="section-title">Four Phases to <em>Opening Day</em></div>
+  <div class="section-sub">Each phase builds on the last. Budget weighting shifts from awareness to conversion as we approach September 12.</div>
+
+  <div class="timeline-grid">
+    <div class="phase-card active-phase">
+      <div class="phase-num">Phase 1 · Weeks 1–6</div>
+      <div class="phase-name">Build the Audience</div>
+      <div class="phase-dates">May 23 → Jul 4, 2026</div>
+      <div class="phase-goal">Register interest. Coming soon. Build the database before selling anything. Curiosity and anticipation.</div>
+      <div class="phase-stat">
+        <div class="phase-stat-label">Focus</div>
+        <div class="phase-stat-value" style="font-size:18px;">Awareness + Leads</div>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-num">Phase 2 · Weeks 7–11</div>
+      <div class="phase-name">Sell Intros</div>
+      <div class="phase-dates">Jul 4 → Aug 8, 2026</div>
+      <div class="phase-goal">Intro offer goes live. Sell 5-class packs to warm database. VIP founding memberships pitched.</div>
+      <div class="phase-stat">
+        <div class="phase-stat-label">Focus</div>
+        <div class="phase-stat-value" style="font-size:18px;">Conversion + Sales</div>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-num">Phase 3 · Weeks 12–16</div>
+      <div class="phase-name">Push to Opening</div>
+      <div class="phase-dates">Aug 8 → Sept 12, 2026</div>
+      <div class="phase-goal">Maximum urgency. Countdown. Scarcity messaging. VIP closes at opening. Every lead gets touched.</div>
+      <div class="phase-stat">
+        <div class="phase-stat-label">Focus</div>
+        <div class="phase-stat-value" style="font-size:18px;">Urgency + FOMO</div>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-num">Phase 4 · Weeks 17–22</div>
+      <div class="phase-name">Convert Pipeline</div>
+      <div class="phase-dates">Sept 12 → Oct 24, 2026</div>
+      <div class="phase-goal">Intro buyers become members. Retention sequences activate. Community solidifies. Long-term growth begins.</div>
+      <div class="phase-stat">
+        <div class="phase-stat-label">Focus</div>
+        <div class="phase-stat-value" style="font-size:18px;">Retention + Growth</div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- Section 10: Next Steps -->
+<div class="section">
+  <div class="eyebrow">Getting Started</div>
+  <div class="section-title">Next <em>Steps</em></div>
+  <div class="section-sub">To kick off your presale campaign, we need the following confirmed.</div>
+
+  <div class="strategy-grid">
+    <div class="strat-card">
+      <h4>From You</h4>
+      <ul>
+        <li><strong>Confirm budget:</strong> Lock in your ad spend amount and preferred fee option (upfront or weekly)</li>
+        <li><strong>Photography + videography:</strong> Confirm your shoot date and deliverables timeline</li>
+        <li><strong>Ad account access:</strong> Add Kaizen as a partner on your Meta Business Manager</li>
+        <li><strong>Brand assets:</strong> Studio renderings, logo files, any existing content from buildout</li>
+      </ul>
+    </div>
+
+    <div class="strat-card">
+      <h4>From Us</h4>
+      <ul>
+        <li><strong>Onboarding call:</strong> 30-minute kickoff to align on creative direction and milestones</li>
+        <li><strong>Funnel build:</strong> Landing page live within first week of engagement</li>
+        <li><strong>Campaign launch:</strong> First ads live within 5 business days of receiving assets</li>
+        <li><strong>Reporting cadence:</strong> Weekly performance updates from day one</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div style="background: var(--ink); padding: 40px; text-align: center; margin-top: 48px;">
+  <div style="font-family: var(--font-heading); font-size: 12px; letter-spacing: 0.15em; color: var(--cream); margin-bottom: 8px;">Kaizen Collective</div>
+  <div style="font-size: 11px; color: var(--stone); font-weight: 300;">Prepared for STRONG Pilates King West · May 2026</div>
+</div>
 
 </body>
 </html>
